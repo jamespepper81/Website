@@ -6,6 +6,7 @@ import Script from 'next/script';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { CookieConsent } from '@/components/landing/CookieConsent';
+import { ThemeProvider } from '@/components/theme-provider';
 import { useEffect, useState }from 'react';
 
 const inter = Inter({
@@ -38,10 +39,11 @@ export default function RootLayout({
   }, [])
 
   return (
-    <html lang="en" className="!scroll-smooth dark">
+    <html lang="en" suppressHydrationWarning className="!scroll-smooth">
       <head>
         <title>BitSleuth | AI-Powered Bitcoin Wallet Analysis</title>
         <meta name="description" content="Analyze Bitcoin wallets like a pro. BitSleuth offers AI-powered insights, transaction visualization, and OPSEC risk detection for any BTC address." />
+        <meta name="color-scheme" content="light dark" />
         {analyticsAllowed && (
           <>
             <Script
@@ -60,9 +62,11 @@ export default function RootLayout({
         )}
       </head>
       <body className={`${inter.variable} font-body antialiased`}>
-        {children}
-        <Toaster />
-        {isClient && <CookieConsent />}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+          <Toaster />
+          {isClient && <CookieConsent />}
+        </ThemeProvider>
       </body>
     </html>
   );

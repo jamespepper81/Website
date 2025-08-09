@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, Search, ChevronDown, BarChart, Lock, Rocket } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface HeaderProps {
   basePath?: string;
@@ -37,6 +38,7 @@ export function Header({ basePath = '' }: HeaderProps) {
         <span className="ml-2 font-bold text-lg">BitSleuth</span>
       </Link>
       <nav className="ml-auto hidden gap-6 sm:flex items-center">
+        <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
@@ -133,6 +135,10 @@ export function Header({ basePath = '' }: HeaderProps) {
                <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>{link.label}</Link>
             ))}
             
+            <div className="mt-2">
+              <ThemeToggle />
+            </div>
+
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button>
