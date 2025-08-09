@@ -1,10 +1,92 @@
 "use client";
 
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type { ThemeProviderProps } from "next-themes/dist/types";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
-export function ThemeProvider(props: ThemeProviderProps) {
-  return <NextThemesProvider {...props} />;
+type ThemePreference = "light" | "dark" | "system";
+
+type ThemeContextValue = {
+  theme: ThemePreference;
+  resolvedTheme: "light" | "dark";
+  setTheme: (theme: ThemePreference) => void;
+};
+
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+
+function getSystemTheme(): "light" | "dark" {
+  if (typeof window === "undefined") return "light";
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function applyThemeClass(theme: "light" | "dark") {
+  const root = document.documentElement;
+  if (theme === "dark") {
+    root.classList.add("dark");
+  } else {
+    root.classList.remove("dark");
+  }
+}
+
+export function ThemeProvider({
+  children,
+  defaultTheme = "system",
+}: {
+  children: React.ReactNode;
+  defaultTheme?: ThemePreference;
+}) {
+  const [theme, setThemeState] = useState<ThemePreference>(defaultTheme);
+  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+
+  // Initialize from localStorage and system
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("theme");
+      const initialPref = (stored as ThemePreference) || defaultTheme;
+      const initialResolved = initialPref === "system" ? getSystemTheme() : initialPref;
+      setThemeState(initialPref);
+      setResolvedTheme(initialResolved);
+      applyThemeClass(initialResolved);
+    } catch {
+      const initialResolved = defaultTheme === "system" ? getSystemTheme() : defaultTheme;
+      setResolvedTheme(initialResolved);
+      applyThemeClass(initialResolved);
+    }
+  }, [defaultTheme]);
+
+  // React to system changes when in system mode
+  useEffect(() => {
+    if (theme !== "system") return;
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = () => {
+      const next = media.matches ? "dark" : "light";
+      setResolvedTheme(next);
+      applyThemeClass(next);
+    };
+    handler();
+    media.addEventListener("change", handler);
+    return () => media.removeEventListener("change", handler);
+  }, [theme]);
+
+  const setTheme = useCallback((pref: ThemePreference) => {
+    try {
+      localStorage.setItem("theme", pref);
+    } catch {}
+    setThemeState(pref);
+    const next = pref === "system" ? getSystemTheme() : pref;
+    setResolvedTheme(next);
+    applyThemeClass(next);
+  }, []);
+
+  const value = useMemo<ThemeContextValue>(() => ({ theme, resolvedTheme, setTheme }), [theme, resolvedTheme, setTheme]);
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+}
+
+export function useTheme(): ThemeContextValue {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error("useTheme must be used within ThemeProvider");
+  return ctx;
 }
 
 
