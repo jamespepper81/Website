@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
             </Link>
           </Button>
           <div className="prose prose-invert max-w-none text-muted-foreground">
-             <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-white">Terms of Service</h1>
+            <h1 className="text-4xl font-bold mb-4 text-gradient-title">Terms of Service</h1>
              <p className="text-sm font-medium">Last updated: 24 July 2025</p>
 
             <p className="font-normal">

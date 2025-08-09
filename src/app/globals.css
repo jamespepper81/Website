@@ -44,6 +44,11 @@
     --sidebar-accent-foreground: 240 10% 3.9%;
     --sidebar-border: 240 5.9% 90%;
     --sidebar-ring: 276 100% 60%;
+
+    /* Heading gradient colors (light) */
+    --heading-start: hsl(var(--primary));
+    --heading-via: hsl(276 100% 70%);
+    --heading-end: hsl(240 10% 16%);
   }
 
   .dark {
@@ -87,6 +92,11 @@
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: 276 100% 75%;
+
+    /* Heading gradient colors (dark) */
+    --heading-start: hsl(var(--primary));
+    --heading-via: hsl(276 100% 76%);
+    --heading-end: hsl(0 0% 98%);
   }
 }
 
@@ -107,5 +117,19 @@
     --border: 240 5.9% 80%;
     --input: 240 5.9% 80%;
     --ring: 276 100% 45%;
+    --heading-end: hsl(240 10% 12%);
   }
+}
+
+/* Reusable gradient text for titles */
+.text-gradient-title {
+  background-image: linear-gradient(
+    to right,
+    var(--heading-start),
+    var(--heading-via),
+    var(--heading-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

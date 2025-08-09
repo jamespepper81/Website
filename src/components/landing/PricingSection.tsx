@@ -34,7 +34,7 @@ export function PricingSection() {
   return (
     <section id="pricing" className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30">
       <div className="container max-w-6xl mx-auto text-center px-4 md:px-6">
-        <h2 className="text-3xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-white">Pricing Plans</h2>
+        <h2 className="text-3xl font-bold mb-12 text-gradient-title">Pricing Plans</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {plans.map((plan, idx) => (
             <Card key={idx} className={`relative flex flex-col text-left overflow-hidden shadow-glow ${plan.popular ? 'border-primary border-2' : ''} ${plan.comingSoon ? 'blur-sm pointer-events-none' : ''}`}>

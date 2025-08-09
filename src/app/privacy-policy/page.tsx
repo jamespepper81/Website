@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
             </Link>
           </Button>
           <div className="prose prose-invert max-w-none text-muted-foreground">
-            <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-white">Privacy Policy</h1>
+            <h1 className="text-4xl font-bold mb-4 text-gradient-title">Privacy Policy</h1>
             <p className="text-sm font-medium">Effective Date: 24 July 2025</p>
             <p className="font-normal">
               Welcome to BitSleuth. We are committed to protecting your privacy and ensuring that

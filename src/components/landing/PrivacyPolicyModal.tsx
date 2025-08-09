@@ -21,7 +21,7 @@ export function PrivacyPolicyModal({ isOpen, onOpenChange }: PrivacyPolicyModalP
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-white">Privacy Policy</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-gradient-title">Privacy Policy</DialogTitle>
           <DialogDescription className="font-medium">Effective Date: 24 July 2025</DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-[60vh] pr-6">
