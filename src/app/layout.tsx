@@ -48,14 +48,14 @@ export default function RootLayout({
           <>
             <Script
               strategy="afterInteractive"
-              src="https://www.googletagmanager.com/gtag/js?id=G-P893MDQ9GL"
+              src="https://www.googletagmanager.com/gtag/js?id=G-RPS0XSGWJ5"
             />
             <Script id="google-analytics" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-P893MDQ9GL');
+                gtag('config', 'G-RPS0XSGWJ5');
               `}
             </Script>
           </>
