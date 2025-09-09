@@ -179,7 +179,7 @@ export default function TermsOfServicePage() {
 
             <h3 className="text-xl font-bold text-gradient-title">10. Changes to These Terms</h3>
             <p className="font-normal">
-              We may update these Terms from time to time. Changes will be effective when posted on
+              We may update these Terms from time to time. Changes will be effective when posted on{' '}
               <a href="https://www.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.bitsleuth.ai</a>. Your continued use of the Services after changes are posted
               indicates your acceptance of the revised Terms.
             </p>

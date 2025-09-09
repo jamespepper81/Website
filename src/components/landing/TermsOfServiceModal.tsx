@@ -173,7 +173,7 @@ export function TermsOfServiceModal({ isOpen, onOpenChange, onPrivacyClick }: Te
 
             <h3 className="text-xl font-semibold text-gradient-title">10. Changes to These Terms</h3>
             <p>
-              We may update these Terms from time to time. Changes will be effective when posted on
+              We may update these Terms from time to time. Changes will be effective when posted on{' '}
               <a href="https://www.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.bitsleuth.ai</a>. Your continued use of the Services after changes are posted
               indicates your acceptance of the revised Terms.
             </p>
