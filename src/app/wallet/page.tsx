@@ -12,6 +12,7 @@ import { WalletSecuritySection } from '@/components/landing/WalletSecuritySectio
 import { WalletBuiltForBitcoinersSection } from '@/components/landing/WalletBuiltForBitcoinersSection';
 import { WalletSeamlessExperienceSection } from '@/components/landing/WalletSeamlessExperienceSection';
 import { WalletWaitlistSection } from '@/components/landing/WalletWaitlistSection';
+import { WalletCallToActionSection } from '@/components/landing/WalletCallToActionSection';
 import { WalletHowItWorksSection } from '@/components/landing/WalletHowItWorksSection';
 import { WalletFaqSection } from '@/components/landing/WalletFaqSection';
 import { WalletAboutSection } from '@/components/landing/WalletAboutSection';
@@ -32,9 +33,10 @@ export default function WalletPage() {
         <WalletSecuritySection />
         <WalletBuiltForBitcoinersSection />
         <WalletSeamlessExperienceSection />
+        <WalletWaitlistSection />
         <WalletHowItWorksSection />
         <WalletFaqSection />
-        <WalletWaitlistSection />
+        <WalletCallToActionSection />
         <WalletAboutSection />
       </main>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
