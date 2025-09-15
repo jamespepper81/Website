@@ -10,3 +10,13 @@ runConfig:
 env:
   - variable: NEXT_PUBLIC_GA_MEASUREMENT_ID
     secret: NEXT_PUBLIC_GA_MEASUREMENT_ID
+
+  - variable: GOOGLE_SHEETS_ID_FEEDBACK
+    secret: GOOGLE_SHEETS_ID_FEEDBACK
+    
+  - variable: GOOGLE_SHEETS_CLIENT_EMAIL
+    secret: GOOGLE_SHEETS_CLIENT_EMAIL
+    
+  - variable: GOOGLE_SHEETS_PRIVATE_KEY
+    secret: GOOGLE_SHEETS_PRIVATE_KEY
+    

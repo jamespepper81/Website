@@ -25,7 +25,10 @@ export function WalletFeaturesSection() {
   return (
     <section id="features" className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gradient-title">Your Wallet, Your Privacy</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-gradient-title">Your Wallet, Your Privacy</h2>
+          <p className="text-lg text-muted-foreground font-normal">Keep control of your Bitcoin from the moment you start.</p>
+        </div>
         <div className="grid md:grid-cols-3 gap-8 text-left">
           {features.map((feature, idx) => (
             <Card key={idx} className="bg-card/50 hover:border-primary/50 transition-colors shadow-glow p-4">
