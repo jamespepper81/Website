@@ -35,21 +35,21 @@ export default function TermsOfServicePage() {
           </Button>
           <div className="prose prose-invert max-w-none text-muted-foreground">
             <h1 className="text-4xl font-bold mb-4 text-gradient-title">Terms of Service</h1>
-             <p className="text-sm font-medium">Last updated: 24 July 2025</p>
+             <p className="text-sm font-medium">Last updated: 19 December 2024</p>
 
             <p className="font-normal">
-              Welcome to BitSleuth. These Terms of Service ("Terms") govern your use of our websites
-              and applications, including:
+              Welcome to BitSleuth. These Terms of Service ("Terms") govern your use of our websites,
+              services and applications, including:
             </p>
             <ul className="list-disc pl-6 font-normal">
               <li><a href="https://www.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.bitsleuth.ai</a> – Our public website</li>
               <li><a href="https://app.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">app.bitsleuth.ai</a> – Our Bitcoin analytical platform</li>
-              <li><a href="https://wallet.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">wallet.bitsleuth.ai</a> – Our Bitcoin wallet focused on privacy</li>
+              <li>Wallet App – Our Bitcoin wallet focused on privacy</li>
             </ul>
             <p className="font-normal">
               By accessing or using any of these services (collectively referred to as the
               "Services"), you agree to be bound by these Terms. Please read them carefully. If you
-              do not agree to these Terms, you should not use the Services.
+              do not agree to these Terms, you should not use the Services. Wallet App has additional Terms within the app.
             </p>
 
             <h3 className="text-xl font-bold text-gradient-title">1. Who We Are</h3>
@@ -89,7 +89,7 @@ export default function TermsOfServicePage() {
             <h3 className="text-xl font-bold text-gradient-title">4. Our Wallet & Analytics Tools</h3>
             <p className="font-normal">We provide two core applications:</p>
             <p className="font-semibold">
-              <strong>Bitcoin Wallet (<a href="https://wallet.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">wallet.bitsleuth.ai</a>)</strong>
+              <strong>Bitcoin Wallet App</strong>
               <br />A non-custodial, privacy-focused wallet. You are solely responsible for your
               passphrase, backups, and access. We cannot recover lost access or reverse
               transactions.
@@ -114,7 +114,7 @@ export default function TermsOfServicePage() {
               aggregate visitor behaviour and improve our services.
             </p>
             <p className="font-normal">
-              <a href="https://wallet.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">wallet.bitsleuth.ai</a> is designed with privacy in mind and does not track users or use
+              Wallet App is designed with privacy in mind and does not track users or use
               analytics.
             </p>
             <p className="font-normal">
@@ -186,8 +186,7 @@ export default function TermsOfServicePage() {
 
             <h3 className="text-xl font-bold text-gradient-title">11. Contact</h3>
             <p className="font-normal">
-              If you have any questions about these Terms, please contact us through the website or
-              at the support email listed on <a href="https://www.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.bitsleuth.ai</a>.
+              If you have any questions about these Terms, please contact us through the support email <a href="mailto:support@bitsleuth.ai" className="text-primary hover:underline">support@bitsleuth.ai</a> or through feedback on <a href="https://app.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">app.bitsleuth.ai</a>.
             </p>
           </div>
         </div>

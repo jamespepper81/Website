@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
           </Button>
           <div className="prose prose-invert max-w-none text-muted-foreground">
             <h1 className="text-4xl font-bold mb-4 text-gradient-title">Privacy Policy</h1>
-            <p className="text-sm font-medium">Effective Date: 24 July 2025</p>
+            <p className="text-sm font-medium">Effective Date: 19 December 2024</p>
             <p className="font-normal">
               Welcome to BitSleuth. We are committed to protecting your privacy and ensuring that
               your personal data is handled with care, transparency, and in compliance with
@@ -44,10 +44,10 @@ export default function PrivacyPolicyPage() {
             <p className="font-normal">
               This Privacy Policy applies to all services provided by BitSleuth, including our
               public website (<a href="https://www.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.bitsleuth.ai</a>), our analytics platform (<a href="https://app.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">app.bitsleuth.ai</a>), and
-              our privacy-focused wallet app (<a href="https://wallet.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">wallet.bitsleuth.ai</a>).
+              our privacy-focused wallet iOS and Android app.
             </p>
             <p className="font-normal">
-              By using any of our websites or services, you agree to the terms of this Privacy
+              By using any of our websites, apps or services, you agree to the terms of this Privacy
               Policy.
             </p>
 
@@ -67,13 +67,12 @@ export default function PrivacyPolicyPage() {
               <li>Contact form submissions, if you choose to get in touch.</li>
             </ul>
             <p className="font-semibold">
-              <strong>On <a href="https://wallet.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">wallet.bitsleuth.ai</a>:</strong>
+              <strong>On Wallet App:</strong>
             </p>
             <ul className="list-disc pl-6 font-normal">
               <li>
                 We do not collect personal data or track users. The wallet is designed with privacy
-                in mind and operates without user accounts, third-party integrations, or
-                advertising.
+                in mind and operates without user accounts, or advertising. Wallet App has its own Terms of Service, and Privacy Policy built into the app within settings.
               </li>
             </ul>
 
@@ -109,7 +108,7 @@ export default function PrivacyPolicyPage() {
               Any messages or queries you send us may be stored for customer service purposes but
               are never used for marketing.
             </p>
-            <p className="font-normal">We do not store or retain personal data from <a href="https://wallet.bitsleuth.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">wallet.bitsleuth.ai</a>.</p>
+            <p className="font-normal">We do not store or retain personal data from Wallet App.</p>
 
             <h3 className="text-xl font-bold text-gradient-title">6. Your Rights</h3>
             <p className="font-normal">
