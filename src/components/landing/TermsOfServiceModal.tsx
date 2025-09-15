@@ -29,7 +29,7 @@ export function TermsOfServiceModal({ isOpen, onOpenChange, onPrivacyClick }: Te
       <DialogContent className="max-w-3xl">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-gradient-title">Terms of Service</DialogTitle>
-          <DialogDescription className="font-medium">Last updated: 19 December 2024</DialogDescription>
+          <DialogDescription className="font-medium">Last updated: 15 September 2025</DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-[60vh] pr-6">
           <div className="prose prose-invert max-w-none text-muted-foreground font-normal">

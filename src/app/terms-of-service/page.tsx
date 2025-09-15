@@ -35,7 +35,7 @@ export default function TermsOfServicePage() {
           </Button>
           <div className="prose prose-invert max-w-none text-muted-foreground">
             <h1 className="text-4xl font-bold mb-4 text-gradient-title">Terms of Service</h1>
-             <p className="text-sm font-medium">Last updated: 19 December 2024</p>
+             <p className="text-sm font-medium">Last updated: 15 September 2025</p>
 
             <p className="font-normal">
               Welcome to BitSleuth. These Terms of Service ("Terms") govern your use of our websites,
