@@ -19,7 +19,10 @@ export function TestimonialsSection() {
   return (
     <section className="w-full py-20 md:py-24 lg:py-32">
       <div className="container max-w-4xl mx-auto text-center px-4 md:px-6">
-        <h2 className="text-3xl font-bold mb-10 text-gradient-title">What Users Say</h2>
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold mb-4 text-gradient-title">What Users Say</h2>
+          <p className="text-lg text-muted-foreground font-normal">Hear from Bitcoin analysts, privacy advocates, and early adopters who rely on BitSleuth for their investigations.</p>
+        </div>
         <div className="space-y-8">
           {testimonials.map((testimonial, idx) => (
             <Card key={idx} className="bg-transparent border-0 shadow-none">

@@ -6,7 +6,10 @@ export function DemoPreviewSection() {
   return (
     <section className="w-full py-20 md:py-24 lg:py-32 bg-primary/10">
       <div className="container max-w-4xl mx-auto text-center px-4 md:px-6">
-        <h2 className="text-3xl font-bold mb-6 text-gradient-title">Try It Yourself</h2>
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold mb-4 text-gradient-title">Try It Yourself</h2>
+          <p className="text-lg text-muted-foreground font-normal">Experience the power of BitSleuth with our live demo or explore a real Bitcoin wallet analysis.</p>
+        </div>
         <div className="flex justify-center gap-4 mb-8">
           <Button asChild size="lg">
             <a href="https://app.bitsleuth.ai/">Try Live App</a>
