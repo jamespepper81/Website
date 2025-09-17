@@ -104,8 +104,172 @@
   * {
     @apply border-border;
   }
+  
+  /* Reset default margins and ensure full viewport coverage */
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    overflow-x: hidden;
+  }
+  
+  /* Modern hidden scrollbar approach - comprehensive */
+  @media (min-width: 769px) {
+    /* Hide scrollbar on html and body */
+    html, body {
+      overflow-x: hidden;
+      scrollbar-width: none !important; /* Firefox */
+      -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+    }
+    
+    /* Hide scrollbar on all elements */
+    * {
+      scrollbar-width: none !important; /* Firefox */
+      -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+    }
+    
+    *::-webkit-scrollbar {
+      display: none !important; /* WebKit browsers (Chrome, Safari, Edge) */
+      width: 0 !important;
+      height: 0 !important;
+    }
+    
+    /* Additional webkit scrollbar hiding */
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    
+    /* Smooth scrolling for modern feel */
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Global scrollbar hiding for all screen sizes */
+  html, body, * {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+  }
+  
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  
+  /* Ensure main content takes full width and height */
+  main {
+    width: 100%;
+    min-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+  
+  /* Full-width sections for edge-to-edge layout */
+  section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Ensure all containers respect safe areas */
+  .container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    section {
+      width: 100vw;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    /* Ensure content doesn't get cut off on Android */
+    body {
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+  
+  /* Android-specific fixes */
+  @supports (-webkit-appearance: none) {
+    html, body {
+      height: 100%;
+      height: 100dvh;
+    }
+  }
+  
+  /* iOS-specific optimizations */
+  @supports (-webkit-touch-callout: none) {
+    html, body {
+      height: 100vh;
+      height: 100dvh;
+    }
+  }
+  
+  /* Smooth transitions and prevent layout shifts */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Prevent content jump when scrollbar appears/disappears */
+  .overflow-hidden {
+    padding-right: 0 !important;
+  }
+  
+  
+  /* Ensure dropdowns and modals don't cause layout shifts */
+  [data-radix-popper-content-wrapper] {
+    z-index: 9999;
+  }
+  
+  
+  
+  
+  
+  /* Smooth animations for dropdowns */
+  [data-state="open"] {
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  [data-state="closed"] {
+    animation: fadeOut 0.2s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
   }
 }
 
