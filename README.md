@@ -1,6 +1,6 @@
 ## BitSleuth Website — AI‑Powered Bitcoin Wallet Analysis
 
-BitSleuth is a Next.js 15 website featuring product landing pages for an AI‑powered Bitcoin wallet analyzer and a Bitcoin wallet app, an educational glossary, SEO pages, cookie consent with analytics gating, and an internal AI flow (Genkit + Gemini) to generate landing‑pages copy variants.
+BitSleuth is a Next.js 15 website featuring product landing pages for an AI‑powered Bitcoin wallet analyzer and a Bitcoin wallet app, an educational glossary, SEO pages, cookie consent with analytics gating, and an internal AI flow (Genkit + Gemini) to generate landing‑page copy variants.
 
 Production domain: `https://www.bitsleuth.ai`
 
