@@ -3,13 +3,15 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { BarChart, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 export function HomeHeroSection() {
   return (
-    <section className="w-full py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted dark:to-black text-foreground">
-      <div className="container max-w-4xl mx-auto text-center px-4 md:px-6">
+    <section className="w-full py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
+      <BackgroundBeams />
+      <div className="container max-w-4xl mx-auto text-center px-4 md:px-6 relative z-10">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title">
             One Brand. Two Powerful Bitcoin Tools.

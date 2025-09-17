@@ -1,5 +1,6 @@
 // src/components/landing/WalletBuiltForBitcoinersSection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Settings, Bitcoin, Users } from "lucide-react";
 
 const bitcoinerFeatures = [
@@ -22,8 +23,9 @@ const bitcoinerFeatures = [
 
 export function WalletBuiltForBitcoinersSection() {
   return (
-    <section className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30">
-      <div className="container max-w-6xl mx-auto px-4 md:px-6">
+    <section className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+      <BackgroundBeams intensity="subtle" />
+      <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">Built for Bitcoiners</h2>
           <p className="text-lg text-muted-foreground font-normal">Designed by the Bitcoin community, for the Bitcoin community. Every feature serves the goal of financial sovereignty.</p>

@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 
 
 const glossaryTerms = [
@@ -116,8 +117,9 @@ export default function GlossaryIndexPage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24">
-        <div className="container max-w-4xl mx-auto px-4 md:px-6">
+      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
+        <BackgroundBeams intensity="subtle" />
+        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
           <Button variant="ghost" asChild className="mb-8">
             <Link href="/">
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -132,13 +134,15 @@ export default function GlossaryIndexPage() {
               <Link key={item.term} href={item.href} className="block group">
                 <Card className="hover:border-primary/50 hover:bg-secondary/20 transition-colors shadow-glow">
                   <CardContent className="p-6 flex items-center justify-between">
-                    <div>
+                    <div className="flex-1">
                       <h2 className="text-2xl font-bold text-primary group-hover:underline">
                         {item.term}
                       </h2>
                       <p className="text-muted-foreground mt-2 font-normal">{item.definition}</p>
                     </div>
-                    <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <div className="flex-shrink-0 ml-4">
+                      <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </div>
                   </CardContent>
                 </Card>
               </Link>
