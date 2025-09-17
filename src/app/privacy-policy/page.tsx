@@ -10,6 +10,7 @@ import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 
 export default function PrivacyPolicyPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -25,8 +26,9 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24">
-        <div className="container max-w-4xl mx-auto px-4 md:px-6">
+      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
+        <BackgroundBeams intensity="subtle" />
+        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
           <Button variant="ghost" asChild className="mb-8">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />

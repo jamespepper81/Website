@@ -1,11 +1,13 @@
 
 import { Button } from "@/components/ui/button";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import Image from "next/image";
 
 export function DemoPreviewSection() {
   return (
-    <section className="w-full py-20 md:py-24 lg:py-32 bg-primary/10">
-      <div className="container max-w-4xl mx-auto text-center px-4 md:px-6">
+    <section className="w-full py-20 md:py-24 lg:py-32 bg-primary/10 relative overflow-hidden">
+      <BackgroundBeams />
+      <div className="container max-w-4xl mx-auto text-center px-4 md:px-6 relative z-10">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">Try It Yourself</h2>
           <p className="text-lg text-muted-foreground font-normal">Experience the power of BitSleuth with our live demo or explore a real Bitcoin wallet analysis.</p>

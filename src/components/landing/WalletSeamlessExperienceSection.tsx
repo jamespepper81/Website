@@ -1,5 +1,6 @@
 // src/components/landing/WalletSeamlessExperienceSection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Smartphone, QrCode, Palette, BarChart3 } from "lucide-react";
 
 const experienceFeatures = [
@@ -27,8 +28,9 @@ const experienceFeatures = [
 
 export function WalletSeamlessExperienceSection() {
   return (
-    <section className="w-full py-20 md:py-24 lg:py-32">
-      <div className="container max-w-6xl mx-auto px-4 md:px-6">
+    <section className="w-full py-20 md:py-24 lg:py-32 relative overflow-hidden">
+      <BackgroundBeams intensity="subtle" />
+      <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">A Seamless User Experience</h2>
           <p className="text-lg text-muted-foreground font-normal">Experience Bitcoin management that's intuitive, efficient, and tailored to you.</p>
