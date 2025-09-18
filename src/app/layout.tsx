@@ -7,7 +7,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { CookieConsent } from '@/components/landing/CookieConsent';
 import { ThemeProvider } from '@/components/theme-provider';
-import { useEffect, useState }from 'react';
+import { useEffect, useState } from 'react';
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-RPS0XSGWJ5';
 
