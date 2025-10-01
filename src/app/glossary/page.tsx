@@ -117,35 +117,43 @@ export default function GlossaryIndexPage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-          <Button variant="ghost" asChild className="mb-8">
-            <Link href="/">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Home
-            </Link>
-          </Button>
-          <h1 className="text-4xl font-bold mb-8 text-gradient-title">
-            Glossary
-          </h1>
-          
-          <div className="mb-12 space-y-4 text-lg">
-            <p className="text-muted-foreground leading-relaxed">
-              <span className="font-bold text-foreground">Bitcoin</span> is powered by{' '}
-              <span className="font-bold text-foreground">peer-to-peer technology</span>, with no central authority or banks in control. Transactions and the creation of new bitcoins are managed by the network itself.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              It's <span className="font-bold text-foreground">open-source</span> and{' '}
-              <span className="font-bold text-foreground">public by design</span> — nobody owns it, and{' '}
-              <span className="font-bold text-foreground">anyone can take part</span>.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              With its <span className="font-bold text-foreground">unique properties</span>, Bitcoin unlocks possibilities that no traditional payment system ever could.
-            </p>
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
+          <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+            <Button variant="ghost" asChild className="mb-8">
+              <Link href="/">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Home
+              </Link>
+            </Button>
+            <div className="space-y-6 text-center">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title">
+                Bitcoin Glossary
+              </h1>
+              <div className="max-w-3xl mx-auto space-y-4">
+                <p className="text-lg text-muted-foreground md:text-xl font-normal leading-relaxed">
+                  <span className="font-semibold text-foreground">Bitcoin</span> is powered by{' '}
+                  <span className="font-semibold text-foreground">peer-to-peer technology</span>, with no central authority or banks in control. Transactions and the creation of new bitcoins are managed by the network itself.
+                </p>
+                <p className="text-lg text-muted-foreground md:text-xl font-normal leading-relaxed">
+                  It's <span className="font-semibold text-foreground">open-source</span> and{' '}
+                  <span className="font-semibold text-foreground">public by design</span> - nobody owns it, and{' '}
+                  <span className="font-semibold text-foreground">anyone can take part</span>.
+                </p>
+                <p className="text-lg text-muted-foreground md:text-xl font-normal leading-relaxed">
+                  With its <span className="font-semibold text-foreground">unique properties</span>, Bitcoin unlocks possibilities that no traditional payment system ever could.
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="space-y-6">
+        {/* Glossary Terms */}
+        <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
+          <BackgroundBeams intensity="subtle" />
+          <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+            <div className="space-y-6">
             {glossaryTerms.sort((a,b) => a.term.localeCompare(b.term)).map((item) => (
               <Link key={item.term} href={item.href} className="block group">
                 <Card className="hover:border-primary/50 hover:bg-secondary/20 transition-colors shadow-glow">
@@ -163,8 +171,9 @@ export default function GlossaryIndexPage() {
                 </Card>
               </Link>
             ))}
+            </div>
           </div>
-        </div>
+        </section>
       </main>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
