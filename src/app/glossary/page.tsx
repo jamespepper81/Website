@@ -120,7 +120,6 @@ export default function GlossaryIndexPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
-          <BackgroundBeams />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
             <Button variant="ghost" asChild className="mb-8">
               <Link href="/">
