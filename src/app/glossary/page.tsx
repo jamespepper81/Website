@@ -120,6 +120,7 @@ export default function GlossaryIndexPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-16 md:py-20 lg:py-24 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
+          <BackgroundBeams />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
             <Button variant="ghost" asChild className="mb-8">
               <Link href="/">
@@ -128,7 +129,7 @@ export default function GlossaryIndexPage() {
               </Link>
             </Button>
             <div className="space-y-6 text-center">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title pb-2">
                 Bitcoin Glossary
               </h1>
               <div className="max-w-3xl mx-auto space-y-4">
