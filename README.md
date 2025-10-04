@@ -1,8 +1,8 @@
 # BitSleuth Website
 
-> **AI-Powered Bitcoin Wallet Analysis & Privacy Tools**
+> **Bitcoin Wallet Analysis & Privacy Tools**
 
-BitSleuth is a comprehensive Next.js 15 website serving as the primary marketing and educational hub for Bitcoin analysis tools. The platform features product landing pages for an AI-powered Bitcoin wallet analyzer and Bitcoin wallet app, an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
+BitSleuth is a comprehensive Next.js 15 website serving as the primary marketing and educational hub for Bitcoin analysis tools. The platform features product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
 
 **🌐 Production:** [https://www.bitsleuth.ai](https://www.bitsleuth.ai)
 
@@ -13,7 +13,6 @@ BitSleuth is a comprehensive Next.js 15 website serving as the primary marketing
 - **🔍 SEO Optimized**: Custom robots.txt, sitemap, and metadata for maximum search engine visibility
 - **🍪 Privacy Compliant**: Cookie consent system with Google Analytics gating
 - **🎨 Modern UI**: Tailwind CSS + shadcn/ui + Radix primitives with light/dark theme support
-- **🤖 AI Copy Generation**: Genkit + Google AI integration for marketing copy optimization
 - **📱 Responsive Design**: Mobile-first approach with optimized user experience across all devices
 
 ---
@@ -22,63 +21,18 @@ BitSleuth is a comprehensive Next.js 15 website serving as the primary marketing
 
 - **Framework**: Next.js 15 (App Router), React 18, TypeScript
 - **Styling**: Tailwind CSS, shadcn/ui, Radix primitives
-- **AI**: Genkit (`@genkit-ai/next`, `@genkit-ai/googleai`) using `googleai/gemini-2.0-flash`
 - **UX**: Embla Carousel, Lucide icons
 - **SEO**: App Router metadata routes (`robots.ts`, `sitemap.ts`)
 - **Deployment**: Firebase App Hosting
 
 ---
 
-## 🤖 AI Integration
-
-### Current Implementation
-The website includes a **Genkit + Google AI integration** for marketing copy generation. This system was initially used to generate landing page copy variants during the first iteration of the site, but has since evolved into a more comprehensive AI-powered content generation tool.
-
-**Configuration:**
-- `src/ai/genkit.ts` - Genkit setup with Google AI plugin
-- `src/ai/flows/generate-landing-page-copy.ts` - Copy generation flow
-- Uses Google AI Gemini 2.0 Flash model for content generation
-
-### Setup & Usage
-
-1. **Environment Configuration:**
-   ```bash
-   # Add to .env.local or .env
-   GOOGLE_GENAI_API_KEY=your_api_key_here
-   ```
-
-2. **Development Server:**
-   ```bash
-   npm run genkit:dev  # Start Genkit developer UI
-   ```
-
-3. **Server-Side Usage Example:**
-   ```typescript
-   import { generateLandingPageCopy } from '@/ai/flows/generate-landing-page-copy';
-
-   const result = await generateLandingPageCopy({
-     productName: 'BitSleuth Analyzer',
-     targetAudience: 'crypto analysts and investigators',
-     valueProposition: 'AI-powered wallet insights and OPSEC risk detection',
-     numberOfVariants: 3,
-     tone: 'professional',
-   });
-
-   console.log(result.copyVariants);
-   ```
-
-### Historical Context
-While Genkit was initially used to generate the first iteration of landing page copy, the current website content has been manually crafted and optimized based on user feedback and performance metrics. The AI system remains available for future content generation and A/B testing purposes.
-
-
----
 
 ## 🚀 Development Workflow
 
 ### Prerequisites
 - **Node.js**: 18+ (20+ recommended)
 - **npm**: Latest version
-- **Google AI API Key**: For AI features (optional)
 
 ### Local Development
 
@@ -108,7 +62,6 @@ While Genkit was initially used to generate the first iteration of landing page 
    npm run start        # Production server
    npm run lint         # ESLint checking
    npm run typecheck    # TypeScript type checking
-   npm run genkit:dev   # Genkit AI development UI
    ```
 
 ### Code Quality
@@ -137,9 +90,6 @@ src/
 │   ├── landing/           # Landing page components
 │   ├── ui/                # shadcn/ui components
 │   └── theme-provider.tsx # Theme management
-├── ai/                    # AI integration
-│   ├── genkit.ts          # Genkit configuration
-│   └── flows/             # AI flows
 ├── hooks/                 # Custom React hooks
 └── lib/                   # Utility functions
 ```
@@ -151,7 +101,7 @@ src/
 | Route | Description |
 |-------|-------------|
 | `/` | Homepage with overview |
-| `/analyzer` | AI-powered wallet analyzer product page |
+| `/analyzer` | Bitcoin wallet analyzer product page |
 | `/wallet` | Bitcoin wallet app product page |
 | `/glossary` | Bitcoin terminology index |
 | `/glossary/[term]` | Individual glossary term pages |
@@ -165,9 +115,6 @@ src/
 
 ### Environment Variables
 ```bash
-# Required for AI features
-GOOGLE_GENAI_API_KEY=your_google_ai_api_key
-
 # Optional
 NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
 ```
@@ -195,7 +142,6 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
 - [ ] Dark/light theme toggle works
 - [ ] Cookie consent banner functions
 - [ ] Analytics tracking (with consent)
-- [ ] AI copy generation (if API key provided)
 - [ ] SEO metadata displays correctly
 
 ### Performance Testing
@@ -279,7 +225,6 @@ npm run build
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [shadcn/ui Components](https://ui.shadcn.com/)
-- [Genkit Documentation](https://firebase.google.com/docs/genkit)
 
 ---
 
@@ -306,10 +251,6 @@ npm run build
 npm run typecheck
 ```
 
-**AI features not working:**
-- Verify `GOOGLE_GENAI_API_KEY` is set correctly
-- Check API key permissions
-- Ensure Genkit dev server is running
 
 ---
 
@@ -331,8 +272,6 @@ For licensing inquiries, contact: legal@bitsleuth.ai
 - **Firebase** for reliable hosting platform
 - **shadcn/ui** for beautiful component library
 - **Tailwind CSS** for utility-first styling
-- **Google AI** for powerful AI capabilities
-- `google-generative-ai` (community package) for Gemini integration
 - **Bitcoin Community** for inspiration and education
 
 ---
