@@ -15,6 +15,8 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   weight: ['400', '500', '600', '700'],
+  display: 'swap', // Prevent layout shift during font load
+  preload: true, // Preload the font
 });
 
 export default function RootLayout({
