@@ -25,7 +25,7 @@ BitSleuth is a comprehensive Next.js 15 website serving as the primary marketing
 - **AI**: Genkit (`@genkit-ai/next`, `@genkit-ai/googleai`) using `googleai/gemini-2.0-flash`
 - **UX**: Embla Carousel, Lucide icons
 - **SEO**: App Router metadata routes (`robots.ts`, `sitemap.ts`)
-- **Deployment**: Vercel (optimized for Next.js 15)
+- **Deployment**: Firebase App Hosting
 
 ---
 
@@ -128,10 +128,11 @@ src/
 │   ├── analyzer/          # Analyzer product page
 │   ├── wallet/            # Wallet product page
 │   ├── glossary/          # Educational glossary
-│   ├── api/               # API routes
+│   ├── api/waitlist/      # Waitlist signup API endpoint
 │   ├── layout.tsx         # Root layout
 │   ├── robots.ts          # SEO robots.txt
-│   └── sitemap.ts         # SEO sitemap
+│   ├── sitemap.ts         # SEO sitemap
+│   └── actions.ts         # Server actions
 ├── components/
 │   ├── landing/           # Landing page components
 │   ├── ui/                # shadcn/ui components
@@ -207,20 +208,20 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
-1. Connect repository to Vercel
-2. Configure environment variables
-3. Deploy automatically on push to main branch
+### Firebase App Hosting
+1. Connect repository to Firebase App Hosting
+2. Configure environment variables in Firebase console
+3. Deploy automatically on push to configured branch
 
 ### Manual Deployment
 ```bash
 npm run build
-npm run start
+# Firebase CLI deployment commands
 ```
 
 ### Environment Configuration
 - Production: `https://www.bitsleuth.ai`
-- Staging: Configure in Vercel dashboard
+- Staging: Configure in Firebase App Hosting dashboard
 - Development: `http://localhost:9002`
 
 ---
@@ -327,10 +328,11 @@ For licensing inquiries, contact: legal@bitsleuth.ai
 ## 🙏 Acknowledgments
 
 - **Next.js Team** for the excellent React framework
-- **Vercel** for seamless deployment platform
+- **Firebase** for reliable hosting platform
 - **shadcn/ui** for beautiful component library
 - **Tailwind CSS** for utility-first styling
 - **Google AI** for powerful AI capabilities
+- `google-generative-ai` (community package) for Gemini integration
 - **Bitcoin Community** for inspiration and education
 
 ---
