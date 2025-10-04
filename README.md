@@ -1,162 +1,318 @@
-## BitSleuth Website — AI‑Powered Bitcoin Wallet Analysis
+# BitSleuth Website
 
-BitSleuth is a Next.js 15 website featuring product landing pages for an AI‑powered Bitcoin wallet analyzer and a Bitcoin wallet app, an educational glossary, SEO pages, cookie consent with analytics gating, and an internal AI flow (Genkit + Gemini) to generate landing‑page copy variants.
+> **AI-Powered Bitcoin Wallet Analysis & Privacy Tools**
 
-Production domain: `https://www.bitsleuth.ai`
+BitSleuth is a comprehensive Next.js 15 website serving as the primary marketing and educational hub for Bitcoin analysis tools. The platform features product landing pages for an AI-powered Bitcoin wallet analyzer and Bitcoin wallet app, an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
 
-### Highlights
-- **Landing pages**: `/analyzer` and `/wallet` with sections for features, how it works, pricing, FAQs, testimonials, and about.
-- **Home**: `/` concise overview with hero and about.
-- **Glossary**: `/glossary` with per‑term pages for key Bitcoin concepts.
-- **SEO**: custom `robots.ts` and `sitemap.ts` wired to `https://www.bitsleuth.ai`.
-- **Cookie consent + GA**: Analytics are loaded only after consent.
-- **Theming/UI**: Tailwind CSS + shadcn/ui + Radix; light/dark with a theme provider.
-- **AI flow**: Genkit + Google AI (Gemini 2.0 Flash) for generating landing‑page copy variants.
+**🌐 Production:** [https://www.bitsleuth.ai](https://www.bitsleuth.ai)
+
+## ✨ Key Features
+
+- **🎯 Multi-Product Landing Pages**: Dedicated pages for BitSleuth Analyzer (`/analyzer`) and BitSleuth Wallet (`/wallet`) with comprehensive feature showcases
+- **📚 Educational Glossary**: Interactive Bitcoin terminology guide with 15+ terms and detailed explanations
+- **🔍 SEO Optimized**: Custom robots.txt, sitemap, and metadata for maximum search engine visibility
+- **🍪 Privacy Compliant**: Cookie consent system with Google Analytics gating
+- **🎨 Modern UI**: Tailwind CSS + shadcn/ui + Radix primitives with light/dark theme support
+- **🤖 AI Copy Generation**: Genkit + Google AI integration for marketing copy optimization
+- **📱 Responsive Design**: Mobile-first approach with optimized user experience across all devices
 
 ---
 
-### Tech Stack
+## 🛠️ Tech Stack
+
 - **Framework**: Next.js 15 (App Router), React 18, TypeScript
 - **Styling**: Tailwind CSS, shadcn/ui, Radix primitives
 - **AI**: Genkit (`@genkit-ai/next`, `@genkit-ai/googleai`) using `googleai/gemini-2.0-flash`
 - **UX**: Embla Carousel, Lucide icons
 - **SEO**: App Router metadata routes (`robots.ts`, `sitemap.ts`)
+- **Deployment**: Vercel (optimized for Next.js 15)
 
 ---
 
-### Project Structure
+## 🤖 AI Integration
+
+### Current Implementation
+The website includes a **Genkit + Google AI integration** for marketing copy generation. This system was initially used to generate landing page copy variants during the first iteration of the site, but has since evolved into a more comprehensive AI-powered content generation tool.
+
+**Configuration:**
+- `src/ai/genkit.ts` - Genkit setup with Google AI plugin
+- `src/ai/flows/generate-landing-page-copy.ts` - Copy generation flow
+- Uses Google AI Gemini 2.0 Flash model for content generation
+
+### Setup & Usage
+
+1. **Environment Configuration:**
+   ```bash
+   # Add to .env.local or .env
+   GOOGLE_GENAI_API_KEY=your_api_key_here
+   ```
+
+2. **Development Server:**
+   ```bash
+   npm run genkit:dev  # Start Genkit developer UI
+   ```
+
+3. **Server-Side Usage Example:**
+   ```typescript
+   import { generateLandingPageCopy } from '@/ai/flows/generate-landing-page-copy';
+
+   const result = await generateLandingPageCopy({
+     productName: 'BitSleuth Analyzer',
+     targetAudience: 'crypto analysts and investigators',
+     valueProposition: 'AI-powered wallet insights and OPSEC risk detection',
+     numberOfVariants: 3,
+     tone: 'professional',
+   });
+
+   console.log(result.copyVariants);
+   ```
+
+### Historical Context
+While Genkit was initially used to generate the first iteration of landing page copy, the current website content has been manually crafted and optimized based on user feedback and performance metrics. The AI system remains available for future content generation and A/B testing purposes.
+
+
+---
+
+## 🚀 Development Workflow
+
+### Prerequisites
+- **Node.js**: 18+ (20+ recommended)
+- **npm**: Latest version
+- **Google AI API Key**: For AI features (optional)
+
+### Local Development
+
+1. **Clone and Install:**
+   ```bash
+   git clone <repository-url>
+   cd Website
+   npm install
+   ```
+
+2. **Environment Setup:**
+   ```bash
+   cp .env.example .env.local
+   # Add your environment variables
+   ```
+
+3. **Start Development Server:**
+   ```bash
+   npm run dev
+   # Server runs on http://localhost:9002
+   ```
+
+4. **Available Scripts:**
+   ```bash
+   npm run dev          # Development server with Turbopack
+   npm run build        # Production build
+   npm run start        # Production server
+   npm run lint         # ESLint checking
+   npm run typecheck    # TypeScript type checking
+   npm run genkit:dev   # Genkit AI development UI
+   ```
+
+### Code Quality
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Next.js recommended configuration
+- **Prettier**: Code formatting (via ESLint)
+- **Husky**: Pre-commit hooks (if configured)
+
+---
+
+## 📁 Project Structure
+
 ```
 src/
-  app/
-    page.tsx                # Home
-    analyzer/page.tsx       # Analyzer landing page
-    wallet/page.tsx         # Wallet landing page
-    glossary/...            # Glossary index and term pages
-    privacy-policy/page.tsx # Policy page
-    terms-of-service/page.tsx
-    robots.ts               # SEO robots.txt
-    sitemap.ts              # SEO sitemap
-    layout.tsx              # Root layout (theme, consent, GA)
-  ai/
-    genkit.ts               # Genkit setup (Google AI plugin + model)
-    flows/generate-landing-page-copy.ts
-  components/landing/...    # Reusable landing UI sections
-  components/ui/...         # shadcn/ui components
+├── app/                    # Next.js App Router
+│   ├── page.tsx           # Homepage
+│   ├── analyzer/          # Analyzer product page
+│   ├── wallet/            # Wallet product page
+│   ├── glossary/          # Educational glossary
+│   ├── api/               # API routes
+│   ├── layout.tsx         # Root layout
+│   ├── robots.ts          # SEO robots.txt
+│   └── sitemap.ts         # SEO sitemap
+├── components/
+│   ├── landing/           # Landing page components
+│   ├── ui/                # shadcn/ui components
+│   └── theme-provider.tsx # Theme management
+├── ai/                    # AI integration
+│   ├── genkit.ts          # Genkit configuration
+│   └── flows/             # AI flows
+├── hooks/                 # Custom React hooks
+└── lib/                   # Utility functions
 ```
 
 ---
 
-### Available Routes
-- `/` — Home
-- `/analyzer` — Product page for the AI wallet analyzer
-- `/wallet` — Product page for the wallet app
-- `/glossary` and `/glossary/[term]` — Bitcoin glossary
-- `/privacy-policy` and `/terms-of-service` — Legal pages
+## 🎯 Available Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage with overview |
+| `/analyzer` | AI-powered wallet analyzer product page |
+| `/wallet` | Bitcoin wallet app product page |
+| `/glossary` | Bitcoin terminology index |
+| `/glossary/[term]` | Individual glossary term pages |
+| `/privacy-policy` | Privacy policy |
+| `/terms-of-service` | Terms of service |
+| `/company-information` | Company information |
 
 ---
 
-### Getting Started
+## 🔧 Configuration
 
-Prerequisites:
-- Node.js 18+ (or 20+ recommended)
-
-Install dependencies:
+### Environment Variables
 ```bash
-npm install
+# Required for AI features
+GOOGLE_GENAI_API_KEY=your_google_ai_api_key
+
+# Optional
+NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
 ```
 
-Run the dev server:
-```bash
-npm run dev
-```
+### Tailwind Configuration
+- Custom color palette with Bitcoin-inspired themes
+- Dark/light mode support
+- Responsive breakpoints
+- Custom animations and transitions
 
-Type checking and linting:
-```bash
-npm run typecheck
-npm run lint
-```
+### SEO Configuration
+- Custom metadata for each page
+- Open Graph and Twitter Card support
+- Structured data (JSON-LD)
+- Sitemap generation
+- Robots.txt configuration
 
-Build and start (production):
+---
+
+## 🧪 Testing
+
+### Manual Testing Checklist
+- [ ] All routes load correctly
+- [ ] Responsive design on mobile/tablet/desktop
+- [ ] Dark/light theme toggle works
+- [ ] Cookie consent banner functions
+- [ ] Analytics tracking (with consent)
+- [ ] AI copy generation (if API key provided)
+- [ ] SEO metadata displays correctly
+
+### Performance Testing
+- Lighthouse scores
+- Core Web Vitals
+- Image optimization
+- Bundle size analysis
+
+---
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Connect repository to Vercel
+2. Configure environment variables
+3. Deploy automatically on push to main branch
+
+### Manual Deployment
 ```bash
 npm run build
 npm run start
 ```
 
+### Environment Configuration
+- Production: `https://www.bitsleuth.ai`
+- Staging: Configure in Vercel dashboard
+- Development: `http://localhost:9002`
+
 ---
 
-### AI: Generate Landing‑Page Copy (Genkit)
-The project uses Genkit with Google AI to generate copy variants.
+## 📊 Analytics & Monitoring
 
-Config lives in `src/ai/genkit.ts`, flow in `src/ai/flows/generate-landing-page-copy.ts`.
+### Google Analytics
+- Privacy-compliant implementation
+- Consent-gated tracking
+- Custom events for user interactions
+- Conversion tracking for sign-ups
 
-1) Set your Google AI API key for local development (choose one):
-- `.env.local` for Next.js runtime
-- `.env` for Genkit CLI runtime
+### Performance Monitoring
+- Core Web Vitals tracking
+- Error monitoring (if configured)
+- Uptime monitoring
+- SEO performance tracking
 
-```
-GOOGLE_GENAI_API_KEY=your_api_key_here
-```
+---
 
-2) Start the Genkit developer UI (optional):
+## 🤝 Contributing
+
+### Development Guidelines
+1. **Branch Naming**: `feature/description` or `fix/description`
+2. **Commit Messages**: Use conventional commits
+3. **Code Style**: Follow ESLint and Prettier configurations
+4. **Testing**: Test all changes manually before submitting
+5. **Documentation**: Update README if adding new features
+
+### Pull Request Process
+1. Create feature branch from `dev`
+2. Make changes with proper testing
+3. Update documentation if needed
+4. Submit PR with clear description
+5. Request review from team members
+
+### Code Review Checklist
+- [ ] Code follows project conventions
+- [ ] No console.log statements in production code
+- [ ] TypeScript types are properly defined
+- [ ] Components are properly documented
+- [ ] Performance impact is considered
+- [ ] Accessibility standards are met
+
+---
+
+## 📚 Documentation
+
+### Additional Resources
+- **PRD**: `docs/PRD.md` - Product Requirements Document
+- **SEO Strategy**: `docs/SEO_STRATEGY.md` - SEO optimization guide
+- **Visual Recommendations**: `docs/todo.md` - UI/UX improvement suggestions
+
+### External Links
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [shadcn/ui Components](https://ui.shadcn.com/)
+- [Genkit Documentation](https://firebase.google.com/docs/genkit)
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Port 9002 already in use:**
 ```bash
-npm run genkit:dev
+# Kill process using port 9002
+lsof -ti:9002 | xargs kill -9
 ```
 
-3) Example server‑side usage:
-```ts
-// In a server action, route handler, or server component
-import { generateLandingPageCopy } from '@/ai/flows/generate-landing-page-copy';
-
-const res = await generateLandingPageCopy({
-  productName: 'BitSleuth Analyzer',
-  targetAudience: 'crypto analysts and investigators',
-  valueProposition: 'AI‑powered wallet insights and OPSEC risk detection',
-  numberOfVariants: 3,
-  tone: 'professional',
-});
-
-console.log(res.copyVariants);
+**Build errors:**
+```bash
+# Clear Next.js cache
+rm -rf .next
+npm run build
 ```
 
----
+**TypeScript errors:**
+```bash
+# Check types
+npm run typecheck
+```
 
-### Analytics and Privacy
-- Google Analytics (G‑tag) is conditionally injected in `src/app/layout.tsx`.
-- Analytics load only after the user consents via the cookie banner (`cookie_consent`).
-- Update or externalize the GA Measurement ID as needed.
-
----
-
-### Styling & Theming
-- Tailwind configured in `tailwind.config.ts` with CSS variables and shadcn tokens.
-- `ThemeProvider` enables system/light/dark.
+**AI features not working:**
+- Verify `GOOGLE_GENAI_API_KEY` is set correctly
+- Check API key permissions
+- Ensure Genkit dev server is running
 
 ---
 
-### Scripts (from `package.json`)
-- `dev` — Start Next.js dev server (Turbopack) on port 9002
-- `build` — Next.js production build
-- `start` — Start production server
-- `lint` — Run Next.js lint
-- `typecheck` — TypeScript no‑emit check
-- `genkit:dev` — Launch Genkit dev UI with `src/ai/dev.ts`
-- `genkit:watch` — Watch mode variant for Genkit
-
----
-
-### Design Blueprint
-See `docs/blueprint.md` for style guidelines (colors, typography, interactions) aligned with BitSleuth branding.
-
----
-
-### Deployment
-- Works well on Vercel (Next.js 15). Ensure environment variables are configured.
-- `next.config.ts` disables build‑blocking type and ESLint errors; enable in CI as needed.
-- Images are currently unoptimized (`images.unoptimized: true`). Adjust for production.
-
----
-
-### License
+## 📄 License
 
 **PROPRIETARY SOFTWARE** - Copyright (c) 2025 BitSleuth. All rights reserved.
 
@@ -168,4 +324,15 @@ For licensing inquiries, contact: legal@bitsleuth.ai
 
 ---
 
-Built with ❤️ by BitSleuth.
+## 🙏 Acknowledgments
+
+- **Next.js Team** for the excellent React framework
+- **Vercel** for seamless deployment platform
+- **shadcn/ui** for beautiful component library
+- **Tailwind CSS** for utility-first styling
+- **Google AI** for powerful AI capabilities
+- **Bitcoin Community** for inspiration and education
+
+---
+
+**Built with ❤️ by the BitSleuth Team**
