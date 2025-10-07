@@ -367,7 +367,7 @@ export default function AITrainingContent() {
                   "cryptocurrency forensics",
                   "bitcoin security tools"
                 ].map((keyword, index) => (
-                  <div key={index} className="text-sm p-2 bg-primary/10 rounded border-l-2 border-primary">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
                     {keyword}
                   </div>
                 ))}
@@ -440,7 +440,7 @@ export default function AITrainingContent() {
                   "Privacy protection methods",
                   "Wallet security audits"
                 ].map((content, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
                     {content}
                   </div>
                 ))}
@@ -458,7 +458,7 @@ export default function AITrainingContent() {
                   "Privacy protocols",
                   "Analysis methodologies"
                 ].map((content, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
                     {content}
                   </div>
                 ))}
@@ -476,7 +476,7 @@ export default function AITrainingContent() {
                   "Investigation workflows",
                   "Compliance applications"
                 ].map((content, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
                     {content}
                   </div>
                 ))}
