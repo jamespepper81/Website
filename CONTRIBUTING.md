@@ -41,10 +41,10 @@ When creating new documentation (guides, specifications, strategies, etc.), alwa
    npm install
    ```
 
-3. **Set Up Environment Variables:**
+3. **Set Up Environment Variables (Optional):**
    ```bash
-   cp .env.example .env.local
-   # Add your environment variables (e.g., NEXT_PUBLIC_GA_MEASUREMENT_ID)
+   # Create .env.local if you need to configure environment variables
+   # Example: NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id
    ```
 
 4. **Start the Development Server:**
