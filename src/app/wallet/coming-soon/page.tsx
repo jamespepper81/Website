@@ -274,6 +274,7 @@ export default function ComingSoonPage() {
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="underline hover:text-primary/80 transition-colors"
+                      aria-label="Join BitSleuth Wallet TestFlight beta"
                     >
                       https://testflight.apple.com/join/ydx1xxFK
                     </a>
