@@ -259,8 +259,8 @@ export default function ComingSoonPage() {
               </div>
               
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary/20 border-2 border-primary rounded-full flex items-center justify-center text-primary font-bold text-sm">
-                  4
+                <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm">
+                  <Check className="h-4 w-4" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Beta Testing</h3>
@@ -268,7 +268,16 @@ export default function ComingSoonPage() {
                     Limited beta release for early adopters and security testing.
                   </p>
                   <p className="text-sm text-primary font-medium">
-                    Want to participate in beta testing? Sign up by joining the waitlist above!
+                    Want to participate in the iOS beta testing? To join the BitSleuth Wallet beta, open the link{' '}
+                    <a 
+                      href="https://testflight.apple.com/join/ydx1xxFK" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="underline hover:text-primary/80 transition-colors"
+                    >
+                      https://testflight.apple.com/join/ydx1xxFK
+                    </a>
+                    {' '}on your iPhone after you install TestFlight and help test the beta version!
                   </p>
                 </div>
               </div>
