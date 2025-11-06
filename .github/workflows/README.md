@@ -19,7 +19,7 @@ Go to **Settings > Secrets and variables > Actions > Repository secrets** and ad
   - From your Google Cloud service account JSON file
 - `GOOGLE_SHEETS_PRIVATE_KEY` - Service account private key
   - Full private key including `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----`
-  - Keep the `\n` characters for line breaks in the key
+  - Keep the `\n` escape sequences for line breaks (e.g., `"-----BEGIN PRIVATE KEY-----\nMIIE...`)
   - From your Google Cloud service account JSON file
 
 #### How to Get Google Sheets Credentials
@@ -137,4 +137,4 @@ The workflow provides everything needed to test the waitlist API endpoint (`/api
 - Use Repository secrets for all sensitive data (private keys, credentials)
 - Secrets are never exposed in workflow logs
 - Keep your service account JSON file secure and never commit it to version control
-- The private key should include `\n` characters for line breaks
+- The private key should include `\n` escape sequences as they appear in the JSON file
