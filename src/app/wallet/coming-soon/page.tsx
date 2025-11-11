@@ -79,7 +79,7 @@ export default function ComingSoonPage() {
       <Header basePath="/wallet" />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
+        <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
           <BackgroundBeams />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
             <div className="text-center space-y-6">
@@ -115,7 +115,7 @@ export default function ComingSoonPage() {
         </section>
 
         {/* Features Preview */}
-        <section className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+        <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
           <BackgroundBeams intensity="subtle" />
           <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
             <div className="text-center mb-12">
@@ -166,7 +166,7 @@ export default function ComingSoonPage() {
         </section>
 
         {/* Waitlist Section */}
-        <section className="w-full py-20 md:py-24 lg:py-32 bg-primary/10 relative overflow-hidden">
+        <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-primary/10 relative overflow-hidden">
           <BackgroundBeams />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
             <div className="text-center space-y-8">
@@ -214,7 +214,7 @@ export default function ComingSoonPage() {
         </section>
 
         {/* Development Timeline */}
-        <section className="w-full py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted relative overflow-hidden">
+        <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted relative overflow-hidden">
           <BackgroundBeams intensity="subtle" />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
             <div className="text-center mb-12">
