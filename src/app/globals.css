@@ -109,8 +109,8 @@
   html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile */
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
     width: 100vw;
     overflow-x: hidden;
     position: relative;
@@ -203,8 +203,8 @@
   /* Mobile-specific optimizations */
   @media (max-width: 768px) {
     html, body {
-      height: 100vh;
-      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
       width: 100vw;
     }
     
@@ -224,8 +224,8 @@
   /* Android-specific fixes */
   @supports (-webkit-appearance: none) {
     html, body {
-      height: 100vh;
-      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
       width: 100vw;
     }
   }
@@ -233,8 +233,8 @@
   /* iOS-specific optimizations */
   @supports (-webkit-touch-callout: none) {
     html, body {
-      height: 100vh;
-      height: 100dvh;
+      min-height: 100vh;
+      min-height: 100dvh;
       width: 100vw;
     }
   }
