@@ -19,7 +19,7 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section className="w-full py-20 md:py-24 lg:py-32 relative overflow-hidden">
+    <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-5xl mx-auto text-center px-4 md:px-6 relative z-10">
         <div className="text-center mb-10">

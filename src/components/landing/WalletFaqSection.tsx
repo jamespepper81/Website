@@ -33,7 +33,7 @@ const faqs = [
 
 export function WalletFaqSection() {
   return (
-    <section id="faq" className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+    <section id="faq" className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
         <h2 className="text-3xl font-bold mb-10 text-center text-gradient-title">
