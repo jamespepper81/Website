@@ -3,7 +3,7 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 
 export function WalletAboutSection() {
   return (
-    <section className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+    <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-3xl mx-auto text-center px-4 md:px-6 relative z-10">
         <h2 className="text-3xl font-bold mb-6 text-gradient-title">About BitSleuth Wallet</h2>

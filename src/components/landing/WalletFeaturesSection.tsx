@@ -24,7 +24,7 @@ const features = [
 
 export function WalletFeaturesSection() {
   return (
-    <section id="features" className="w-full py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+    <section id="features" className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-12">
