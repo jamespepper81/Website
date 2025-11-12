@@ -33,6 +33,7 @@
     --chart-negative: 350 89% 60%;
     --chart-received: 330 100% 50%;
     --chart-sent: 150 100% 40%;
+    --bitcoin-orange: 25 95% 53%;
     --radius: 0.5rem;
 
     /* Sidebar light */
@@ -81,6 +82,7 @@
     --chart-negative: 350 89% 60%;
     --chart-received: 330 100% 71%;
     --chart-sent: 150 100% 71%;
+    --bitcoin-orange: 25 95% 53%;
     --radius: 0.5rem;
 
     /* Sidebar dark */

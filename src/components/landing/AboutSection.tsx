@@ -1,4 +1,6 @@
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { ValueBadge } from "@/components/ui/value-badge";
+import { Eye, Shield, Users, Bitcoin, Sparkles, Code } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -13,19 +15,13 @@ export function AboutSection() {
             of the blockchain. Built by privacy-focused developers who believe in open access to
             Bitcoin data.
           </p>
-          <div className="pt-4 flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-              <span className="font-semibold text-primary">🔍</span>
-              <span>Transparency First</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-              <span className="font-semibold text-primary">🔐</span>
-              <span>Privacy Focused</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
-              <span className="font-semibold text-primary">🚀</span>
-              <span>Community Built</span>
-            </div>
+          <div className="pt-4 flex flex-wrap justify-center gap-3 text-sm">
+            <ValueBadge icon={Eye} text="Transparency First" variant="orange" />
+            <ValueBadge icon={Shield} text="Privacy Focused" variant="orange" />
+            <ValueBadge icon={Users} text="Community Built" variant="orange" />
+            <ValueBadge icon={Bitcoin} text="Bitcoin Native" variant="orange" />
+            <ValueBadge icon={Sparkles} text="AI-Powered" variant="primary" />
+            <ValueBadge icon={Code} text="Open Source Ready" variant="primary" />
           </div>
         </div>
       </div>
