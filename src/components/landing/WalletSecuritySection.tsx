@@ -1,7 +1,8 @@
 // src/components/landing/WalletSecuritySection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Key, Lock, Fingerprint } from "lucide-react";
+import { ValueBadge } from "@/components/ui/value-badge";
+import { Key, Lock, Fingerprint, ShieldCheck } from "lucide-react";
 
 const securityFeatures = [
   {
@@ -29,6 +30,9 @@ export function WalletSecuritySection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">Uncompromising Security & Self-Custody</h2>
           <p className="text-lg text-muted-foreground font-normal">Your Bitcoin deserves the highest level of protection. We provide enterprise-grade security without compromising on privacy.</p>
+          <div className="flex flex-wrap justify-center gap-3 pt-6">
+            <ValueBadge icon={ShieldCheck} text="Non-Custodial" variant="orange" />
+          </div>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {securityFeatures.map((feature, idx) => (

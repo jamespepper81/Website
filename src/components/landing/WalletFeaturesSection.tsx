@@ -2,7 +2,8 @@
 // src/components/landing/WalletFeaturesSection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Fingerprint, KeyRound, ShieldOff } from "lucide-react";
+import { ValueBadge } from "@/components/ui/value-badge";
+import { Fingerprint, KeyRound, ShieldOff, Bitcoin, Lock, UserX } from "lucide-react";
 
 const features = [
   {
@@ -30,6 +31,11 @@ export function WalletFeaturesSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">Your Wallet, Your Privacy</h2>
           <p className="text-lg text-muted-foreground font-normal">Keep control of your Bitcoin from the moment you start.</p>
+          <div className="flex flex-wrap justify-center gap-3 pt-6">
+            <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
+            <ValueBadge icon={Lock} text="Self-Custody" variant="orange" />
+            <ValueBadge icon={UserX} text="Anonymous" variant="orange" />
+          </div>
         </div>
         <div className="grid md:grid-cols-3 gap-8 text-left">
           {features.map((feature, idx) => (
