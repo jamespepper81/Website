@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ValueBadge } from '@/components/ui/value-badge';
-import { Search, Bitcoin, Heart, Users } from 'lucide-react';
+import { Search, Bitcoin, Heart } from 'lucide-react';
 
 interface FooterProps {
   onTermsClick: () => void;
@@ -18,7 +18,6 @@ export function Footer({ onTermsClick, onPrivacyClick }: FooterProps) {
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           <ValueBadge icon={Bitcoin} text="Built for Bitcoin" variant="orange" />
           <ValueBadge icon={Heart} text="Made with ♥ by Bitcoiners" variant="orange" />
-          <ValueBadge icon={Users} text="Community Driven" variant="primary" />
         </div>
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <div className="flex items-center gap-2">

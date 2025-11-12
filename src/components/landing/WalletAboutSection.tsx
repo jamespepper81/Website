@@ -16,7 +16,7 @@ export function WalletAboutSection() {
           <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
           <ValueBadge icon={Shield} text="Privacy First" variant="orange" />
           <ValueBadge icon={UserX} text="No KYC" variant="orange" />
-          <ValueBadge icon={Blocks} text="Self-Custody" variant="primary" />
+          <ValueBadge icon={Blocks} text="Self-Custody" variant="orange" />
         </div>
       </div>
     </section>

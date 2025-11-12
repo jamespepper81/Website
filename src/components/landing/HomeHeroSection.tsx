@@ -24,7 +24,7 @@ export function HomeHeroSection() {
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
               <ValueBadge icon={Zap} text="Free to Use" variant="orange" />
-              <ValueBadge icon={Users} text="Built by Bitcoiners" variant="primary" />
+              <ValueBadge icon={Users} text="Built by Bitcoiners" variant="orange" />
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6 pt-4 max-w-4xl mx-auto">

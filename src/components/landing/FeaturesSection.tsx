@@ -48,7 +48,7 @@ export function FeaturesSection() {
           <div className="flex flex-wrap justify-center gap-3 pt-6">
             <ValueBadge icon={Bitcoin} text="On-Chain Analysis" variant="orange" />
             <ValueBadge icon={Zap} text="Real-Time Data" variant="orange" />
-            <ValueBadge icon={Bot} text="AI-Powered" variant="primary" />
+            <ValueBadge icon={Bot} text="AI-Powered" variant="orange" />
           </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">

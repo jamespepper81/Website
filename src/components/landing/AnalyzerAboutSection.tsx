@@ -1,7 +1,7 @@
 // src/components/landing/AnalyzerAboutSection.tsx
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
-import { Bitcoin, Shield, Eye, Blocks } from "lucide-react";
+import { Bitcoin, Shield, Blocks } from "lucide-react";
 
 export function AnalyzerAboutSection() {
   return (
@@ -16,7 +16,6 @@ export function AnalyzerAboutSection() {
           <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
           <ValueBadge icon={Blocks} text="On-Chain Transparency" variant="orange" />
           <ValueBadge icon={Shield} text="Privacy Tools" variant="orange" />
-          <ValueBadge icon={Eye} text="Open Data" variant="primary" />
         </div>
       </div>
     </section>

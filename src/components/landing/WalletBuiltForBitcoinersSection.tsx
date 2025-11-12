@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
-import { Settings, Bitcoin, Users, Coins, Zap } from "lucide-react";
+import { Settings, Bitcoin, Users, Coins } from "lucide-react";
 
 const bitcoinerFeatures = [
   {
@@ -32,8 +32,6 @@ export function WalletBuiltForBitcoinersSection() {
           <p className="text-lg text-muted-foreground font-normal">Designed by the Bitcoin community, for the Bitcoin community. Every feature serves the goal of financial sovereignty.</p>
           <div className="flex flex-wrap justify-center gap-3 pt-6">
             <ValueBadge icon={Coins} text="UTXO Management" variant="orange" />
-            <ValueBadge icon={Bitcoin} text="SegWit Native" variant="orange" />
-            <ValueBadge icon={Zap} text="Low Fees" variant="primary" />
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-6">

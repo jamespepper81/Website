@@ -34,7 +34,7 @@ export function WalletFeaturesSection() {
           <div className="flex flex-wrap justify-center gap-3 pt-6">
             <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
             <ValueBadge icon={Lock} text="Self-Custody" variant="orange" />
-            <ValueBadge icon={UserX} text="Anonymous" variant="primary" />
+            <ValueBadge icon={UserX} text="Anonymous" variant="orange" />
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-8 text-left">
