@@ -25,7 +25,7 @@ export function WalletSecuritySection() {
   return (
     <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
-      <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+      <div className="container max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">Uncompromising Security & Self-Custody</h2>
           <p className="text-lg text-muted-foreground font-normal">Your Bitcoin deserves the highest level of protection. We provide enterprise-grade security without compromising on privacy.</p>

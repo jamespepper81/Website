@@ -21,7 +21,7 @@ export function HowItWorksSection() {
   return (
     <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
-      <div className="container max-w-5xl mx-auto text-center px-4 md:px-6 relative z-10">
+      <div className="container max-w-5xl mx-auto text-center relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">How It Works</h2>
           <p className="text-lg text-muted-foreground font-normal">Get started with Bitcoin analysis in three simple steps. No technical knowledge required.</p>
