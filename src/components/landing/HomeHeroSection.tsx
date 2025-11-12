@@ -4,7 +4,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { BarChart, ShieldCheck } from "lucide-react";
+import { ValueBadge } from "@/components/ui/value-badge";
+import { BarChart, ShieldCheck, Bitcoin, Zap, Users } from "lucide-react";
 import Link from "next/link";
 
 export function HomeHeroSection() {
@@ -20,6 +21,11 @@ export function HomeHeroSection() {
             <p className="max-w-3xl mx-auto text-lg text-muted-foreground md:text-xl font-normal leading-relaxed">
               Whether you're analyzing blockchain data or securing your assets with a privacy-first wallet, BitSleuth provides the tools you need for Bitcoin transparency and sovereignty.
             </p>
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
+              <ValueBadge icon={Zap} text="Free to Use" variant="orange" />
+              <ValueBadge icon={Users} text="Built by Bitcoiners" variant="orange" />
+            </div>
           </div>
           <div className="grid md:grid-cols-2 gap-6 pt-4 max-w-4xl mx-auto">
             <Card className="group text-left bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/70 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:scale-[1.02] min-h-[200px]">

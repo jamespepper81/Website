@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Bitcoin, Search } from "lucide-react";
+import { ValueBadge } from "@/components/ui/value-badge";
+import { Bitcoin, Search, Lock, Zap, CheckCircle } from "lucide-react";
 import { useState } from "react";
 
 export function HeroSection() {
@@ -51,6 +52,11 @@ export function HeroSection() {
                 <Search className="mr-2 h-5 w-5" />
                 Analyze Wallet
             </Button>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3 pt-4">
+            <ValueBadge icon={CheckCircle} text="No Registration" variant="orange" />
+            <ValueBadge icon={Lock} text="100% Private" variant="orange" />
+            <ValueBadge icon={Zap} text="Instant Analysis" variant="orange" />
           </div>
         </div>
         <div className="relative">

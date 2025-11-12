@@ -1,7 +1,8 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { BarChart3, Search, Bot, LineChart, ShieldAlert, BookUser } from "lucide-react";
+import { ValueBadge } from "@/components/ui/value-badge";
+import { BarChart3, Search, Bot, LineChart, ShieldAlert, BookUser, Zap, Bitcoin } from "lucide-react";
 
 const features = [
   {
@@ -44,6 +45,11 @@ export function FeaturesSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">Your Bitcoin Investigation Toolkit</h2>
           <p className="text-lg text-muted-foreground font-normal">Professional-grade tools for analyzing Bitcoin transactions, detecting privacy risks, and uncovering wallet patterns with AI-powered insights.</p>
+          <div className="flex flex-wrap justify-center gap-3 pt-6">
+            <ValueBadge icon={Bitcoin} text="On-Chain Analysis" variant="orange" />
+            <ValueBadge icon={Zap} text="Real-Time Data" variant="orange" />
+            <ValueBadge icon={Bot} text="AI-Powered" variant="orange" />
+          </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
           {features.map((feature, idx) => (
