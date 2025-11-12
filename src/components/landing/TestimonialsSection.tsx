@@ -20,7 +20,7 @@ export function TestimonialsSection() {
   return (
     <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
-      <div className="container max-w-4xl mx-auto text-center px-4 md:px-6 relative z-10">
+      <div className="container max-w-4xl mx-auto text-center relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">What Users Say</h2>
           <p className="text-lg text-muted-foreground font-normal">Hear from Bitcoin analysts, privacy advocates, and early adopters who rely on BitSleuth for their investigations.</p>

@@ -81,7 +81,7 @@ export default function ComingSoonPage() {
         {/* Hero Section */}
         <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
           <BackgroundBeams />
-          <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="container max-w-4xl mx-auto relative z-10">
             <div className="text-center space-y-6">
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
                 <Clock className="h-4 w-4" />
@@ -117,7 +117,7 @@ export default function ComingSoonPage() {
         {/* Features Preview */}
         <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
           <BackgroundBeams intensity="subtle" />
-          <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="container max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gradient-title">What to Expect</h2>
               <p className="text-lg text-muted-foreground font-normal">
@@ -168,7 +168,7 @@ export default function ComingSoonPage() {
         {/* Waitlist Section */}
         <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-primary/10 relative overflow-hidden">
           <BackgroundBeams />
-          <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="container max-w-4xl mx-auto relative z-10">
             <div className="text-center space-y-8">
               <h2 className="text-3xl font-bold text-gradient-title">Be the First to Know</h2>
               <p className="text-lg text-muted-foreground font-normal max-w-2xl mx-auto">
@@ -216,7 +216,7 @@ export default function ComingSoonPage() {
         {/* Development Timeline */}
         <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted relative overflow-hidden">
           <BackgroundBeams intensity="subtle" />
-          <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="container max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gradient-title">Development Timeline</h2>
               <p className="text-lg text-muted-foreground font-normal">

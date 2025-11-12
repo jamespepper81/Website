@@ -40,7 +40,7 @@ export function FeaturesSection() {
   return (
     <section id="features" className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
-      <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+      <div className="container max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-gradient-title">Your Bitcoin Investigation Toolkit</h2>
           <p className="text-lg text-muted-foreground font-normal">Professional-grade tools for analyzing Bitcoin transactions, detecting privacy risks, and uncovering wallet patterns with AI-powered insights.</p>

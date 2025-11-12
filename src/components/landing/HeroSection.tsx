@@ -27,7 +27,7 @@ export function HeroSection() {
   return (
     <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
       <BackgroundBeams />
-      <div className="container max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4 md:px-6 relative z-10">
+      <div className="container max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title">
             BitSleuth Analyzer: Analyze Bitcoin Wallets Like a Pro
