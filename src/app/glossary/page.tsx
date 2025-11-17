@@ -6,10 +6,11 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ArrowLeft, Search } from 'lucide-react';
 import Link from 'next/link';
 // import { useRouter } from 'next/navigation'; // Unused for now
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 import { BackgroundBeams } from '@/components/ui/background-beams';
@@ -108,10 +109,22 @@ const glossaryTerms = [
 
 export default function GlossaryIndexPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+
+  // Filter glossary terms based on search query
+  const filteredTerms = glossaryTerms.filter((item) => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return true;
+    
+    return (
+      item.term.toLowerCase().includes(query) ||
+      item.definition.toLowerCase().includes(query)
+    );
+  });
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
@@ -153,8 +166,40 @@ export default function GlossaryIndexPage() {
         <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
           <BackgroundBeams intensity="subtle" />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-            <div className="space-y-6">
-            {glossaryTerms.sort((a,b) => a.term.localeCompare(b.term)).map((item) => (
+            {/* Search Bar */}
+            <div className="mb-8">
+              <div className="relative max-w-2xl mx-auto">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" aria-hidden="true" />
+                <Input
+                  type="text"
+                  placeholder="Search glossary terms and definitions..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 h-12 text-base shadow-lg border-primary/20 focus-visible:border-primary/50"
+                  aria-label="Search glossary"
+                />
+              </div>
+            </div>
+
+            {/* Results or No Results Message */}
+            {filteredTerms.length === 0 ? (
+              <div className="text-center py-12">
+                <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4" aria-hidden="true" />
+                <h3 className="text-xl font-semibold text-foreground mb-2">No results found</h3>
+                <p className="text-muted-foreground">
+                  Try adjusting your search terms or{' '}
+                  <button 
+                    onClick={() => setSearchQuery('')}
+                    className="text-primary hover:underline font-medium"
+                    aria-label="Clear search"
+                  >
+                    clear the search
+                  </button>
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                {filteredTerms.sort((a,b) => a.term.localeCompare(b.term)).map((item) => (
               <Link key={item.term} href={item.href} className="block group">
                 <Card className="hover:border-primary/50 hover:bg-secondary/20 transition-colors shadow-glow">
                   <CardContent className="p-6 flex items-center justify-between">
@@ -171,7 +216,8 @@ export default function GlossaryIndexPage() {
                 </Card>
               </Link>
             ))}
-            </div>
+              </div>
+            )}
           </div>
         </section>
       </main>
