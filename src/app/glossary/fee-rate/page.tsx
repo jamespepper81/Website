@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, TrendingUp, Scale, DollarSign } from 'lucide-react';
+import { TrendingUp, Scale, DollarSign } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function FeeRateGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -18,24 +18,22 @@ export default function FeeRateGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'mempool', title: 'Mempool', description: 'Unconfirmed transaction pool' },
+    { slug: 'confirmation', title: 'Confirmation', description: 'Transaction verification' },
+    { slug: 'rbf', title: 'Rbf', description: 'Replace-by-fee' },
+    { slug: 'cpfp', title: 'Cpfp', description: 'Fee bumping technique' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="fee-rate" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is Fee Rate (sat/vB)?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               Fee rate, measured in satoshis per virtual byte (sat/vB), represents how much you're paying per unit of transaction data. It's the primary metric miners use to prioritize transactions from the <Link href="/glossary/mempool" className="text-primary hover:underline">mempool</Link> when building blocks.
             </p>
 
@@ -79,9 +77,7 @@ export default function FeeRateGlossaryPage() {
             <p className="text-muted-foreground mt-8 font-normal">
              Most <Link href="/glossary/wallet" className="text-primary hover:underline">wallets</Link> automatically suggest appropriate fee rates based on current mempool conditions. Advanced users can manually set rates using tools like <Link href="/glossary/rbf" className="text-primary hover:underline">RBF</Link> to adjust after broadcasting if needed. Understanding fee rates helps optimize both cost and confirmation speed.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

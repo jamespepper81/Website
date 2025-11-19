@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Lock, Key, Code } from 'lucide-react';
+import { Lock, Key, Code } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function ScriptPubKeyScriptSigGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -18,24 +18,21 @@ export default function ScriptPubKeyScriptSigGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'segwit', title: 'Segwit', description: 'Segregated Witness upgrade' },
+    { slug: 'taproot', title: 'Taproot', description: 'Privacy upgrade' },
+    { slug: 'miniscript', title: 'Miniscript', description: 'Structured Bitcoin scripts' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="scriptpubkey-scriptsig" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Are ScriptPubKey and ScriptSig?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               ScriptPubKey and ScriptSig are the two halves of Bitcoin's programmable transaction system. ScriptPubKey (locking script) defines the conditions required to spend a <Link href="/glossary/utxo" className="text-primary hover:underline">UTXO</Link>, while ScriptSig (unlocking script) provides the data needed to satisfy those conditions.
             </p>
 
@@ -79,9 +76,7 @@ export default function ScriptPubKeyScriptSigGlossaryPage() {
             <p className="text-muted-foreground mt-8 font-normal">
              With <Link href="/glossary/segwit" className="text-primary hover:underline">SegWit</Link>, witness data replaced ScriptSig for signature data, improving transaction malleability and efficiency. Modern tools like <Link href="/glossary/miniscript" className="text-primary hover:underline">Miniscript</Link> make it easier to compose complex scripts safely.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 
