@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Clock, Inbox, Zap } from 'lucide-react';
+import { Clock, Inbox, Zap } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function MempoolGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -18,24 +18,21 @@ export default function MempoolGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'confirmation', title: 'Confirmation', description: 'Transaction verification' },
+    { slug: 'fee-rate', title: 'Fee Rate', description: 'Transaction priority metric' },
+    { slug: 'mining', title: 'Mining', description: 'Bitcoin concept' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="mempool" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is the Mempool?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               The mempool (memory pool) is a waiting area where unconfirmed Bitcoin transactions are held before being included in a <Link href="/glossary/block" className="text-primary hover:underline">block</Link>. Each node maintains its own mempool, creating a distributed staging area for pending transactions across the network.
             </p>
 
@@ -79,9 +76,7 @@ export default function MempoolGlossaryPage() {
             <p className="text-muted-foreground mt-8 font-normal">
              Each node's mempool may differ slightly due to network propagation delays and different relay policies. Transactions that don't confirm and lack sufficient fees may eventually be dropped from mempools, allowing the <Link href="/glossary/utxo" className="text-primary hover:underline">UTXOs</Link> to be spent again.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

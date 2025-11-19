@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Clock, Lock, Shield } from 'lucide-react';
+import { Clock, Lock, Shield } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function CLTVGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -18,24 +18,21 @@ export default function CLTVGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'csv', title: 'Csv', description: 'Relative timelock' },
+    { slug: 'htlc', title: 'Htlc', description: 'Conditional payment contract' },
+    { slug: 'miniscript', title: 'Miniscript', description: 'Structured Bitcoin scripts' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="cltv" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is CLTV (CheckLockTimeVerify)?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               CLTV (CheckLockTimeVerify) is a Bitcoin script opcode (BIP 65) that prevents a <Link href="/glossary/utxo" className="text-primary hover:underline">UTXO</Link> from being spent until a specific block height or Unix timestamp is reached. It enables time-locked transactions, ensuring funds remain locked until a predetermined future date.
             </p>
 
@@ -79,9 +76,7 @@ export default function CLTVGlossaryPage() {
             <p className="text-muted-foreground mt-8 font-normal">
              CLTV works alongside <Link href="/glossary/csv" className="text-primary hover:underline">CSV (CheckSequenceVerify)</Link>, which provides relative timelocks. Together, they enable sophisticated smart contracts and security mechanisms. Tools like <Link href="/glossary/miniscript" className="text-primary hover:underline">Miniscript</Link> make CLTV easier to use safely in complex spending conditions.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

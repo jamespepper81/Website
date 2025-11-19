@@ -6,12 +6,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, ShieldCheck, PenSquare } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ShieldCheck, PenSquare } from 'lucide-react';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 import Link from 'next/link';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function CryptographyGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -19,24 +19,21 @@ export default function CryptographyGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'private-key', title: 'Private Key', description: 'Secret ownership key' },
+    { slug: 'signature', title: 'Signature', description: 'Transaction authorization' },
+    { slug: 'schnorr-signature', title: 'Schnorr Signature', description: 'Advanced signature type' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="cryptography" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is Cryptography?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               Cryptography is the mathematical foundation of the Bitcoin network. It's the science of secure communication, used to protect information, secure wallets, sign transactions, and ensure the overall integrity of the <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link>.
             </p>
 
@@ -79,9 +76,7 @@ export default function CryptographyGlossaryPage() {
             <p className="text-muted-foreground font-normal">
              Bitcoin relies on a specific type of cryptography called public-key cryptography. This system allows you to share your public key (and addresses) freely without ever revealing the private key that controls your funds. This one-way relationship is what makes non-custodial Bitcoin wallets possible and secure.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

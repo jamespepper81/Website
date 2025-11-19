@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Zap, Network, DollarSign } from 'lucide-react';
+import { Zap, Network, DollarSign } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function LightningNetworkGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -18,24 +18,21 @@ export default function LightningNetworkGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'htlc', title: 'Htlc', description: 'Conditional payment contract' },
+    { slug: 'splicing', title: 'Splicing', description: 'Lightning channel management' },
+    { slug: 'sidechain', title: 'Sidechain', description: 'Parallel blockchain' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="lightning-network" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is the Lightning Network?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               The Lightning Network is a Layer 2 payment protocol built on top of Bitcoin that enables instant, low-cost transactions by moving them off the main <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link>. It uses payment channels and multi-hop routing to allow users to transact without waiting for block confirmations.
             </p>
 
@@ -79,9 +76,7 @@ export default function LightningNetworkGlossaryPage() {
             <p className="text-muted-foreground mt-8 font-normal">
              Lightning uses <Link href="/glossary/htlc" className="text-primary hover:underline">HTLCs</Link> for routing payments through intermediate nodes, enabling transactions between parties without direct channels. Features like <Link href="/glossary/splicing" className="text-primary hover:underline">splicing</Link> continue improving its usability. The network relies on Bitcoin's security while dramatically improving scalability.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

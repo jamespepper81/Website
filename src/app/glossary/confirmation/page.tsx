@@ -6,12 +6,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, ShieldCheck, Clock, Link as LinkIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ShieldCheck, Clock, Link as LinkIcon } from 'lucide-react';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 import Link from 'next/link';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function ConfirmationGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -19,24 +19,21 @@ export default function ConfirmationGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'block', title: 'Block', description: 'Transaction container' },
+    { slug: 'mining', title: 'Mining', description: 'Bitcoin concept' },
+    { slug: 'mempool', title: 'Mempool', description: 'Unconfirmed transaction pool' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="confirmation" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is a Confirmation?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               A confirmation means that a Bitcoin transaction has been successfully verified by the network and included in a <Link href="/glossary/block" className="text-primary hover:underline">block</Link> on the blockchain. Each new block that is added after your transaction's block counts as an additional confirmation.
             </p>
 
@@ -79,9 +76,7 @@ export default function ConfirmationGlossaryPage() {
             <p className="text-muted-foreground font-normal">
              When you use a wallet, you'll often see a transaction as "pending" or "unconfirmed" until it receives its first confirmation. The number of confirmations is a direct measure of a transaction's security and finality on the Bitcoin network.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

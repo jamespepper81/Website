@@ -6,11 +6,11 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Users, Globe } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Users, Globe } from 'lucide-react';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 import Link from 'next/link';
 
 export default function P2PGlossaryPage() {
@@ -19,24 +19,21 @@ export default function P2PGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'bitcoin', title: 'Bitcoin', description: 'Bitcoin concept' },
+    { slug: 'blockchain', title: 'Blockchain', description: 'Distributed ledger' },
+    { slug: 'mining', title: 'Mining', description: 'Bitcoin concept' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="p2p" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is P2P (Peer-to-Peer)?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               P2P stands for Peer-to-Peer, a type of network where participants interact directly with each other without needing a central intermediary or server. In the context of Bitcoin, it means users can transact directly with one another, anywhere in the world.
             </p>
 
@@ -79,9 +76,7 @@ export default function P2PGlossaryPage() {
             <p className="text-muted-foreground font-normal">
              The peer-to-peer architecture is what makes Bitcoin a decentralized system. By distributing the ledger and transaction validation across a network of peers, Bitcoin achieves a high level of security and trust without relying on a central authority.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

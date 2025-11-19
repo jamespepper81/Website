@@ -2,18 +2,18 @@
 // src/app/glossary/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronRight, ArrowLeft, Search } from 'lucide-react';
 import Link from 'next/link';
-// import { useRouter } from 'next/navigation'; // Unused for now
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 import { BackgroundBeams } from '@/components/ui/background-beams';
+import { generateGlossaryCollectionSchema } from '@/lib/structured-data';
 
 
 const glossaryTerms = [
@@ -250,6 +250,23 @@ export default function GlossaryIndexPage() {
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
 
+  // Add structured data for SEO and AEO
+  useEffect(() => {
+    const structuredData = generateGlossaryCollectionSchema(glossaryTerms.length);
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    script.id = 'glossary-structured-data';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('glossary-structured-data');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   // Filter glossary terms based on search query
   const filteredTerms = glossaryTerms.filter((item) => {
     const query = searchQuery.toLowerCase().trim();
@@ -276,10 +293,16 @@ export default function GlossaryIndexPage() {
               </Link>
             </Button>
             <div className="space-y-6 text-center">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+                <span className="text-sm font-medium text-primary">Learning Hub</span>
+              </div>
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title pb-2">
                 Bitcoin Glossary
               </h1>
-              <div className="max-w-3xl mx-auto space-y-4">
+              <p className="text-xl text-muted-foreground md:text-2xl font-medium leading-relaxed max-w-2xl mx-auto">
+                Your comprehensive educational resource for understanding Bitcoin, blockchain technology, and cryptocurrency terminology.
+              </p>
+              <div className="max-w-3xl mx-auto space-y-4 pt-4">
                 <p className="text-lg text-muted-foreground md:text-xl font-normal leading-relaxed">
                   <span className="font-semibold text-foreground">Bitcoin</span> is powered by{' '}
                   <span className="font-semibold text-foreground">peer-to-peer technology</span>, with no central authority or banks in control. Transactions and the creation of new bitcoins are managed by the network itself.
