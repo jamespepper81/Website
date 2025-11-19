@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Search, ChevronDown, BarChart, Lock, Rocket, GraduationCap } from "lucide-react";
+import { Menu, Search, ChevronDown, BarChart, Lock, Rocket, GraduationCap, ScrollText } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface HeaderProps {
@@ -86,6 +86,17 @@ export function Header({ basePath = '' }: HeaderProps) {
                 </div>
               </Link>
             </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/history" className="w-full">
+                <div className="flex items-start gap-3">
+                  <ScrollText className="h-5 w-5 mt-1 text-primary" />
+                  <div>
+                    <p className="font-semibold">Bitcoin History</p>
+                    <p className="text-xs text-muted-foreground font-normal">History of Bitcoin</p>
+                  </div>
+                </div>
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
 
@@ -149,6 +160,7 @@ export function Header({ basePath = '' }: HeaderProps) {
             <Link href="/analyzer" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Wallet Analyzer</Link>
             <Link href="/wallet" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Privacy Wallet</Link>
             <Link href="/learn" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Learning Hub</Link>
+            <Link href="/history" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Bitcoin History</Link>
             
             {showNavLinks && navLinks.map((link) => (
                <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>{link.label}</Link>
