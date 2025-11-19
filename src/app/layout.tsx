@@ -25,29 +25,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isClient, setIsClient] = useState(false)
-  const [analyticsAllowed] = useState(() => {
-    // Initialize from localStorage on mount (only runs once)
-    if (typeof window === 'undefined') return false;
+  const [analyticsAllowed, setAnalyticsAllowed] = useState(false);
+
+  useEffect(() => {
+    // Read cookie consent from localStorage after component mounts
     try {
       const consent = localStorage.getItem('cookie_consent');
       if (consent) {
         const parsedConsent = JSON.parse(consent);
-        return parsedConsent.analytics === true;
+        setAnalyticsAllowed(parsedConsent.analytics === true);
       }
     } catch (e) {
       console.error("Error parsing cookie consent:", e);
     }
-    return false;
-  });
+  }, []);
 
   useEffect(() => {
     // This is a legitimate hydration pattern - set client flag after mount
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsClient(true)
   }, [])
 
   return (
-    <html lang="en" suppressHydrationWarning className="!scroll-smooth">
+    <html lang="en" className="!scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5, user-scalable=yes" />
         <meta name="mobile-web-app-capable" content="yes" />
