@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, Users, Shield, Workflow } from 'lucide-react';
+import { Users, Shield, Workflow } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function PSBTGlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -18,24 +18,21 @@ export default function PSBTGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'signature', title: 'Signature', description: 'Transaction authorization' },
+    { slug: 'miniscript', title: 'Miniscript', description: 'Structured Bitcoin scripts' },
+    { slug: 'descriptor-wallet', title: 'Descriptor Wallet', description: 'Modern wallet standard' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="psbt" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is a PSBT (Partially Signed Bitcoin Transaction)?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               A PSBT (Partially Signed Bitcoin Transaction) is a standardized format (BIP 174) for Bitcoin transactions that allows multiple parties or devices to collaborate on creating and signing a transaction. It's particularly useful for multi-signature wallets, hardware wallets, and complex transaction workflows.
             </p>
 
@@ -79,9 +76,7 @@ export default function PSBTGlossaryPage() {
             <p className="text-muted-foreground mt-8 font-normal">
              PSBTs have become the standard for interoperability between Bitcoin wallets and signing devices. They work seamlessly with <Link href="/glossary/descriptor-wallet" className="text-primary hover:underline">descriptor wallets</Link> and support all address types including <Link href="/glossary/segwit" className="text-primary hover:underline">SegWit</Link> and <Link href="/glossary/taproot" className="text-primary hover:underline">Taproot</Link>.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

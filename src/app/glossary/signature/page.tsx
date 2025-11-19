@@ -6,11 +6,11 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, PenSquare, ShieldCheck } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { PenSquare, ShieldCheck } from 'lucide-react';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 import Link from 'next/link';
 
 export default function SignatureGlossaryPage() {
@@ -19,24 +19,21 @@ export default function SignatureGlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'private-key', title: 'Private Key', description: 'Secret ownership key' },
+    { slug: 'schnorr-signature', title: 'Schnorr Signature', description: 'Advanced signature type' },
+    { slug: 'psbt', title: 'Psbt', description: 'Partially signed transaction' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="signature" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is a Digital Signature?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               In Bitcoin, a digital signature is a mathematical proof that a transaction has been authorized by the owner of the funds. It is created using a <Link href="/glossary/private-key" className="text-primary hover:underline">private key</Link> and is included in every transaction broadcast to the network.
             </p>
 
@@ -79,9 +76,7 @@ export default function SignatureGlossaryPage() {
             <p className="text-muted-foreground font-normal">
              Digital signatures are a cornerstone of Bitcoin's security model. They are what allow you to have full control over your funds in a decentralized system, making every transaction secure and verifiable by the entire network.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 

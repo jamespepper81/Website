@@ -5,12 +5,12 @@ import { useState } from 'react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, FolderTree, Wallet, Shield } from 'lucide-react';
+import { FolderTree, Wallet, Shield } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
-import { BackgroundBeams } from '@/components/ui/background-beams';
+import { GlossaryPageWrapper } from '@/components/glossary/GlossaryPageWrapper';
 
 export default function BIP44GlossaryPage() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -18,24 +18,21 @@ export default function BIP44GlossaryPage() {
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
   const closeModal = () => setActiveModal(null);
+  const relatedTerms = [
+    { slug: 'bip32', title: 'Bip32', description: 'HD wallet standard' },
+    { slug: 'bip39', title: 'Bip39', description: 'Bitcoin concept' },
+    { slug: 'descriptor-wallet', title: 'Descriptor Wallet', description: 'Modern wallet standard' }
+  ];
+
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
-        <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-           <Button variant="ghost" asChild className="mb-8">
-            <Link href="/glossary">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Glossary
-            </Link>
-          </Button>
-          <article className="prose prose-invert max-w-none">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">
+      <GlossaryPageWrapper termSlug="bip44" relatedTerms={relatedTerms}>
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
               What Is BIP44 (Multi-Account Hierarchy)?
             </h1>
-            <p className="text-lg text-muted-foreground font-normal">
+            <p itemProp="description" className="text-lg text-muted-foreground font-normal">
               BIP44 (Bitcoin Improvement Proposal 44) extends <Link href="/glossary/bip32" className="text-primary hover:underline">BIP32</Link> by defining a standard hierarchical structure for organizing multiple accounts and cryptocurrencies within a single <Link href="/glossary/wallet" className="text-primary hover:underline">wallet</Link>. It provides a universal derivation path format that ensures compatibility across different wallet software.
             </p>
 
@@ -79,9 +76,7 @@ export default function BIP44GlossaryPage() {
             <p className="text-muted-foreground mt-8 font-normal">
              BIP44 works in harmony with <Link href="/glossary/bip32" className="text-primary hover:underline">BIP32</Link> and <Link href="/glossary/bip39" className="text-primary hover:underline">BIP39</Link> to provide a complete, standardized wallet system. Modern wallets like <Link href="/glossary/descriptor-wallet" className="text-primary hover:underline">descriptor wallets</Link> build upon these foundations with even more flexibility.
             </p>
-          </article>
-        </div>
-      </main>
+          </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
       <TermsOfServiceModal 
