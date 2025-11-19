@@ -23,7 +23,14 @@ import {
   BookOpen,
   GitBranch,
   Database,
-  Zap
+  Zap,
+  Wallet,
+  ShoppingCart,
+  CreditCard,
+  Send,
+  DownloadCloud,
+  Building2,
+  Globe
 } from 'lucide-react';
 
 export default function LearnPage() {
@@ -56,7 +63,10 @@ export default function LearnPage() {
               "Blockchain technology",
               "Cryptocurrency transactions",
               "Bitcoin security",
-              "Digital wallet management"
+              "Digital wallet management",
+              "How to acquire bitcoin",
+              "Bitcoin storage and usage",
+              "Sending and receiving bitcoin"
             ]
           })
         }}
@@ -107,8 +117,11 @@ export default function LearnPage() {
                 <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
                   What Is Bitcoin?
                 </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
+                  Bitcoin is the world's first decentralized digital currency, launched in 2009. It's a revolutionary <Link href="/glossary/p2p" className="text-primary hover:underline font-semibold">peer-to-peer</Link> electronic cash system that enables direct transactions without banks, governments, or any central authority.
+                </p>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  Bitcoin is a revolutionary <Link href="/glossary/p2p" className="text-primary hover:underline font-semibold">peer-to-peer</Link> electronic cash system that operates without a central authority.
+                  Unlike traditional money, Bitcoin exists entirely online and is powered by a global network of computers. Every transaction is recorded on a public, transparent ledger called the <Link href="/glossary/blockchain" className="text-primary hover:underline font-semibold">blockchain</Link>, making the system secure, open, and resistant to censorship.
                 </p>
               </div>
 
@@ -122,10 +135,13 @@ export default function LearnPage() {
                       <h3 className="text-2xl font-bold">The Network</h3>
                     </div>
                     <p className="text-muted-foreground mb-4">
-                      Bitcoin (with capital 'B') refers to the entire network and protocol. It's a decentralized system running on thousands of computers worldwide.
+                      Bitcoin (with capital 'B') refers to the entire network and protocol. It's a decentralized system running on thousands of computers worldwide, maintained by a global community of miners, developers, and users.
+                    </p>
+                    <p className="text-muted-foreground mb-4">
+                      The <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link> serves as a public ledger, recording every transaction in an immutable chain of blocks. This transparency allows anyone to verify transactions while maintaining user privacy through cryptographic addresses.
                     </p>
                     <p className="text-muted-foreground">
-                      The <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link> serves as a public ledger, recording every transaction in an immutable chain of blocks.
+                      With no single point of control or failure, Bitcoin operates 24/7/365 across borders, enabling anyone with internet access to participate in the global economy.
                     </p>
                   </CardContent>
                 </Card>
@@ -139,10 +155,13 @@ export default function LearnPage() {
                       <h3 className="text-2xl font-bold">The Currency</h3>
                     </div>
                     <p className="text-muted-foreground mb-4">
-                      bitcoin (with lowercase 'b') refers to the digital currency units. Each <Link href="/glossary/btc" className="text-primary hover:underline">BTC</Link> can be divided into 100 million smaller units called satoshis.
+                      bitcoin (with lowercase 'b') refers to the digital currency units. Each <Link href="/glossary/btc" className="text-primary hover:underline">BTC</Link> can be divided into 100 million smaller units called satoshis, making it possible to transact in tiny fractions.
+                    </p>
+                    <p className="text-muted-foreground mb-4">
+                      With a fixed supply cap of 21 million bitcoins, it's designed to be scarce and deflationary by nature—no government or entity can print more. This predictable supply makes Bitcoin fundamentally different from traditional currencies that can be inflated at will.
                     </p>
                     <p className="text-muted-foreground">
-                      With a fixed supply cap of 21 million bitcoins, it's designed to be scarce and deflationary by nature.
+                      Bitcoin offers fast, borderless transactions with lower fees than traditional international transfers, operating independently of banking hours or geographic restrictions.
                     </p>
                   </CardContent>
                 </Card>
@@ -178,8 +197,11 @@ export default function LearnPage() {
                 <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
                   How Bitcoin Works
                 </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
+                  Bitcoin combines cryptography, peer-to-peer networking, and economic incentives to create a secure, decentralized monetary system that operates without trusted intermediaries.
+                </p>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  Understanding the core mechanisms that make Bitcoin secure, decentralized, and revolutionary
+                  Understanding the core mechanisms behind Bitcoin reveals why it's considered one of the most significant technological innovations of the 21st century.
                 </p>
               </div>
 
@@ -305,6 +327,346 @@ export default function LearnPage() {
                           <li className="flex items-start">
                             <span className="text-primary mr-2 mt-1">•</span>
                             <span><strong className="text-foreground">Address generation</strong> from public keys, providing privacy and security</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+
+          {/* How to Get Bitcoin Section */}
+          <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
+            <BackgroundBeams intensity="subtle" />
+            <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
+                  How to Get Bitcoin
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                  There are several ways to acquire bitcoin, from cryptocurrency exchanges to peer-to-peer transactions
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {/* Cryptocurrency Exchanges */}
+                <Card className="bg-background border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+                      <div className="p-4 rounded-xl bg-primary/10">
+                        <Building2 className="h-12 w-12 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4">Cryptocurrency Exchanges</h3>
+                        <p className="text-muted-foreground mb-4">
+                          The most common way to buy bitcoin is through regulated cryptocurrency exchanges like Coinbase, Kraken, or Binance. These platforms allow you to purchase bitcoin using traditional payment methods.
+                        </p>
+                        <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                          <h4 className="font-semibold mb-2 flex items-center gap-2">
+                            <CreditCard className="h-5 w-5 text-primary" />
+                            Getting Started on an Exchange
+                          </h4>
+                          <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex items-start">
+                              <span className="text-primary mr-2">•</span>
+                              <span><strong>Create an account:</strong> Sign up with your email and create a secure password</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="text-primary mr-2">•</span>
+                              <span><strong>Verify your identity:</strong> Complete KYC (Know Your Customer) by providing government ID and proof of address</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="text-primary mr-2">•</span>
+                              <span><strong>Add payment method:</strong> Link your bank account, debit card, or other payment options</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="text-primary mr-2">•</span>
+                              <span><strong>Buy bitcoin:</strong> Choose the amount to purchase (you can start with as little as $1), review fees, and confirm</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Peer-to-Peer and Other Methods */}
+                <Card className="bg-background border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+                      <div className="p-4 rounded-xl bg-primary/10">
+                        <Users className="h-12 w-12 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4">Alternative Acquisition Methods</h3>
+                        <p className="text-muted-foreground mb-4">
+                          Beyond exchanges, there are several other ways to obtain bitcoin depending on your preferences and needs.
+                        </p>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">P2P Platforms</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Trade directly with other users through peer-to-peer marketplaces like LocalBitcoins or Bisq for more privacy and payment flexibility.
+                            </p>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">Bitcoin ATMs</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Purchase bitcoin with cash at Bitcoin ATMs found in many cities, though fees are typically higher than online exchanges.
+                            </p>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">Earn Bitcoin</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Accept bitcoin as payment for goods or services, earn it through employment, or participate in the Bitcoin network as a miner.
+                            </p>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">Gift & Transfer</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Receive bitcoin as a gift from friends or family, or through promotional campaigns and rewards programs.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Important Considerations */}
+                <Card className="bg-primary/5 border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="flex items-start gap-4">
+                      <Shield className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">Important Considerations</h3>
+                        <ul className="space-y-2 text-muted-foreground">
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Start small:</strong> Begin with a modest amount to familiarize yourself with the buying process and wallet management</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Compare fees:</strong> Different platforms and payment methods have varying fee structures—bank transfers are typically cheaper than card purchases</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Security first:</strong> Enable two-factor authentication (2FA) and use strong, unique passwords on all platforms</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Beware of scams:</strong> Only use reputable, regulated exchanges and never share your private keys or seed phrases</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+
+          {/* How to Use Bitcoin Section */}
+          <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-muted/50 to-background relative overflow-hidden">
+            <BackgroundBeams intensity="subtle" />
+            <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
+                  How to Use Bitcoin
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                  Learn how to store, send, receive, and spend your bitcoin securely and efficiently
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {/* Storing Bitcoin */}
+                <Card className="bg-background border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+                      <div className="p-4 rounded-xl bg-primary/10">
+                        <Wallet className="h-12 w-12 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4">Storing Your Bitcoin</h3>
+                        <p className="text-muted-foreground mb-4">
+                          A <Link href="/glossary/wallet" className="text-primary hover:underline">Bitcoin wallet</Link> is software that stores your <Link href="/glossary/private-key" className="text-primary hover:underline">private keys</Link> and enables you to send and receive bitcoin. Choosing the right wallet depends on your security needs and usage frequency.
+                        </p>
+                        <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2 flex items-center gap-2">
+                              <Globe className="h-5 w-5 text-primary" />
+                              Hot Wallets
+                            </h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Connected to the internet for convenient access. Ideal for everyday transactions and smaller amounts.
+                            </p>
+                            <p className="text-xs text-muted-foreground italic">
+                              Examples: Mobile apps, desktop software, exchange wallets
+                            </p>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2 flex items-center gap-2">
+                              <Lock className="h-5 w-5 text-primary" />
+                              Cold Wallets
+                            </h4>
+                            <p className="text-sm text-muted-foreground mb-2">
+                              Offline storage for maximum security. Best for long-term holdings and larger amounts.
+                            </p>
+                            <p className="text-xs text-muted-foreground italic">
+                              Examples: Hardware wallets (Ledger, Trezor), paper wallets
+                            </p>
+                          </div>
+                        </div>
+                        <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                          <p className="text-sm text-muted-foreground">
+                            <strong className="text-foreground">Critical:</strong> Never share your private keys or seed phrase with anyone. These give complete control over your bitcoin. If lost, your funds are unrecoverable.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Sending and Receiving */}
+                <Card className="bg-background border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+                      <div className="p-4 rounded-xl bg-primary/10">
+                        <Send className="h-12 w-12 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4">Sending & Receiving Bitcoin</h3>
+                        <p className="text-muted-foreground mb-4">
+                          Bitcoin transactions are straightforward once you understand the basics. You'll use Bitcoin addresses (similar to email addresses) to send and receive funds.
+                        </p>
+                        <div className="space-y-4">
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2 flex items-center gap-2">
+                              <DownloadCloud className="h-5 w-5 text-primary" />
+                              Receiving Bitcoin
+                            </h4>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
+                              <li className="flex items-start">
+                                <span className="text-primary mr-2">•</span>
+                                <span>Open your wallet and locate your Bitcoin address (a long string starting with 1, 3, or bc1)</span>
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-primary mr-2">•</span>
+                                <span>Share this address or QR code with the sender</span>
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-primary mr-2">•</span>
+                                <span>Wait for confirmations (typically 10-60 minutes for full security)</span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2 flex items-center gap-2">
+                              <Send className="h-5 w-5 text-primary" />
+                              Sending Bitcoin
+                            </h4>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
+                              <li className="flex items-start">
+                                <span className="text-primary mr-2">•</span>
+                                <span>Enter the recipient's Bitcoin address (triple-check for accuracy—transactions can't be reversed!)</span>
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-primary mr-2">•</span>
+                                <span>Specify the amount to send in BTC or your local currency</span>
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-primary mr-2">•</span>
+                                <span>Choose transaction fee (higher fees = faster confirmation)</span>
+                              </li>
+                              <li className="flex items-start">
+                                <span className="text-primary mr-2">•</span>
+                                <span>Review and confirm the transaction</span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Spending Bitcoin */}
+                <Card className="bg-background border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
+                      <div className="p-4 rounded-xl bg-primary/10">
+                        <ShoppingCart className="h-12 w-12 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-4">Spending Bitcoin</h3>
+                        <p className="text-muted-foreground mb-4">
+                          Bitcoin's growing acceptance means you can use it for an increasing range of purchases, from online shopping to real-world transactions.
+                        </p>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">Online Merchants</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Major companies like Microsoft, Overstock, and Newegg accept bitcoin payments. Payment processors like BitPay make it easy for businesses to accept BTC.
+                            </p>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">Gift Cards</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Convert bitcoin to gift cards for popular retailers through services like Bitrefill, extending your spending options indirectly.
+                            </p>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">Bitcoin Debit Cards</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Load bitcoin onto crypto debit cards that automatically convert to local currency at point of sale, accepted anywhere traditional cards work.
+                            </p>
+                          </div>
+                          <div className="bg-secondary/30 p-4 rounded-lg border border-border">
+                            <h4 className="font-semibold mb-2">Peer-to-Peer</h4>
+                            <p className="text-sm text-muted-foreground">
+                              Pay individuals directly for services, send money internationally, or exchange with friends—fast, borderless, and without intermediaries.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Best Practices */}
+                <Card className="bg-primary/5 border-primary/20">
+                  <CardContent className="p-8">
+                    <div className="flex items-start gap-4">
+                      <Shield className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                      <div>
+                        <h3 className="text-xl font-bold mb-2">Security Best Practices</h3>
+                        <ul className="space-y-2 text-muted-foreground">
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Use hardware wallets</strong> for significant holdings to protect against online threats</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Back up your wallet</strong> by securely storing your seed phrase in multiple physical locations</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Verify addresses</strong> carefully before sending—double-check every character as transactions are irreversible</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Start with small amounts</strong> when testing new wallets or services</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Keep software updated</strong> to ensure you have the latest security patches and features</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            <span><strong className="text-foreground">Be aware of taxes</strong> as many jurisdictions treat bitcoin as property subject to capital gains tax</span>
                           </li>
                         </ul>
                       </div>
