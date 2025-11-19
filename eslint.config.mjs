@@ -19,6 +19,8 @@ const eslintConfig = [
       "react/no-unescaped-entities": "off",
       // Allow Math.random() in useMemo - intentionally memoized for client-side randomization
       "react-hooks/purity": "off",
+      // Allow setState in useEffect for legitimate hydration patterns
+      "react-hooks/set-state-in-effect": "off",
       // Unused vars as warnings instead of errors
       "@typescript-eslint/no-unused-vars": ["warn", {
         "argsIgnorePattern": "^_",
