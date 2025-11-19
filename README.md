@@ -23,6 +23,7 @@ BitSleuth is a comprehensive Next.js 15 website serving as the primary marketing
 - **Styling**: Tailwind CSS, shadcn/ui, Radix primitives
 - **UX**: Embla Carousel, Lucide icons
 - **SEO**: App Router metadata routes (`robots.ts`, `sitemap.ts`)
+- **Development**: Model Context Protocol (MCP) server enabled for AI coding agents
 - **Deployment**: Firebase App Hosting
 
 ---
@@ -221,6 +222,7 @@ For complete guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 ### Additional Resources
 - **PRD**: `docs/PRD.md` - Product Requirements Document
 - **SEO Strategy**: `docs/SEO_STRATEGY.md` - SEO optimization guide
+- **MCP Server**: `docs/MCP_SERVER.md` - Model Context Protocol server configuration
 - **Visual Recommendations**: `docs/todo.md` - UI/UX improvement suggestions
 
 ### External Links
