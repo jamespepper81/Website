@@ -44,16 +44,16 @@ export function PricingSection() {
           {plans.map((plan, idx) => (
             <Card 
               key={idx} 
-              className={`relative flex flex-col text-left overflow-hidden shadow-glow ${
+              className={`relative flex flex-col text-left overflow-hidden shadow-glow hover:border-primary/50 ${
                 plan.comingSoon ? 'blur-sm pointer-events-none' : ''
-              } ${idx === 1 ? 'border-complementary/50 hover:border-complementary' : 'hover:border-primary/50'}`}
+              }`}
             >
               {plan.comingSoon && (
                   <Badge variant="secondary" className="absolute top-4 right-4 text-xs font-bold py-1 px-3 z-10 blur-none">COMING SOON</Badge>
               )}
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">{plan.title}</CardTitle>
-                <p className={`text-3xl font-bold ${idx === 1 ? 'text-complementary' : 'text-primary'}`}>{plan.price}</p>
+                <p className="text-3xl text-primary font-bold">{plan.price}</p>
                 <CardDescription className="font-normal">{plan.desc}</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">

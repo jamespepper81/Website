@@ -6,16 +6,16 @@ import { BarChart3, Search, Bot, LineChart, ShieldAlert, BookUser, Zap, Bitcoin 
 
 const features = [
   {
-    icon: <BarChart3 className="h-8 w-8 text-primary" />,
+    icon: <BarChart3 className="h-8 w-8 text-complementary" />,
     title: 'Wallet Visualization',
     description: 'See a clear, interactive graph of all transactions and fund flows.',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
-    icon: <Search className="h-8 w-8 text-complementary" />,
+    icon: <Search className="h-8 w-8 text-primary" />,
     title: 'OPSEC Threat Detection',
     description: 'Automatically identify risks like address reuse and peel chains.',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     icon: <Bot className="h-8 w-8 text-primary" />,
@@ -36,10 +36,10 @@ const features = [
     colorScheme: 'primary',
   },
   {
-    icon: <BookUser className="h-8 w-8 text-complementary" />,
+    icon: <BookUser className="h-8 w-8 text-primary" />,
     title: 'Ask AI About Any Address',
     description: 'Use natural language to query any Bitcoin address and get instant answers.',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
 ];
 
@@ -53,7 +53,7 @@ export function FeaturesSection() {
           <p className="text-lg text-muted-foreground font-normal">Professional-grade tools for analyzing Bitcoin transactions, detecting privacy risks, and uncovering wallet patterns with AI-powered insights.</p>
           <div className="flex flex-wrap justify-center gap-3 pt-6">
             <ValueBadge icon={Bitcoin} text="On-Chain Analysis" variant="orange" />
-            <ValueBadge icon={Zap} text="Real-Time Data" variant="complementary" />
+            <ValueBadge icon={Zap} text="Real-Time Data" variant="orange" />
             <ValueBadge icon={Bot} text="AI-Powered" variant="orange" />
           </div>
         </div>
