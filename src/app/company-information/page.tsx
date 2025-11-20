@@ -34,8 +34,8 @@ export default function CompanyInformationPage() {
             <h1 className="text-4xl font-bold mb-4 text-gradient-title">Company Information</h1>
             
             <div className="space-y-6">
-              <div className="bg-muted/20 rounded-lg p-6 border border-border/50">
-                <h2 className="text-2xl font-bold text-gradient-title mb-4">Legal Entity</h2>
+              <div className="bg-muted/20 rounded-lg p-6 border border-complementary/20">
+                <h2 className="text-2xl font-bold text-complementary mb-4">Legal Entity</h2>
                 <p className="text-lg font-semibold text-foreground mb-2">
                   BitSleuth Ltd trading as BitSleuth
                 </p>
@@ -62,8 +62,8 @@ export default function CompanyInformationPage() {
                 </div>
               </div>
 
-              <div className="bg-muted/20 rounded-lg p-6 border border-border/50">
-                <h2 className="text-2xl font-bold text-gradient-title mb-4">Contact Information</h2>
+              <div className="bg-muted/20 rounded-lg p-6 border border-complementary/20">
+                <h2 className="text-2xl font-bold text-complementary mb-4">Contact Information</h2>
                 <p className="font-normal">
                   For general inquiries, please contact us at{' '}
                   <a

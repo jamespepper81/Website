@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
               Policy.
             </p>
 
-            <h3 className="text-xl font-bold text-gradient-title">1. Who We Are</h3>
+            <h3 className="text-xl font-bold text-complementary">1. Who We Are</h3>
             <p className="font-normal">
               BitSleuth is a technology company focused on Bitcoin analytics and wallet services. We
               operate with a privacy-first mindset, especially within our wallet platform.
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
               </li>
             </ul>
 
-            <h3 className="text-xl font-bold text-gradient-title">3. How We Use Your Information</h3>
+            <h3 className="text-xl font-bold text-complementary">3. How We Use Your Information</h3>
             <p className="font-normal">We only use your information for the following purposes:</p>
             <ul className="list-disc pl-6 font-normal">
               <li>To understand how our website and analytics app are used.</li>
