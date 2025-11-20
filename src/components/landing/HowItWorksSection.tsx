@@ -30,7 +30,7 @@ export function HowItWorksSection() {
           {steps.map((step, idx) => (
             <Card key={idx} className="bg-secondary/30 text-left shadow-glow">
                 <CardHeader>
-                    <CardTitle className="text-lg font-bold mb-2 text-primary">{step.title}</CardTitle>
+                    <CardTitle className={`text-lg font-bold mb-2 ${idx === 1 ? 'text-complementary' : 'text-primary'}`}>{step.title}</CardTitle>
                 </CardHeader>
               <CardContent>
                 <p className="font-normal">{step.description}</p>

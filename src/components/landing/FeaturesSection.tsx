@@ -9,31 +9,37 @@ const features = [
     icon: <BarChart3 className="h-8 w-8 text-primary" />,
     title: 'Wallet Visualization',
     description: 'See a clear, interactive graph of all transactions and fund flows.',
+    colorScheme: 'primary',
   },
   {
-    icon: <Search className="h-8 w-8 text-primary" />,
+    icon: <Search className="h-8 w-8 text-complementary" />,
     title: 'OPSEC Threat Detection',
     description: 'Automatically identify risks like address reuse and peel chains.',
+    colorScheme: 'complementary',
   },
   {
     icon: <Bot className="h-8 w-8 text-primary" />,
     title: 'AI Wallet Analysis',
     description: 'Ask our AI to summarize wallet activity or explain complex transactions.',
+    colorScheme: 'primary',
   },
   {
-    icon: <LineChart className="h-8 w-8 text-primary" />,
+    icon: <LineChart className="h-8 w-8 text-complementary" />,
     title: 'Transaction History Graphs',
     description: 'Track wallet balance and activity over time with detailed charts.',
+    colorScheme: 'complementary',
   },
   {
     icon: <ShieldAlert className="h-8 w-8 text-primary" />,
     title: 'Privacy Risk Insights',
     description: 'Get actionable reports on potential privacy vulnerabilities in a wallet.',
+    colorScheme: 'primary',
   },
   {
-    icon: <BookUser className="h-8 w-8 text-primary" />,
+    icon: <BookUser className="h-8 w-8 text-complementary" />,
     title: 'Ask AI About Any Address',
     description: 'Use natural language to query any Bitcoin address and get instant answers.',
+    colorScheme: 'complementary',
   },
 ];
 
@@ -47,13 +53,20 @@ export function FeaturesSection() {
           <p className="text-lg text-muted-foreground font-normal">Professional-grade tools for analyzing Bitcoin transactions, detecting privacy risks, and uncovering wallet patterns with AI-powered insights.</p>
           <div className="flex flex-wrap justify-center gap-3 pt-6">
             <ValueBadge icon={Bitcoin} text="On-Chain Analysis" variant="orange" />
-            <ValueBadge icon={Zap} text="Real-Time Data" variant="orange" />
+            <ValueBadge icon={Zap} text="Real-Time Data" variant="complementary" />
             <ValueBadge icon={Bot} text="AI-Powered" variant="orange" />
           </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
           {features.map((feature, idx) => (
-            <Card key={idx} className="bg-card/50 hover:border-primary/50 transition-colors shadow-glow p-4 flex flex-col items-center">
+            <Card 
+              key={idx} 
+              className={`bg-card/50 transition-colors shadow-glow p-4 flex flex-col items-center ${
+                feature.colorScheme === 'complementary' 
+                  ? 'hover:border-complementary/50' 
+                  : 'hover:border-primary/50'
+              }`}
+            >
               <CardHeader className="p-2">
                  {feature.icon}
               </CardHeader>
