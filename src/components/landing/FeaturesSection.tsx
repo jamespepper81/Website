@@ -6,34 +6,40 @@ import { BarChart3, Search, Bot, LineChart, ShieldAlert, BookUser, Zap, Bitcoin 
 
 const features = [
   {
-    icon: <BarChart3 className="h-8 w-8 text-primary" />,
+    icon: <BarChart3 className="h-8 w-8 text-complementary" />,
     title: 'Wallet Visualization',
     description: 'See a clear, interactive graph of all transactions and fund flows.',
+    colorScheme: 'complementary',
   },
   {
     icon: <Search className="h-8 w-8 text-primary" />,
     title: 'OPSEC Threat Detection',
     description: 'Automatically identify risks like address reuse and peel chains.',
+    colorScheme: 'primary',
   },
   {
     icon: <Bot className="h-8 w-8 text-primary" />,
     title: 'AI Wallet Analysis',
     description: 'Ask our AI to summarize wallet activity or explain complex transactions.',
+    colorScheme: 'primary',
   },
   {
-    icon: <LineChart className="h-8 w-8 text-primary" />,
+    icon: <LineChart className="h-8 w-8 text-complementary" />,
     title: 'Transaction History Graphs',
     description: 'Track wallet balance and activity over time with detailed charts.',
+    colorScheme: 'complementary',
   },
   {
     icon: <ShieldAlert className="h-8 w-8 text-primary" />,
     title: 'Privacy Risk Insights',
     description: 'Get actionable reports on potential privacy vulnerabilities in a wallet.',
+    colorScheme: 'primary',
   },
   {
     icon: <BookUser className="h-8 w-8 text-primary" />,
     title: 'Ask AI About Any Address',
     description: 'Use natural language to query any Bitcoin address and get instant answers.',
+    colorScheme: 'primary',
   },
 ];
 
@@ -53,7 +59,14 @@ export function FeaturesSection() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
           {features.map((feature, idx) => (
-            <Card key={idx} className="bg-card/50 hover:border-primary/50 transition-colors shadow-glow p-4 flex flex-col items-center">
+            <Card 
+              key={idx} 
+              className={`bg-card/50 transition-colors shadow-glow p-4 flex flex-col items-center ${
+                feature.colorScheme === 'complementary' 
+                  ? 'hover:border-complementary/50' 
+                  : 'hover:border-primary/50'
+              }`}
+            >
               <CardHeader className="p-2">
                  {feature.icon}
               </CardHeader>
