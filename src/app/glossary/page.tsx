@@ -35,7 +35,7 @@ const glossaryTerms = [
     term: 'BIP39 (Mnemonic Phrases)',
     definition: 'The standard for converting a random seed into a human-readable list of words (12-24 words) that represent your entire wallet and can restore all your bitcoin.',
     href: '/glossary/bip39',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'BIP44 (Multi-Account Hierarchy)',
@@ -47,7 +47,7 @@ const glossaryTerms = [
     term: 'Bit',
     definition: 'A user-friendly sub-unit of a bitcoin, where 1 BTC equals 1,000,000 bits. It makes dealing with smaller amounts easier to read and comprehend.',
     href: '/glossary/bit',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     term: 'Bitcoin',
@@ -59,7 +59,7 @@ const glossaryTerms = [
     term: 'Block',
     definition: 'A permanent record in the blockchain containing a batch of recent, confirmed transactions. A new block is added approximately every 10 minutes.',
     href: '/glossary/block',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'Blockchain',
@@ -83,25 +83,25 @@ const glossaryTerms = [
     term: 'Coin Selection',
     definition: 'The process by which a wallet chooses which UTXOs to spend when creating a transaction, optimizing for fees, privacy, or reducing wallet complexity.',
     href: '/glossary/coin-selection',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     term: 'CoinJoin',
     definition: 'A privacy-enhancing technique where multiple users combine their transactions into a single collaborative transaction, breaking the common input ownership heuristic.',
     href: '/glossary/coinjoin',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'Confirmation',
     definition: 'The act of a transaction being successfully verified by the network and included in a block on the blockchain. More confirmations mean greater security.',
     href: '/glossary/confirmation',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'CPFP (Child Pays for Parent)',
     definition: 'A fee bumping technique where a recipient creates a high-fee transaction that spends an unconfirmed transaction, incentivizing miners to include both.',
     href: '/glossary/cpfp',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     term: 'Cryptography',
@@ -137,13 +137,13 @@ const glossaryTerms = [
     term: 'Fee Rate (sat/vB)',
     definition: 'The amount paid per unit of transaction data in satoshis per virtual byte, the primary metric miners use to prioritize transactions.',
     href: '/glossary/fee-rate',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     term: 'Hash Rate',
     definition: 'The total combined computational power being used to mine and process transactions on the Bitcoin network. A higher hash rate indicates a more secure network.',
     href: '/glossary/hash-rate',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'HTLC (Hashed Timelock Contract)',
@@ -161,7 +161,7 @@ const glossaryTerms = [
     term: 'Mempool',
     definition: 'A waiting area where unconfirmed Bitcoin transactions are held before being included in a block. Each node maintains its own mempool.',
     href: '/glossary/mempool',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'Merkle Tree',
@@ -198,13 +198,13 @@ const glossaryTerms = [
     term: 'PayJoin',
     definition: 'A privacy-enhancing transaction type where the receiver contributes their own UTXO as an additional input, breaking chain analysis assumptions.',
     href: '/glossary/payjoin',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'Private Key',
     definition: 'The secret, cryptographic key that proves ownership and allows you to spend bitcoins. It is generated from your passphrase and should never be handled directly.',
     href: '/glossary/private-key',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'PSBT (Partially Signed Bitcoin Transaction)',
@@ -228,13 +228,13 @@ const glossaryTerms = [
     term: 'ScriptPubKey / ScriptSig',
     definition: 'The two halves of Bitcoin\'s programmable transaction system: ScriptPubKey defines spending conditions, while ScriptSig provides the data to satisfy them.',
     href: '/glossary/scriptpubkey-scriptsig',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     term: 'SegWit (Segregated Witness)',
     definition: 'A 2017 protocol upgrade that separates signature data from transaction data, increasing block capacity and fixing transaction malleability.',
     href: '/glossary/segwit',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'Sidechain',
@@ -246,13 +246,13 @@ const glossaryTerms = [
     term: 'Signature',
     definition: 'A digital proof of ownership created with a private key to authorize a transaction. It allows you to spend bitcoins without revealing the key itself.',
     href: '/glossary/signature',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     term: 'Silent Payments',
     definition: 'A protocol that allows publishing a single static address that can receive unlimited payments, with each payment going to a unique on-chain address.',
     href: '/glossary/silent-payments',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'Splicing (Lightning)',
@@ -271,19 +271,19 @@ const glossaryTerms = [
     definition:
       'Understand the difference between pseudonymity and anonymity in Bitcoin, and learn about on-chain and IP address privacy considerations.',
     href: '/glossary/transaction-privacy',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
     term: 'UTXO (Unspent Transaction Output)',
     definition: 'A discrete chunk of bitcoin that remains after a transaction and can be spent in future transactions, like digital bills or coins in your wallet.',
     href: '/glossary/utxo',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
    {
     term: 'Wallet',
     definition: 'Software that manages your private keys and allows you to interact with the Bitcoin network to send and receive funds. Wallets come in various forms, such as mobile, desktop, and hardware.',
     href: '/glossary/wallet',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
 ];
 

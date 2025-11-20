@@ -54,7 +54,7 @@ export default function TermsOfServicePage() {
               do not agree to these Terms, you should not use the Services. Wallet App has additional Terms within the app.
             </p>
 
-            <h3 className="text-xl font-bold text-complementary">1. Who We Are</h3>
+            <h3 className="text-xl font-bold text-gradient-title">1. Who We Are</h3>
             <p className="font-normal">
               BitSleuth is a company dedicated to delivering tools for Bitcoin users — including a
               privacy-focused Bitcoin wallet and a Bitcoin analytics platform. While we may help
@@ -63,14 +63,14 @@ export default function TermsOfServicePage() {
               exchange platforms.
             </p>
 
-            <h3 className="text-xl font-bold text-gradient-title">2. Eligibility</h3>
+            <h3 className="text-xl font-bold text-complementary">2. Eligibility</h3>
             <p className="font-normal">
               To use the Services, you must be at least 18 years old or the age of legal majority
               in your jurisdiction. By using our Services, you confirm that you meet these
               requirements.
             </p>
 
-            <h3 className="text-xl font-bold text-complementary">3. Acceptable Use</h3>
+            <h3 className="text-xl font-bold text-gradient-title">3. Acceptable Use</h3>
             <p className="font-normal">
               You agree to use our Services only for lawful purposes and in a manner that does not
               infringe the rights of others or restrict their use and enjoyment of the Services.
@@ -88,7 +88,7 @@ export default function TermsOfServicePage() {
               <li>Use any automated tools (such as bots or scrapers) without our prior consent.</li>
             </ul>
 
-            <h3 className="text-xl font-bold text-gradient-title">4. Our Wallet & Analytics Tools</h3>
+            <h3 className="text-xl font-bold text-complementary">4. Our Wallet & Analytics Tools</h3>
             <p className="font-normal">We provide two core applications:</p>
             <p className="font-semibold">
               <strong>Bitcoin Wallet App</strong>

@@ -12,10 +12,10 @@ const securityFeatures = [
     colorScheme: 'primary',
   },
   {
-    icon: <Lock className="h-8 w-8 text-complementary" />,
+    icon: <Lock className="h-8 w-8 text-primary" />,
     title: 'PIN-Protected Encryption',
     description: 'Your recovery phrase is secured with strong AES encryption, protected by a PIN that only you know.',
-    colorScheme: 'complementary',
+    colorScheme: 'primary',
   },
   {
     icon: <Fingerprint className="h-8 w-8 text-primary" />,
