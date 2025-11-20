@@ -62,8 +62,8 @@ export default function CompanyInformationPage() {
                 </div>
               </div>
 
-              <div className="bg-muted/20 rounded-lg p-6 border border-border/50">
-                <h2 className="text-2xl font-bold text-gradient-title mb-4">Contact Information</h2>
+              <div className="bg-muted/20 rounded-lg p-6 border border-complementary/20">
+                <h2 className="text-2xl font-bold text-complementary mb-4">Contact Information</h2>
                 <p className="font-normal">
                   For general inquiries, please contact us at{' '}
                   <a

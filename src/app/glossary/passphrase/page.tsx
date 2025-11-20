@@ -42,7 +42,7 @@ export default function PassphraseGlossaryPage() {
                 href="https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline"
+                className="text-complementary hover:underline"
               >
                 view word list
               </a>
@@ -75,7 +75,7 @@ export default function PassphraseGlossaryPage() {
 
             <div className="mt-6 space-y-4">
               <h3 className="text-xl font-bold flex items-center">
-                <AlertCircle className="mr-2 h-6 w-6 text-primary" />
+                <AlertCircle className="mr-2 h-6 w-6 text-complementary" />
                 Important Security Tips:
               </h3>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground font-normal pl-4">
