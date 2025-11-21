@@ -50,7 +50,7 @@
 
     /* Heading gradient colors (light) */
     --heading-start: hsl(25 95% 53%);
-    --heading-via: hsl(25 95% 63%);
+    --heading-via: hsl(205 90% 55%);
     --heading-end: hsl(240 10% 16%);
   }
 
@@ -101,7 +101,7 @@
 
     /* Heading gradient colors (dark) */
     --heading-start: hsl(25 95% 53%);
-    --heading-via: hsl(25 95% 63%);
+    --heading-via: hsl(205 85% 60%);
     --heading-end: hsl(0 0% 98%);
   }
 }
@@ -491,6 +491,17 @@
     var(--heading-start),
     var(--heading-via),
     var(--heading-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-complementary {
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--complementary)),
+    hsl(var(--primary))
   );
   -webkit-background-clip: text;
   background-clip: text;

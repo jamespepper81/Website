@@ -22,11 +22,11 @@ export function EducationalSection() {
       <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-            <BookOpen className="mr-2 h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Educational Resources</span>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-complementary/10 border border-complementary/20 mb-4">
+            <BookOpen className="mr-2 h-4 w-4 text-complementary" />
+            <span className="text-sm font-medium text-complementary">Educational Resources</span>
           </div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl mb-4 text-gradient-title">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl mb-4 text-gradient-complementary">
             Learn About Bitcoin
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -37,12 +37,12 @@ export function EducationalSection() {
         {/* Main Cards Grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Learning Hub Card */}
-          <Card className="group bg-gradient-to-br from-background to-secondary/20 border-primary/30 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+          <Card className="group bg-gradient-to-br from-background to-secondary/20 border-complementary/30 hover:border-complementary/60 hover:shadow-xl hover:shadow-complementary/20 transition-all duration-300 hover:scale-[1.02] overflow-hidden">
             <CardContent className="p-8">
               {/* Icon and Title */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <BookOpen className="h-10 w-10 text-primary" />
+                <div className="p-3 rounded-xl bg-complementary/10 group-hover:bg-complementary/20 transition-colors">
+                  <BookOpen className="h-10 w-10 text-complementary" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-1">Learning Hub</h3>
@@ -58,21 +58,21 @@ export function EducationalSection() {
               {/* Feature List */}
               <div className="space-y-3 mb-6">
                 <div className="flex items-start gap-3">
-                  <Network className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <Network className="h-5 w-5 text-complementary mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="font-semibold text-sm">How Bitcoin Works</div>
                     <div className="text-xs text-muted-foreground">Blockchain, mining, and consensus</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Shield className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <Shield className="h-5 w-5 text-complementary mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="font-semibold text-sm">Security & Privacy</div>
                     <div className="text-xs text-muted-foreground">Keys, wallets, and best practices</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Zap className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <Zap className="h-5 w-5 text-complementary mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="font-semibold text-sm">Getting Started</div>
                     <div className="text-xs text-muted-foreground">How to acquire, store, and use Bitcoin</div>
@@ -81,7 +81,7 @@ export function EducationalSection() {
               </div>
 
               {/* CTA Button */}
-              <Button asChild className="w-full group-hover:shadow-md transition-shadow">
+              <Button asChild className="w-full group-hover:shadow-md transition-shadow bg-complementary hover:bg-complementary/90 text-complementary-foreground">
                 <Link href="/learn">
                   Start Learning
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -91,12 +91,12 @@ export function EducationalSection() {
           </Card>
 
           {/* Bitcoin History Card */}
-          <Card className="group bg-gradient-to-br from-background to-secondary/20 border-primary/30 hover:border-primary/60 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+          <Card className="group bg-gradient-to-br from-background to-secondary/20 border-complementary/30 hover:border-complementary/60 hover:shadow-xl hover:shadow-complementary/20 transition-all duration-300 hover:scale-[1.02] overflow-hidden">
             <CardContent className="p-8">
               {/* Icon and Title */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Clock className="h-10 w-10 text-primary" />
+                <div className="p-3 rounded-xl bg-complementary/10 group-hover:bg-complementary/20 transition-colors">
+                  <Clock className="h-10 w-10 text-complementary" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-1">Bitcoin History</h3>
@@ -112,21 +112,21 @@ export function EducationalSection() {
               {/* Feature List */}
               <div className="space-y-3 mb-6">
                 <div className="flex items-start gap-3">
-                  <FileText className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <FileText className="h-5 w-5 text-complementary mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="font-semibold text-sm">The Whitepaper</div>
                     <div className="text-xs text-muted-foreground">Satoshi's vision simplified</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Lightbulb className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <Lightbulb className="h-5 w-5 text-complementary mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="font-semibold text-sm">Genesis Block</div>
                     <div className="text-xs text-muted-foreground">The birth of Bitcoin in 2009</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Network className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                  <Network className="h-5 w-5 text-complementary mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="font-semibold text-sm">Global Impact</div>
                     <div className="text-xs text-muted-foreground">How Bitcoin changed finance forever</div>
@@ -135,7 +135,7 @@ export function EducationalSection() {
               </div>
 
               {/* CTA Button */}
-              <Button asChild className="w-full group-hover:shadow-md transition-shadow">
+              <Button asChild className="w-full group-hover:shadow-md transition-shadow bg-complementary hover:bg-complementary/90 text-complementary-foreground">
                 <Link href="/history">
                   Explore History
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -146,11 +146,11 @@ export function EducationalSection() {
         </div>
 
         {/* Glossary Callout */}
-        <Card className="bg-primary/5 border-primary/30">
+        <Card className="bg-complementary/5 border-complementary/30">
           <CardContent className="p-6 md:p-8">
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="p-4 rounded-xl bg-primary/10 shrink-0">
-                <BookOpen className="h-12 w-12 text-primary" />
+              <div className="p-4 rounded-xl bg-complementary/10 shrink-0">
+                <BookOpen className="h-12 w-12 text-complementary" />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-xl font-bold mb-2">Bitcoin Terminology Glossary</h3>
@@ -165,7 +165,7 @@ export function EducationalSection() {
                   <span className="text-xs px-3 py-1 rounded-full bg-secondary border border-border">15+ more terms</span>
                 </div>
               </div>
-              <Button asChild variant="outline" size="lg" className="shrink-0">
+              <Button asChild variant="outline" size="lg" className="shrink-0 border-complementary/20 hover:bg-complementary/10 hover:text-complementary">
                 <Link href="/glossary">
                   Browse Glossary
                   <ArrowRight className="ml-2 h-4 w-4" />

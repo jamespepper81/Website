@@ -6,37 +6,37 @@ import { BarChart3, Search, Bot, LineChart, ShieldAlert, BookUser, Zap, Bitcoin 
 
 const features = [
   {
-    icon: <BarChart3 className="h-8 w-8 text-primary" />,
+    icon: <BarChart3 className="h-8 w-8 text-complementary" />,
     title: 'Wallet Visualization',
     description: 'See a clear, interactive graph of all transactions and fund flows.',
     colorScheme: 'primary',
   },
   {
-    icon: <Search className="h-8 w-8 text-primary" />,
+    icon: <Search className="h-8 w-8 text-complementary" />,
     title: 'OPSEC Threat Detection',
     description: 'Automatically identify risks like address reuse and peel chains.',
     colorScheme: 'primary',
   },
   {
-    icon: <Bot className="h-8 w-8 text-primary" />,
+    icon: <Bot className="h-8 w-8 text-complementary" />,
     title: 'AI Wallet Analysis',
     description: 'Ask our AI to summarize wallet activity or explain complex transactions.',
     colorScheme: 'primary',
   },
   {
-    icon: <LineChart className="h-8 w-8 text-primary" />,
+    icon: <LineChart className="h-8 w-8 text-complementary" />,
     title: 'Transaction History Graphs',
     description: 'Track wallet balance and activity over time with detailed charts.',
     colorScheme: 'primary',
   },
   {
-    icon: <ShieldAlert className="h-8 w-8 text-primary" />,
+    icon: <ShieldAlert className="h-8 w-8 text-complementary" />,
     title: 'Privacy Risk Insights',
     description: 'Get actionable reports on potential privacy vulnerabilities in a wallet.',
     colorScheme: 'primary',
   },
   {
-    icon: <BookUser className="h-8 w-8 text-primary" />,
+    icon: <BookUser className="h-8 w-8 text-complementary" />,
     title: 'Ask AI About Any Address',
     description: 'Use natural language to query any Bitcoin address and get instant answers.',
     colorScheme: 'primary',
@@ -49,7 +49,7 @@ export function FeaturesSection() {
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gradient-title">Your Bitcoin Investigation Toolkit</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gradient-complementary">Your Bitcoin Investigation Toolkit</h2>
           <p className="text-lg text-muted-foreground font-normal">Professional-grade tools for analyzing Bitcoin transactions, detecting privacy risks, and uncovering wallet patterns with AI-powered insights.</p>
           <div className="flex flex-wrap justify-center gap-3 pt-6">
             <ValueBadge icon={Bitcoin} text="On-Chain Analysis" variant="orange" />
@@ -61,7 +61,7 @@ export function FeaturesSection() {
           {features.map((feature, idx) => (
             <Card 
               key={idx} 
-              className="bg-card/50 transition-colors shadow-glow p-4 flex flex-col items-center hover:border-primary/50"
+              className="bg-card/50 transition-colors shadow-glow p-4 flex flex-col items-center hover:border-complementary/50"
             >
               <CardHeader className="p-2">
                  {feature.icon}

@@ -29,7 +29,7 @@ export default function CPFPGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="cpfp" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is CPFP (Child Pays for Parent)?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -39,32 +39,32 @@ export default function CPFPGlossaryPage() {
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                  <h3 className="text-xl font-bold flex items-center mb-2">
-                    <GitBranch className="mr-2 h-6 w-6 text-primary" />
+                    <GitBranch className="mr-2 h-6 w-6 text-complementary" />
                     Transaction Dependencies
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
-                    A child transaction cannot be confirmed without its parent being confirmed first. Miners recognize this dependency and consider the combined <Link href="/glossary/fee-rate" className="text-primary hover:underline">fee rate</Link> of both transactions when selecting which to include in a <Link href="/glossary/block" className="text-primary hover:underline">block</Link>.
+                    A child transaction cannot be confirmed without its parent being confirmed first. Miners recognize this dependency and consider the combined <Link href="/glossary/fee-rate" className="text-complementary hover:underline">fee rate</Link> of both transactions when selecting which to include in a <Link href="/glossary/block" className="text-complementary hover:underline">block</Link>.
                 </p>
               </CardContent>
             </Card>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               How It Works
             </h2>
 
              <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Users className="mr-2 h-6 w-6 text-primary" />
+                        <Users className="mr-2 h-6 w-6 text-complementary" />
                         Recipient Control
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
-                      Unlike <Link href="/glossary/rbf" className="text-primary hover:underline">RBF</Link> which requires the sender to bump fees, CPFP empowers the recipient to accelerate confirmation. This is useful when receiving a payment with insufficient fees.
+                      Unlike <Link href="/glossary/rbf" className="text-complementary hover:underline">RBF</Link> which requires the sender to bump fees, CPFP empowers the recipient to accelerate confirmation. This is useful when receiving a payment with insufficient fees.
                     </p>
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Zap className="mr-2 h-6 w-6 text-primary" />
+                        <Zap className="mr-2 h-6 w-6 text-complementary" />
                         Combined Fee Calculation
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
@@ -74,7 +74,7 @@ export default function CPFPGlossaryPage() {
             </div>
             
             <p className="text-muted-foreground mt-8 font-normal">
-             CPFP is particularly useful when you need to use funds from an unconfirmed transaction or when helping someone who sent you bitcoin with too low a fee. Most modern <Link href="/glossary/wallet" className="text-primary hover:underline">wallets</Link> support CPFP functionality, making it a reliable alternative to RBF for fee management.
+             CPFP is particularly useful when you need to use funds from an unconfirmed transaction or when helping someone who sent you bitcoin with too low a fee. Most modern <Link href="/glossary/wallet" className="text-complementary hover:underline">wallets</Link> support CPFP functionality, making it a reliable alternative to RBF for fee management.
             </p>
           </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />

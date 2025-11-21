@@ -41,7 +41,7 @@ export function Header({ basePath = '' }: HeaderProps) {
       height: 'calc(4rem + env(safe-area-inset-top))' // Fixed height to prevent layout shift
     }}>
       <Link href="/" className="flex items-center justify-center hover:opacity-80 transition-opacity">
-        <Search className="h-6 w-6 text-primary" />
+        <Search className="h-6 w-6 text-complementary" />
         <span className="ml-2 font-bold text-lg">BitSleuth</span>
       </Link>
       <nav className="ml-auto hidden gap-6 sm:flex items-center">
@@ -56,7 +56,7 @@ export function Header({ basePath = '' }: HeaderProps) {
             <DropdownMenuItem asChild>
               <Link href="/analyzer" className="w-full">
                 <div className="flex items-start gap-3">
-                  <BarChart className="h-5 w-5 mt-1 text-primary" />
+                  <BarChart className="h-5 w-5 mt-1 text-complementary" />
                   <div>
                     <p className="font-semibold">Wallet Analyzer</p>
                     <p className="text-xs text-muted-foreground font-normal">AI-powered transaction analysis</p>
@@ -67,7 +67,7 @@ export function Header({ basePath = '' }: HeaderProps) {
             <DropdownMenuItem asChild>
                <Link href="/wallet" className="w-full">
                  <div className="flex items-start gap-3">
-                    <Lock className="h-5 w-5 mt-1 text-primary" />
+                    <Lock className="h-5 w-5 mt-1 text-complementary" />
                     <div>
                         <p className="font-semibold">Privacy Wallet</p>
                         <p className="text-xs text-muted-foreground font-normal">Non-custodial, private BTC wallet</p>
@@ -78,7 +78,7 @@ export function Header({ basePath = '' }: HeaderProps) {
             <DropdownMenuItem asChild>
               <Link href="/learn" className="w-full">
                 <div className="flex items-start gap-3">
-                  <GraduationCap className="h-5 w-5 mt-1 text-primary" />
+                  <GraduationCap className="h-5 w-5 mt-1 text-complementary" />
                   <div>
                     <p className="font-semibold">Learning Hub</p>
                     <p className="text-xs text-muted-foreground font-normal">Bitcoin Educational Learning Hub</p>
@@ -89,7 +89,7 @@ export function Header({ basePath = '' }: HeaderProps) {
             <DropdownMenuItem asChild>
               <Link href="/history" className="w-full">
                 <div className="flex items-start gap-3">
-                  <ScrollText className="h-5 w-5 mt-1 text-primary" />
+                  <ScrollText className="h-5 w-5 mt-1 text-complementary" />
                   <div>
                     <p className="font-semibold">Bitcoin History</p>
                     <p className="text-xs text-muted-foreground font-normal">History of Bitcoin</p>
@@ -113,7 +113,7 @@ export function Header({ basePath = '' }: HeaderProps) {
         
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-             <Button>
+             <Button className="bg-complementary hover:bg-complementary/90 text-complementary-foreground">
               <Rocket className="mr-2 h-4 w-4" />
               Launch
               <ChevronDown className="h-4 w-4 ml-1" />
@@ -123,7 +123,7 @@ export function Header({ basePath = '' }: HeaderProps) {
               <DropdownMenuItem asChild>
                 <a href="https://app.bitsleuth.ai/" target="_blank" rel="noopener noreferrer" className="w-full">
                   <div className="flex items-start gap-3">
-                    <BarChart className="h-5 w-5 mt-1 text-primary" />
+                    <BarChart className="h-5 w-5 mt-1 text-complementary" />
                     <div>
                       <p className="font-semibold">Wallet Analyzer</p>
                     </div>
@@ -133,7 +133,7 @@ export function Header({ basePath = '' }: HeaderProps) {
               <DropdownMenuItem asChild>
                 <Link href="/wallet/coming-soon" className="w-full">
                   <div className="flex items-start gap-3">
-                      <Lock className="h-5 w-5 mt-1 text-primary" />
+                      <Lock className="h-5 w-5 mt-1 text-complementary" />
                       <div>
                           <p className="font-semibold">Privacy Wallet</p>
                       </div>
@@ -154,16 +154,16 @@ export function Header({ basePath = '' }: HeaderProps) {
         <SheetContent side="right">
           <nav className="grid gap-6 text-lg font-medium">
             <Link href="/" className="flex items-center gap-2 text-lg font-semibold">
-              <Search className="h-6 w-6 text-primary" />
+              <Search className="h-6 w-6 text-complementary" />
                <span className="ml-2 font-bold text-lg">BitSleuth</span>
             </Link>
-            <Link href="/analyzer" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Wallet Analyzer</Link>
-            <Link href="/wallet" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Privacy Wallet</Link>
-            <Link href="/learn" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Learning Hub</Link>
-            <Link href="/history" className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>Bitcoin History</Link>
+            <Link href="/analyzer" className="text-muted-foreground hover:text-complementary font-medium" prefetch={false}>Wallet Analyzer</Link>
+            <Link href="/wallet" className="text-muted-foreground hover:text-complementary font-medium" prefetch={false}>Privacy Wallet</Link>
+            <Link href="/learn" className="text-muted-foreground hover:text-complementary font-medium" prefetch={false}>Learning Hub</Link>
+            <Link href="/history" className="text-muted-foreground hover:text-complementary font-medium" prefetch={false}>Bitcoin History</Link>
             
             {showNavLinks && navLinks.map((link) => (
-               <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-primary font-medium" prefetch={false}>{link.label}</Link>
+               <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-complementary font-medium" prefetch={false}>{link.label}</Link>
             ))}
             
             <div className="mt-2">
@@ -172,7 +172,7 @@ export function Header({ basePath = '' }: HeaderProps) {
 
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button>
+                  <Button className="bg-complementary hover:bg-complementary/90 text-complementary-foreground">
                     <Rocket className="mr-2 h-4 w-4" />
                     Launch
                     <ChevronDown className="h-4 w-4 ml-1" />

@@ -30,7 +30,7 @@ export default function BitcoinGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="bitcoin" relatedTerms={relatedTerms}>
-        <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+        <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
           What Is Bitcoin?
         </h1>
         <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -41,37 +41,37 @@ export default function BitcoinGlossaryPage() {
           <CardContent className="p-4 grid md:grid-cols-2 gap-4">
             <div>
                 <h3 className="text-xl font-bold flex items-center mb-2">
-                    <Network className="mr-2 h-6 w-6 text-primary" />
+                    <Network className="mr-2 h-6 w-6 text-complementary" />
                     Bitcoin (Capital 'B')
                 </h3>
-                <p className="text-muted-foreground font-normal">Refers to the entire network, the technology, and the concept. It's the protocol that runs the global, decentralized ledger known as the <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link>.</p>
+                <p className="text-muted-foreground font-normal">Refers to the entire network, the technology, and the concept. It's the protocol that runs the global, decentralized ledger known as the <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link>.</p>
             </div>
              <div>
                 <h3 className="text-xl font-bold flex items-center mb-2">
-                    <Coins className="mr-2 h-6 w-6 text-primary" />
+                    <Coins className="mr-2 h-6 w-6 text-complementary" />
                     bitcoin (Lowercase 'b')
                 </h3>
-                <p className="text-muted-foreground font-normal">Refers to the unit of currency itself (with the ticker <Link href="/glossary/btc" className="text-primary hover:underline">BTC</Link>) that is sent and received across the Bitcoin network.</p>
+                <p className="text-muted-foreground font-normal">Refers to the unit of currency itself (with the ticker <Link href="/glossary/btc" className="text-complementary hover:underline">BTC</Link>) that is sent and received across the Bitcoin network.</p>
             </div>
           </CardContent>
         </Card>
 
-        <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+        <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
           How Does It Work?
         </h2>
          <div className="mt-8 grid gap-8">
             <div>
                 <h3 className="text-xl font-bold flex items-center">
-                    <GitBranch className="mr-2 h-6 w-6 text-primary" />
+                    <GitBranch className="mr-2 h-6 w-6 text-complementary" />
                     Decentralized & Peer-to-Peer
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
-                    Unlike traditional currencies, there is no central entity controlling Bitcoin. Instead, it is maintained by a distributed network of computers (nodes) around the world. Transactions are sent directly between users via <Link href="/glossary/p2p" className="text-primary hover:underline">peer-to-peer</Link> technology.
+                    Unlike traditional currencies, there is no central entity controlling Bitcoin. Instead, it is maintained by a distributed network of computers (nodes) around the world. Transactions are sent directly between users via <Link href="/glossary/p2p" className="text-complementary hover:underline">peer-to-peer</Link> technology.
                 </p>
             </div>
             <div>
                 <h3 className="text-xl font-bold flex items-center">
-                    <Coins className="mr-2 h-6 w-6 text-primary" />
+                    <Coins className="mr-2 h-6 w-6 text-complementary" />
                     Limited Supply
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
@@ -81,7 +81,7 @@ export default function BitcoinGlossaryPage() {
         </div>
         
         <p className="text-muted-foreground mt-8 font-normal">
-         Every transaction is recorded on a public ledger called the <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link>, which is secured through a process known as <Link href="/glossary/mining" className="text-primary hover:underline">mining</Link>. This creates a system that is transparent, censorship-resistant, and immutable.
+         Every transaction is recorded on a public ledger called the <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link>, which is secured through a process known as <Link href="/glossary/mining" className="text-complementary hover:underline">mining</Link>. This creates a system that is transparent, censorship-resistant, and immutable.
         </p>
       </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />

@@ -29,7 +29,7 @@ export default function MiniscriptGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="miniscript" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is Miniscript?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -39,7 +39,7 @@ export default function MiniscriptGlossaryPage() {
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                  <h3 className="text-xl font-bold flex items-center mb-2">
-                    <Code className="mr-2 h-6 w-6 text-primary" />
+                    <Code className="mr-2 h-6 w-6 text-complementary" />
                     Human-Readable Scripts
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
@@ -48,23 +48,23 @@ export default function MiniscriptGlossaryPage() {
               </CardContent>
             </Card>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               Key Benefits
             </h2>
 
              <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Shield className="mr-2 h-6 w-6 text-primary" />
+                        <Shield className="mr-2 h-6 w-6 text-complementary" />
                         Safer Smart Contracts
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
-                      Miniscript provides static analysis tools that can verify scripts are spendable, non-malleable, and efficient before deployment. This prevents costly errors in complex <Link href="/glossary/scriptpubkey-scriptsig" className="text-primary hover:underline">spending scripts</Link>.
+                      Miniscript provides static analysis tools that can verify scripts are spendable, non-malleable, and efficient before deployment. This prevents costly errors in complex <Link href="/glossary/scriptpubkey-scriptsig" className="text-complementary hover:underline">spending scripts</Link>.
                     </p>
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Sparkles className="mr-2 h-6 w-6 text-primary" />
+                        <Sparkles className="mr-2 h-6 w-6 text-complementary" />
                         Composability
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
@@ -74,7 +74,7 @@ export default function MiniscriptGlossaryPage() {
             </div>
             
             <p className="text-muted-foreground mt-8 font-normal">
-             Miniscript integrates well with <Link href="/glossary/descriptor-wallet" className="text-primary hover:underline">descriptor wallets</Link>, <Link href="/glossary/psbt" className="text-primary hover:underline">PSBTs</Link>, and modern Bitcoin features like <Link href="/glossary/taproot" className="text-primary hover:underline">Taproot</Link>. It's becoming increasingly important for advanced Bitcoin applications and custody solutions.
+             Miniscript integrates well with <Link href="/glossary/descriptor-wallet" className="text-complementary hover:underline">descriptor wallets</Link>, <Link href="/glossary/psbt" className="text-complementary hover:underline">PSBTs</Link>, and modern Bitcoin features like <Link href="/glossary/taproot" className="text-complementary hover:underline">Taproot</Link>. It's becoming increasingly important for advanced Bitcoin applications and custody solutions.
             </p>
           </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />

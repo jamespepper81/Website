@@ -61,7 +61,7 @@ export function WalletJoinWaitlistSection() {
 
   return (
     <div className="text-center">
-      <h2 className="text-4xl font-bold mb-4 text-gradient-title">
+      <h2 className="text-4xl font-bold mb-4 text-gradient-complementary">
         Join the waitlist
       </h2>
       <p className="text-lg text-muted-foreground font-normal mb-8">
@@ -74,12 +74,12 @@ export function WalletJoinWaitlistSection() {
           placeholder="your@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full sm:flex-1 bg-card/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary"
+          className="w-full sm:flex-1 bg-card/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-complementary focus:ring-primary"
           disabled={isLoading}
         />
         <Button 
           type="submit" 
-          className="w-full sm:w-auto shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"
+          className="w-full sm:w-auto shadow-glow bg-complementary hover:bg-complementary/90 text-complementary-foreground"
           disabled={isLoading}
         >
           {isLoading ? "Joining..." : "Join waitlist"}

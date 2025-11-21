@@ -29,7 +29,7 @@ export default function SegWitGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="segwit" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is SegWit (Segregated Witness)?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -39,23 +39,23 @@ export default function SegWitGlossaryPage() {
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                  <h3 className="text-xl font-bold flex items-center mb-2">
-                    <Shield className="mr-2 h-6 w-6 text-primary" />
+                    <Shield className="mr-2 h-6 w-6 text-complementary" />
                     Transaction Malleability Fix
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
-                    SegWit solved a critical issue called transaction malleability, where transaction IDs could be slightly altered before confirmation. This fix was essential for enabling advanced features like the <Link href="/glossary/lightning-network" className="text-primary hover:underline">Lightning Network</Link>.
+                    SegWit solved a critical issue called transaction malleability, where transaction IDs could be slightly altered before confirmation. This fix was essential for enabling advanced features like the <Link href="/glossary/lightning-network" className="text-complementary hover:underline">Lightning Network</Link>.
                 </p>
               </CardContent>
             </Card>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               Key Benefits
             </h2>
 
              <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Zap className="mr-2 h-6 w-6 text-primary" />
+                        <Zap className="mr-2 h-6 w-6 text-complementary" />
                         Increased Capacity
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
@@ -64,17 +64,17 @@ export default function SegWitGlossaryPage() {
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Database className="mr-2 h-6 w-6 text-primary" />
+                        <Database className="mr-2 h-6 w-6 text-complementary" />
                         Lower Fees
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
-                      SegWit transactions are smaller in size, resulting in lower <Link href="/glossary/fee-rate" className="text-primary hover:underline">transaction fees</Link>. Native SegWit addresses (starting with "bc1") offer the most efficient format.
+                      SegWit transactions are smaller in size, resulting in lower <Link href="/glossary/fee-rate" className="text-complementary hover:underline">transaction fees</Link>. Native SegWit addresses (starting with "bc1") offer the most efficient format.
                     </p>
                 </div>
             </div>
             
             <p className="text-muted-foreground mt-8 font-normal">
-             SegWit is backward compatible, meaning older Bitcoin software can still interact with SegWit-enabled nodes. It paved the way for further improvements like <Link href="/glossary/taproot" className="text-primary hover:underline">Taproot</Link> and enhanced Bitcoin's scalability without requiring a hard fork.
+             SegWit is backward compatible, meaning older Bitcoin software can still interact with SegWit-enabled nodes. It paved the way for further improvements like <Link href="/glossary/taproot" className="text-complementary hover:underline">Taproot</Link> and enhanced Bitcoin's scalability without requiring a hard fork.
             </p>
           </GlossaryPageWrapper>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />

@@ -15,7 +15,7 @@ export default function AITrainingContent() {
     <div className="container mx-auto px-4 py-12 max-w-6xl">
       {/* Header Section */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gradient-title mb-4">
+        <h1 className="text-4xl font-bold text-gradient-complementary mb-4">
           BitSleuth AI Training Content
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -34,10 +34,10 @@ export default function AITrainingContent() {
         <CardContent>
           <div className="grid md:grid-cols-2 gap-6">
             {/* Bitcoin Wallet Analyzer */}
-            <Card className="border-primary/20">
+            <Card className="border-complementary/20">
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-primary rounded-full"></div>
+                  <div className="w-3 h-3 bg-complementary rounded-full"></div>
                   <CardTitle className="text-xl">Bitcoin Wallet Analyzer</CardTitle>
                 </div>
                 <CardDescription>
@@ -56,31 +56,31 @@ export default function AITrainingContent() {
                     <Badge variant="outline" className="mb-2">Key Features</Badge>
                     <div className="grid grid-cols-2 gap-1 text-sm">
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         AI-powered analysis
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Transaction visualization
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         OPSEC risk detection
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Address clustering
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Fund flow tracing
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Security assessment
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Real-time analysis
                       </span>
                     </div>
@@ -90,10 +90,10 @@ export default function AITrainingContent() {
             </Card>
 
             {/* Bitcoin Privacy Wallet */}
-            <Card className="border-primary/20">
+            <Card className="border-complementary/20">
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-primary rounded-full"></div>
+                  <div className="w-3 h-3 bg-complementary rounded-full"></div>
                   <CardTitle className="text-xl">Bitcoin Privacy Wallet</CardTitle>
                 </div>
                 <CardDescription>
@@ -112,27 +112,27 @@ export default function AITrainingContent() {
                     <Badge variant="outline" className="mb-2">Key Features</Badge>
                     <div className="grid grid-cols-2 gap-1 text-sm">
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Non-custodial storage
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Address reuse prevention
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Privacy-first design
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Advanced security
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Bitcoin-only focus
                       </span>
                       <span className="flex items-center gap-1">
-                        <div className="w-1 h-1 bg-primary rounded-full"></div>
+                        <div className="w-1 h-1 bg-complementary rounded-full"></div>
                         Open source
                       </span>
                     </div>
@@ -170,7 +170,7 @@ export default function AITrainingContent() {
                   "address clustering",
                   "fund flow analysis"
                 ].map((term, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     "{term}"
                   </div>
                 ))}
@@ -193,7 +193,7 @@ export default function AITrainingContent() {
                   "address reuse prevention",
                   "bitcoin anonymity"
                 ].map((term, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     "{term}"
                   </div>
                 ))}
@@ -213,7 +213,7 @@ export default function AITrainingContent() {
                   "bitcoin risk assessment",
                   "blockchain transparency tools"
                 ].map((term, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     "{term}"
                   </div>
                 ))}
@@ -274,7 +274,7 @@ export default function AITrainingContent() {
             {/* For Analysts */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <div className="w-2 h-2 bg-complementary rounded-full"></div>
                 <h3 className="text-lg font-semibold">For Analysts & Investigators</h3>
               </div>
               <div className="space-y-2">
@@ -286,7 +286,7 @@ export default function AITrainingContent() {
                   "Trace fund movements across the blockchain"
                 ].map((proposition, index) => (
                   <div key={index} className="flex items-start gap-2 p-3 bg-muted/30 rounded-lg">
-                    <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-1 h-1 bg-complementary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm">"{proposition}"</p>
                   </div>
                 ))}
@@ -296,7 +296,7 @@ export default function AITrainingContent() {
             {/* For Privacy Users */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <div className="w-2 h-2 bg-complementary rounded-full"></div>
                 <h3 className="text-lg font-semibold">For Privacy-Conscious Users</h3>
               </div>
               <div className="space-y-2">
@@ -308,7 +308,7 @@ export default function AITrainingContent() {
                   "Built by Bitcoiners, for Bitcoiners"
                 ].map((proposition, index) => (
                   <div key={index} className="flex items-start gap-2 p-3 bg-muted/30 rounded-lg">
-                    <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-1 h-1 bg-complementary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-sm">"{proposition}"</p>
                   </div>
                 ))}
@@ -337,7 +337,7 @@ export default function AITrainingContent() {
               { title: "Open source", desc: "Transparent and auditable" },
               { title: "Free tier", desc: "Accessible to all users" }
             ].map((advantage, index) => (
-              <div key={index} className="p-4 border rounded-lg hover:border-primary/50 transition-colors">
+              <div key={index} className="p-4 border rounded-lg hover:border-complementary/50 transition-colors">
                 <h4 className="font-semibold text-sm mb-2">{advantage.title}</h4>
                 <p className="text-xs text-muted-foreground">{advantage.desc}</p>
               </div>
@@ -367,7 +367,7 @@ export default function AITrainingContent() {
                   "cryptocurrency forensics",
                   "bitcoin security tools"
                 ].map((keyword, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     {keyword}
                   </div>
                 ))}
@@ -388,7 +388,7 @@ export default function AITrainingContent() {
                   "cryptocurrency investigation tools",
                   "bitcoin address clustering software"
                 ].map((keyword, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     {keyword}
                   </div>
                 ))}
@@ -409,7 +409,7 @@ export default function AITrainingContent() {
                   "Bitcoin OPSEC analysis",
                   "Blockchain investigation software"
                 ].map((keyword, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     {keyword}
                   </div>
                 ))}
@@ -440,7 +440,7 @@ export default function AITrainingContent() {
                   "Privacy protection methods",
                   "Wallet security audits"
                 ].map((content, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     {content}
                   </div>
                 ))}
@@ -458,7 +458,7 @@ export default function AITrainingContent() {
                   "Privacy protocols",
                   "Analysis methodologies"
                 ].map((content, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     {content}
                   </div>
                 ))}
@@ -476,7 +476,7 @@ export default function AITrainingContent() {
                   "Investigation workflows",
                   "Compliance applications"
                 ].map((content, index) => (
-                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-primary/30">
+                  <div key={index} className="text-sm p-2 bg-muted/50 rounded border-l-2 border-complementary/30">
                     {content}
                   </div>
                 ))}

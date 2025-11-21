@@ -37,14 +37,14 @@ export function PricingSection() {
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-6xl mx-auto text-center relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gradient-title">Pricing Plans</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gradient-complementary">Pricing Plans</h2>
           <p className="text-lg text-muted-foreground font-normal">Choose the plan that fits your Bitcoin analysis needs. Start free during our beta period.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {plans.map((plan, idx) => (
             <Card 
               key={idx} 
-              className={`relative flex flex-col text-left overflow-hidden shadow-glow hover:border-primary/50 ${
+              className={`relative flex flex-col text-left overflow-hidden shadow-glow hover:border-complementary/50 ${
                 plan.comingSoon ? 'blur-sm pointer-events-none' : ''
               }`}
             >
@@ -53,7 +53,7 @@ export function PricingSection() {
               )}
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">{plan.title}</CardTitle>
-                <p className="text-3xl text-primary font-bold">{plan.price}</p>
+                <p className="text-3xl text-complementary font-bold">{plan.price}</p>
                 <CardDescription className="font-normal">{plan.desc}</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">

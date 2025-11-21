@@ -31,11 +31,11 @@ export default function CompanyInformationPage() {
             </Link>
           </Button>
           <div className="prose prose-invert max-w-none text-muted-foreground">
-            <h1 className="text-4xl font-bold mb-4 text-gradient-title">Company Information</h1>
+            <h1 className="text-4xl font-bold mb-4 text-gradient-complementary">Company Information</h1>
             
             <div className="space-y-6">
               <div className="bg-muted/20 rounded-lg p-6 border border-border/50">
-                <h2 className="text-2xl font-bold text-gradient-title mb-4">Legal Entity</h2>
+                <h2 className="text-2xl font-bold text-gradient-complementary mb-4">Legal Entity</h2>
                 <p className="text-lg font-semibold text-foreground mb-2">
                   BitSleuth Ltd trading as BitSleuth
                 </p>
@@ -45,7 +45,7 @@ export default function CompanyInformationPage() {
               </div>
 
               <div className="bg-muted/20 rounded-lg p-6 border border-border/50">
-                <h2 className="text-2xl font-bold text-gradient-title mb-4">Company Details</h2>
+                <h2 className="text-2xl font-bold text-gradient-complementary mb-4">Company Details</h2>
                 <div className="space-y-3">
                   <div>
                     <span className="font-semibold text-foreground">Company Number:</span>
@@ -63,12 +63,12 @@ export default function CompanyInformationPage() {
               </div>
 
               <div className="bg-muted/20 rounded-lg p-6 border border-complementary/20">
-                <h2 className="text-2xl font-bold text-primary mb-4">Contact Information</h2>
+                <h2 className="text-2xl font-bold text-complementary mb-4">Contact Information</h2>
                 <p className="font-normal">
                   For general inquiries, please contact us at{' '}
                   <a
                     href="mailto:hello@bitsleuth.ai"
-                    className="text-primary hover:underline"
+                    className="text-complementary hover:underline"
                   >
                     hello@bitsleuth.ai
                   </a>
@@ -77,7 +77,7 @@ export default function CompanyInformationPage() {
                   For support and technical assistance, please contact us at{' '}
                   <a
                     href="mailto:support@bitsleuth.ai"
-                    className="text-primary hover:underline"
+                    className="text-complementary hover:underline"
                   >
                     support@bitsleuth.ai
                   </a>

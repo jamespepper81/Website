@@ -7,22 +7,22 @@ import { Fingerprint, KeyRound, ShieldOff, Bitcoin, Lock, UserX } from "lucide-r
 
 const features = [
   {
-    icon: <KeyRound className="h-8 w-8 text-primary" />,
+    icon: <KeyRound className="h-8 w-8 text-complementary" />,
     title: 'Truly Non-Custodial',
     description: 'You control your keys, you control your Bitcoin. We never have access to your funds or your passphrase.',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
-    icon: <Fingerprint className="h-8 w-8 text-primary" />,
+    icon: <Fingerprint className="h-8 w-8 text-complementary" />,
     title: 'On-Chain Privacy',
     description: 'Designed to mitigate address reuse and protect your transaction history from trivial blockchain analysis.',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
   {
-    icon: <ShieldOff className="h-8 w-8 text-primary" />,
+    icon: <ShieldOff className="h-8 w-8 text-complementary" />,
     title: 'No Accounts or Tracking',
     description: 'No email sign-ups, no personal information collected. Your privacy is paramount from the moment you start.',
-    colorScheme: 'primary',
+    colorScheme: 'complementary',
   },
 ];
 
@@ -32,19 +32,19 @@ export function WalletFeaturesSection() {
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gradient-title">Your Wallet, Your Privacy</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gradient-complementary">Your Wallet, Your Privacy</h2>
           <p className="text-lg text-muted-foreground font-normal">Keep control of your Bitcoin from the moment you start.</p>
           <div className="flex flex-wrap justify-center gap-3 pt-6">
-            <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
-            <ValueBadge icon={Lock} text="Self-Custody" variant="orange" />
-            <ValueBadge icon={UserX} text="Anonymous" variant="orange" />
+            <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="complementary" />
+            <ValueBadge icon={Lock} text="Self-Custody" variant="complementary" />
+            <ValueBadge icon={UserX} text="Anonymous" variant="complementary" />
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-8 text-left">
           {features.map((feature, idx) => (
             <Card 
               key={idx} 
-              className="bg-card/50 transition-colors shadow-glow p-4 hover:border-primary/50"
+              className="bg-card/50 transition-colors shadow-glow p-4 hover:border-complementary/50"
             >
               <CardHeader className="flex flex-row items-start gap-4 p-2">
                  {feature.icon}

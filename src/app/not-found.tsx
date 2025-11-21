@@ -16,7 +16,7 @@ const RobotIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="h-12 w-12 text-primary"
+    className="h-12 w-12 text-complementary"
   >
     <path d="M12 8V4H8" />
     <rect width="16" height="12" x="4" y="8" rx="2" />

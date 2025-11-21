@@ -32,7 +32,7 @@ export default function PassphraseGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="passphrase" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is a Passphrase? Understanding Your Wallet&apos;s Most Important Security Feature
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -43,7 +43,7 @@ export default function PassphraseGlossaryPage() {
                 href="https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:underline"
+                className="text-complementary hover:underline"
               >
                 view word list
               </a>
@@ -64,7 +64,7 @@ export default function PassphraseGlossaryPage() {
               or 24 words, making it compatible with most major wallets.
             </p>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               Why Your Crypto Passphrase Matters
             </h2>
             <p className="text-muted-foreground font-normal">
@@ -76,7 +76,7 @@ export default function PassphraseGlossaryPage() {
 
             <div className="mt-6 space-y-4">
               <h3 className="text-xl font-bold flex items-center">
-                <AlertCircle className="mr-2 h-6 w-6 text-primary" />
+                <AlertCircle className="mr-2 h-6 w-6 text-complementary" />
                 Important Security Tips:
               </h3>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground font-normal pl-4">
@@ -95,7 +95,7 @@ export default function PassphraseGlossaryPage() {
               </ul>
             </div>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               Your Crypto, Your Responsibility
             </h2>
             <p className="text-muted-foreground font-normal">
