@@ -30,7 +30,7 @@ export default function DoubleSpendGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="double-spend" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is a Double Spend?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -40,7 +40,7 @@ export default function DoubleSpendGlossaryPage() {
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                  <h3 className="text-xl font-bold flex items-center mb-2">
-                    <Copy className="mr-2 h-6 w-6 text-primary" />
+                    <Copy className="mr-2 h-6 w-6 text-complementary" />
                     The Digital Dilemma
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
@@ -52,25 +52,25 @@ export default function DoubleSpendGlossaryPage() {
             <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <GitBranch className="mr-2 h-6 w-6 text-primary" />
+                        <GitBranch className="mr-2 h-6 w-6 text-complementary" />
                         How Bitcoin Prevents It
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
-                      All transactions are broadcast to the entire network. The first transaction to be included in a confirmed <Link href="/glossary/block" className="text-primary hover:underline">block</Link> is considered valid, while the other is rejected.
+                      All transactions are broadcast to the entire network. The first transaction to be included in a confirmed <Link href="/glossary/block" className="text-complementary hover:underline">block</Link> is considered valid, while the other is rejected.
                     </p>
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <ShieldCheck className="mr-2 h-6 w-6 text-primary" />
+                        <ShieldCheck className="mr-2 h-6 w-6 text-complementary" />
                         The Role of Confirmations
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
-                      This is why waiting for <Link href="/glossary/confirmation" className="text-primary hover:underline">confirmations</Link> is crucial. The more blocks that are built on top of a transaction, the more certain it is that it's the legitimate one and cannot be reversed.
+                      This is why waiting for <Link href="/glossary/confirmation" className="text-complementary hover:underline">confirmations</Link> is crucial. The more blocks that are built on top of a transaction, the more certain it is that it's the legitimate one and cannot be reversed.
                     </p>
                 </div>
             </div>
             
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               A Fundamental Breakthrough
             </h2>
             <p className="text-muted-foreground font-normal">

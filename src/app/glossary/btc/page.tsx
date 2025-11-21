@@ -28,7 +28,7 @@ export default function BtcGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="btc" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is BTC?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -37,7 +37,7 @@ export default function BtcGlossaryPage() {
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                  <h3 className="text-xl font-bold flex items-center mb-2">
-                    <Tag className="mr-2 h-6 w-6 text-primary" />
+                    <Tag className="mr-2 h-6 w-6 text-complementary" />
                     Usage
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">

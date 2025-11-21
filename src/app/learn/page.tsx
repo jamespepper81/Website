@@ -80,24 +80,24 @@ export default function LearnPage() {
             <BackgroundBeams />
             <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
               <div className="space-y-6 text-center">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-                  <BookOpen className="mr-2 h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium text-primary">Educational Learning Hub</span>
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-complementary/10 border border-complementary/20 mb-4">
+                  <BookOpen className="mr-2 h-4 w-4 text-complementary" />
+                  <span className="text-sm font-medium text-complementary">Educational Learning Hub</span>
                 </div>
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title pb-2">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-complementary pb-2">
                   How Bitcoin Works
                 </h1>
                 <p className="text-xl text-muted-foreground md:text-2xl font-medium leading-relaxed max-w-3xl mx-auto">
                   Understand the revolutionary technology behind the world's first decentralized digital currency
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                  <Button size="lg" asChild>
+                  <Button size="lg" asChild className="bg-complementary hover:bg-complementary/90 text-complementary-foreground">
                     <Link href="#basics">
                       Start Learning
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild>
+                  <Button size="lg" variant="outline" asChild className="border-complementary/20 hover:bg-complementary/10 hover:text-complementary">
                     <a href="/documents/bitcoin.pdf" target="_blank" rel="noopener noreferrer">
                       <FileText className="mr-2 h-5 w-5" />
                       Read the Whitepaper
@@ -114,23 +114,23 @@ export default function LearnPage() {
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
+                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-complementary">
                   What Is Bitcoin?
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
-                  Bitcoin is the world's first decentralized digital currency, launched in 2009. It's a revolutionary <Link href="/glossary/p2p" className="text-primary hover:underline font-semibold">peer-to-peer</Link> electronic cash system that enables direct transactions without banks, governments, or any central authority.
+                  Bitcoin is the world's first decentralized digital currency, launched in 2009. It's a revolutionary <Link href="/glossary/p2p" className="text-complementary hover:underline font-semibold">peer-to-peer</Link> electronic cash system that enables direct transactions without banks, governments, or any central authority.
                 </p>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  Unlike traditional money, Bitcoin exists entirely online and is powered by a global network of computers. Every transaction is recorded on a public, transparent ledger called the <Link href="/glossary/blockchain" className="text-primary hover:underline font-semibold">blockchain</Link>, making the system secure, open, and resistant to censorship.
+                  Unlike traditional money, Bitcoin exists entirely online and is powered by a global network of computers. Every transaction is recorded on a public, transparent ledger called the <Link href="/glossary/blockchain" className="text-complementary hover:underline font-semibold">blockchain</Link>, making the system secure, open, and resistant to censorship.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <Card className="bg-gradient-to-br from-background to-secondary/20 border-primary/20">
+                <Card className="bg-gradient-to-br from-background to-secondary/20 border-complementary/20">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <Network className="h-8 w-8 text-primary" />
+                      <div className="p-3 rounded-lg bg-complementary/10">
+                        <Network className="h-8 w-8 text-complementary" />
                       </div>
                       <h3 className="text-2xl font-bold">The Network</h3>
                     </div>
@@ -138,7 +138,7 @@ export default function LearnPage() {
                       Bitcoin (with capital 'B') refers to the entire network and protocol. It's a decentralized system running on thousands of computers worldwide, maintained by a global community of miners, developers, and users.
                     </p>
                     <p className="text-muted-foreground mb-4">
-                      The <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link> serves as a public ledger, recording every transaction in an immutable chain of blocks. This transparency allows anyone to verify transactions while maintaining user privacy through cryptographic addresses.
+                      The <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link> serves as a public ledger, recording every transaction in an immutable chain of blocks. This transparency allows anyone to verify transactions while maintaining user privacy through cryptographic addresses.
                     </p>
                     <p className="text-muted-foreground">
                       With no single point of control or failure, Bitcoin operates 24/7/365 across borders, enabling anyone with internet access to participate in the global economy.
@@ -146,16 +146,16 @@ export default function LearnPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-background to-secondary/20 border-primary/20">
+                <Card className="bg-gradient-to-br from-background to-secondary/20 border-complementary/20">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <Coins className="h-8 w-8 text-primary" />
+                      <div className="p-3 rounded-lg bg-complementary/10">
+                        <Coins className="h-8 w-8 text-complementary" />
                       </div>
                       <h3 className="text-2xl font-bold">The Currency</h3>
                     </div>
                     <p className="text-muted-foreground mb-4">
-                      bitcoin (with lowercase 'b') refers to the digital currency units. Each <Link href="/glossary/btc" className="text-primary hover:underline">BTC</Link> can be divided into 100 million smaller units called satoshis, making it possible to transact in tiny fractions.
+                      bitcoin (with lowercase 'b') refers to the digital currency units. Each <Link href="/glossary/btc" className="text-complementary hover:underline">BTC</Link> can be divided into 100 million smaller units called satoshis, making it possible to transact in tiny fractions.
                     </p>
                     <p className="text-muted-foreground mb-4">
                       With a fixed supply cap of 21 million bitcoins, it's designed to be scarce and deflationary by nature—no government or entity can print more. This predictable supply makes Bitcoin fundamentally different from traditional currencies that can be inflated at will.
@@ -167,16 +167,16 @@ export default function LearnPage() {
                 </Card>
               </div>
 
-              <Card className="bg-primary/5 border-primary/20">
+              <Card className="bg-complementary/5 border-complementary/20">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4">
-                    <FileText className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                    <FileText className="h-6 w-6 text-complementary mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="text-xl font-bold mb-2">The Original Vision</h3>
                       <p className="text-muted-foreground mb-4">
                         In 2008, an individual or group using the pseudonym <span className="font-semibold text-foreground">Satoshi Nakamoto</span> published the Bitcoin whitepaper titled <span className="italic">"Bitcoin: A Peer-to-Peer Electronic Cash System"</span>.
                       </p>
-                      <Button variant="outline" asChild>
+                      <Button variant="outline" asChild className="border-complementary/20 hover:bg-complementary/10 hover:text-complementary">
                         <a href="/documents/bitcoin.pdf" target="_blank" rel="noopener noreferrer">
                           Read the Whitepaper
                           <ExternalLink className="ml-2 h-4 w-4" />
@@ -194,7 +194,7 @@ export default function LearnPage() {
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
+                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-complementary">
                   How Bitcoin Works
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-6">
@@ -207,34 +207,34 @@ export default function LearnPage() {
 
               <div className="space-y-8">
                 {/* Transactions */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <Zap className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <Zap className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Transactions</h3>
                         <p className="text-muted-foreground mb-4">
-                          When you send bitcoin, you're creating a transaction that transfers ownership from your <Link href="/glossary/wallet" className="text-primary hover:underline">wallet</Link> to another. Each transaction is digitally signed using your <Link href="/glossary/private-key" className="text-primary hover:underline">private key</Link>, proving you own the funds.
+                          When you send bitcoin, you're creating a transaction that transfers ownership from your <Link href="/glossary/wallet" className="text-complementary hover:underline">wallet</Link> to another. Each transaction is digitally signed using your <Link href="/glossary/private-key" className="text-complementary hover:underline">private key</Link>, proving you own the funds.
                         </p>
                         <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                           <h4 className="font-semibold mb-2 flex items-center gap-2">
-                            <Database className="h-5 w-5 text-primary" />
+                            <Database className="h-5 w-5 text-complementary" />
                             Transaction Anatomy
                           </h4>
                           <ul className="space-y-2 text-sm text-muted-foreground">
                             <li className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
-                              <span><strong>Inputs:</strong> References to previous transactions (your <Link href="/glossary/utxo" className="text-primary hover:underline">UTXOs</Link>)</span>
+                              <span className="text-complementary mr-2">•</span>
+                              <span><strong>Inputs:</strong> References to previous transactions (your <Link href="/glossary/utxo" className="text-complementary hover:underline">UTXOs</Link>)</span>
                             </li>
                             <li className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
+                              <span className="text-complementary mr-2">•</span>
                               <span><strong>Outputs:</strong> New UTXOs created for recipients</span>
                             </li>
                             <li className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
-                              <span><strong>Signature:</strong> Cryptographic proof of ownership using your <Link href="/glossary/signature" className="text-primary hover:underline">digital signature</Link></span>
+                              <span className="text-complementary mr-2">•</span>
+                              <span><strong>Signature:</strong> Cryptographic proof of ownership using your <Link href="/glossary/signature" className="text-complementary hover:underline">digital signature</Link></span>
                             </li>
                           </ul>
                         </div>
@@ -244,24 +244,24 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Mining and Consensus */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <Shield className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <Shield className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Mining & Security</h3>
                         <p className="text-muted-foreground mb-4">
-                          <Link href="/glossary/mining" className="text-primary hover:underline">Mining</Link> is the process of adding new transactions to the blockchain. Miners compete to solve complex mathematical puzzles, and the winner gets to add the next <Link href="/glossary/block" className="text-primary hover:underline">block</Link> of transactions.
+                          <Link href="/glossary/mining" className="text-complementary hover:underline">Mining</Link> is the process of adding new transactions to the blockchain. Miners compete to solve complex mathematical puzzles, and the winner gets to add the next <Link href="/glossary/block" className="text-complementary hover:underline">block</Link> of transactions.
                         </p>
                         <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                           <h4 className="font-semibold mb-2 flex items-center gap-2">
-                            <TrendingUp className="h-5 w-5 text-primary" />
+                            <TrendingUp className="h-5 w-5 text-complementary" />
                             Proof-of-Work
                           </h4>
                           <p className="text-sm text-muted-foreground mb-3">
-                            This computational work requires significant energy, making it extremely expensive to attack the network. The more <Link href="/glossary/hash-rate" className="text-primary hover:underline">hash rate</Link> (computing power) on the network, the more secure Bitcoin becomes.
+                            This computational work requires significant energy, making it extremely expensive to attack the network. The more <Link href="/glossary/hash-rate" className="text-complementary hover:underline">hash rate</Link> (computing power) on the network, the more secure Bitcoin becomes.
                           </p>
                           <p className="text-sm text-muted-foreground">
                             Each block contains a reference to the previous block, creating an immutable chain. Changing historical data would require redoing all the computational work since that block—practically impossible.
@@ -273,16 +273,16 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Decentralization */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <GitBranch className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <GitBranch className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Decentralization</h3>
                         <p className="text-muted-foreground mb-4">
-                          Bitcoin operates on a <Link href="/glossary/p2p" className="text-primary hover:underline">peer-to-peer network</Link> of thousands of nodes (computers) worldwide. No single entity controls the network, making it censorship-resistant and resilient.
+                          Bitcoin operates on a <Link href="/glossary/p2p" className="text-complementary hover:underline">peer-to-peer network</Link> of thousands of nodes (computers) worldwide. No single entity controls the network, making it censorship-resistant and resilient.
                         </p>
                         <div className="grid sm:grid-cols-2 gap-4">
                           <div className="bg-secondary/30 p-4 rounded-lg border border-border">
@@ -304,28 +304,28 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Cryptography */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <Lock className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <Lock className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Cryptography</h3>
                         <p className="text-muted-foreground mb-4">
-                          <Link href="/glossary/cryptography" className="text-primary hover:underline">Cryptography</Link> is fundamental to Bitcoin's security. It enables:
+                          <Link href="/glossary/cryptography" className="text-complementary hover:underline">Cryptography</Link> is fundamental to Bitcoin's security. It enables:
                         </p>
                         <ul className="space-y-3 text-muted-foreground">
                           <li className="flex items-start">
-                            <span className="text-primary mr-2 mt-1">•</span>
+                            <span className="text-complementary mr-2 mt-1">•</span>
                             <span><strong className="text-foreground">Ownership verification</strong> through public-key cryptography without revealing private keys</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2 mt-1">•</span>
+                            <span className="text-complementary mr-2 mt-1">•</span>
                             <span><strong className="text-foreground">Transaction integrity</strong> via cryptographic hashes that make tampering evident</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2 mt-1">•</span>
+                            <span className="text-complementary mr-2 mt-1">•</span>
                             <span><strong className="text-foreground">Address generation</strong> from public keys, providing privacy and security</span>
                           </li>
                         </ul>
@@ -342,7 +342,7 @@ export default function LearnPage() {
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
+                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-complementary">
                   How to Get Bitcoin
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -352,11 +352,11 @@ export default function LearnPage() {
 
               <div className="space-y-8">
                 {/* Cryptocurrency Exchanges */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <Building2 className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <Building2 className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Cryptocurrency Exchanges</h3>
@@ -365,24 +365,24 @@ export default function LearnPage() {
                         </p>
                         <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                           <h4 className="font-semibold mb-2 flex items-center gap-2">
-                            <CreditCard className="h-5 w-5 text-primary" />
+                            <CreditCard className="h-5 w-5 text-complementary" />
                             Getting Started on an Exchange
                           </h4>
                           <ul className="space-y-2 text-sm text-muted-foreground">
                             <li className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
+                              <span className="text-complementary mr-2">•</span>
                               <span><strong>Create an account:</strong> Sign up with your email and create a secure password</span>
                             </li>
                             <li className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
+                              <span className="text-complementary mr-2">•</span>
                               <span><strong>Verify your identity:</strong> Complete KYC (Know Your Customer) by providing government ID and proof of address</span>
                             </li>
                             <li className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
+                              <span className="text-complementary mr-2">•</span>
                               <span><strong>Add payment method:</strong> Link your bank account, debit card, or other payment options</span>
                             </li>
                             <li className="flex items-start">
-                              <span className="text-primary mr-2">•</span>
+                              <span className="text-complementary mr-2">•</span>
                               <span><strong>Buy bitcoin:</strong> Choose the amount to purchase (you can start with as little as $1), review fees, and confirm</span>
                             </li>
                           </ul>
@@ -393,11 +393,11 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Peer-to-Peer and Other Methods */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <Users className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <Users className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Alternative Acquisition Methods</h3>
@@ -436,27 +436,27 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Important Considerations */}
-                <Card className="bg-primary/5 border-primary/20">
+                <Card className="bg-complementary/5 border-complementary/20">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
-                      <Shield className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                      <Shield className="h-6 w-6 text-complementary mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="text-xl font-bold mb-2">Important Considerations</h3>
                         <ul className="space-y-2 text-muted-foreground">
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Start small:</strong> Begin with a modest amount to familiarize yourself with the buying process and wallet management</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Compare fees:</strong> Different platforms and payment methods have varying fee structures—bank transfers are typically cheaper than card purchases</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Security first:</strong> Enable two-factor authentication (2FA) and use strong, unique passwords on all platforms</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Beware of scams:</strong> Only use reputable, regulated exchanges and never share your private keys or seed phrases</span>
                           </li>
                         </ul>
@@ -473,7 +473,7 @@ export default function LearnPage() {
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
+                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-complementary">
                   How to Use Bitcoin
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -483,21 +483,21 @@ export default function LearnPage() {
 
               <div className="space-y-8">
                 {/* Storing Bitcoin */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <Wallet className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <Wallet className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Storing Your Bitcoin</h3>
                         <p className="text-muted-foreground mb-4">
-                          A <Link href="/glossary/wallet" className="text-primary hover:underline">Bitcoin wallet</Link> is software that stores your <Link href="/glossary/private-key" className="text-primary hover:underline">private keys</Link> and enables you to send and receive bitcoin. Choosing the right wallet depends on your security needs and usage frequency.
+                          A <Link href="/glossary/wallet" className="text-complementary hover:underline">Bitcoin wallet</Link> is software that stores your <Link href="/glossary/private-key" className="text-complementary hover:underline">private keys</Link> and enables you to send and receive bitcoin. Choosing the right wallet depends on your security needs and usage frequency.
                         </p>
                         <div className="grid sm:grid-cols-2 gap-4 mb-4">
                           <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                             <h4 className="font-semibold mb-2 flex items-center gap-2">
-                              <Globe className="h-5 w-5 text-primary" />
+                              <Globe className="h-5 w-5 text-complementary" />
                               Hot Wallets
                             </h4>
                             <p className="text-sm text-muted-foreground mb-2">
@@ -509,7 +509,7 @@ export default function LearnPage() {
                           </div>
                           <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                             <h4 className="font-semibold mb-2 flex items-center gap-2">
-                              <Lock className="h-5 w-5 text-primary" />
+                              <Lock className="h-5 w-5 text-complementary" />
                               Cold Wallets
                             </h4>
                             <p className="text-sm text-muted-foreground mb-2">
@@ -520,7 +520,7 @@ export default function LearnPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
+                        <div className="bg-complementary/5 p-4 rounded-lg border border-complementary/20">
                           <p className="text-sm text-muted-foreground">
                             <strong className="text-foreground">Critical:</strong> Never share your private keys or seed phrase with anyone. These give complete control over your bitcoin. If lost, your funds are unrecoverable.
                           </p>
@@ -531,11 +531,11 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Sending and Receiving */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <Send className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <Send className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Sending & Receiving Bitcoin</h3>
@@ -545,44 +545,44 @@ export default function LearnPage() {
                         <div className="space-y-4">
                           <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                             <h4 className="font-semibold mb-2 flex items-center gap-2">
-                              <DownloadCloud className="h-5 w-5 text-primary" />
+                              <DownloadCloud className="h-5 w-5 text-complementary" />
                               Receiving Bitcoin
                             </h4>
                             <ul className="space-y-2 text-sm text-muted-foreground">
                               <li className="flex items-start">
-                                <span className="text-primary mr-2">•</span>
+                                <span className="text-complementary mr-2">•</span>
                                 <span>Open your wallet and locate your Bitcoin address (a long string starting with 1, 3, or bc1)</span>
                               </li>
                               <li className="flex items-start">
-                                <span className="text-primary mr-2">•</span>
+                                <span className="text-complementary mr-2">•</span>
                                 <span>Share this address or QR code with the sender</span>
                               </li>
                               <li className="flex items-start">
-                                <span className="text-primary mr-2">•</span>
+                                <span className="text-complementary mr-2">•</span>
                                 <span>Wait for confirmations (typically 10-60 minutes for full security)</span>
                               </li>
                             </ul>
                           </div>
                           <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                             <h4 className="font-semibold mb-2 flex items-center gap-2">
-                              <Send className="h-5 w-5 text-primary" />
+                              <Send className="h-5 w-5 text-complementary" />
                               Sending Bitcoin
                             </h4>
                             <ul className="space-y-2 text-sm text-muted-foreground">
                               <li className="flex items-start">
-                                <span className="text-primary mr-2">•</span>
+                                <span className="text-complementary mr-2">•</span>
                                 <span>Enter the recipient's Bitcoin address (triple-check for accuracy—transactions can't be reversed!)</span>
                               </li>
                               <li className="flex items-start">
-                                <span className="text-primary mr-2">•</span>
+                                <span className="text-complementary mr-2">•</span>
                                 <span>Specify the amount to send in BTC or your local currency</span>
                               </li>
                               <li className="flex items-start">
-                                <span className="text-primary mr-2">•</span>
+                                <span className="text-complementary mr-2">•</span>
                                 <span>Choose transaction fee (higher fees = faster confirmation)</span>
                               </li>
                               <li className="flex items-start">
-                                <span className="text-primary mr-2">•</span>
+                                <span className="text-complementary mr-2">•</span>
                                 <span>Review and confirm the transaction</span>
                               </li>
                             </ul>
@@ -594,11 +594,11 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Spending Bitcoin */}
-                <Card className="bg-background border-primary/20">
+                <Card className="bg-background border-complementary/20">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-[auto,1fr] gap-6 items-start">
-                      <div className="p-4 rounded-xl bg-primary/10">
-                        <ShoppingCart className="h-12 w-12 text-primary" />
+                      <div className="p-4 rounded-xl bg-complementary/10">
+                        <ShoppingCart className="h-12 w-12 text-complementary" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Spending Bitcoin</h3>
@@ -637,35 +637,35 @@ export default function LearnPage() {
                 </Card>
 
                 {/* Best Practices */}
-                <Card className="bg-primary/5 border-primary/20">
+                <Card className="bg-complementary/5 border-complementary/20">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
-                      <Shield className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                      <Shield className="h-6 w-6 text-complementary mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="text-xl font-bold mb-2">Security Best Practices</h3>
                         <ul className="space-y-2 text-muted-foreground">
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Use hardware wallets</strong> for significant holdings to protect against online threats</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Back up your wallet</strong> by securely storing your seed phrase in multiple physical locations</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Verify addresses</strong> carefully before sending—double-check every character as transactions are irreversible</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Start with small amounts</strong> when testing new wallets or services</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Keep software updated</strong> to ensure you have the latest security patches and features</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
+                            <span className="text-complementary mr-2">•</span>
                             <span><strong className="text-foreground">Be aware of taxes</strong> as many jurisdictions treat bitcoin as property subject to capital gains tax</span>
                           </li>
                         </ul>
@@ -682,7 +682,7 @@ export default function LearnPage() {
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-title">
+                <h2 className="text-3xl font-bold sm:text-4xl mb-4 text-gradient-complementary">
                   Key Bitcoin Concepts
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -697,59 +697,59 @@ export default function LearnPage() {
                     description: 'The immutable public ledger recording all Bitcoin transactions',
                     icon: Database,
                     slug: 'blockchain',
-                    colorScheme: 'primary'
+                    colorScheme: 'complementary'
                   },
                   {
                     term: 'Private Key',
                     description: 'Your secret code that proves ownership and allows spending',
                     icon: Lock,
                     slug: 'private-key',
-                    colorScheme: 'primary'
+                    colorScheme: 'complementary'
                   },
                   {
                     term: 'Wallet',
                     description: 'Software managing your keys and enabling Bitcoin transactions',
                     icon: Shield,
                     slug: 'wallet',
-                    colorScheme: 'primary'
+                    colorScheme: 'complementary'
                   },
                   {
                     term: 'Transaction',
                     description: 'Transfer of bitcoin value between addresses on the network',
                     icon: Zap,
                     slug: 'utxo',
-                    colorScheme: 'primary'
+                    colorScheme: 'complementary'
                   },
                   {
                     term: 'Mining',
                     description: 'Process of validating transactions and securing the network',
                     icon: TrendingUp,
                     slug: 'mining',
-                    colorScheme: 'primary'
+                    colorScheme: 'complementary'
                   },
                   {
                     term: 'Peer-to-Peer',
                     description: 'Decentralized network where participants interact directly',
                     icon: Users,
                     slug: 'p2p',
-                    colorScheme: 'primary'
+                    colorScheme: 'complementary'
                   },
                 ].map((concept) => (
                   <Link key={concept.slug} href={`/glossary/${concept.slug}`} className="group">
-                    <Card className="h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:bg-secondary/20">
+                    <Card className="h-full transition-all duration-300 hover:shadow-lg hover:border-complementary/50 hover:bg-secondary/20">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-3 mb-3">
-                          <div className="p-2 rounded-lg transition-colors bg-primary/10 group-hover:bg-primary/20">
-                            <concept.icon className="h-6 w-6 text-primary" />
+                          <div className="p-2 rounded-lg transition-colors bg-complementary/10 group-hover:bg-complementary/20">
+                            <concept.icon className="h-6 w-6 text-complementary" />
                           </div>
-                          <h3 className="text-xl font-bold transition-colors group-hover:text-primary">
+                          <h3 className="text-xl font-bold transition-colors group-hover:text-complementary">
                             {concept.term}
                           </h3>
                         </div>
                         <p className="text-muted-foreground text-sm">
                           {concept.description}
                         </p>
-                        <div className="mt-4 flex items-center text-sm group-hover:underline text-primary">
+                        <div className="mt-4 flex items-center text-sm group-hover:underline text-complementary">
                           Learn more
                           <ArrowRight className="ml-1 h-4 w-4" />
                         </div>
@@ -760,7 +760,7 @@ export default function LearnPage() {
               </div>
 
               <div className="text-center mt-12">
-                <Button size="lg" asChild>
+                <Button size="lg" asChild className="bg-complementary hover:bg-complementary/90 text-complementary-foreground">
                   <Link href="/glossary">
                     Explore Full Glossary
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -771,26 +771,26 @@ export default function LearnPage() {
           </section>
 
           {/* Getting Started Section */}
-          <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-primary/5 to-background relative overflow-hidden">
+          <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-complementary/5 to-background relative overflow-hidden">
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
-              <Card className="bg-background border-primary/30">
+              <Card className="bg-background border-complementary/30">
                 <CardContent className="p-8 md:p-12">
                   <div className="text-center space-y-6">
-                    <h2 className="text-3xl font-bold sm:text-4xl text-gradient-title">
+                    <h2 className="text-3xl font-bold sm:text-4xl text-gradient-complementary">
                       Ready to Get Started?
                     </h2>
                     <p className="text-lg text-muted-foreground">
                       Explore our tools to analyze Bitcoin wallets and manage your own with privacy-first solutions
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                      <Button size="lg" asChild>
+                      <Button size="lg" asChild className="bg-complementary hover:bg-complementary/90 text-complementary-foreground">
                         <Link href="/analyzer">
                           <Shield className="mr-2 h-5 w-5" />
                           Wallet Analyzer
                         </Link>
                       </Button>
-                      <Button size="lg" variant="outline" asChild>
+                      <Button size="lg" variant="outline" asChild className="border-complementary/20 hover:bg-complementary/10 hover:text-complementary">
                         <Link href="/wallet">
                           <Lock className="mr-2 h-5 w-5" />
                           Privacy Wallet

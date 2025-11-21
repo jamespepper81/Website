@@ -10,7 +10,7 @@ export function WalletHeroSection() {
       <BackgroundBeams />
       <div className="container max-w-7xl mx-auto relative z-10">
         <div className="space-y-6 text-center">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title">
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-complementary">
             BitSleuth Wallet: Your Bitcoin. Your Keys. Secure, Non-Custodial & Private by Default.
           </h1>
           <p className="text-lg text-muted-foreground md:text-xl font-normal">

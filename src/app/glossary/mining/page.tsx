@@ -30,7 +30,7 @@ export default function MiningGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="mining" relatedTerms={relatedTerms}>
-        <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+        <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
           What Is Mining?
         </h1>
         <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -40,11 +40,11 @@ export default function MiningGlossaryPage() {
         <Card className="my-6 bg-secondary/30">
           <CardContent className="p-4">
              <h3 className="text-xl font-bold flex items-center mb-2">
-                <Cpu className="mr-2 h-6 w-6 text-primary" />
+                <Cpu className="mr-2 h-6 w-6 text-complementary" />
                 Proof-of-Work
             </h3>
             <p className="text-muted-foreground mt-2 font-normal">
-                This process is called "proof-of-work." By dedicating immense computational power (<Link href="/glossary/hash-rate" className="text-primary hover:underline">hash rate</Link>), miners prove they have expended real-world resources, making it prohibitively expensive to attack the network.
+                This process is called "proof-of-work." By dedicating immense computational power (<Link href="/glossary/hash-rate" className="text-complementary hover:underline">hash rate</Link>), miners prove they have expended real-world resources, making it prohibitively expensive to attack the network.
             </p>
           </CardContent>
         </Card>
@@ -52,16 +52,16 @@ export default function MiningGlossaryPage() {
         <div className="mt-8 grid md:grid-cols-2 gap-8">
             <div>
                 <h3 className="text-xl font-bold flex items-center">
-                    <GitBranch className="mr-2 h-6 w-6 text-primary" />
+                    <GitBranch className="mr-2 h-6 w-6 text-complementary" />
                     Securing the Blockchain
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
-                  The primary role of mining is to validate new transactions and add them to the <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link>. The winner of the computational race gets to create the next <Link href="/glossary/block" className="text-primary hover:underline">block</Link>, effectively finalizing a new batch of transactions for the entire world to see.
+                  The primary role of mining is to validate new transactions and add them to the <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link>. The winner of the computational race gets to create the next <Link href="/glossary/block" className="text-complementary hover:underline">block</Link>, effectively finalizing a new batch of transactions for the entire world to see.
                 </p>
             </div>
             <div>
                 <h3 className="text-xl font-bold flex items-center">
-                    <Coins className="mr-2 h-6 w-6 text-primary" />
+                    <Coins className="mr-2 h-6 w-6 text-complementary" />
                     Creating New Coins
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
@@ -70,32 +70,32 @@ export default function MiningGlossaryPage() {
             </div>
         </div>
         
-        <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+        <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
           A Global Competition
         </h2>
         <p className="text-muted-foreground font-normal">
          Mining is performed by a decentralized network of participants all over the world. This distribution of power is fundamental to Bitcoin's value proposition, ensuring no single entity can control the network or censor transactions.
         </p>
 
-        <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+        <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
           Mining Approaches: Pooled vs. Solo
         </h2>
         <p className="text-muted-foreground font-normal">
-          Because finding a <Link href="/glossary/block" className="text-primary hover:underline">block</Link> is incredibly difficult, miners can choose between two main strategies.
+          Because finding a <Link href="/glossary/block" className="text-complementary hover:underline">block</Link> is incredibly difficult, miners can choose between two main strategies.
         </p>
         <div className="mt-8 grid md:grid-cols-2 gap-8">
             <div>
                 <h3 className="text-xl font-bold flex items-center">
-                    <Users className="mr-2 h-6 w-6 text-primary" />
+                    <Users className="mr-2 h-6 w-6 text-complementary" />
                     Pooled Mining
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
-                  Most miners join a "pool" where they combine their <Link href="/glossary/hash-rate" className="text-primary hover:underline">hash rate</Link> with others. When the pool finds a block, the reward is shared proportionally among all participants based on their contribution. This provides smaller, but more frequent and predictable payouts.
+                  Most miners join a "pool" where they combine their <Link href="/glossary/hash-rate" className="text-complementary hover:underline">hash rate</Link> with others. When the pool finds a block, the reward is shared proportionally among all participants based on their contribution. This provides smaller, but more frequent and predictable payouts.
                 </p>
             </div>
             <div>
                 <h3 className="text-xl font-bold flex items-center">
-                    <User className="mr-2 h-6 w-6 text-primary" />
+                    <User className="mr-2 h-6 w-6 text-complementary" />
                     Solo Mining
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">

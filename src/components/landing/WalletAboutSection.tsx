@@ -8,15 +8,15 @@ export function WalletAboutSection() {
     <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-3xl mx-auto text-center relative z-10">
-        <h2 className="text-3xl font-bold mb-6 text-gradient-title">About BitSleuth Wallet</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gradient-complementary">About BitSleuth Wallet</h2>
         <p className="text-lg text-muted-foreground font-normal">
           The BitSleuth Wallet is built for privacy-conscious Bitcoiners. We believe in self-custody and minimizing your on-chain footprint. Our wallet is non-custodial, requires no personal information, and is designed to help you transact with greater privacy. Built by developers who believe in financial sovereignty.
         </p>
         <div className="flex flex-wrap justify-center gap-3 pt-6">
-          <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="orange" />
-          <ValueBadge icon={Shield} text="Privacy First" variant="orange" />
-          <ValueBadge icon={UserX} text="No KYC" variant="orange" />
-          <ValueBadge icon={Blocks} text="Self-Custody" variant="orange" />
+          <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="complementary" />
+          <ValueBadge icon={Shield} text="Privacy First" variant="complementary" />
+          <ValueBadge icon={UserX} text="No KYC" variant="complementary" />
+          <ValueBadge icon={Blocks} text="Self-Custody" variant="complementary" />
         </div>
       </div>
     </section>

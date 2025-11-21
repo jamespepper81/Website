@@ -31,7 +31,7 @@ export default function BlockchainGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="blockchain" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is a Blockchain?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -41,7 +41,7 @@ export default function BlockchainGlossaryPage() {
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                  <h3 className="text-xl font-bold flex items-center mb-2">
-                    <BookOpen className="mr-2 h-6 w-6 text-primary" />
+                    <BookOpen className="mr-2 h-6 w-6 text-complementary" />
                     A Digital Ledger
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
@@ -53,16 +53,16 @@ export default function BlockchainGlossaryPage() {
             <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <LinkIcon className="mr-2 h-6 w-6 text-primary" />
+                        <LinkIcon className="mr-2 h-6 w-6 text-complementary" />
                         A Chain of Blocks
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
-                      Transactions are grouped into <Link href="/glossary/block" className="text-primary hover:underline">blocks</Link>, and each block is cryptographically linked to the one before it. This forms an unbroken, chronological chain, hence the name "blockchain."
+                      Transactions are grouped into <Link href="/glossary/block" className="text-complementary hover:underline">blocks</Link>, and each block is cryptographically linked to the one before it. This forms an unbroken, chronological chain, hence the name "blockchain."
                     </p>
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Globe className="mr-2 h-6 w-6 text-primary" />
+                        <Globe className="mr-2 h-6 w-6 text-complementary" />
                         Decentralized and Distributed
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
@@ -71,7 +71,7 @@ export default function BlockchainGlossaryPage() {
                 </div>
             </div>
             
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               Immutable and Secure
             </h2>
             <p className="text-muted-foreground font-normal">

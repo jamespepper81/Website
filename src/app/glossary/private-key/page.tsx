@@ -31,17 +31,17 @@ export default function PrivateKeyGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="private-key" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is a Private Key?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
-              A private key is the secret, cryptographic key that proves your ownership of bitcoins and gives you the ability to spend them. It is the single most important piece of information you need to protect in your Bitcoin <Link href="/glossary/wallet" className="text-primary hover:underline">wallet</Link>.
+              A private key is the secret, cryptographic key that proves your ownership of bitcoins and gives you the ability to spend them. It is the single most important piece of information you need to protect in your Bitcoin <Link href="/glossary/wallet" className="text-complementary hover:underline">wallet</Link>.
             </p>
 
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                 <h3 className="text-xl font-bold flex items-center mb-2">
-                    <KeyRound className="mr-2 h-6 w-6 text-primary" />
+                    <KeyRound className="mr-2 h-6 w-6 text-complementary" />
                     Your Digital Signature
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
@@ -50,7 +50,7 @@ export default function PrivateKeyGlossaryPage() {
               </CardContent>
             </Card>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               Private Key vs. Passphrase
             </h2>
             <p className="text-muted-foreground font-normal">
@@ -67,7 +67,7 @@ export default function PrivateKeyGlossaryPage() {
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Link href="/glossary/passphrase" className="text-primary hover:underline">Passphrase</Link>
+                        <Link href="/glossary/passphrase" className="text-complementary hover:underline">Passphrase</Link>
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
                         This is a list of 12-24 words that acts as a master backup for your entire wallet. This single passphrase can be used to restore all of your private keys and access your funds if you lose your device.

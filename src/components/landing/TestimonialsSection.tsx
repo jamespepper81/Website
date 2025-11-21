@@ -22,7 +22,7 @@ export function TestimonialsSection() {
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-4xl mx-auto text-center relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4 text-gradient-title">What Users Say</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gradient-complementary">What Users Say</h2>
           <p className="text-lg text-muted-foreground font-normal">Hear from Bitcoin analysts, privacy advocates, and early adopters who rely on BitSleuth for their investigations.</p>
         </div>
         <div className="space-y-8">

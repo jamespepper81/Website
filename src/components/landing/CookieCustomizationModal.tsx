@@ -91,7 +91,7 @@ export function CookieCustomizationModal({
                 <p className="mt-2">
                     The cookies that are categorized as "Necessary" are stored on your browser as they are essential for enabling the basic functionalities of the site.
                     {!showMore && (
-                        <button onClick={() => setShowMore(true)} className="text-primary underline ml-1">
+                        <button onClick={() => setShowMore(true)} className="text-complementary underline ml-1">
                             ... Show more
                         </button>
                     )}
@@ -104,7 +104,7 @@ export function CookieCustomizationModal({
                         <p className="mt-2">
                         You can choose to enable or disable some or all of these cookies but disabling some of them may affect your browsing experience.
                         </p>
-                        <button onClick={() => setShowMore(false)} className="text-primary underline mt-2">
+                        <button onClick={() => setShowMore(false)} className="text-complementary underline mt-2">
                             Show less
                         </button>
                     </div>

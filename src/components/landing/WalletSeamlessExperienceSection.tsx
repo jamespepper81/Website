@@ -5,22 +5,22 @@ import { Smartphone, QrCode, Palette, BarChart3 } from "lucide-react";
 
 const experienceFeatures = [
   {
-    icon: <Smartphone className="h-8 w-8 text-primary" />,
+    icon: <Smartphone className="h-8 w-8 text-complementary" />,
     title: 'Mobile-First Design',
     description: 'A clean, intuitive interface that looks and feels great on your phone.',
   },
   {
-    icon: <QrCode className="h-8 w-8 text-primary" />,
+    icon: <QrCode className="h-8 w-8 text-complementary" />,
     title: 'QR Code Support',
     description: 'Effortlessly send and receive Bitcoin by scanning QR codes.',
   },
   {
-    icon: <Palette className="h-8 w-8 text-primary" />,
+    icon: <Palette className="h-8 w-8 text-complementary" />,
     title: 'Personalized Theming',
     description: 'Switch between beautiful light and dark modes to match your preference.',
   },
   {
-    icon: <BarChart3 className="h-8 w-8 text-primary" />,
+    icon: <BarChart3 className="h-8 w-8 text-complementary" />,
     title: 'Helpful Insights',
     description: 'Track your balance and portfolio performance with clear, easy-to-read charts.',
   },
@@ -32,12 +32,12 @@ export function WalletSeamlessExperienceSection() {
       <BackgroundBeams intensity="subtle" />
       <div className="container max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-gradient-title">A Seamless User Experience</h2>
+          <h2 className="text-3xl font-bold mb-4 text-gradient-complementary">A Seamless User Experience</h2>
           <p className="text-lg text-muted-foreground font-normal">Experience Bitcoin management that's intuitive, efficient, and tailored to you.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {experienceFeatures.map((feature, idx) => (
-            <Card key={idx} className="bg-card/50 hover:border-primary/50 transition-colors shadow-glow p-4">
+            <Card key={idx} className="bg-card/50 hover:border-complementary/50 transition-colors shadow-glow p-4">
               <CardHeader className="flex flex-col items-center text-center p-2">
                 {feature.icon}
                 <CardTitle className="font-bold text-lg">{feature.title}</CardTitle>

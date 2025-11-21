@@ -28,7 +28,7 @@ export default function BitGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="bit" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is a Bit?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
@@ -47,7 +47,7 @@ export default function BitGlossaryPage() {
             <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Coins className="mr-2 h-6 w-6 text-primary" />
+                        <Coins className="mr-2 h-6 w-6 text-complementary" />
                         Why Use Bits?
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
@@ -56,7 +56,7 @@ export default function BitGlossaryPage() {
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Scale className="mr-2 h-6 w-6 text-primary" />
+                        <Scale className="mr-2 h-6 w-6 text-complementary" />
                         Bits vs. Satoshis
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
@@ -65,7 +65,7 @@ export default function BitGlossaryPage() {
                 </div>
             </div>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               In Practice
             </h2>
             <p className="text-muted-foreground font-normal">

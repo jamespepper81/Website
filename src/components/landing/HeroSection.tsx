@@ -30,7 +30,7 @@ export function HeroSection() {
       <BackgroundBeams />
       <div className="container max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-title">
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-gradient-complementary">
             BitSleuth Analyzer: Analyze Bitcoin Wallets Like a Pro
           </h1>
           <p className="text-lg text-muted-foreground md:text-xl font-normal">
@@ -60,8 +60,8 @@ export function HeroSection() {
           </div>
         </div>
         <div className="relative">
-          <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full -z-10"></div>
-          <Card className="shadow-2xl bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden transform hover:scale-105 transition-transform duration-500 shadow-glow">
+          <div className="absolute inset-0 bg-complementary/20 blur-3xl rounded-full -z-10"></div>
+          <Card className="shadow-2xl bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden transform hover:scale-105 transition-transform duration-500 shadow-glow hover:border-complementary/50">
             <CardContent className="p-0">
               <Image
                 src="/images/dashboard-preview.png"

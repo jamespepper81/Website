@@ -29,17 +29,17 @@ export default function MerkleTreeGlossaryPage() {
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
       <GlossaryPageWrapper termSlug="merkle-tree" relatedTerms={relatedTerms}>
-            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-title">
+            <h1 itemProp="headline" className="text-4xl font-bold mb-4 text-gradient-complementary">
               What Is a Merkle Tree?
             </h1>
             <p itemProp="description" className="text-lg text-muted-foreground font-normal">
-              A Merkle tree is a cryptographic data structure used in Bitcoin to efficiently summarize and verify all transactions in a <Link href="/glossary/block" className="text-primary hover:underline">block</Link>. It organizes transaction data into a tree of hashes, with the "Merkle root" at the top representing all transactions in the block.
+              A Merkle tree is a cryptographic data structure used in Bitcoin to efficiently summarize and verify all transactions in a <Link href="/glossary/block" className="text-complementary hover:underline">block</Link>. It organizes transaction data into a tree of hashes, with the "Merkle root" at the top representing all transactions in the block.
             </p>
 
             <Card className="my-6 bg-secondary/30">
               <CardContent className="p-4">
                  <h3 className="text-xl font-bold flex items-center mb-2">
-                    <GitBranch className="mr-2 h-6 w-6 text-primary" />
+                    <GitBranch className="mr-2 h-6 w-6 text-complementary" />
                     How It Works
                 </h3>
                 <p className="text-muted-foreground mt-2 font-normal">
@@ -48,23 +48,23 @@ export default function MerkleTreeGlossaryPage() {
               </CardContent>
             </Card>
 
-            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-title">
+            <h2 className="text-3xl font-bold mt-12 mb-4 text-gradient-complementary">
               Key Benefits
             </h2>
 
              <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Zap className="mr-2 h-6 w-6 text-primary" />
+                        <Zap className="mr-2 h-6 w-6 text-complementary" />
                         Efficient Verification
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">
-                      Light clients can verify transactions using only the block headers and a small proof path, without needing to download the entire <Link href="/glossary/blockchain" className="text-primary hover:underline">blockchain</Link>. This is called Simplified Payment Verification (SPV).
+                      Light clients can verify transactions using only the block headers and a small proof path, without needing to download the entire <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link>. This is called Simplified Payment Verification (SPV).
                     </p>
                 </div>
                 <div>
                     <h3 className="text-xl font-bold flex items-center">
-                        <Shield className="mr-2 h-6 w-6 text-primary" />
+                        <Shield className="mr-2 h-6 w-6 text-complementary" />
                         Data Integrity
                     </h3>
                     <p className="text-muted-foreground mt-2 font-normal">

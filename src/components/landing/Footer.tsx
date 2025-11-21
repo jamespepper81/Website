@@ -16,18 +16,18 @@ export function Footer({ onTermsClick, onPrivacyClick }: FooterProps) {
     }}>
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-center gap-3 mb-6">
-          <ValueBadge icon={Bitcoin} text="Built for Bitcoin" variant="orange" />
-          <ValueBadge icon={Heart} text="Made with ♥ by Bitcoiners" variant="orange" />
+          <ValueBadge icon={Bitcoin} text="Built for Bitcoin" variant="complementary" />
+          <ValueBadge icon={Heart} text="Made with ♥ by Bitcoiners" variant="complementary" />
         </div>
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <div className="flex items-center gap-2">
-            <Search className="h-5 w-5 text-primary" />
+            <Search className="h-5 w-5 text-complementary" />
             <p className="text-sm text-muted-foreground font-normal">&copy; {new Date().getFullYear()} BitSleuth. All rights reserved.</p>
           </div>
           <nav className="sm:ml-auto flex flex-wrap gap-4 sm:gap-6 justify-center sm:justify-end">
             <Link
               href="/glossary"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center transition-colors"
+              className="text-sm hover:text-complementary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center transition-colors"
               prefetch={false}
             >
               Glossary
@@ -36,19 +36,19 @@ export function Footer({ onTermsClick, onPrivacyClick }: FooterProps) {
               href="https://primal.net/p/nprofile1qqs9lrs07tqjg4vkvdh0sn4dkv8v38xddmz87tm2c2rkx7s8jsr426gdz006n"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center transition-colors"
+              className="text-sm hover:text-complementary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center transition-colors"
             >
               Nostr
             </a>
-            <button onClick={onTermsClick} className="text-sm hover:text-primary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center touch-manipulation transition-colors">
+            <button onClick={onTermsClick} className="text-sm hover:text-complementary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center touch-manipulation transition-colors">
               Terms of Service
             </button>
-            <button onClick={onPrivacyClick} className="text-sm hover:text-primary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center touch-manipulation transition-colors">
+            <button onClick={onPrivacyClick} className="text-sm hover:text-complementary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center touch-manipulation transition-colors">
               Privacy Policy
             </button>
             <Link
               href="/company-information"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center transition-colors"
+              className="text-sm hover:text-complementary hover:underline underline-offset-4 text-muted-foreground font-medium min-h-[44px] flex items-center transition-colors"
               prefetch={false}
             >
               Company Information
