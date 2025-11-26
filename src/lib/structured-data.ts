@@ -6,11 +6,130 @@
 
 import { type GlossaryTermMeta } from './glossary-metadata';
 
+type GlossarySchemaContext = 'https://schema.org';
+
+type DefinedTermSchema = {
+  '@context': GlossarySchemaContext;
+  '@type': 'DefinedTerm';
+  name: string;
+  description: string;
+  inDefinedTermSet: {
+    '@type': 'DefinedTermSet';
+    '@id': string;
+    name: string;
+    description: string;
+  };
+  termCode: string;
+  url: string;
+  about?: {
+    '@type': 'Thing';
+    name: string;
+  };
+};
+
+type ArticleSchema = {
+  '@context': GlossarySchemaContext;
+  '@type': 'Article';
+  headline: string;
+  description: string;
+  author: {
+    '@type': 'Organization';
+    name: string;
+    url: string;
+  };
+  publisher: {
+    '@type': 'Organization';
+    name: string;
+    url: string;
+    logo: {
+      '@type': 'ImageObject';
+      url: string;
+    };
+  };
+  datePublished: string;
+  dateModified: string;
+  articleSection?: string;
+  keywords: string;
+  url: string;
+  inLanguage: string;
+  mentions?: Array<{
+    '@type': 'DefinedTerm';
+    name: string;
+    url: string;
+  }>;
+};
+
+type BreadcrumbSchema = {
+  '@context': GlossarySchemaContext;
+  '@type': 'BreadcrumbList';
+  itemListElement: Array<{
+    '@type': 'ListItem';
+    position: number;
+    name: string;
+    item: string;
+  }>;
+};
+
+type GlossaryCollectionSchema = {
+  '@context': GlossarySchemaContext;
+  '@type': 'CollectionPage';
+  name: string;
+  description: string;
+  url: string;
+  about: {
+    '@type': 'Thing';
+    name: string;
+    description: string;
+  };
+  numberOfItems: number;
+  inLanguage: string;
+  isPartOf: {
+    '@type': 'WebSite';
+    name: string;
+    url: string;
+  };
+};
+
+type LearningResourceSchema = {
+  '@context': GlossarySchemaContext;
+  '@type': 'LearningResource';
+  name: string;
+  description: string;
+  url: string;
+  inLanguage: string;
+  learningResourceType: string;
+  educationalLevel: string;
+  keywords: string;
+  about: {
+    '@type': 'Thing';
+    name: string;
+  };
+  publisher: {
+    '@type': 'Organization';
+    name: string;
+    url: string;
+  };
+  teaches?: string[];
+};
+
+type CombinedGlossarySchema = {
+  '@context': GlossarySchemaContext;
+  '@graph': [
+    DefinedTermSchema,
+    ArticleSchema,
+    BreadcrumbSchema,
+    LearningResourceSchema,
+  ];
+};
+
 /**
  * Generate DefinedTerm schema for a glossary term
  * This helps AI engines understand glossary entries as educational definitions
  */
-export function generateDefinedTermSchema(term: string, meta: GlossaryTermMeta) {
+export function generateDefinedTermSchema(
+  term: string,
+  meta: GlossaryTermMeta,
+): DefinedTermSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'DefinedTerm',
@@ -37,7 +156,10 @@ export function generateDefinedTermSchema(term: string, meta: GlossaryTermMeta) 
  * Generate Article schema for glossary pages
  * This positions glossary entries as educational articles
  */
-export function generateArticleSchema(term: string, meta: GlossaryTermMeta) {
+export function generateArticleSchema(
+  term: string,
+  meta: GlossaryTermMeta,
+): ArticleSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -77,7 +199,10 @@ export function generateArticleSchema(term: string, meta: GlossaryTermMeta) {
  * Generate BreadcrumbList schema for navigation
  * This helps AI engines understand site structure and hierarchy
  */
-export function generateBreadcrumbSchema(term: string, termTitle: string) {
+export function generateBreadcrumbSchema(
+  term: string,
+  termTitle: string,
+): BreadcrumbSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -127,7 +252,9 @@ export function generateFAQSchema(questions: Array<{ question: string; answer: s
  * Generate CollectionPage schema for the glossary index
  * This helps AI engines understand the glossary as a collection of educational content
  */
-export function generateGlossaryCollectionSchema(termCount: number) {
+export function generateGlossaryCollectionSchema(
+  termCount: number,
+): GlossaryCollectionSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -154,7 +281,10 @@ export function generateGlossaryCollectionSchema(termCount: number) {
  * Generate LearningResource schema for educational content
  * This positions the glossary as an educational learning hub
  */
-export function generateLearningResourceSchema(term: string, meta: GlossaryTermMeta) {
+export function generateLearningResourceSchema(
+  term: string,
+  meta: GlossaryTermMeta,
+): LearningResourceSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'LearningResource',
@@ -184,7 +314,10 @@ export function generateLearningResourceSchema(term: string, meta: GlossaryTermM
  * Generate combined schema with multiple types
  * This provides maximum context to AI search engines
  */
-export function generateCombinedGlossarySchema(term: string, meta: GlossaryTermMeta) {
+export function generateCombinedGlossarySchema(
+  term: string,
+  meta: GlossaryTermMeta,
+): CombinedGlossarySchema {
   return {
     '@context': 'https://schema.org',
     '@graph': [
