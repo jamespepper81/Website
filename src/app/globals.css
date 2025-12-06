@@ -43,6 +43,8 @@
     
     /* Custom Brand Colors */
     --bitcoin-orange: 27 96% 61%;
+    --complementary: 220 90% 55%; /* Blue to complement orange */
+    --complementary-foreground: 0 0% 100%;
     
     /* Heading gradient - Orange to Dark */
     --heading-start: hsl(27 96% 61%);
@@ -77,6 +79,9 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 27 96% 61%;
+
+    --complementary: 220 90% 65%;
+    --complementary-foreground: 0 0% 100%;
     
     --heading-start: hsl(27 96% 61%);
     --heading-via: hsl(20 85% 60%);

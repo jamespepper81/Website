@@ -18,12 +18,12 @@ interface TermsOfServiceModalProps {
 }
 
 export function TermsOfServiceModal({ isOpen, onOpenChange, onPrivacyClick }: TermsOfServiceModalProps) {
-  
+
   const handlePrivacyClick = () => {
     onOpenChange(); // Close this modal
     onPrivacyClick(); // Open the privacy modal
   };
-  
+
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl">
@@ -50,7 +50,7 @@ export function TermsOfServiceModal({ isOpen, onOpenChange, onPrivacyClick }: Te
 
             <h3 className="text-xl font-semibold text-gradient-complementary">1. Who We Are</h3>
             <p>
-              BitSleuth is a company dedicated to delivering tools for Bitcoin users — including a
+              BitSleuth is a company dedicated to delivering tools for Bitcoin users  -  including a
               privacy-focused Bitcoin wallet and a Bitcoin analytics platform. While we may help
               users better understand their Bitcoin activity, we are not a cryptocurrency exchange
               and we do not process fiat transactions. We are not affiliated with any third-party
@@ -135,8 +135,8 @@ export function TermsOfServiceModal({ isOpen, onOpenChange, onPrivacyClick }: Te
 
             <h3 className="text-xl font-semibold text-gradient-complementary">7. Intellectual Property</h3>
             <p>
-              All content and materials within the Services — including text, graphics, branding,
-              and software — are the property of BitSleuth or its licensors and are protected by
+              All content and materials within the Services  -  including text, graphics, branding,
+              and software  -  are the property of BitSleuth or its licensors and are protected by
               applicable intellectual property laws. You may not reproduce, copy, or exploit any
               part of the Services without prior written permission.
             </p>

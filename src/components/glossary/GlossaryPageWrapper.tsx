@@ -49,7 +49,7 @@ export function GlossaryPageWrapper({ termSlug, children, relatedTerms }: Glossa
     // Update meta tags dynamically for client component
     const updateMetaTags = () => {
       document.title = `${meta.title} | Bitcoin Glossary | BitSleuth`;
-      
+
       let metaDescription = document.querySelector('meta[name="description"]');
       if (!metaDescription) {
         metaDescription = document.createElement('meta');
@@ -111,9 +111,15 @@ export function GlossaryPageWrapper({ termSlug, children, relatedTerms }: Glossa
   }
 
   return (
-    <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-      <BackgroundBeams intensity="subtle" />
-      <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
+    <main className="flex-1 relative bg-background min-h-screen">
+      {/* Hero Background Layer - Limited Height */}
+      <div className="absolute top-0 inset-x-0 h-[600px] overflow-hidden pointer-events-none z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-10" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent z-20" />
+        <BackgroundBeams className="opacity-30" />
+      </div>
+
+      <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10 py-12 md:py-20 lg:py-24">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-muted-foreground">

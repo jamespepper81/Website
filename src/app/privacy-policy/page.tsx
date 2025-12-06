@@ -22,8 +22,10 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
+      <section className="bg-background py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <BackgroundBeams className="opacity-30" />
         <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
           <Button variant="ghost" asChild className="mb-8">
             <Link href="/">
@@ -153,13 +155,13 @@ export default function PrivacyPolicyPage() {
             </p>
           </div>
         </div>
-      </main>
+      </section>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
-      <TermsOfServiceModal 
-        isOpen={activeModal === 'terms'} 
+      <TermsOfServiceModal
+        isOpen={activeModal === 'terms'}
         onOpenChange={closeModal}
-        onPrivacyClick={openPrivacyModal} 
+        onPrivacyClick={openPrivacyModal}
       />
     </div>
   );

@@ -10,8 +10,8 @@ import { BackgroundBeams } from '@/components/ui/background-beams';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { 
-  ArrowRight, 
+import {
+  ArrowRight,
   BookOpen,
   FileText,
   ExternalLink,
@@ -71,13 +71,15 @@ export default function HistoryPage() {
           })
         }}
       />
-      
+
       <div className="flex flex-col min-h-dvh bg-background">
         <Header />
         <main className="flex-1">
           {/* Hero Section */}
-          <section className="edge-to-edge-section py-16 md:py-20 lg:py-24 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
-            <BackgroundBeams />
+          <section className="edge-to-edge-section py-16 md:py-20 lg:py-24 text-foreground relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+            <BackgroundBeams className="opacity-30" />
             <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
               <div className="space-y-6 text-center">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-complementary/10 border border-complementary/20 mb-4">
@@ -130,7 +132,7 @@ export default function HistoryPage() {
                         Bitcoin&apos;s journey began on <span className="font-semibold text-foreground">October 31, 2008</span>, when an individual or group using the pseudonym <span className="font-semibold text-foreground">Satoshi Nakamoto</span> published a groundbreaking whitepaper to a cryptography mailing list. The paper, titled <span className="italic">&quot;Bitcoin: A Peer-to-Peer Electronic Cash System,&quot;</span> outlined a revolutionary vision for digital money.
                       </p>
                       <p className="text-lg text-muted-foreground">
-                        However, Bitcoin truly came to life on <span className="font-semibold text-foreground">January 3, 2009</span>, when Satoshi mined the first block of the Bitcoin <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link>—known as the <span className="font-semibold text-foreground">Genesis Block</span> or Block 0. This historic moment marked the birth of the world&apos;s first decentralized digital currency.
+                        However, Bitcoin truly came to life on <span className="font-semibold text-foreground">January 3, 2009</span>, when Satoshi mined the first block of the Bitcoin <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link> - known as the <span className="font-semibold text-foreground">Genesis Block</span> or Block 0. This historic moment marked the birth of the world&apos;s first decentralized digital currency.
                       </p>
                       <div className="bg-complementary/5 p-6 rounded-lg border border-complementary/20">
                         <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
@@ -209,7 +211,7 @@ export default function HistoryPage() {
                       </div>
                       <div className="bg-complementary/5 p-6 rounded-lg border border-complementary/20">
                         <p className="text-muted-foreground">
-                          <strong className="text-foreground">The Mystery Persists:</strong> Satoshi is believed to possess approximately 1 million bitcoin, yet these coins have never been moved. Their decision to remain anonymous and step away from the project was intentional—ensuring Bitcoin would be truly decentralized, owned by no one and everyone simultaneously.
+                          <strong className="text-foreground">The Mystery Persists:</strong> Satoshi is believed to possess approximately 1 million bitcoin, yet these coins have never been moved. Their decision to remain anonymous and step away from the project was intentional - ensuring Bitcoin would be truly decentralized, owned by no one and everyone simultaneously.
                         </p>
                       </div>
                     </div>
@@ -305,12 +307,12 @@ export default function HistoryPage() {
                   <CardContent className="p-8">
                     <div className="space-y-6">
                       <p className="text-lg text-muted-foreground">
-                        Bitcoin didn&apos;t emerge in a vacuum—it was the culmination of decades of research in cryptography, distributed systems, and digital currency. Satoshi built upon the work of pioneers like David Chaum (digital cash), Adam Back (Hashcash), and Wei Dai (b-money), synthesizing their ideas into a working system.
+                        Bitcoin didn&apos;t emerge in a vacuum - it was the culmination of decades of research in cryptography, distributed systems, and digital currency. Satoshi built upon the work of pioneers like David Chaum (digital cash), Adam Back (Hashcash), and Wei Dai (b-money), synthesizing their ideas into a working system.
                       </p>
                       <div className="bg-secondary/30 p-6 rounded-lg border border-border">
                         <h3 className="text-xl font-bold mb-4">Philosophical Foundations</h3>
                         <p className="text-muted-foreground mb-4">
-                          Bitcoin emerged from the <span className="font-semibold text-foreground">cypherpunk movement</span>—a community of activists advocating for privacy and individual freedom through cryptography. The 2008 financial crisis provided the perfect backdrop, exposing the fragility of centralized banking systems and the need for an alternative.
+                          Bitcoin emerged from the <span className="font-semibold text-foreground">cypherpunk movement</span> - a community of activists advocating for privacy and individual freedom through cryptography. The 2008 financial crisis provided the perfect backdrop, exposing the fragility of centralized banking systems and the need for an alternative.
                         </p>
                       </div>
                       <div className="bg-complementary/5 p-6 rounded-lg border border-complementary/20">
@@ -327,7 +329,7 @@ export default function HistoryPage() {
                           </p>
                         </div>
                         <p className="text-muted-foreground mt-4">
-                          This message referenced a headline from The Times newspaper about the UK government bailout of banks during the financial crisis. It served as both a timestamp proving when Bitcoin began and a philosophical statement about why it was created—as an alternative to the traditional financial system prone to bailouts and inflation.
+                          This message referenced a headline from The Times newspaper about the UK government bailout of banks during the financial crisis. It served as both a timestamp proving when Bitcoin began and a philosophical statement about why it was created - as an alternative to the traditional financial system prone to bailouts and inflation.
                         </p>
                       </div>
                     </div>
@@ -361,7 +363,7 @@ export default function HistoryPage() {
                       <div>
                         <h3 className="text-2xl font-bold mb-4">The Blockchain</h3>
                         <p className="text-muted-foreground mb-4">
-                          The <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link> is a chain of blocks, each containing a batch of transactions. Every block references the previous one through a cryptographic hash, creating an immutable historical record. Changing any past transaction would require recalculating all subsequent blocks—computationally infeasible.
+                          The <Link href="/glossary/blockchain" className="text-complementary hover:underline">blockchain</Link> is a chain of blocks, each containing a batch of transactions. Every block references the previous one through a cryptographic hash, creating an immutable historical record. Changing any past transaction would require recalculating all subsequent blocks - computationally infeasible.
                         </p>
                         <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                           <p className="text-sm text-muted-foreground">
@@ -383,7 +385,7 @@ export default function HistoryPage() {
                       <div>
                         <h3 className="text-2xl font-bold mb-4">Proof-of-Work Consensus</h3>
                         <p className="text-muted-foreground mb-4">
-                          <Link href="/glossary/mining" className="text-complementary hover:underline">Mining</Link> uses computational work to achieve consensus. Miners compete to solve complex mathematical puzzles, and the winner gets to add the next block. This process makes attacks expensive—an attacker would need to control more computing power than the entire honest network combined.
+                          <Link href="/glossary/mining" className="text-complementary hover:underline">Mining</Link> uses computational work to achieve consensus. Miners compete to solve complex mathematical puzzles, and the winner gets to add the next block. This process makes attacks expensive - an attacker would need to control more computing power than the entire honest network combined.
                         </p>
                         <div className="bg-secondary/30 p-4 rounded-lg border border-border">
                           <p className="text-sm text-muted-foreground">
@@ -652,13 +654,13 @@ export default function HistoryPage() {
             </div>
           </section>
         </main>
-        
+
         <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
         <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
-        <TermsOfServiceModal 
-          isOpen={activeModal === 'terms'} 
+        <TermsOfServiceModal
+          isOpen={activeModal === 'terms'}
           onOpenChange={closeModal}
-          onPrivacyClick={openPrivacyModal} 
+          onPrivacyClick={openPrivacyModal}
         />
       </div>
     </>

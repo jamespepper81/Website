@@ -42,7 +42,7 @@ const glossaryTerms = [
     href: '/glossary/bip44',
     colorScheme: 'complementary',
   },
-   {
+  {
     term: 'Bit',
     definition: 'A user-friendly sub-unit of a bitcoin, where 1 BTC equals 1,000,000 bits. It makes dealing with smaller amounts easier to read and comprehend.',
     href: '/glossary/bit',
@@ -278,7 +278,7 @@ const glossaryTerms = [
     href: '/glossary/utxo',
     colorScheme: 'complementary',
   },
-   {
+  {
     term: 'Wallet',
     definition: 'Software that manages your private keys and allows you to interact with the Bitcoin network to send and receive funds. Wallets come in various forms, such as mobile, desktop, and hardware.',
     href: '/glossary/wallet',
@@ -315,7 +315,7 @@ export default function GlossaryIndexPage() {
   const filteredTerms = glossaryTerms.filter((item) => {
     const query = searchQuery.toLowerCase().trim();
     if (!query) return true;
-    
+
     return (
       item.term.toLowerCase().includes(query) ||
       item.definition.toLowerCase().includes(query)
@@ -327,13 +327,15 @@ export default function GlossaryIndexPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="edge-to-edge-section py-16 md:py-20 lg:py-24 bg-gradient-to-br from-background to-muted dark:to-black text-foreground relative overflow-hidden">
-          <BackgroundBeams />
+        <section className="edge-to-edge-section py-16 md:py-20 lg:py-24 text-foreground relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+          <BackgroundBeams className="opacity-30" />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
             <Button variant="ghost" asChild className="mb-8">
               <Link href="/">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Home
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Home
               </Link>
             </Button>
             <div className="space-y-6 text-center">
@@ -365,8 +367,8 @@ export default function GlossaryIndexPage() {
         </section>
 
         {/* Glossary Terms */}
-        <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
-          <BackgroundBeams intensity="subtle" />
+        <section className="relative py-12 md:py-20 bg-background">
+          <BackgroundBeams />
           <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
             {/* Search Bar */}
             <div className="mb-8">
@@ -390,7 +392,7 @@ export default function GlossaryIndexPage() {
                 <h3 className="text-xl font-semibold text-foreground mb-2">No results found</h3>
                 <p className="text-muted-foreground">
                   Try adjusting your search terms or{' '}
-                  <button 
+                  <button
                     onClick={() => setSearchQuery('')}
                     className="text-complementary hover:underline font-medium"
                     aria-label="Clear search"
@@ -401,23 +403,23 @@ export default function GlossaryIndexPage() {
               </div>
             ) : (
               <div className="space-y-6">
-                {filteredTerms.sort((a,b) => a.term.localeCompare(b.term)).map((item) => (
-              <Link key={item.term} href={item.href} className="block group">
-                <Card className="hover:bg-secondary/20 transition-colors shadow-glow hover:border-complementary/50">
-                  <CardContent className="p-6 flex items-center justify-between">
-                    <div className="flex-1">
-                      <h2 className="text-2xl font-bold group-hover:underline text-complementary">
-                        {item.term}
-                      </h2>
-                      <p className="text-muted-foreground mt-2 font-normal">{item.definition}</p>
-                    </div>
-                    <div className="flex-shrink-0 ml-4">
-                      <ChevronRight className="h-6 w-6 text-muted-foreground transition-colors group-hover:text-complementary" />
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+                {filteredTerms.sort((a, b) => a.term.localeCompare(b.term)).map((item) => (
+                  <Link key={item.term} href={item.href} className="block group">
+                    <Card className="hover:bg-secondary/20 transition-colors shadow-glow hover:border-complementary/50">
+                      <CardContent className="p-6 flex items-center justify-between">
+                        <div className="flex-1">
+                          <h2 className="text-2xl font-bold group-hover:underline text-complementary">
+                            {item.term}
+                          </h2>
+                          <p className="text-muted-foreground mt-2 font-normal">{item.definition}</p>
+                        </div>
+                        <div className="flex-shrink-0 ml-4">
+                          <ChevronRight className="h-6 w-6 text-muted-foreground transition-colors group-hover:text-complementary" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
               </div>
             )}
           </div>
@@ -425,10 +427,10 @@ export default function GlossaryIndexPage() {
       </main>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
-      <TermsOfServiceModal 
-        isOpen={activeModal === 'terms'} 
+      <TermsOfServiceModal
+        isOpen={activeModal === 'terms'}
         onOpenChange={closeModal}
-        onPrivacyClick={openPrivacyModal} 
+        onPrivacyClick={openPrivacyModal}
       />
     </div>
   );

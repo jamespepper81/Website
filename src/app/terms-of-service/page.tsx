@@ -26,8 +26,10 @@ export default function TermsOfServicePage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background">
       <Header />
-      <main className="flex-1 py-12 md:py-20 lg:py-24 relative overflow-hidden">
-        <BackgroundBeams intensity="subtle" />
+      <section className="bg-background py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <BackgroundBeams className="opacity-30" />
         <div className="container max-w-4xl mx-auto px-4 md:px-6 relative z-10">
           <Button variant="ghost" asChild className="mb-8">
             <Link href="/">
@@ -37,7 +39,7 @@ export default function TermsOfServicePage() {
           </Button>
           <div className="prose prose-invert max-w-none text-muted-foreground">
             <h1 className="text-4xl font-bold mb-4 text-gradient-complementary">Terms of Service</h1>
-             <p className="text-sm font-medium">Last updated: 15 September 2025</p>
+            <p className="text-sm font-medium">Last updated: 15 September 2025</p>
 
             <p className="font-normal">
               Welcome to BitSleuth. These Terms of Service ("Terms") govern your use of our websites,
@@ -56,7 +58,7 @@ export default function TermsOfServicePage() {
 
             <h3 className="text-xl font-bold text-gradient-complementary">1. Who We Are</h3>
             <p className="font-normal">
-              BitSleuth is a company dedicated to delivering tools for Bitcoin users — including a
+              BitSleuth is a company dedicated to delivering tools for Bitcoin users  -  including a
               privacy-focused Bitcoin wallet and a Bitcoin analytics platform. While we may help
               users better understand their Bitcoin activity, we are not a cryptocurrency exchange
               and we do not process fiat transactions. We are not affiliated with any third-party
@@ -141,8 +143,8 @@ export default function TermsOfServicePage() {
 
             <h3 className="text-xl font-bold text-gradient-complementary">7. Intellectual Property</h3>
             <p className="font-normal">
-              All content and materials within the Services — including text, graphics, branding,
-              and software — are the property of BitSleuth or its licensors and are protected by
+              All content and materials within the Services  -  including text, graphics, branding,
+              and software  -  are the property of BitSleuth or its licensors and are protected by
               applicable intellectual property laws. You may not reproduce, copy, or exploit any
               part of the Services without prior written permission.
             </p>
@@ -192,13 +194,13 @@ export default function TermsOfServicePage() {
             </p>
           </div>
         </div>
-      </main>
+      </section>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
-      <TermsOfServiceModal 
-        isOpen={activeModal === 'terms'} 
+      <TermsOfServiceModal
+        isOpen={activeModal === 'terms'}
         onOpenChange={closeModal}
-        onPrivacyClick={handlePrivacyLinkInTerms} 
+        onPrivacyClick={handlePrivacyLinkInTerms}
       />
     </div>
   );
