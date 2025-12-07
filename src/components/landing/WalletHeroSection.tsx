@@ -26,7 +26,11 @@ export function WalletHeroSection() {
               <br /><br />
               Minimize address reuse and on-chain exposure without compromising features or safety.
               <br />
-              No accounts. No tracking. Just you and your keys, coming soon to iOS and Android!
+              No accounts. No tracking. Just you and your keys!
+              <br /><br />
+              <span className="font-medium text-foreground/80">
+                Available in iOS App Store and Android Google Play Store.
+              </span>
             </p>
 
             <div className="flex items-center justify-center lg:justify-start gap-4 text-sm text-muted-foreground">
