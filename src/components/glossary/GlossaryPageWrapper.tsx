@@ -152,9 +152,9 @@ export function GlossaryPageWrapper({ termSlug, children, relatedTerms }: Glossa
 
         <article itemScope itemType="https://schema.org/Article" className="prose prose-invert max-w-none">
           {/* Category Badge */}
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-complementary/10 border border-complementary/20 mb-4 not-prose">
-            <BookOpen className="mr-2 h-4 w-4 text-complementary" />
-            <span className="text-sm font-medium text-complementary">{meta.category}</span>
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4 not-prose">
+            <BookOpen className="mr-2 h-4 w-4 text-primary" />
+            <span className="text-sm font-medium text-primary">{meta.category}</span>
           </div>
 
           {/* Main Content */}
@@ -162,17 +162,17 @@ export function GlossaryPageWrapper({ termSlug, children, relatedTerms }: Glossa
 
           {/* Quick Facts Section */}
           {meta.quickFacts && meta.quickFacts.length > 0 && (
-            <Card className="my-8 bg-complementary/5 border-complementary/20 not-prose">
+            <Card className="my-8 bg-[#1a1a1a] border-none shadow-xl border-primary/20 not-prose">
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold flex items-center mb-4 text-foreground">
-                  <FileText className="mr-2 h-6 w-6 text-complementary" />
+                <h3 className="text-xl font-bold flex items-center mb-4 text-white">
+                  <FileText className="mr-2 h-6 w-6 text-primary" />
                   Quick Facts
                 </h3>
                 <ul className="space-y-3">
                   {meta.quickFacts.map((fact, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="text-complementary mr-2 mt-1">•</span>
-                      <span className="text-muted-foreground">{fact}</span>
+                      <span className="text-primary mr-2 mt-1">•</span>
+                      <span className="text-gray-400">{fact}</span>
                     </li>
                   ))}
                 </ul>
@@ -184,16 +184,16 @@ export function GlossaryPageWrapper({ termSlug, children, relatedTerms }: Glossa
           {relatedTerms && relatedTerms.length > 0 && (
             <section className="mt-12 not-prose">
               <h3 className="text-2xl font-bold mb-6 flex items-center text-foreground">
-                <LinkIcon className="mr-2 h-6 w-6 text-complementary" />
+                <LinkIcon className="mr-2 h-6 w-6 text-primary" />
                 Related Terms
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {relatedTerms.map((term) => (
                   <Link key={term.slug} href={`/glossary/${term.slug}`} className="group">
-                    <Card className="hover:border-complementary/50 hover:bg-secondary/20 transition-colors h-full">
+                    <Card className="h-full bg-[#1a1a1a] border-none shadow-xl hover:shadow-2xl transition-all">
                       <CardContent className="p-4">
-                        <h4 className="font-semibold text-complementary group-hover:underline">{term.title}</h4>
-                        <p className="text-sm text-muted-foreground mt-1">{term.description}</p>
+                        <h4 className="font-semibold text-primary group-hover:underline">{term.title}</h4>
+                        <p className="text-sm text-gray-400 mt-1">{term.description}</p>
                       </CardContent>
                     </Card>
                   </Link>
