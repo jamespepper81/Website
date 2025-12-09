@@ -191,7 +191,7 @@ npm run build
 
 ## 🤝 Contributing
 
-We welcome contributions to the BitSleuth Website! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
+We welcome contributions to the BitSleuth Website! Please read our [CONTRIBUTING.md](docs/CONTRIBUTING.md) for detailed guidelines on:
 
 - 📚 **Documentation Organization**: All markdown documentation files must be stored in the `docs/` folder
 - 🚀 Getting started with development
