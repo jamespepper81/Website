@@ -39,7 +39,7 @@ BitSleuth is a comprehensive Next.js 16 website serving as the primary marketing
 
 1. **Clone and Install:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/your-org/bitsleuth-website.git
    cd Website
    npm install
    ```
