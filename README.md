@@ -210,7 +210,7 @@ We welcome contributions to the BitSleuth Website! Please read our [CONTRIBUTING
 
 **Documentation Files**: All markdown documentation files (e.g., `.md` files) should be stored in the `docs/` folder for consistency and easy discovery
 
-For complete guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+For complete guidelines, see [CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
 ---
 
