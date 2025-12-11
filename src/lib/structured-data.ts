@@ -279,7 +279,7 @@ export function generateGlossaryCollectionSchema(
   termCount: number,
 ): GlossaryCollectionSchema {
   return {
-    '@context': 'https://schema.org',
+    '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'CollectionPage',
     name: 'Bitcoin Glossary',
     description:
