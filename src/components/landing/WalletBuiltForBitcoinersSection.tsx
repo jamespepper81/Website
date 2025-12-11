@@ -1,6 +1,5 @@
 // src/components/landing/WalletBuiltForBitcoinersSection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
 import { Settings, Bitcoin, Users, Coins } from "lucide-react";
 

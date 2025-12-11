@@ -1,5 +1,4 @@
 // src/components/landing/WalletCallToActionSection.tsx
-import { BackgroundBeams } from "@/components/ui/background-beams";
 
 export function WalletCallToActionSection() {
   return (

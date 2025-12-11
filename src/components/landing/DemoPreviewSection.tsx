@@ -1,6 +1,5 @@
 
 import { Button } from "@/components/ui/button";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import Image from "next/image";
 
 export function DemoPreviewSection() {

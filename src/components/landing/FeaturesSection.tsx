@@ -1,6 +1,5 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
 import { BarChart3, Search, Bot, LineChart, ShieldAlert, BookUser, Zap, Bitcoin } from "lucide-react";
 
