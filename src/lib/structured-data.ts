@@ -269,10 +269,7 @@ export function generateFAQSchema(
   questions: Array<{ question: string; answer: string }>
 ): FAQPageSchema | null {
   // Validate that questions is a non-empty array of valid question objects
-  if (
-    !Array.isArray(questions) ||
-    questions.length === 0
-  ) {
+  if (!Array.isArray(questions)) {
     return null;
   }
   // Only include valid question objects
@@ -354,7 +351,7 @@ export function generateLearningResourceSchema(
     },
     publisher: {
       '@type': 'Organization',
-      name: 'BitSleuth',
+      name: BITSLEUTH_ORGANIZATION.name,
       url: BITSLEUTH_ORGANIZATION.url,
     },
     ...(meta.relatedTerms && meta.relatedTerms.length > 0 && {
