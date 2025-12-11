@@ -12,6 +12,14 @@ const GLOSSARY_BASE_URL = 'https://www.bitsleuth.ai/glossary';
 
 // Shared constant for BitSleuth logo URL
 const BITSLEUTH_LOGO_URL = 'https://www.bitsleuth.ai/images/logo.png';
+
+/**
+ * Return the glossary term URL for a given term slug.
+ */
+function getGlossaryTermUrl(term: string): string {
+  return `${GLOSSARY_BASE_URL}/${term}`;
+}
+
 type GlossarySchemaContext = 'https://schema.org';
 const GLOSSARY_SCHEMA_CONTEXT: GlossarySchemaContext = 'https://schema.org';
 
@@ -149,7 +157,7 @@ export function generateDefinedTermSchema(
       description: 'Comprehensive Bitcoin and cryptocurrency terminology',
     },
     termCode: term,
-    url: `https://www.bitsleuth.ai/glossary/${term}`,
+    url: getGlossaryTermUrl(term),
     ...(meta.category && {
       about: {
         '@type': 'Thing',
