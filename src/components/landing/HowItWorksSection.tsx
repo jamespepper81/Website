@@ -1,6 +1,5 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const steps = [
   {

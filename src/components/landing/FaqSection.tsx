@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const faqs = [
   {

@@ -1,5 +1,4 @@
 // src/components/landing/WalletAboutSection.tsx
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
 import { Bitcoin, Shield, UserX, Blocks } from "lucide-react";
 
