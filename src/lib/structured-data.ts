@@ -238,7 +238,7 @@ export function generateBreadcrumbSchema(
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.bitsleuth.ai',
+        item: BITSLEUTH_ORGANIZATION.url,
       },
       {
         '@type': 'ListItem',
