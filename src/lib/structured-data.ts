@@ -13,6 +13,12 @@ const GLOSSARY_BASE_URL = 'https://www.bitsleuth.ai/glossary';
 // Shared constant for BitSleuth logo URL
 const BITSLEUTH_LOGO_URL = 'https://www.bitsleuth.ai/images/logo.png';
 
+// Shared constant for BitSleuth organization details
+const BITSLEUTH_ORGANIZATION = {
+  name: 'BitSleuth',
+  url: 'https://www.bitsleuth.ai',
+};
+
 /**
  * Return the glossary term URL for a given term slug.
  */
@@ -190,13 +196,11 @@ export function generateArticleSchema(
     description: meta.description,
     author: {
       '@type': 'Organization',
-      name: 'BitSleuth',
-      url: 'https://www.bitsleuth.ai',
+      ...BITSLEUTH_ORGANIZATION,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'BitSleuth',
-      url: 'https://www.bitsleuth.ai',
+      ...BITSLEUTH_ORGANIZATION,
       logo: {
         '@type': 'ImageObject',
         url: BITSLEUTH_LOGO_URL,
@@ -206,13 +210,13 @@ export function generateArticleSchema(
     ...(meta.lastModified ? { dateModified: meta.lastModified } : {}),
     articleSection: meta.category,
     keywords: meta.keywords.join(', '),
-    url: `https://www.bitsleuth.ai/glossary/${term}`,
+    url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
     ...(meta.relatedTerms && meta.relatedTerms.length > 0 && {
       mentions: meta.relatedTerms.map((relatedTerm) => ({
         '@type': 'DefinedTerm',
         name: relatedTerm,
-        url: `https://www.bitsleuth.ai/glossary/${relatedTerm}`,
+        url: getGlossaryTermUrl(relatedTerm),
       })),
     }),
   };
@@ -246,7 +250,7 @@ export function generateBreadcrumbSchema(
         '@type': 'ListItem',
         position: 3,
         name: termTitle,
-        item: `https://www.bitsleuth.ai/glossary/${term}`,
+        item: getGlossaryTermUrl(term),
       },
     ],
   };
@@ -329,7 +333,7 @@ export function generateLearningResourceSchema(
     '@type': 'LearningResource',
     name: meta.title,
     description: meta.description,
-    url: `https://www.bitsleuth.ai/glossary/${term}`,
+    url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
     learningResourceType: 'Definition',
     educationalLevel: 'Beginner to Advanced',
