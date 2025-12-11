@@ -315,7 +315,7 @@ export function generateGlossaryCollectionSchema(
     isPartOf: {
       '@type': 'WebSite',
       name: 'BitSleuth',
-      url: 'https://www.bitsleuth.ai',
+      url: BITSLEUTH_ORGANIZATION.url,
     },
   };
 }
