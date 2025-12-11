@@ -242,7 +242,7 @@ export function generateBreadcrumbSchema(
  */
 
 type FAQPageSchema = {
-  '@context': 'https://schema.org';
+  '@context': GlossarySchemaContext;
   '@type': 'FAQPage';
   mainEntity: Array<{
     '@type': 'Question';
