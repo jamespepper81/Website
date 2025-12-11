@@ -203,7 +203,7 @@ export function generateArticleSchema(
         url: BITSLEUTH_LOGO_URL,
       },
     },
-    datePublished: meta.datePublished,
+    ...(meta.datePublished ? { datePublished: meta.datePublished } : {}),
     ...(meta.lastModified ? { dateModified: meta.lastModified } : {}),
     ...(meta.category ? { articleSection: meta.category } : {}),
     keywords: meta.keywords.join(', '),
