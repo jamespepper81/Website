@@ -36,9 +36,9 @@ export function WalletSecuritySection() {
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {securityFeatures.map((feature, idx) => (
+          {securityFeatures.map((feature) => (
             <Card
-              key={idx}
+              key={feature.title}
               className="bg-gray-100 dark:bg-[#1a1a1a] border-none shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden"
             >
               <CardHeader className="flex flex-col items-center text-center p-6">
