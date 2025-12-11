@@ -187,7 +187,7 @@ export function generateArticleSchema(
       },
     },
     datePublished: new Date().toISOString().split('T')[0],
-    dateModified: meta.lastModified || new Date().toISOString().split('T')[0],
+    ...(meta.lastModified ? { dateModified: meta.lastModified } : {}),
     articleSection: meta.category,
     keywords: meta.keywords.join(', '),
     url: `https://www.bitsleuth.ai/glossary/${term}`,
