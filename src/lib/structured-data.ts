@@ -194,7 +194,7 @@ export function generateArticleSchema(
         url: BITSLEUTH_LOGO_URL,
       },
     },
-    datePublished: meta.datePublished,
+    datePublished: meta.datePublished || new Date().toISOString().split('T')[0],
     ...(meta.lastModified ? { dateModified: meta.lastModified } : {}),
     articleSection: meta.category,
     keywords: meta.keywords.join(', '),

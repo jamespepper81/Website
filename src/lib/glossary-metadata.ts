@@ -12,6 +12,7 @@ export interface GlossaryTermMeta {
   category: string;
   relatedTerms?: string[];
   quickFacts?: string[];
+  datePublished?: string;
   lastModified?: string;
 }
 

@@ -14,6 +14,7 @@ const sampleMeta: GlossaryTermMeta = {
   keywords: ['bitcoin', 'privacy', 'analysis'],
   category: 'Testing',
   relatedTerms: ['btc', 'blockchain'],
+  datePublished: '2023-12-01',
   lastModified: '2024-01-01',
 };
 
@@ -42,6 +43,8 @@ describe('structured-data generators', () => {
     expect(article.description).toBe(sampleMeta.description);
     expect(article.keywords).toBe(sampleMeta.keywords.join(', '));
     expect(article.articleSection).toBe(sampleMeta.category);
+    expect(article.datePublished).toBe(sampleMeta.datePublished);
+    expect(article.dateModified).toBe(sampleMeta.lastModified);
   });
 
   it('combines glossary schemas with expected graph types and URLs', () => {
@@ -67,5 +70,21 @@ describe('structured-data generators', () => {
 
     expect(collection['@type']).toBe('CollectionPage');
     expect(collection.numberOfItems).toBe(TEST_COLLECTION_ITEM_COUNT);
+  });
+
+  it('uses fallback date when datePublished is not provided', () => {
+    const metaWithoutDate: GlossaryTermMeta = {
+      title: 'Term Without Date',
+      description: 'A term without a publication date.',
+      keywords: ['test'],
+      category: 'Testing',
+    };
+    const term = 'no-date-term';
+    const article = generateArticleSchema(term, metaWithoutDate);
+
+    expect(article.datePublished).toBeDefined();
+    expect(typeof article.datePublished).toBe('string');
+    // Should be in YYYY-MM-DD format
+    expect(article.datePublished).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });
