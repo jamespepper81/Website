@@ -20,6 +20,14 @@ function getGlossaryTermUrl(term: string): string {
   return `${GLOSSARY_BASE_URL}/${term}`;
 }
 
+/**
+ * Return the current date in YYYY-MM-DD format (ISO 8601 date string).
+ * Used as a fallback for datePublished when not provided.
+ */
+function getCurrentDateString(): string {
+  return new Date().toISOString().split('T')[0];
+}
+
 type GlossarySchemaContext = 'https://schema.org';
 const GLOSSARY_SCHEMA_CONTEXT: GlossarySchemaContext = 'https://schema.org';
 
@@ -194,7 +202,7 @@ export function generateArticleSchema(
         url: BITSLEUTH_LOGO_URL,
       },
     },
-    datePublished: meta.datePublished,
+    datePublished: meta.datePublished || getCurrentDateString(),
     ...(meta.lastModified ? { dateModified: meta.lastModified } : {}),
     articleSection: meta.category,
     keywords: meta.keywords.join(', '),
