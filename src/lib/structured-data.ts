@@ -54,7 +54,7 @@ type ArticleSchema = {
     };
   };
   datePublished: string;
-  dateModified: string;
+  dateModified?: string;
   articleSection?: string;
   keywords: string;
   url: string;
