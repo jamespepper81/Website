@@ -1,6 +1,6 @@
 // src/lib/structured-data.ts
 /**
- * Structured Data (JSON-LD) generators for AEO optimization
+ * Structured Data (JSON-LD) generators for Answer Engine Optimization
  * These schemas help AI search engines understand and index our content
  */
 
