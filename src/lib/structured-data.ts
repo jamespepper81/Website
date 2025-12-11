@@ -187,7 +187,7 @@ export function generateArticleSchema(
       },
     },
     datePublished: new Date().toISOString().split('T')[0],
-    dateModified: meta.lastModified || new Date().toISOString().split('T')[0],
+    ...(meta.lastModified ? { dateModified: meta.lastModified } : {}),
     articleSection: meta.category,
     keywords: meta.keywords.join(', '),
     url: `https://www.bitsleuth.ai/glossary/${term}`,
@@ -242,7 +242,7 @@ export function generateBreadcrumbSchema(
  */
 
 type FAQPageSchema = {
-  '@context': 'https://schema.org';
+  '@context': GlossarySchemaContext;
   '@type': 'FAQPage';
   mainEntity: Array<{
     '@type': 'Question';
@@ -342,7 +342,7 @@ export function generateCombinedGlossarySchema(
   meta: GlossaryTermMeta,
 ): CombinedGlossarySchema {
   return {
-    '@context': 'https://schema.org',
+    '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@graph': [
       generateDefinedTermSchema(term, meta),
       generateArticleSchema(term, meta),
