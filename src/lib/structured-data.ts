@@ -8,6 +8,8 @@ import { type GlossaryTermMeta } from './glossary-metadata';
 
 // Extracted base glossary URL for maintainability
 const GLOSSARY_BASE_URL = 'https://www.bitsleuth.ai/glossary';
+// Shared constant for glossary name
+const GLOSSARY_NAME = 'Bitcoin Glossary';
 
 // Shared constant for BitSleuth logo URL
 const BITSLEUTH_LOGO_URL = 'https://www.bitsleuth.ai/images/logo.png';
@@ -162,7 +164,7 @@ export function generateDefinedTermSchema(
     inDefinedTermSet: {
       '@type': 'DefinedTermSet',
       '@id': GLOSSARY_BASE_URL,
-      name: 'Bitcoin Glossary',
+      name: GLOSSARY_NAME,
       description: 'Comprehensive Bitcoin and cryptocurrency terminology',
     },
     termCode: term,
@@ -207,7 +209,7 @@ export function generateArticleSchema(
     keywords: meta.keywords.join(', '),
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
-    ...(meta.relatedTerms && meta.relatedTerms.length > 0 && {
+    ...(meta.relatedTerms?.length > 0 && {
       mentions: meta.relatedTerms.map((relatedTerm) => ({
         '@type': 'DefinedTerm',
         name: relatedTerm,
