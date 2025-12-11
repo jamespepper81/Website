@@ -6,6 +6,12 @@
 
 import { type GlossaryTermMeta } from './glossary-metadata';
 
+
+// Extracted base glossary URL for maintainability
+const GLOSSARY_BASE_URL = 'https://www.bitsleuth.ai/glossary';
+
+// Shared constant for BitSleuth logo URL
+const BITSLEUTH_LOGO_URL = 'https://www.bitsleuth.ai/images/logo.png';
 type GlossarySchemaContext = 'https://schema.org';
 
 type DefinedTermSchema = {
@@ -137,7 +143,7 @@ export function generateDefinedTermSchema(
     description: meta.description,
     inDefinedTermSet: {
       '@type': 'DefinedTermSet',
-      '@id': 'https://www.bitsleuth.ai/glossary',
+      '@id': GLOSSARY_BASE_URL,
       name: 'Bitcoin Glossary',
       description: 'Comprehensive Bitcoin and cryptocurrency terminology',
     },
@@ -176,11 +182,11 @@ export function generateArticleSchema(
       url: 'https://www.bitsleuth.ai',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.bitsleuth.ai/images/logo-icon.jpg',
+        url: BITSLEUTH_LOGO_URL,
       },
     },
     datePublished: '2024-01-01', // You can update this per term
-    dateModified: new Date().toISOString().split('T')[0],
+    dateModified: meta.lastModified || new Date().toISOString().split('T')[0],
     articleSection: meta.category,
     keywords: meta.keywords.join(', '),
     url: `https://www.bitsleuth.ai/glossary/${term}`,
@@ -233,7 +239,23 @@ export function generateBreadcrumbSchema(
  * Generate FAQPage schema for pages with common questions
  * This can appear as rich snippets in search results
  */
-export function generateFAQSchema(questions: Array<{ question: string; answer: string }>) {
+
+type FAQPageSchema = {
+  '@context': 'https://schema.org';
+  '@type': 'FAQPage';
+  mainEntity: Array<{
+    '@type': 'Question';
+    name: string;
+    acceptedAnswer: {
+      '@type': 'Answer';
+      text: string;
+    };
+  }>;
+};
+
+export function generateFAQSchema(
+  questions: Array<{ question: string; answer: string }>
+): FAQPageSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

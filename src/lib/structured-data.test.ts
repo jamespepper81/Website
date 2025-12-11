@@ -14,8 +14,10 @@ const sampleMeta: GlossaryTermMeta = {
   keywords: ['bitcoin', 'privacy', 'analysis'],
   category: 'Testing',
   relatedTerms: ['btc', 'blockchain'],
+  lastModified: '2024-01-01',
 };
 
+const TEST_COLLECTION_ITEM_COUNT = 44;
 describe('structured-data generators', () => {
   it('creates a DefinedTerm schema with required fields', () => {
     const term = 'sample-term';
@@ -61,9 +63,9 @@ describe('structured-data generators', () => {
   });
 
   it('generates glossary collection schema with numberOfItems and type set', () => {
-    const collection = generateGlossaryCollectionSchema(44);
+    const collection = generateGlossaryCollectionSchema(TEST_COLLECTION_ITEM_COUNT);
 
     expect(collection['@type']).toBe('CollectionPage');
-    expect(collection.numberOfItems).toBe(44);
+    expect(collection.numberOfItems).toBe(TEST_COLLECTION_ITEM_COUNT);
   });
 });
