@@ -1,6 +1,5 @@
 // src/components/landing/WalletSecuritySection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
 import { Key, Lock, Fingerprint, ShieldCheck } from "lucide-react";
 

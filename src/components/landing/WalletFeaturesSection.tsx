@@ -1,9 +1,8 @@
 
 // src/components/landing/WalletFeaturesSection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
-import { Fingerprint, KeyRound, ShieldOff, Bitcoin, Lock, UserX } from "lucide-react";
+import { Fingerprint, KeyRound, ShieldOff } from "lucide-react";
 
 const features = [
   {

@@ -1,6 +1,5 @@
 // src/components/landing/WalletSeamlessExperienceSection.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import Image from "next/image";
 import { Smartphone, QrCode, Palette, BarChart3 } from "lucide-react";
 
