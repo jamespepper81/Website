@@ -168,7 +168,7 @@ export function generateArticleSchema(
   meta: GlossaryTermMeta,
 ): ArticleSchema {
   return {
-    '@context': 'https://schema.org',
+    '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'Article',
     headline: meta.title,
     description: meta.description,
@@ -211,7 +211,7 @@ export function generateBreadcrumbSchema(
   termTitle: string,
 ): BreadcrumbSchema {
   return {
-    '@context': 'https://schema.org',
+    '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'BreadcrumbList',
     itemListElement: [
       {
@@ -258,7 +258,7 @@ export function generateFAQSchema(
   questions: Array<{ question: string; answer: string }>
 ): FAQPageSchema {
   return {
-    '@context': 'https://schema.org',
+    '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'FAQPage',
     mainEntity: questions.map((q) => ({
       '@type': 'Question',
@@ -279,7 +279,7 @@ export function generateGlossaryCollectionSchema(
   termCount: number,
 ): GlossaryCollectionSchema {
   return {
-    '@context': 'https://schema.org',
+    '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'CollectionPage',
     name: 'Bitcoin Glossary',
     description:
@@ -309,7 +309,7 @@ export function generateLearningResourceSchema(
   meta: GlossaryTermMeta,
 ): LearningResourceSchema {
   return {
-    '@context': 'https://schema.org',
+    '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'LearningResource',
     name: meta.title,
     description: meta.description,
