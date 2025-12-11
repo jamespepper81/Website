@@ -12,6 +12,7 @@ export interface GlossaryTermMeta {
   category: string;
   relatedTerms?: string[];
   quickFacts?: string[];
+  lastModified?: string;
 }
 
 export const glossaryMetadata: Record<string, GlossaryTermMeta> = {
