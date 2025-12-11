@@ -355,7 +355,11 @@ export function generateLearningResourceSchema(
       url: BITSLEUTH_ORGANIZATION.url,
     },
     ...(meta.relatedTerms && meta.relatedTerms.length > 0 && {
-      teaches: meta.relatedTerms,
+      teaches: meta.relatedTerms.map(slug => ({
+        '@type': 'DefinedTerm',
+        name: slug,
+        url: getGlossaryTermUrl(slug),
+      })),
     }),
   };
 }
