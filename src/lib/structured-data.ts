@@ -33,7 +33,7 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
  */
-function sanitizeRelatedTerms(relatedTerms?: string[]) {
+function normalizeRelatedTerms(relatedTerms?: string[]) {
   if (!Array.isArray(relatedTerms)) {
     return [];
   }
@@ -44,7 +44,7 @@ function sanitizeRelatedTerms(relatedTerms?: string[]) {
 }
 
 function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
-  const normalizedTerms = sanitizeRelatedTerms(relatedTerms);
+  const normalizedTerms = normalizeRelatedTerms(relatedTerms);
 
   if (normalizedTerms.length === 0) {
     return [];
