@@ -394,24 +394,17 @@ export function generateFAQSchema(
     return null;
   }
   // Only include valid question objects – single pass
-  const mainEntity = questions.reduce<QuestionSchema[]>((acc, question) => {
-    const normalizedQuestion = normalizeQuestionObject(question);
-
-    if (!normalizedQuestion) {
-      return acc;
-    }
-
-    acc.push({
+  const mainEntity = questions
+    .map(normalizeQuestionObject)
+    .filter(Boolean)
+    .map((normalizedQuestion) => ({
       '@type': 'Question',
-      name: normalizedQuestion.question,
+      name: normalizedQuestion!.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: normalizedQuestion.answer,
+        text: normalizedQuestion!.answer,
       },
-    });
-
-    return acc;
-  }, []);
+    }));
   if (mainEntity.length === 0) {
     return null;
   }
