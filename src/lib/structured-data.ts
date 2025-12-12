@@ -411,8 +411,7 @@ export function generateFAQSchema(
   // First, normalize and filter questions (first pass)
   // Then, map each normalized question to its schema object (second pass)
   const normalized = questions
-    .map(normalizeQuestionObject)
-    .filter(isSanitizedQuestionObject);
+    .map(normalizeQuestionObject);
   if (normalized.length === 0) {
     return null;
   }
