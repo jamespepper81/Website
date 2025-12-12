@@ -30,7 +30,10 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
 
 
 /**
- * Returns an object with the 'teaches' property if related terms are provided, or an empty object otherwise.
+ * Returns a LearningResource 'teaches' property object with related terms as DefinedTerm schemas.
+ * Used for structured data to indicate what concepts the educational content teaches.
+ * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
+ * @returns Object with 'teaches' array if terms exist, empty object otherwise
  */
 function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
   if (!relatedTerms || relatedTerms.length === 0) {
