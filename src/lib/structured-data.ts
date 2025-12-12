@@ -411,20 +411,22 @@ export function generateFAQSchema(
     return null;
   }
   // Only include valid question objects – single pass
-  const mainEntity = questions
+  // First, normalize and filter questions
+  const normalized = questions
     .map(normalizeQuestionObject)
-    .filter(isSanitizedQuestionObject)
-    .map((normalizedQuestion) => ({
-      '@type': 'Question' as const,
-      name: normalizedQuestion.question,
-      acceptedAnswer: {
-        '@type': 'Answer' as const,
-        text: normalizedQuestion.answer,
-      },
-    }));
-  if (mainEntity.length === 0) {
+    .filter(isSanitizedQuestionObject);
+  if (normalized.length === 0) {
     return null;
   }
+  // Now map into schema objects only if there are valid entries
+  const mainEntity = normalized.map((normalizedQuestion) => ({
+    '@type': 'Question' as const,
+    name: normalizedQuestion.question,
+    acceptedAnswer: {
+      '@type': 'Answer' as const,
+      text: normalizedQuestion.answer,
+    },
+  }));
   return {
     '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'FAQPage',
