@@ -416,8 +416,8 @@ export function generateFAQSchema(
   if (!Array.isArray(questions)) {
     return null;
   }
-  // Only include valid question objects - single pass
-  // First, normalize and filter questions
+  // First, normalize and filter questions (first pass)
+  // Then, map each normalized question to its schema object (second pass)
   const normalized = questions
     .map(normalizeQuestionObject)
     .filter(isSanitizedQuestionObject);
