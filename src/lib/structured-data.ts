@@ -33,6 +33,11 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
  */
+/**
+ * Normalizes an array of related term slugs by trimming whitespace and filtering out empty strings.
+ * @param relatedTerms - Optional array of term slugs to normalize.
+ * @returns Array of normalized, non-empty, trimmed term slugs.
+ */
 function normalizeRelatedTerms(relatedTerms?: string[]) {
   if (!Array.isArray(relatedTerms)) {
     return [];
