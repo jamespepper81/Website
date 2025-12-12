@@ -350,10 +350,7 @@ export function generateBreadcrumbSchema(
   };
 }
 
-/**
- * Generate FAQPage schema for pages with common questions
- * This can appear as rich snippets in search results
- */
+
 /**
  * Generate an FAQPage schema (JSON-LD) from an array of question/answer pairs.
  *
@@ -384,6 +381,26 @@ type FAQPageSchema = {
  * @returns {SanitizedQuestionObject | null} A sanitized question object if valid, otherwise null.
  */
 
+/**
+ * Checks if the item is a valid FAQ question object with non-empty string 'question' and 'answer' fields.
+ * Returns sanitized question object if valid, otherwise null.
+ */
+function validateFaqQuestionObject(item: unknown): SanitizedQuestionObject | null {
+  if (
+    typeof item === 'object' &&
+    item !== null &&
+    typeof (item as any).question === 'string' &&
+    typeof (item as any).answer === 'string'
+  ) {
+    const question = (item as any).question.trim();
+    const answer = (item as any).answer.trim();
+    if (question.length > 0 && answer.length > 0) {
+      return { question, answer };
+    }
+  }
+  return null;
+}
+
 // Represents an object with non-empty string "question" and "answer" properties.
 type SanitizedQuestionObject = {
   question: string;
@@ -410,18 +427,20 @@ export function generateFAQSchema(
   if (!Array.isArray(questions)) {
     return null;
   }
-  // First, normalize and filter questions (first pass)
-  // Then, map each normalized question to its schema object (second pass)
+  // Filter out invalid question objects and normalize the remaining ones,
+  // then map them into the required schema objects in a single chained operation.
   // Only include objects with both 'question' and 'answer' as strings
-  const normalized = questions
-    .filter(
-      (q) =>
-        typeof q.question === 'string' &&
-        typeof q.answer === 'string' &&
-        q.question.trim().length > 0 &&
-        q.answer.trim().length > 0
-    )
-    .map(normalizeQuestionObject);
+  const normalized = questions.reduce<SanitizedQuestionObject[]>((acc, q) => {
+    if (
+      typeof q.question === 'string' &&
+      typeof q.answer === 'string' &&
+      q.question.trim().length > 0 &&
+      q.answer.trim().length > 0
+    ) {
+      acc.push(normalizeQuestionObject(q));
+    }
+    return acc;
+  }, []);
   if (normalized.length === 0) {
     return null;
   }
