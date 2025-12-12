@@ -29,11 +29,6 @@ const BITSLEUTH_ORGANIZATION = {
 const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
 
 /**
- * Maps related term slugs to an array of DefinedTerm schema objects.
- * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
- * @returns Array of DefinedTerm objects, or empty array if no terms provided
- */
-/**
  * Normalizes an array of related term slugs by trimming whitespace and filtering out empty strings.
  * @param relatedTerms - Optional array of term slugs to normalize.
  * @returns Array of normalized, non-empty, trimmed term slugs.
@@ -48,6 +43,11 @@ function normalizeRelatedTerms(relatedTerms?: string[]) {
     .filter((term) => term.length > 0);
 }
 
+/**
+ * Maps related term slugs to an array of DefinedTerm schema objects.
+ * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
+ * @returns Array of DefinedTerm objects, or empty array if no terms provided
+ */
 function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
   const normalizedTerms = normalizeRelatedTerms(relatedTerms);
 
