@@ -33,7 +33,7 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
  */
-function sanitizeRelatedTerms(relatedTerms?: string[]) {
+function normalizeRelatedTerms(relatedTerms?: string[]) {
   if (!Array.isArray(relatedTerms)) {
     return [];
   }
@@ -44,7 +44,7 @@ function sanitizeRelatedTerms(relatedTerms?: string[]) {
 }
 
 function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
-  const normalizedTerms = sanitizeRelatedTerms(relatedTerms);
+  const normalizedTerms = normalizeRelatedTerms(relatedTerms);
 
   if (normalizedTerms.length === 0) {
     return [];
@@ -380,26 +380,18 @@ type SanitizedQuestionObject = {
   answer: string;
 };
 
+
+/**
+ * Returns a new object with "question" and "answer" fields trimmed.
+ * Assumes valid input: object with string "question" and "answer" fields.
+ * @param obj - Object with string "question" and "answer" properties.
+ * @returns SanitizedQuestionObject
+ */
 function normalizeQuestionObject(
-  item: unknown,
-): SanitizedQuestionObject | null {
-  if (typeof item !== 'object' || item === null) {
-    return null;
-  }
-
-  const obj = item as Record<string, unknown>;
-
-  if (typeof obj.question !== 'string' || typeof obj.answer !== 'string') {
-    return null;
-  }
-
+  obj: { question: string; answer: string },
+): SanitizedQuestionObject {
   const question = obj.question.trim();
   const answer = obj.answer.trim();
-
-  if (!question || !answer) {
-    return null;
-  }
-
   return { question, answer };
 }
 
@@ -416,8 +408,8 @@ export function generateFAQSchema(
   if (!Array.isArray(questions)) {
     return null;
   }
-  // Only include valid question objects - single pass
-  // First, normalize and filter questions
+  // First, normalize and filter questions (first pass)
+  // Then, map each normalized question to its schema object (second pass)
   const normalized = questions
     .map(normalizeQuestionObject)
     .filter(isSanitizedQuestionObject);
