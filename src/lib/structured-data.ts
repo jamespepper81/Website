@@ -420,7 +420,15 @@ export function generateFAQSchema(
   }
   // First, normalize and filter questions (first pass)
   // Then, map each normalized question to its schema object (second pass)
+  // Only include objects with both 'question' and 'answer' as strings
   const normalized = questions
+    .filter(
+      (q) =>
+        typeof q.question === "string" &&
+        typeof q.answer === "string" &&
+        q.question.trim().length > 0 &&
+        q.answer.trim().length > 0
+    )
     .map(normalizeQuestionObject);
   if (normalized.length === 0) {
     return null;
