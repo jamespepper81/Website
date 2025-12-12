@@ -63,7 +63,18 @@ type RelatedTermsProperty = Partial<
   Record<RelatedTermsPropertyKey, ReturnType<typeof mapRelatedTermsToDefinedTerms>>
 >;
 
-// inlined getRelatedTermsProperty (was unused helper)
+function getRelatedTermsProperty(
+  key: RelatedTermsPropertyKey,
+  relatedTerms?: string[],
+): RelatedTermsProperty {
+  const definedTerms = mapRelatedTermsToDefinedTerms(relatedTerms);
+
+  if (definedTerms.length === 0) {
+    return {};
+  }
+
+  return { [key]: definedTerms };
+}
 
 
 
@@ -83,11 +94,7 @@ type RelatedTermsProperty = Partial<
  * @returns Object with 'teaches' array if terms exist, empty object otherwise
  */
 function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
-  const definedTerms = mapRelatedTermsToDefinedTerms(relatedTerms);
-  if (definedTerms.length === 0) {
-    return {};
-  }
-  return { teaches: definedTerms };
+  return getRelatedTermsProperty('teaches', relatedTerms);
 }
 
 /**
@@ -390,6 +397,12 @@ function normalizeQuestionObject(
   return { question, answer };
 }
 
+function isSanitizedQuestionObject(
+  item: SanitizedQuestionObject | null,
+): item is SanitizedQuestionObject {
+  return item !== null;
+}
+
 export function generateFAQSchema(
   questions: Array<{ question: string; answer: string }>
 ): FAQPageSchema | null {
@@ -400,13 +413,13 @@ export function generateFAQSchema(
   // Only include valid question objects – single pass
   const mainEntity = questions
     .map(normalizeQuestionObject)
-    .filter(Boolean)
+    .filter(isSanitizedQuestionObject)
     .map((normalizedQuestion) => ({
-      '@type': 'Question',
-      name: normalizedQuestion!.question,
+      '@type': 'Question' as const,
+      name: normalizedQuestion.question,
       acceptedAnswer: {
-        '@type': 'Answer',
-        text: normalizedQuestion!.answer,
+        '@type': 'Answer' as const,
+        text: normalizedQuestion.answer,
       },
     }));
   if (mainEntity.length === 0) {
