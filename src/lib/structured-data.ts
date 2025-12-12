@@ -281,14 +281,27 @@ type FAQPageSchema = {
 /**
  * Validate that an object is a valid FAQ question object with non-empty string 'question' and 'answer'.
  */
-function isValidQuestionObject(item: unknown): item is { question: string; answer: string } {
+
+// Represents an object with non-empty string "question" and "answer" properties.
+type NonEmptyQuestionObject = {
+  question: string;
+  answer: string;
+};
+
+function isValidQuestionObject(item: unknown): item is NonEmptyQuestionObject {
+  if (typeof item !== 'object' || item === null) {
+    return false;
+  }
+  
+  const obj = item as Record<string, unknown>;
+  
   return (
-    typeof item === 'object' &&
-    item !== null &&
-    typeof (item as any).question === 'string' &&
-    (item as any).question.trim().length > 0 &&
-    typeof (item as any).answer === 'string' &&
-    (item as any).answer.trim().length > 0
+    'question' in obj &&
+    typeof obj.question === 'string' &&
+    obj.question.trim().length > 0 &&
+    'answer' in obj &&
+    typeof obj.answer === 'string' &&
+    obj.answer.trim().length > 0
   );
 }
 
