@@ -33,7 +33,7 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
  */
-function normalizeRelatedTerms(relatedTerms?: string[]) {
+function sanitizeRelatedTerms(relatedTerms?: string[]) {
   if (!Array.isArray(relatedTerms)) {
     return [];
   }
@@ -44,7 +44,7 @@ function normalizeRelatedTerms(relatedTerms?: string[]) {
 }
 
 function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
-  const normalizedTerms = normalizeRelatedTerms(relatedTerms);
+  const normalizedTerms = sanitizeRelatedTerms(relatedTerms);
 
   if (normalizedTerms.length === 0) {
     return [];
@@ -64,7 +64,7 @@ type RelatedTermsProperty = Partial<
 >;
 
 function getRelatedTermsProperty(
-  propertyKey: RelatedTermsPropertyKey,
+  key: RelatedTermsPropertyKey,
   relatedTerms?: string[],
 ): RelatedTermsProperty {
   const definedTerms = mapRelatedTermsToDefinedTerms(relatedTerms);
@@ -73,8 +73,19 @@ function getRelatedTermsProperty(
     return {};
   }
 
-  return { [propertyKey]: definedTerms };
+  return { [key]: definedTerms };
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Returns a LearningResource 'teaches' property object with related terms as DefinedTerm schemas.
@@ -113,7 +124,7 @@ function formatSlugToTitle(slug: string): string {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
 
-  return formatted.length > 0 ? formatted : slug;
+  return formatted;
 }
 
 type DefinedTermSchema = {
@@ -386,6 +397,12 @@ function normalizeQuestionObject(
   return { question, answer };
 }
 
+function isSanitizedQuestionObject(
+  item: SanitizedQuestionObject | null,
+): item is SanitizedQuestionObject {
+  return item !== null;
+}
+
 export function generateFAQSchema(
   questions: Array<{ question: string; answer: string }>
 ): FAQPageSchema | null {
@@ -394,24 +411,17 @@ export function generateFAQSchema(
     return null;
   }
   // Only include valid question objects – single pass
-  const mainEntity = questions.reduce<QuestionSchema[]>((acc, question) => {
-    const normalizedQuestion = normalizeQuestionObject(question);
-
-    if (!normalizedQuestion) {
-      return acc;
-    }
-
-    acc.push({
-      '@type': 'Question',
+  const mainEntity = questions
+    .map(normalizeQuestionObject)
+    .filter(isSanitizedQuestionObject)
+    .map((normalizedQuestion) => ({
+      '@type': 'Question' as const,
       name: normalizedQuestion.question,
       acceptedAnswer: {
-        '@type': 'Answer',
+        '@type': 'Answer' as const,
         text: normalizedQuestion.answer,
       },
-    });
-
-    return acc;
-  }, []);
+    }));
   if (mainEntity.length === 0) {
     return null;
   }
