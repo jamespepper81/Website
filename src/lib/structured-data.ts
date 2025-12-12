@@ -11,6 +11,9 @@ const GLOSSARY_BASE_URL = 'https://www.bitsleuth.ai/glossary';
 // Shared constant for glossary name
 const GLOSSARY_NAME = 'Bitcoin Glossary';
 
+// Shared constant for the about topic
+const ABOUT_TOPIC = 'Bitcoin';
+
 // Shared constant for BitSleuth logo URL
 const BITSLEUTH_LOGO_URL = 'https://www.bitsleuth.ai/images/logo.png';
 
@@ -24,6 +27,22 @@ const BITSLEUTH_ORGANIZATION = {
 
 // Shared constant for educational level
 const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
+
+
+/**
+ * Returns an object with the 'teaches' property if related terms are provided, or an empty object otherwise.
+ */
+function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
+  return (relatedTerms?.length ?? 0) > 0
+    ? {
+        teaches: relatedTerms!.map((relatedTerm) => ({
+          '@type': 'DefinedTerm' as const,
+          name: relatedTerm,
+          url: getGlossaryTermUrl(relatedTerm),
+        })),
+      }
+    : {};
+}
 
 /**
  * Return the glossary term URL for a given term slug.
@@ -214,13 +233,13 @@ export function generateArticleSchema(
     keywords: meta.keywords.join(', '),
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
-    ...(meta.relatedTerms && meta.relatedTerms.length > 0 && {
+    ...(meta.relatedTerms?.length ? {
       mentions: meta.relatedTerms.map((relatedTerm) => ({
         '@type': 'DefinedTerm',
         name: relatedTerm,
         url: getGlossaryTermUrl(relatedTerm),
       })),
-    }),
+    } : {}),
   };
 }
 
@@ -349,7 +368,7 @@ export function generateGlossaryCollectionSchema(
     url: GLOSSARY_BASE_URL,
     about: {
       '@type': 'Thing',
-      name: 'Bitcoin',
+      name: ABOUT_TOPIC,
       description: 'Cryptocurrency and blockchain technology',
     },
     numberOfItems: termCount,
@@ -382,20 +401,14 @@ export function generateLearningResourceSchema(
     keywords: meta.keywords.join(', '),
     about: {
       '@type': 'Thing',
-      name: 'Bitcoin',
+      name: ABOUT_TOPIC,
     },
     publisher: {
       '@type': 'Organization',
       name: BITSLEUTH_ORGANIZATION.name,
       url: BITSLEUTH_ORGANIZATION.url,
     },
-    ...(meta.relatedTerms && meta.relatedTerms.length > 0 && {
-      teaches: meta.relatedTerms.map((relatedTerm) => ({
-        '@type': 'DefinedTerm',
-        name: relatedTerm,
-        url: getGlossaryTermUrl(relatedTerm),
-      })),
-    }),
+    ...getRelatedTermsTeachesProperty(meta.relatedTerms),
   };
 }
 
