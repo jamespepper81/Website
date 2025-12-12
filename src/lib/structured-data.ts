@@ -29,22 +29,47 @@ const BITSLEUTH_ORGANIZATION = {
 const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
 
 /**
+ * Maps related term slugs to an array of DefinedTerm schema objects.
+ * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
+ * @returns Array of DefinedTerm objects, or empty array if no terms provided
+ */
+function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
+  if (!relatedTerms || relatedTerms.length === 0) {
+    return [];
+  }
+  return relatedTerms.map((relatedTerm) => ({
+    '@type': 'DefinedTerm' as const,
+    name: relatedTerm,
+    url: getGlossaryTermUrl(relatedTerm),
+  }));
+}
+
+/**
  * Returns a LearningResource 'teaches' property object with related terms as DefinedTerm schemas.
  * Used for structured data to indicate what concepts the educational content teaches.
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Object with 'teaches' array if terms exist, empty object otherwise
  */
 function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
-  if (!relatedTerms || relatedTerms.length === 0) {
+  const definedTerms = mapRelatedTermsToDefinedTerms(relatedTerms);
+  if (definedTerms.length === 0) {
     return {};
   }
-  return {
-    teaches: relatedTerms.map((relatedTerm) => ({
-      '@type': 'DefinedTerm' as const,
-      name: relatedTerm,
-      url: getGlossaryTermUrl(relatedTerm),
-    })),
-  };
+  return { teaches: definedTerms };
+}
+
+/**
+ * Returns an Article 'mentions' property object with related terms as DefinedTerm schemas.
+ * Used for structured data to indicate what terms are mentioned in the article.
+ * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
+ * @returns Object with 'mentions' array if terms exist, empty object otherwise
+ */
+function getRelatedTermsMentionsProperty(relatedTerms?: string[]) {
+  const definedTerms = mapRelatedTermsToDefinedTerms(relatedTerms);
+  if (definedTerms.length === 0) {
+    return {};
+  }
+  return { mentions: definedTerms };
 }
 
 /**
@@ -236,13 +261,7 @@ export function generateArticleSchema(
     keywords: meta.keywords.join(', '),
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
-    ...(meta.relatedTerms && meta.relatedTerms.length > 0 ? {
-      mentions: meta.relatedTerms.map((relatedTerm) => ({
-        '@type': 'DefinedTerm',
-        name: relatedTerm,
-        url: getGlossaryTermUrl(relatedTerm),
-      })),
-    } : {}),
+    ...getRelatedTermsMentionsProperty(meta.relatedTerms),
   };
 }
 
