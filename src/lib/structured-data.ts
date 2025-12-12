@@ -350,10 +350,7 @@ export function generateBreadcrumbSchema(
   };
 }
 
-/**
- * Generate FAQPage schema for pages with common questions
- * This can appear as rich snippets in search results
- */
+
 /**
  * Generate an FAQPage schema (JSON-LD) from an array of question/answer pairs.
  *
