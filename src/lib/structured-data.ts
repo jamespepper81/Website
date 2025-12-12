@@ -33,15 +33,16 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
  * Returns an object with the 'teaches' property if related terms are provided, or an empty object otherwise.
  */
 function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
-  return (relatedTerms?.length ?? 0) > 0
-    ? {
-        teaches: relatedTerms?.map((relatedTerm) => ({
-          '@type': 'DefinedTerm' as const,
-          name: relatedTerm,
-          url: getGlossaryTermUrl(relatedTerm),
-        })) ?? [],
-      }
-    : {};
+  if (!relatedTerms || relatedTerms.length === 0) {
+    return {};
+  }
+  return {
+    teaches: relatedTerms.map((relatedTerm) => ({
+      '@type': 'DefinedTerm' as const,
+      name: relatedTerm,
+      url: getGlossaryTermUrl(relatedTerm),
+    })),
+  };
 }
 
 /**
@@ -233,12 +234,12 @@ export function generateArticleSchema(
     keywords: meta.keywords.join(', '),
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
-    ...(meta.relatedTerms?.length ? {
-      mentions: meta.relatedTerms?.map((relatedTerm) => ({
+    ...(meta.relatedTerms && meta.relatedTerms.length > 0 ? {
+      mentions: meta.relatedTerms.map((relatedTerm) => ({
         '@type': 'DefinedTerm',
         name: relatedTerm,
         url: getGlossaryTermUrl(relatedTerm),
-      })) ?? [],
+      })),
     } : {}),
   };
 }
