@@ -118,6 +118,9 @@ function getGlossaryTermUrl(term: string): string {
 const GLOSSARY_SCHEMA_CONTEXT = 'https://schema.org' as const;
 
 function formatSlugToTitle(slug: string): string {
+  if (typeof slug !== 'string' || slug.trim().length === 0) {
+    return '';
+  }
   const formatted = slug
     .split(/[-_]/)
     .filter(Boolean)
