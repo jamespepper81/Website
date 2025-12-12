@@ -345,6 +345,12 @@ export function generateBreadcrumbSchema(
  * Generate FAQPage schema for pages with common questions
  * This can appear as rich snippets in search results
  */
+/**
+ * Generate an FAQPage schema (JSON-LD) from an array of question/answer pairs.
+ *
+ * @param questions - An array of objects, each containing a "question" string and an "answer" string.
+ * @returns The FAQPageSchema object compatible with schema.org's FAQPage specification.
+ */
 
 type QuestionSchema = {
   '@type': 'Question';
