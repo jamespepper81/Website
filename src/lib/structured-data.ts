@@ -33,7 +33,7 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
  */
-function normalizeRelatedTerms(relatedTerms?: string[]) {
+function sanitizeRelatedTerms(relatedTerms?: string[]) {
   if (!Array.isArray(relatedTerms)) {
     return [];
   }
@@ -44,7 +44,7 @@ function normalizeRelatedTerms(relatedTerms?: string[]) {
 }
 
 function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
-  const normalizedTerms = normalizeRelatedTerms(relatedTerms);
+  const normalizedTerms = sanitizeRelatedTerms(relatedTerms);
 
   if (normalizedTerms.length === 0) {
     return [];
@@ -63,18 +63,18 @@ type RelatedTermsProperty = Partial<
   Record<RelatedTermsPropertyKey, ReturnType<typeof mapRelatedTermsToDefinedTerms>>
 >;
 
-function getRelatedTermsProperty(
-  propertyKey: RelatedTermsPropertyKey,
-  relatedTerms?: string[],
-): RelatedTermsProperty {
-  const definedTerms = mapRelatedTermsToDefinedTerms(relatedTerms);
+// inlined getRelatedTermsProperty (was unused helper)
 
-  if (definedTerms.length === 0) {
-    return {};
-  }
 
-  return { [propertyKey]: definedTerms };
-}
+
+
+
+
+
+
+
+
+
 
 /**
  * Returns a LearningResource 'teaches' property object with related terms as DefinedTerm schemas.
@@ -83,7 +83,11 @@ function getRelatedTermsProperty(
  * @returns Object with 'teaches' array if terms exist, empty object otherwise
  */
 function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
-  return getRelatedTermsProperty('teaches', relatedTerms);
+  const definedTerms = mapRelatedTermsToDefinedTerms(relatedTerms);
+  if (definedTerms.length === 0) {
+    return {};
+  }
+  return { teaches: definedTerms };
 }
 
 /**
@@ -113,7 +117,7 @@ function formatSlugToTitle(slug: string): string {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
 
-  return formatted.length > 0 ? formatted : slug;
+  return formatted;
 }
 
 type DefinedTermSchema = {
@@ -394,24 +398,17 @@ export function generateFAQSchema(
     return null;
   }
   // Only include valid question objects – single pass
-  const mainEntity = questions.reduce<QuestionSchema[]>((acc, question) => {
-    const normalizedQuestion = normalizeQuestionObject(question);
-
-    if (!normalizedQuestion) {
-      return acc;
-    }
-
-    acc.push({
+  const mainEntity = questions
+    .map(normalizeQuestionObject)
+    .filter(Boolean)
+    .map((normalizedQuestion) => ({
       '@type': 'Question',
-      name: normalizedQuestion.question,
+      name: normalizedQuestion!.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: normalizedQuestion.answer,
+        text: normalizedQuestion!.answer,
       },
-    });
-
-    return acc;
-  }, []);
+    }));
   if (mainEntity.length === 0) {
     return null;
   }
