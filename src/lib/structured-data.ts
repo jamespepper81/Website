@@ -420,8 +420,8 @@ export function generateFAQSchema(
   const normalized = questions
     .filter(
       (q) =>
-        typeof q.question === "string" &&
-        typeof q.answer === "string" &&
+        typeof q.question === 'string' &&
+        typeof q.answer === 'string' &&
         q.question.trim().length > 0 &&
         q.answer.trim().length > 0
     )
