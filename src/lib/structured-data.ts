@@ -76,7 +76,6 @@ function getRelatedTermsProperty(
   return { [key]: definedTerms };
 }
 
-
 /**
  * Returns a LearningResource 'teaches' property object with related terms as DefinedTerm schemas.
  * Used for structured data to indicate what concepts the educational content teaches.
