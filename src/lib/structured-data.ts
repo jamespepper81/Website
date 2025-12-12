@@ -113,7 +113,7 @@ function formatSlugToTitle(slug: string): string {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
 
-  return formatted.length > 0 ? formatted : slug;
+  return formatted;
 }
 
 type DefinedTermSchema = {
