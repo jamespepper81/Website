@@ -389,8 +389,6 @@ type SanitizedQuestionObject = {
   question: string;
   answer: string;
 };
-
-
 /**
  * Returns a new object with "question" and "answer" fields trimmed.
  * Assumes valid input: object with string "question" and "answer" fields.
