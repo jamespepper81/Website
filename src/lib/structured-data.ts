@@ -380,23 +380,6 @@ type SanitizedQuestionObject = {
   answer: string;
 };
 
-/**
- * Checks if the input is an object with non-empty string "question" and "answer" properties (not trimmed).
- * @param {unknown} item
- * @returns {boolean}
- */
-function isValidQuestionObject(item: unknown): item is { question: string; answer: string } {
-  if (typeof item !== 'object' || item === null) {
-    return false;
-  }
-  const obj = item as Record<string, unknown>;
-  return (
-    typeof obj.question === 'string' &&
-    typeof obj.answer === 'string' &&
-    obj.question.length > 0 &&
-    obj.answer.length > 0
-  );
-}
 
 /**
  * Returns a new object with "question" and "answer" fields trimmed.
