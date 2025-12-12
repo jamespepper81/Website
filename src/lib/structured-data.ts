@@ -35,11 +35,11 @@ const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
 function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
   return (relatedTerms?.length ?? 0) > 0
     ? {
-        teaches: relatedTerms!.map((relatedTerm) => ({
+        teaches: relatedTerms?.map((relatedTerm) => ({
           '@type': 'DefinedTerm' as const,
           name: relatedTerm,
           url: getGlossaryTermUrl(relatedTerm),
-        })),
+        })) ?? [],
       }
     : {};
 }
@@ -234,11 +234,11 @@ export function generateArticleSchema(
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
     ...(meta.relatedTerms?.length ? {
-      mentions: meta.relatedTerms.map((relatedTerm) => ({
+      mentions: meta.relatedTerms?.map((relatedTerm) => ({
         '@type': 'DefinedTerm',
         name: relatedTerm,
         url: getGlossaryTermUrl(relatedTerm),
-      })),
+      })) ?? [],
     } : {}),
   };
 }
