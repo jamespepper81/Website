@@ -405,11 +405,7 @@ function normalizeQuestionObject(
   return { question, answer };
 }
 
-function isSanitizedQuestionObject(
-  item: SanitizedQuestionObject | null,
-): item is SanitizedQuestionObject {
-  return item !== null;
-}
+
 
 export function generateFAQSchema(
   questions: Array<{ question: string; answer: string }>
