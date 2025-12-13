@@ -29,6 +29,37 @@ const BITSLEUTH_ORGANIZATION = {
 const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
 
 /**
+ * Return the glossary term URL for a given term slug.
+ * @param term - The term slug to convert to a URL.
+ * @returns The full URL for the glossary term.
+ */
+function getGlossaryTermUrl(term: string): string {
+  if (typeof term !== 'string' || term.trim().length === 0) {
+    throw new Error('Invalid glossary term slug: must be a non-empty string');
+  }
+  // encodeURIComponent ensures URL safety of the term slug
+  return `${GLOSSARY_BASE_URL}/${encodeURIComponent(term)}`;
+}
+
+/**
+ * Converts a kebab-case or snake_case slug into Title Case (capitalized words separated by spaces).
+ * @param slug - The slug string (e.g., 'bitcoin-block-size' or 'bitcoin_block_size').
+ * @returns The Title Case version of the slug (e.g., 'Bitcoin Block Size').
+ */
+function formatSlugToTitle(slug: string): string {
+  if (typeof slug !== 'string' || slug.trim().length === 0) {
+    return '';
+  }
+  const formatted = slug
+    .split(/[-_]/)
+    .filter((part) => part.length > 0)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+
+  return formatted;
+}
+
+/**
  * Normalizes an array of related term slugs by trimming whitespace and filtering out empty strings.
  * @param relatedTerms - Optional array of term slugs to normalize.
  * @returns Array of normalized, non-empty, trimmed term slugs.
@@ -101,37 +132,8 @@ function getRelatedTermsMentionsProperty(relatedTerms?: string[]) {
   return getRelatedTermsProperty('mentions', relatedTerms);
 }
 
-/**
- * Return the glossary term URL for a given term slug.
- */
-function getGlossaryTermUrl(term: string): string {
-  if (typeof term !== 'string' || term.trim().length === 0) {
-    throw new Error('Invalid glossary term slug: must be a non-empty string');
-  }
-  // encodeURIComponent ensures URL safety of the term slug
-  return `${GLOSSARY_BASE_URL}/${encodeURIComponent(term)}`;
-}
-
 // Shared constant for Schema.org context
 const GLOSSARY_SCHEMA_CONTEXT = 'https://schema.org' as const;
-
-/**
- * Converts a kebab-case or snake_case slug into Title Case (capitalized words separated by spaces).
- * @param slug - The slug string (e.g., 'bitcoin-block-size' or 'bitcoin_block_size').
- * @returns The Title Case version of the slug (e.g., 'Bitcoin Block Size').
- */
-function formatSlugToTitle(slug: string): string {
-  if (typeof slug !== 'string' || slug.trim().length === 0) {
-    return '';
-  }
-  const formatted = slug
-    .split(/[-_]/)
-    .filter((part) => part.length > 0)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
-
-  return formatted;
-}
 
 type DefinedTermSchema = {
   '@context': 'https://schema.org';
@@ -417,12 +419,12 @@ export function generateFAQSchema(
     return null;
   }
   // Now map into schema objects only if there are valid entries
-  const mainEntity = sanitizedQuestions.map((normalizedQuestion) => ({
+  const mainEntity = sanitizedQuestions.map((sanitizedQuestion) => ({
     '@type': 'Question' as const,
-    name: normalizedQuestion.question,
+    name: sanitizedQuestion.question,
     acceptedAnswer: {
       '@type': 'Answer' as const,
-      text: normalizedQuestion.answer,
+      text: sanitizedQuestion.answer,
     },
   }));
   return {
