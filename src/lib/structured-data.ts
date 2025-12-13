@@ -18,7 +18,7 @@ const ABOUT_TOPIC = 'Bitcoin';
 const BITSLEUTH_LOGO_URL = 'https://www.bitsleuth.ai/images/logo.png';
 
 // Shared constant for LearningResource type 'Definition'
-const LEARNING_RESOURCE_TYPE_DEFINITION = 'Definition';
+const LEARNING_RESOURCE_TYPE = 'Definition';
 // Shared constant for BitSleuth organization details
 const BITSLEUTH_ORGANIZATION = {
   name: 'BitSleuth',
@@ -382,18 +382,18 @@ type SanitizedQuestionObject = {
 /**
  * Check if an object is a valid FAQ entry and return the normalized version, or null.
  */
-function validateAndNormalizeFAQEntry(q: unknown): SanitizedQuestionObject | null {
-  // Check if q is a non-null object first
-  if (!q || typeof q !== 'object') {
+function validateAndNormalizeFAQEntry(faqEntry: unknown): SanitizedQuestionObject | null {
+  // Check if faqEntry is a non-null object first
+  if (!faqEntry || typeof faqEntry !== 'object') {
     return null;
   }
-  const obj = q as Record<string, unknown>;
+  const faqCandidate = faqEntry as Record<string, unknown>;
   if (
-    typeof obj.question === 'string' &&
-    typeof obj.answer === 'string'
+    typeof faqCandidate.question === 'string' &&
+    typeof faqCandidate.answer === 'string'
   ) {
-    const question = obj.question.trim();
-    const answer = obj.answer.trim();
+    const question = faqCandidate.question.trim();
+    const answer = faqCandidate.answer.trim();
     if (question.length > 0 && answer.length > 0) {
       return { question, answer };
     }
@@ -409,15 +409,15 @@ export function generateFAQSchema(
     return null;
   }
   // Normalize and filter valid question entries
-  const normalized: SanitizedQuestionObject[] = questions
+  const sanitizedQuestions: SanitizedQuestionObject[] = questions
     .map(validateAndNormalizeFAQEntry)
     .filter((q): q is SanitizedQuestionObject => q !== null);
 
-  if (normalized.length === 0) {
+  if (sanitizedQuestions.length === 0) {
     return null;
   }
   // Now map into schema objects only if there are valid entries
-  const mainEntity = normalized.map((normalizedQuestion) => ({
+  const mainEntity = sanitizedQuestions.map((normalizedQuestion) => ({
     '@type': 'Question' as const,
     name: normalizedQuestion.question,
     acceptedAnswer: {
@@ -476,7 +476,7 @@ export function generateLearningResourceSchema(
     description: meta.description,
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
-    learningResourceType: LEARNING_RESOURCE_TYPE_DEFINITION,
+    learningResourceType: LEARNING_RESOURCE_TYPE,
     educationalLevel: GLOSSARY_EDUCATIONAL_LEVEL,
     keywords: meta.keywords.join(', '),
     about: {
