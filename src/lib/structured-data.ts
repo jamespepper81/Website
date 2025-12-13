@@ -73,6 +73,16 @@ function normalizeRelatedTerms(relatedTerms?: string[]): string[] {
 }
 
 /**
+ * Represents a DefinedTerm object used in Schema.org structured data.
+ * Used in mentions, teaches, and other relationship properties.
+ */
+type DefinedTermObject = {
+  '@type': 'DefinedTerm';
+  name: string;
+  url: string;
+};
+
+/**
  * Maps related term slugs to an array of DefinedTerm schema objects.
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
@@ -132,16 +142,6 @@ function getRelatedTermsMentionsProperty(relatedTerms?: string[]): RelatedTermsP
 
 // Shared constant for Schema.org context
 const GLOSSARY_SCHEMA_CONTEXT = 'https://schema.org' as const;
-
-/**
- * Represents a DefinedTerm object used in Schema.org structured data.
- * Used in mentions, teaches, and other relationship properties.
- */
-type DefinedTermObject = {
-  '@type': 'DefinedTerm';
-  name: string;
-  url: string;
-};
 
 type DefinedTermSchema = {
   '@context': 'https://schema.org';
