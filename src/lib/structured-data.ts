@@ -382,9 +382,6 @@ type FAQPageSchema = {
  */
 
 /**
- * Checks if the item is a valid FAQ question object with non-empty string 'question' and 'answer' fields.
- * Returns sanitized question object if valid, otherwise null.
- */
 
 
 // Represents an object with non-empty string "question" and "answer" properties.
