@@ -372,8 +372,6 @@ type FAQPageSchema = {
   '@type': 'FAQPage';
   mainEntity: Array<QuestionSchema>;
 };
-
-
 /**
  * Represents an object with non-empty string "question" and "answer" properties.
  */
