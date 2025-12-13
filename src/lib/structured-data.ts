@@ -126,7 +126,7 @@ function formatSlugToTitle(slug: string): string {
   }
   const formatted = slug
     .split(/[-_]/)
-    .filter(Boolean)
+    .filter((part) => part.length > 0)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
 
