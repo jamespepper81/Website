@@ -373,37 +373,35 @@ type FAQPageSchema = {
   mainEntity: Array<QuestionSchema>;
 };
 
-/**
- * Validates whether the input is an object representing a FAQ question,
- * with non-empty string 'question' and 'answer' properties.
- *
- * @param {unknown} item - The item to validate as a FAQ question object.
- * @returns {SanitizedQuestionObject | null} A sanitized question object if valid, otherwise null.
- */
 
 /**
- * Checks if the item is a valid FAQ question object with non-empty string 'question' and 'answer' fields.
- * Returns sanitized question object if valid, otherwise null.
+ * Represents an object with non-empty string "question" and "answer" properties.
  */
-
-
-// Represents an object with non-empty string "question" and "answer" properties.
 type SanitizedQuestionObject = {
   question: string;
   answer: string;
 };
+
 /**
- * Returns a new object with "question" and "answer" fields trimmed.
- * Assumes valid input: object with string "question" and "answer" fields.
- * @param obj - Object with string "question" and "answer" properties.
- * @returns SanitizedQuestionObject
+ * Check if an object is a valid FAQ entry and return the normalized version, or null.
  */
-function normalizeQuestionObject(
-  obj: { question: string; answer: string },
-): SanitizedQuestionObject {
-  const question = obj.question.trim();
-  const answer = obj.answer.trim();
-  return { question, answer };
+function validateAndNormalizeFAQEntry(q: unknown): SanitizedQuestionObject | null {
+  // Check if q is a non-null object first
+  if (!q || typeof q !== 'object') {
+    return null;
+  }
+  const obj = q as Record<string, unknown>;
+  if (
+    typeof obj.question === 'string' &&
+    typeof obj.answer === 'string'
+  ) {
+    const question = obj.question.trim();
+    const answer = obj.answer.trim();
+    if (question.length > 0 && answer.length > 0) {
+      return { question, answer };
+    }
+  }
+  return null;
 }
 
 export function generateFAQSchema(
@@ -413,20 +411,11 @@ export function generateFAQSchema(
   if (!Array.isArray(questions)) {
     return null;
   }
-  // Filter out invalid question objects and normalize the remaining ones,
-  // then map them into the required schema objects in a single chained operation.
-  // Only include objects with both 'question' and 'answer' as strings
-  const normalized = questions.reduce<SanitizedQuestionObject[]>((acc, q) => {
-    if (
-      typeof q.question === 'string' &&
-      typeof q.answer === 'string' &&
-      q.question.trim().length > 0 &&
-      q.answer.trim().length > 0
-    ) {
-      acc.push(normalizeQuestionObject(q));
-    }
-    return acc;
-  }, []);
+  // Normalize and filter valid question entries
+  const normalized: SanitizedQuestionObject[] = questions
+    .map(validateAndNormalizeFAQEntry)
+    .filter((q): q is SanitizedQuestionObject => q !== null);
+
   if (normalized.length === 0) {
     return null;
   }
