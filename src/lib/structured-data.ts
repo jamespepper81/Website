@@ -350,7 +350,6 @@ export function generateBreadcrumbSchema(
   };
 }
 
-
 /**
  * Generate an FAQPage schema (JSON-LD) from an array of question/answer pairs.
  *
