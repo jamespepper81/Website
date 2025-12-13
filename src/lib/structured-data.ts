@@ -18,7 +18,7 @@ const ABOUT_TOPIC = 'Bitcoin';
 const BITSLEUTH_LOGO_URL = 'https://www.bitsleuth.ai/images/logo.png';
 
 // Shared constant for LearningResource type 'Definition'
-const LEARNING_RESOURCE_TYPE_DEFINITION = 'Definition';
+const LEARNING_RESOURCE_TYPE = 'Definition';
 // Shared constant for BitSleuth organization details
 const BITSLEUTH_ORGANIZATION = {
   name: 'BitSleuth',
@@ -29,11 +29,40 @@ const BITSLEUTH_ORGANIZATION = {
 const GLOSSARY_EDUCATIONAL_LEVEL = 'Beginner to Advanced';
 
 /**
+ * Return the glossary term URL for a given term slug.
+ * @param term - The term slug to convert to a URL.
+ * @returns The full URL for the glossary term.
+ */
+function getGlossaryTermUrl(term: string): string {
+  if (typeof term !== 'string' || term.trim().length === 0) {
+    throw new Error('Invalid glossary term slug: must be a non-empty string');
+  }
+  // encodeURIComponent ensures URL safety of the term slug
+  return `${GLOSSARY_BASE_URL}/${encodeURIComponent(term)}`;
+}
+
+/**
+ * Converts a kebab-case or snake_case slug into Title Case (capitalized words separated by spaces).
+ * @param slug - The slug string (e.g., 'bitcoin-block-size' or 'bitcoin_block_size').
+ * @returns The Title Case version of the slug (e.g., 'Bitcoin Block Size').
+ */
+function formatSlugToTitle(slug: string): string {
+  if (typeof slug !== 'string' || slug.trim().length === 0) {
+    return '';
+  }
+  return slug
+    .split(/[-_]/)
+    .filter((part) => part.length > 0)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+/**
  * Normalizes an array of related term slugs by trimming whitespace and filtering out empty strings.
  * @param relatedTerms - Optional array of term slugs to normalize.
  * @returns Array of normalized, non-empty, trimmed term slugs.
  */
-function normalizeRelatedTerms(relatedTerms?: string[]) {
+function normalizeRelatedTerms(relatedTerms?: string[]): string[] {
   if (!Array.isArray(relatedTerms)) {
     return [];
   }
@@ -44,11 +73,21 @@ function normalizeRelatedTerms(relatedTerms?: string[]) {
 }
 
 /**
+ * Represents a DefinedTerm object used in Schema.org structured data.
+ * Used in mentions, teaches, and other relationship properties.
+ */
+type DefinedTermObject = {
+  '@type': 'DefinedTerm';
+  name: string;
+  url: string;
+};
+
+/**
  * Maps related term slugs to an array of DefinedTerm schema objects.
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
  */
-function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
+function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]): DefinedTermObject[] {
   const normalizedTerms = normalizeRelatedTerms(relatedTerms);
 
   if (normalizedTerms.length === 0) {
@@ -87,7 +126,7 @@ function getRelatedTermsProperty(
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Object with 'teaches' array if terms exist, empty object otherwise
  */
-function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
+function getRelatedTermsTeachesProperty(relatedTerms?: string[]): RelatedTermsProperty {
   return getRelatedTermsProperty('teaches', relatedTerms);
 }
 
@@ -97,41 +136,12 @@ function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Object with 'mentions' array if terms exist, empty object otherwise
  */
-function getRelatedTermsMentionsProperty(relatedTerms?: string[]) {
+function getRelatedTermsMentionsProperty(relatedTerms?: string[]): RelatedTermsProperty {
   return getRelatedTermsProperty('mentions', relatedTerms);
-}
-
-/**
- * Return the glossary term URL for a given term slug.
- */
-function getGlossaryTermUrl(term: string): string {
-  if (typeof term !== 'string' || term.trim().length === 0) {
-    throw new Error('Invalid glossary term slug: must be a non-empty string');
-  }
-  // encodeURIComponent ensures URL safety of the term slug
-  return `${GLOSSARY_BASE_URL}/${encodeURIComponent(term)}`;
 }
 
 // Shared constant for Schema.org context
 const GLOSSARY_SCHEMA_CONTEXT = 'https://schema.org' as const;
-
-/**
- * Converts a kebab-case or snake_case slug into Title Case (capitalized words separated by spaces).
- * @param slug - The slug string (e.g., 'bitcoin-block-size' or 'bitcoin_block_size').
- * @returns The Title Case version of the slug (e.g., 'Bitcoin Block Size').
- */
-function formatSlugToTitle(slug: string): string {
-  if (typeof slug !== 'string' || slug.trim().length === 0) {
-    return '';
-  }
-  const formatted = slug
-    .split(/[-_]/)
-    .filter((part) => part.length > 0)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
-
-  return formatted;
-}
 
 type DefinedTermSchema = {
   '@context': 'https://schema.org';
@@ -177,11 +187,7 @@ type ArticleSchema = {
   keywords: string;
   url: string;
   inLanguage: string;
-  mentions?: Array<{
-    '@type': 'DefinedTerm';
-    name: string;
-    url: string;
-  }>;
+  mentions?: Array<DefinedTermObject>;
 };
 
 type BreadcrumbSchema = {
@@ -234,11 +240,7 @@ type LearningResourceSchema = {
     name: string;
     url: string;
   };
-  teaches?: Array<{
-    '@type': 'DefinedTerm';
-    name: string;
-    url: string;
-  }>;
+  teaches?: Array<DefinedTermObject>;
 };
 
 type CombinedGlossarySchema = {
@@ -382,18 +384,18 @@ type SanitizedQuestionObject = {
 /**
  * Check if an object is a valid FAQ entry and return the normalized version, or null.
  */
-function validateAndNormalizeFAQEntry(q: unknown): SanitizedQuestionObject | null {
-  // Check if q is a non-null object first
-  if (!q || typeof q !== 'object') {
+function validateAndNormalizeFAQEntry(faqEntry: unknown): SanitizedQuestionObject | null {
+  // Check if faqEntry is a non-null object first
+  if (!faqEntry || typeof faqEntry !== 'object') {
     return null;
   }
-  const obj = q as Record<string, unknown>;
+  const faqCandidate = faqEntry as Record<string, unknown>;
   if (
-    typeof obj.question === 'string' &&
-    typeof obj.answer === 'string'
+    typeof faqCandidate.question === 'string' &&
+    typeof faqCandidate.answer === 'string'
   ) {
-    const question = obj.question.trim();
-    const answer = obj.answer.trim();
+    const question = faqCandidate.question.trim();
+    const answer = faqCandidate.answer.trim();
     if (question.length > 0 && answer.length > 0) {
       return { question, answer };
     }
@@ -409,20 +411,20 @@ export function generateFAQSchema(
     return null;
   }
   // Normalize and filter valid question entries
-  const normalized: SanitizedQuestionObject[] = questions
+  const sanitizedQuestions: SanitizedQuestionObject[] = questions
     .map(validateAndNormalizeFAQEntry)
     .filter((q): q is SanitizedQuestionObject => q !== null);
 
-  if (normalized.length === 0) {
+  if (sanitizedQuestions.length === 0) {
     return null;
   }
   // Now map into schema objects only if there are valid entries
-  const mainEntity = normalized.map((normalizedQuestion) => ({
+  const mainEntity = sanitizedQuestions.map((sanitizedQuestion) => ({
     '@type': 'Question' as const,
-    name: normalizedQuestion.question,
+    name: sanitizedQuestion.question,
     acceptedAnswer: {
       '@type': 'Answer' as const,
-      text: normalizedQuestion.answer,
+      text: sanitizedQuestion.answer,
     },
   }));
   return {
@@ -476,7 +478,7 @@ export function generateLearningResourceSchema(
     description: meta.description,
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
-    learningResourceType: LEARNING_RESOURCE_TYPE_DEFINITION,
+    learningResourceType: LEARNING_RESOURCE_TYPE,
     educationalLevel: GLOSSARY_EDUCATIONAL_LEVEL,
     keywords: meta.keywords.join(', '),
     about: {
