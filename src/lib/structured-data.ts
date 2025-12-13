@@ -126,7 +126,7 @@ function formatSlugToTitle(slug: string): string {
   }
   const formatted = slug
     .split(/[-_]/)
-    .filter(Boolean)
+    .filter((part) => part.length > 0)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
 
@@ -350,7 +350,6 @@ export function generateBreadcrumbSchema(
   };
 }
 
-
 /**
  * Generate an FAQPage schema (JSON-LD) from an array of question/answer pairs.
  *
@@ -372,8 +371,6 @@ type FAQPageSchema = {
   '@type': 'FAQPage';
   mainEntity: Array<QuestionSchema>;
 };
-
-
 /**
  * Represents an object with non-empty string "question" and "answer" properties.
  */
