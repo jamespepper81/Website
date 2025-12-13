@@ -373,13 +373,6 @@ type FAQPageSchema = {
   mainEntity: Array<QuestionSchema>;
 };
 
-/**
- * Validates whether the input is an object representing a FAQ question,
- * with non-empty string 'question' and 'answer' properties.
- *
- * @param {unknown} item - The item to validate as a FAQ question object.
- * @returns {SanitizedQuestionObject | null} A sanitized question object if valid, otherwise null.
- */
 
 /**
 
