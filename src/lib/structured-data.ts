@@ -50,13 +50,11 @@ function formatSlugToTitle(slug: string): string {
   if (typeof slug !== 'string' || slug.trim().length === 0) {
     return '';
   }
-  const formatted = slug
+  return slug
     .split(/[-_]/)
     .filter((part) => part.length > 0)
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
-
-  return formatted;
 }
 
 /**
@@ -64,7 +62,7 @@ function formatSlugToTitle(slug: string): string {
  * @param relatedTerms - Optional array of term slugs to normalize.
  * @returns Array of normalized, non-empty, trimmed term slugs.
  */
-function normalizeRelatedTerms(relatedTerms?: string[]) {
+function normalizeRelatedTerms(relatedTerms?: string[]): string[] {
   if (!Array.isArray(relatedTerms)) {
     return [];
   }
@@ -74,12 +72,18 @@ function normalizeRelatedTerms(relatedTerms?: string[]) {
     .filter((term) => term.length > 0);
 }
 
+type DefinedTermObject = {
+  '@type': 'DefinedTerm';
+  name: string;
+  url: string;
+};
+
 /**
  * Maps related term slugs to an array of DefinedTerm schema objects.
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Array of DefinedTerm objects, or empty array if no terms provided
  */
-function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]) {
+function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]): DefinedTermObject[] {
   const normalizedTerms = normalizeRelatedTerms(relatedTerms);
 
   if (normalizedTerms.length === 0) {
@@ -118,7 +122,7 @@ function getRelatedTermsProperty(
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Object with 'teaches' array if terms exist, empty object otherwise
  */
-function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
+function getRelatedTermsTeachesProperty(relatedTerms?: string[]): RelatedTermsProperty {
   return getRelatedTermsProperty('teaches', relatedTerms);
 }
 
@@ -128,7 +132,7 @@ function getRelatedTermsTeachesProperty(relatedTerms?: string[]) {
  * @param relatedTerms - Array of term slugs to be mapped to DefinedTerm objects
  * @returns Object with 'mentions' array if terms exist, empty object otherwise
  */
-function getRelatedTermsMentionsProperty(relatedTerms?: string[]) {
+function getRelatedTermsMentionsProperty(relatedTerms?: string[]): RelatedTermsProperty {
   return getRelatedTermsProperty('mentions', relatedTerms);
 }
 
@@ -291,7 +295,7 @@ export function generateArticleSchema(
   term: string,
   meta: GlossaryTermMeta,
 ): ArticleSchema {
-  return {
+  const baseSchema: ArticleSchema = {
     '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'Article',
     headline: meta.title,
@@ -308,14 +312,24 @@ export function generateArticleSchema(
         url: BITSLEUTH_LOGO_URL,
       },
     },
-    ...(meta.datePublished ? { datePublished: meta.datePublished } : {}),
-    ...(meta.lastModified ? { dateModified: meta.lastModified } : {}),
-    ...(meta.category ? { articleSection: meta.category } : {}),
     keywords: meta.keywords.join(', '),
     url: getGlossaryTermUrl(term),
     inLanguage: 'en-US',
     ...getRelatedTermsMentionsProperty(meta.relatedTerms),
   };
+
+  // Add optional properties only if they exist
+  if (meta.datePublished) {
+    baseSchema.datePublished = meta.datePublished;
+  }
+  if (meta.lastModified) {
+    baseSchema.dateModified = meta.lastModified;
+  }
+  if (meta.category) {
+    baseSchema.articleSection = meta.category;
+  }
+
+  return baseSchema;
 }
 
 /**
