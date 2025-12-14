@@ -210,7 +210,10 @@ function mapRelatedTermsToDefinedTerms(
   }
 
   return relatedTerms
-    .filter((term) => !!term.trim())
+    .filter((term) => {
+      const trimmed = term.trim();
+      return trimmed && VALID_SLUG_PATTERN.test(trimmed);
+    })
     .map((term) => {
       const trimmedTerm = term.trim();
       return {
