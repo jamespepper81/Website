@@ -273,7 +273,7 @@ export function generateDefinedTermSchema(
       description: 'Comprehensive Bitcoin and cryptocurrency terminology',
     },
     termCode: term,
-    url: getGlossaryTermUrl(term),
+    url: getGlossaryTermUrl(encodeURIComponent(term)),
     ...(meta.category && {
       about: {
         '@type': 'Thing',
