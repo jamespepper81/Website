@@ -101,6 +101,18 @@ function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]): DefinedTermObje
   }));
 }
 
+/**
+ * Property key for related terms in Schema.org structured data.
+ *
+ * - Use `'teaches'` when the glossary term explicitly instructs about, defines, or aims to educate users on the related concept.
+ *   (See: https://schema.org/teaches)
+ * - Use `'mentions'` when the glossary term merely references or briefly alludes to the related concept without teaching it.
+ *   (See: https://schema.org/mentions)
+ *
+ * This distinction helps search engines and AI better understand and categorize informational relationships:
+ *   - `'teaches'` signals instructional/educational intent.
+ *   - `'mentions'` indicates incidental reference with no assumption of instruction.
+ */
 type RelatedTermsPropertyKey = 'teaches' | 'mentions';
 
 type RelatedTermsProperty = Partial<
