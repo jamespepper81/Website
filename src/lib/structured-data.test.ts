@@ -144,5 +144,31 @@ describe('structured-data generators', () => {
       expect(faq?.mainEntity[0].acceptedAnswer.text).toBe('Valid answer.');
       expect(faq?.mainEntity[1].name).toBe('Another valid?');
     });
+
+    it('filters out entries with empty strings after trimming', () => {
+      const questions = [
+        { question: 'Valid question?', answer: 'Valid answer.' },
+        { question: '   ', answer: 'Some answer.' },
+        { question: 'Another question?', answer: '   ' },
+        { question: '', answer: 'Empty question.' },
+        { question: 'Good question?', answer: 'Good answer.' },
+      ];
+      const faq = generateFAQSchema(questions);
+
+      expect(faq).not.toBeNull();
+      expect(faq?.mainEntity).toHaveLength(2);
+      expect(faq?.mainEntity[0].name).toBe('Valid question?');
+      expect(faq?.mainEntity[1].name).toBe('Good question?');
+    });
+
+    it('returns null when all entries are empty after trimming', () => {
+      const questions = [
+        { question: '   ', answer: 'Some answer.' },
+        { question: 'Question?', answer: '   ' },
+        { question: '', answer: '' },
+      ];
+      const faq = generateFAQSchema(questions);
+      expect(faq).toBeNull();
+    });
   });
 });

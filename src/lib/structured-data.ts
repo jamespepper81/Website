@@ -382,14 +382,27 @@ export function generateFAQSchema(
     return null;
   }
   // Map directly to the required schema objects, relying on input type correctness
-  const mainEntity = questions.map((q) => ({
-    '@type': 'Question' as const,
-    name: q.question.trim(),
-    acceptedAnswer: {
-      '@type': 'Answer' as const,
-      text: q.answer.trim(),
-    },
-  }));
+  // Filter out entries where question or answer is empty after trimming
+  const mainEntity = questions
+    .map((entry) => ({
+      question: entry.question.trim(),
+      answer: entry.answer.trim(),
+    }))
+    .filter((entry) => entry.question.length > 0 && entry.answer.length > 0)
+    .map((entry) => ({
+      '@type': 'Question' as const,
+      name: entry.question,
+      acceptedAnswer: {
+        '@type': 'Answer' as const,
+        text: entry.answer,
+      },
+    }));
+
+  // Return null if no valid entries remain after filtering
+  if (mainEntity.length === 0) {
+    return null;
+  }
+
   return {
     '@context': GLOSSARY_SCHEMA_CONTEXT,
     '@type': 'FAQPage',
