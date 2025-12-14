@@ -181,6 +181,7 @@ function getGlossaryTermUrl(term: string): string {
     throw new Error('Invalid glossary term slug: must be a non-empty string');
   }
 
+  // Strictly validate input before using encodeURIComponent to prevent injection attacks
   if (!VALID_SLUG_PATTERN.test(term)) {
     throw new Error(
       `Invalid characters in term slug. Allowed: ${ALLOWED_SLUG_CHARACTERS_DESCRIPTION}.`
@@ -215,19 +216,17 @@ function mapRelatedTermsToDefinedTerms(
     return [];
   }
 
-  return relatedTerms
-    .filter((term) => {
-      const trimmed = term.trim();
-      return trimmed && VALID_SLUG_PATTERN.test(trimmed);
-    })
-    .map((term) => {
-      const trimmedTerm = term.trim();
-      return {
+  return relatedTerms.reduce<DefinedTermObject[]>((acc, term) => {
+    const trimmedTerm = term.trim();
+    if (trimmedTerm && VALID_SLUG_PATTERN.test(trimmedTerm)) {
+      acc.push({
         '@type': 'DefinedTerm',
         name: formatSlugToTitle(trimmedTerm),
         url: getGlossaryTermUrl(trimmedTerm),
-      };
-    });
+      });
+    }
+    return acc;
+  }, []);
 }
 
 // ============================================================================
