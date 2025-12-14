@@ -41,7 +41,13 @@ const CONFIG = {
 
 // Regular expression for validating glossary term slugs
 // Allows only letters (a-z, A-Z), digits (0-9), underscore (_), period (.), tilde (~), and hyphen (-).
-// These characters are chosen because they are URL-safe and typically allowed in slugs and path segments.
+// Rationale:
+//   - Alphanumerics (a-z, A-Z, 0-9): universally safe and readable in URLs.
+//   - Hyphen (-) and underscore (_): commonly used for separating words for readability.
+//   - Period (.): sometimes used for names or version numbers, but safe as not at the start; not ambiguous in slugs.
+//   - Tilde (~): URL-safe, occasionally used for personal pages or disambiguation.
+// Excludes characters such as slash (/), question mark (?), hash (#), and others that could interfere with URL parsing, routing, or introduce security issues.
+// Only these restricted characters are allowed to reduce the risk of path traversal, ambiguous URLs, or other potential security/file-system issues.
 const VALID_SLUG_PATTERN = /^[a-zA-Z0-9_.~-]+$/;
 
 // ============================================================================
@@ -210,7 +216,10 @@ function mapRelatedTermsToDefinedTerms(
   }
 
   return relatedTerms
-    .filter((term) => !!term.trim())
+    .filter((term) => {
+      const trimmed = term.trim();
+      return trimmed && VALID_SLUG_PATTERN.test(trimmed);
+    })
     .map((term) => {
       const trimmedTerm = term.trim();
       return {
