@@ -12,6 +12,10 @@ import { type GlossaryTermMeta } from './glossary-metadata';
 
 const BASE_URL = 'https://www.bitsleuth.ai';
 
+// Allowed: alphanumerics, hyphens, underscores, dots, tildes
+const ALLOWED_SLUG_CHARACTERS_DESCRIPTION =
+  'alphanumerics, hyphens, underscores, dots, tildes';
+
 const CONFIG = {
   organization: {
     name: 'BitSleuth',
@@ -35,6 +39,8 @@ const CONFIG = {
 } as const;
 
 // Regular expression for validating glossary term slugs
+// Allows only letters (a-z, A-Z), digits (0-9), underscore (_), period (.), tilde (~), and hyphen (-).
+// These characters are chosen because they are URL-safe and typically allowed in slugs and path segments.
 const VALID_SLUG_PATTERN = /^[a-zA-Z0-9_.~-]+$/;
 
 // ============================================================================
@@ -171,7 +177,7 @@ function getGlossaryTermUrl(term: string): string {
 
   if (!VALID_SLUG_PATTERN.test(term)) {
     throw new Error(
-      'Invalid characters in term slug. Allowed: alphanumerics, hyphens, underscores, dots, tildes.'
+      `Invalid characters in term slug. Allowed: ${ALLOWED_SLUG_CHARACTERS_DESCRIPTION}.`
     );
   }
 
@@ -204,7 +210,7 @@ function mapRelatedTermsToDefinedTerms(
   }
 
   return relatedTerms
-    .filter((term): term is string => typeof term === 'string' && !!term.trim())
+    .filter((term) => !!term.trim())
     .map((term) => {
       const trimmedTerm = term.trim();
       return {
