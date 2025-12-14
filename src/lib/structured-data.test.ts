@@ -131,13 +131,9 @@ describe('structured-data generators', () => {
       expect(faq).toBeNull();
     });
 
-    it('filters out invalid question objects', () => {
+    it('trims whitespace from questions and answers', () => {
       const questions = [
-        { question: 'Valid question?', answer: 'Valid answer.' },
-        { question: '', answer: 'Empty question.' },
-        { question: 'No answer?', answer: '' },
-        { question: '  ', answer: 'Whitespace question.' },
-        null as unknown as { question: string; answer: string },
+        { question: '  Valid question?  ', answer: '  Valid answer.  ' },
         { question: 'Another valid?', answer: 'Another valid answer.' },
       ];
       const faq = generateFAQSchema(questions);
@@ -145,30 +141,8 @@ describe('structured-data generators', () => {
       expect(faq).not.toBeNull();
       expect(faq?.mainEntity).toHaveLength(2);
       expect(faq?.mainEntity[0].name).toBe('Valid question?');
+      expect(faq?.mainEntity[0].acceptedAnswer.text).toBe('Valid answer.');
       expect(faq?.mainEntity[1].name).toBe('Another valid?');
-    });
-
-    it('returns null when all questions are invalid', () => {
-      const questions = [
-        { question: '', answer: 'Empty question.' },
-        { question: 'No answer?', answer: '' },
-        null as unknown as { question: string; answer: string },
-      ];
-      const faq = generateFAQSchema(questions);
-      expect(faq).toBeNull();
-    });
-
-    it('validates question and answer are strings', () => {
-      const questions = [
-        { question: 123 as unknown as string, answer: 'Answer' },
-        { question: 'Question', answer: 456 as unknown as string },
-        { question: 'Valid?', answer: 'Valid.' },
-      ];
-      const faq = generateFAQSchema(questions);
-
-      expect(faq).not.toBeNull();
-      expect(faq?.mainEntity).toHaveLength(1);
-      expect(faq?.mainEntity[0].name).toBe('Valid?');
     });
   });
 });

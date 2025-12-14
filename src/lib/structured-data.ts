@@ -373,58 +373,21 @@ type FAQPageSchema = {
   '@type': 'FAQPage';
   mainEntity: Array<QuestionSchema>;
 };
-/**
- * Represents an object with non-empty string "question" and "answer" properties.
- */
-type SanitizedQuestionObject = {
-  question: string;
-  answer: string;
-};
-
-/**
- * Check if an object is a valid FAQ entry and return the normalized version, or null.
- */
-function validateAndNormalizeFAQEntry(faqEntry: unknown): SanitizedQuestionObject | null {
-  // Check if faqEntry is a non-null object first
-  if (!faqEntry || typeof faqEntry !== 'object') {
-    return null;
-  }
-  const faqCandidate = faqEntry as Record<string, unknown>;
-  if (
-    typeof faqCandidate.question === 'string' &&
-    typeof faqCandidate.answer === 'string'
-  ) {
-    const question = faqCandidate.question.trim();
-    const answer = faqCandidate.answer.trim();
-    if (question.length > 0 && answer.length > 0) {
-      return { question, answer };
-    }
-  }
-  return null;
-}
 
 export function generateFAQSchema(
   questions: Array<{ question: string; answer: string }>
 ): FAQPageSchema | null {
   // Validate that questions is a non-empty array of valid question objects
-  if (!Array.isArray(questions)) {
+  if (!Array.isArray(questions) || questions.length === 0) {
     return null;
   }
-  // Normalize and filter valid question entries
-  const sanitizedQuestions: SanitizedQuestionObject[] = questions
-    .map(validateAndNormalizeFAQEntry)
-    .filter((q): q is SanitizedQuestionObject => q !== null);
-
-  if (sanitizedQuestions.length === 0) {
-    return null;
-  }
-  // Now map into schema objects only if there are valid entries
-  const mainEntity = sanitizedQuestions.map((sanitizedQuestion) => ({
+  // Map directly to the required schema objects, relying on input type correctness
+  const mainEntity = questions.map((q) => ({
     '@type': 'Question' as const,
-    name: sanitizedQuestion.question,
+    name: q.question.trim(),
     acceptedAnswer: {
       '@type': 'Answer' as const,
-      text: sanitizedQuestion.answer,
+      text: q.answer.trim(),
     },
   }));
   return {
