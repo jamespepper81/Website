@@ -353,64 +353,6 @@ export function generateBreadcrumbSchema(
 }
 
 /**
- * Generate an FAQPage schema (JSON-LD) from an array of question/answer pairs.
- *
- * @param questions - An array of objects, each containing a "question" string and an "answer" string.
- * @returns The FAQPageSchema object compatible with schema.org's FAQPage specification.
- */
-
-type QuestionSchema = {
-  '@type': 'Question';
-  name: string;
-  acceptedAnswer: {
-    '@type': 'Answer';
-    text: string;
-  };
-};
-
-type FAQPageSchema = {
-  '@context': 'https://schema.org';
-  '@type': 'FAQPage';
-  mainEntity: Array<QuestionSchema>;
-};
-
-export function generateFAQSchema(
-  questions: Array<{ question: string; answer: string }>
-): FAQPageSchema | null {
-  // Validate that questions is a non-empty array of valid question objects
-  if (!Array.isArray(questions) || questions.length === 0) {
-    return null;
-  }
-  // Map directly to the required schema objects, relying on input type correctness
-  // Filter out entries where question or answer is empty after trimming
-  const mainEntity = questions
-    .map((entry) => ({
-      question: entry.question.trim(),
-      answer: entry.answer.trim(),
-    }))
-    .filter((entry) => entry.question.length > 0 && entry.answer.length > 0)
-    .map((entry) => ({
-      '@type': 'Question' as const,
-      name: entry.question,
-      acceptedAnswer: {
-        '@type': 'Answer' as const,
-        text: entry.answer,
-      },
-    }));
-
-  // Return null if no valid entries remain after filtering
-  if (mainEntity.length === 0) {
-    return null;
-  }
-
-  return {
-    '@context': GLOSSARY_SCHEMA_CONTEXT,
-    '@type': 'FAQPage',
-    mainEntity,
-  };
-}
-
-/**
  * Generate CollectionPage schema for the glossary index
  * This helps AI engines understand the glossary as a collection of educational content
  */

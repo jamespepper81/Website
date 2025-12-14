@@ -5,7 +5,6 @@ import {
   generateCombinedGlossarySchema,
   generateDefinedTermSchema,
   generateGlossaryCollectionSchema,
-  generateFAQSchema,
 } from './structured-data';
 import { type GlossaryTermMeta } from './glossary-metadata';
 
@@ -104,71 +103,5 @@ describe('structured-data generators', () => {
     const article = generateArticleSchema(term, sampleMeta);
 
     expect(article.articleSection).toBe(sampleMeta.category);
-  });
-
-  describe('generateFAQSchema', () => {
-    it('generates valid FAQ schema for valid questions', () => {
-      const questions = [
-        { question: 'What is Bitcoin?', answer: 'Bitcoin is a cryptocurrency.' },
-        { question: 'How does it work?', answer: 'It uses blockchain technology.' },
-      ];
-      const faq = generateFAQSchema(questions);
-
-      expect(faq).not.toBeNull();
-      expect(faq?.['@type']).toBe('FAQPage');
-      expect(faq?.mainEntity).toHaveLength(2);
-      expect(faq?.mainEntity[0]['@type']).toBe('Question');
-      expect(faq?.mainEntity[0].name).toBe('What is Bitcoin?');
-    });
-
-    it('returns null for empty array', () => {
-      const faq = generateFAQSchema([]);
-      expect(faq).toBeNull();
-    });
-
-    it('returns null for non-array input', () => {
-      const faq = generateFAQSchema(null as unknown as Array<{ question: string; answer: string }>);
-      expect(faq).toBeNull();
-    });
-
-    it('trims whitespace from questions and answers', () => {
-      const questions = [
-        { question: '  Valid question?  ', answer: '  Valid answer.  ' },
-        { question: 'Another valid?', answer: 'Another valid answer.' },
-      ];
-      const faq = generateFAQSchema(questions);
-
-      expect(faq).not.toBeNull();
-      expect(faq?.mainEntity).toHaveLength(2);
-      expect(faq?.mainEntity[0].name).toBe('Valid question?');
-      expect(faq?.mainEntity[0].acceptedAnswer.text).toBe('Valid answer.');
-      expect(faq?.mainEntity[1].name).toBe('Another valid?');
-    });
-
-    it('filters out entries with empty strings after trimming', () => {
-      const questions = [
-        { question: 'Valid question?', answer: 'Valid answer.' },
-        { question: '   ', answer: 'Some answer.' },
-        { question: 'Another question?', answer: '   ' },
-        { question: '', answer: 'Empty question.' },
-        { question: 'Good question?', answer: 'Good answer.' },
-      ];
-      const faq = generateFAQSchema(questions);
-
-      expect(faq).not.toBeNull();
-      expect(faq?.mainEntity).toHaveLength(2);
-      expect(faq?.mainEntity[0].name).toBe('Valid question?');
-      expect(faq?.mainEntity[1].name).toBe('Good question?');
-    });
-
-    it('returns null when all entries are empty after trimming', () => {
-      const questions = [
-        { question: '   ', answer: 'Some answer.' },
-        { question: 'Question?', answer: '   ' },
-        { question: '', answer: '' },
-      ];
-      const faq = generateFAQSchema(questions);
-      expect(faq).toBeNull();
-    });
   });
 });
