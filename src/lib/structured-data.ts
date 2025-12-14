@@ -113,6 +113,12 @@ export interface BreadcrumbListSchema extends BaseSchema {
   }>;
 }
 
+interface WebSiteSchema {
+  '@type': 'WebSite';
+  name: string;
+  url: string;
+}
+
 export interface CollectionPageSchema extends BaseSchema {
   '@type': 'CollectionPage';
   name: string;
@@ -121,7 +127,7 @@ export interface CollectionPageSchema extends BaseSchema {
   about: ThingSchema;
   numberOfItems: number;
   inLanguage: string;
-  isPartOf: OrganizationSchema & { '@type': 'WebSite' };
+  isPartOf: WebSiteSchema;
 }
 
 export interface LearningResourceSchema extends BaseSchema {
