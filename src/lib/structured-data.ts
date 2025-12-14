@@ -37,6 +37,10 @@ function getGlossaryTermUrl(term: string): string {
   if (typeof term !== 'string' || term.trim().length === 0) {
     throw new Error('Invalid glossary term slug: must be a non-empty string');
   }
+  // Ensure the slug contains only safe characters (alphanumeric, dash, underscore)
+  if (!/^[a-zA-Z0-9_-]+$/.test(term)) {
+    throw new Error('Glossary term slug contains invalid characters. Only alphanumeric characters, hyphens, and underscores are allowed.');
+  }
   // encodeURIComponent ensures URL safety of the term slug
   return `${GLOSSARY_BASE_URL}/${encodeURIComponent(term)}`;
 }
@@ -101,6 +105,18 @@ function mapRelatedTermsToDefinedTerms(relatedTerms?: string[]): DefinedTermObje
   }));
 }
 
+/**
+ * Property key for related terms in Schema.org structured data.
+ *
+ * - Use `'teaches'` when the glossary term explicitly instructs about, defines, or aims to educate users on the related concept.
+ *   (See: https://schema.org/teaches)
+ * - Use `'mentions'` when the glossary term merely references or briefly alludes to the related concept without teaching it.
+ *   (See: https://schema.org/mentions)
+ *
+ * This distinction helps search engines and AI better understand and categorize informational relationships:
+ *   - `'teaches'` signals instructional/educational intent.
+ *   - `'mentions'` indicates incidental reference with no assumption of instruction.
+ */
 type RelatedTermsPropertyKey = 'teaches' | 'mentions';
 
 type RelatedTermsProperty = Partial<
@@ -273,7 +289,7 @@ export function generateDefinedTermSchema(
       description: 'Comprehensive Bitcoin and cryptocurrency terminology',
     },
     termCode: term,
-    url: getGlossaryTermUrl(term),
+    url: getGlossaryTermUrl(encodeURIComponent(term)),
     ...(meta.category && {
       about: {
         '@type': 'Thing',
