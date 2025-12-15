@@ -182,6 +182,15 @@ export default function LearnPage() {
                     <p className="text-gray-400 mb-4">
                       With a fixed supply cap of 21 million bitcoins, it's designed to be scarce and deflationary by nature - no government or entity can print more. This predictable supply makes Bitcoin fundamentally different from traditional currencies that can be inflated at will.
                     </p>
+                    <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-4 border border-primary/10 shadow-lg">
+                      <Image
+                        src="/images/bitcoin_currency_illustration.png"
+                        alt="Bitcoin Currency Scarcity Illustration"
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+
                     <p className="text-gray-400">
                       Bitcoin offers fast, borderless transactions with lower fees than traditional international transfers, operating independently of banking hours or geographic restrictions.
                     </p>
