@@ -6,6 +6,20 @@
 
 import { type GlossaryTermMeta } from './glossary-metadata';
 
+// Sanitizes strings for safe logging by escaping linebreaks and truncating.
+function sanitizeForLog(input: string, maxLength = 1000): string {
+  let sanitized = input.replace(/[\r\n]+/g, ' '); // Remove linebreaks
+  sanitized = sanitized.replace(/[\x00-\x1F\x7F]/g, ''); // Remove other control chars
+  if (sanitized.length > maxLength) {
+    sanitized = sanitized.slice(0, maxLength) + '...';
+  }
+  return sanitized;
+}
+
+// Matches all non-printable ASCII characters except newline (\n) and tab (\t).
+// \x20-\x7E is the range for printable ASCII (space through tilde).
+const NON_PRINTABLE_ASCII_RE = /[^\x20-\x7E\n\t]/g;
+
 // Internal logger abstraction; can be replaced with robust logging as needed
 const logger = {
   warn: (message: string) => {
@@ -208,14 +222,19 @@ export interface CombinedGlossarySchema {
 
 /**
  * Sanitizes a string for safe logging: replaces control characters and truncates to 30 chars.
+ *
+ * Security: This sanitization prevents log injection attacks and ensures that
+ * control characters (such as newlines, tabs, and non-printable ASCII) cannot
+ * disrupt, obscure, or forge log messages. By cleansing potentially untrusted input,
+ * this helps protect log integrity and aids in reliable log analysis.
+ *
  * @param input - The string to sanitize for logs.
  * @returns A sanitized, truncated string safe for error messages/logs.
  */
-function sanitizeForLog(input: string): string {
+function sanitizeForLogShort(input: string): string {
   // Remove non-printable ASCII except newline and tab, and escape other dangerous chars
   const safe = input
-    // [^\x20-\x7E\n\t]: matches all non-printable ASCII except newline (\n) and tab (\t). (\x20-\x7E is space through tilde)
-    .replace(/[^\x20-\x7E\n\t]/g, '_')
+    .replace(NON_PRINTABLE_ASCII_RE, '_')
     .replace(/[\r\n\t]/g, ' ');  // flatten carriage returns/newlines/tabs to spaces
   // Truncate and indicate with ellipsis if too long
   return safe.length > 30 ? safe.slice(0, 27) + '...' : safe;
@@ -223,16 +242,10 @@ function sanitizeForLog(input: string): string {
 
 /**
  * Returns an error message with any invalid characters found in the slug, or an empty string.
- * @param term - The term slug to check.
+ * @param invalidChars - Pre-computed array of invalid characters.
  * @returns Message indicating which characters are invalid, or empty string.
  */
-function getInvalidCharactersMessage(term: string): string {
-  const invalidChars: string[] = [];
-  for (const ch of term) {
-    if (!ALLOWED_SLUG_CHAR_RE.test(ch)) {
-      invalidChars.push(ch);
-    }
-  }
+function getInvalidCharactersMessage(invalidChars: string[]): string {
   return invalidChars.length
     ? ` Invalid character(s): "${invalidChars.join('')}"`
     : '';
@@ -250,12 +263,18 @@ function getGlossaryTermUrl(term: string): string {
     throw new Error('Invalid glossary term slug: must be a non-empty string');
   }
 
-  // Strictly validate input before using encodeURIComponent to prevent injection attacks
+  // Strictly validate input and collect invalid characters in a single pass
   if (!VALID_SLUG_PATTERN.test(trimmedTerm)) {
-    // Identify invalid characters for debugging
+    // Identify invalid characters in a single loop for debugging
+    const invalidChars: string[] = [];
+    for (const ch of trimmedTerm) {
+      if (!ALLOWED_SLUG_CHAR_RE.test(ch)) {
+        invalidChars.push(ch);
+      }
+    }
     throw new Error(
-      `Invalid characters in term slug '${sanitizeForLog(trimmedTerm)}'.`
-      + getInvalidCharactersMessage(trimmedTerm)
+      `Invalid characters in term slug '${sanitizeForLogShort(trimmedTerm)}'.`
+      + getInvalidCharactersMessage(invalidChars)
       + ` Allowed: ${ALLOWED_SLUG_CHARACTERS_DESCRIPTION}.`
     );
   }
@@ -289,10 +308,22 @@ function mapRelatedTermsToDefinedTerms(
 
   const invalidTerms: string[] = [];
   const definedTermObjects: DefinedTermObject[] = [];
+  const slugValidationCache: Map<string, boolean> = new Map();
 
   for (const term of relatedTerms) {
     const trimmedTerm = term.trim();
-    if (!trimmedTerm || !VALID_SLUG_PATTERN.test(trimmedTerm)) {
+    if (!trimmedTerm) {
+      invalidTerms.push(trimmedTerm);
+      continue;
+    }
+    let isValid: boolean;
+    if (slugValidationCache.has(trimmedTerm)) {
+      isValid = slugValidationCache.get(trimmedTerm)!;
+    } else {
+      isValid = VALID_SLUG_PATTERN.test(trimmedTerm);
+      slugValidationCache.set(trimmedTerm, isValid);
+    }
+    if (!isValid) {
       invalidTerms.push(trimmedTerm);
       continue;
     }
@@ -305,7 +336,7 @@ function mapRelatedTermsToDefinedTerms(
 
   if (invalidTerms.length > 0) {
     const invalidTermList = invalidTerms.join(', ');
-    const fullInputList = relatedTerms.join(', ');
+    const fullInputList = sanitizeForLog(relatedTerms.join(', '), 500);
     logWarning(
       `[mapRelatedTermsToDefinedTerms] Invalid related term slugs filtered: [${invalidTermList}]. Full input: [${fullInputList}]`
     );
