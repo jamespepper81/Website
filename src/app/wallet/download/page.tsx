@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
-import { Apple, Smartphone, ArrowRight } from "lucide-react";
+import { MoveLeft } from "lucide-react"; // Changed icons
 import Link from "next/link";
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 export default function DownloadPage() {
     const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -37,54 +38,71 @@ export default function DownloadPage() {
         <div className="flex flex-col min-h-dvh bg-background">
             <Header basePath="/wallet" />
 
-            <main className="flex-1 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
-                {/* Background Gradients */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden min-h-[80vh]">
+                {/* Background Styles matching Wallet Page */}
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0" />
+                <BackgroundBeams intensity="subtle" className="opacity-30" />
 
-                <div className="relative z-10 max-w-3xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                    <div className="space-y-4">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
-                            Download BitSleuth
+                <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                    <div className="space-y-6">
+                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl/none text-foreground drop-shadow-sm">
+                            Download <br className="hidden sm:block" />
+                            <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
+                                BitSleuth Wallet
+                            </span>
                         </h1>
-                        <p className="text-xl text-muted-foreground max-w-xl mx-auto">
-                            Your comprehensive Bitcoin privacy wallet. Available now on iOS and Android.
+                        <p className="text-lg text-muted-foreground md:text-xl font-normal leading-relaxed max-w-2xl mx-auto">
+                            Your Bitcoin. Your Keys. Take full control with our privacy-first, non-custodial wallet.
                         </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-                        <Button
-                            asChild
-                            size="lg"
-                            className="h-16 px-8 text-lg font-semibold bg-foreground hover:bg-foreground/90 text-background min-w-[240px] shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4">
+                        {/* App Store Image Link */}
+                        <a
+                            href={APP_STORE_LINK}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:scale-105 transition-transform duration-200"
                         >
-                            <a href={APP_STORE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
-                                <Apple className="h-8 w-8 mb-1" />
-                                <div className="flex flex-col items-start text-left leading-none">
-                                    <span className="text-xs font-medium opacity-80">Download on the</span>
-                                    <span className="text-xl font-bold">App Store</span>
-                                </div>
-                            </a>
-                        </Button>
+                            <img
+                                src="/images/app-store-black.png"
+                                alt="Download on the App Store"
+                                className="h-[58px] w-auto block dark:hidden"
+                            />
+                            <img
+                                src="/images/app-store-white.png"
+                                alt="Download on the App Store"
+                                className="h-[58px] w-auto hidden dark:block"
+                            />
+                        </a>
 
-                        <Button
-                            asChild
-                            size="lg"
-                            className="h-16 px-8 text-lg font-semibold bg-foreground hover:bg-foreground/90 text-background min-w-[240px] shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                        {/* Google Play Placeholder Button */}
+                        {/* Google Play Image Link */}
+                        <a
+                            href={PLAY_STORE_LINK}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:scale-105 transition-transform duration-200"
                         >
-                            <a href={PLAY_STORE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
-                                <Smartphone className="h-8 w-8 mb-1" />
-                                <div className="flex flex-col items-start text-left leading-none">
-                                    <span className="text-xs font-medium opacity-80">GET IT ON</span>
-                                    <span className="text-xl font-bold">Google Play</span>
-                                </div>
-                            </a>
-                        </Button>
+                            <img
+                                src="/images/google-play-black.png"
+                                alt="Get it on Google Play"
+                                className="h-[64px] w-auto block dark:hidden"
+                            />
+                            <img
+                                src="/images/google-play-white.png"
+                                alt="Get it on Google Play"
+                                className="h-[64px] w-auto hidden dark:block rounded-lg"
+                            />
+                        </a>
                     </div>
 
-                    <div className="pt-12 flex justify-center">
-                        <Link href="/" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-                            Return to Website <ArrowRight className="ml-1 h-4 w-4" />
-                        </Link>
+                    <div className="pt-8">
+                        <Button asChild variant="outline" size="lg" className="gap-2">
+                            <Link href="/">
+                                <MoveLeft className="h-4 w-4" /> Return to Website
+                            </Link>
+                        </Button>
                     </div>
                 </div>
             </main>
