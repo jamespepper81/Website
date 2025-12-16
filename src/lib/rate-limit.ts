@@ -12,16 +12,17 @@ interface RateLimitEntry {
 // In-memory store for rate limit tracking
 const rateLimitStore = new Map<string, RateLimitEntry>();
 
-// Cleanup old entries periodically (every 5 minutes)
-if (typeof setInterval !== 'undefined') {
-  setInterval(() => {
-    const now = Date.now();
-    for (const [key, entry] of rateLimitStore.entries()) {
-      if (now > entry.resetTime) {
-        rateLimitStore.delete(key);
-      }
+/**
+ * Cleanup old entries from the rate limit store
+ * This is called during checkRateLimit to avoid memory leaks in serverless environments
+ */
+function cleanupExpiredEntries(): void {
+  const now = Date.now();
+  for (const [key, entry] of rateLimitStore.entries()) {
+    if (now > entry.resetTime) {
+      rateLimitStore.delete(key);
     }
-  }, 5 * 60 * 1000);
+  }
 }
 
 interface RateLimitConfig {
@@ -54,6 +55,12 @@ export function checkRateLimit(
   identifier: string,
   config: RateLimitConfig
 ): RateLimitResult {
+  // Periodically cleanup expired entries (lazy cleanup to avoid memory leaks in serverless)
+  // Only cleanup every ~100 calls to avoid performance impact
+  if (Math.random() < 0.01) {
+    cleanupExpiredEntries();
+  }
+
   const now = Date.now();
   const entry = rateLimitStore.get(identifier);
 
@@ -103,15 +110,26 @@ export function checkRateLimit(
  */
 export function getClientIdentifier(request: Request): string {
   // Try to get real IP from various headers (for proxied requests)
+  // Note: These headers can be spoofed. In production, ensure you're behind a trusted proxy
+  // and consider additional validation or using a more robust rate limiting service
   const forwardedFor = request.headers.get('x-forwarded-for');
   const realIp = request.headers.get('x-real-ip');
   const cfConnectingIp = request.headers.get('cf-connecting-ip'); // Cloudflare
   
-  // Use the first available IP
-  const ip = forwardedFor?.split(',')[0].trim() || 
-             realIp || 
-             cfConnectingIp || 
-             'unknown';
+  // Use the first available IP and validate it's a valid format
+  let ip = forwardedFor?.split(',')[0].trim() || 
+           realIp || 
+           cfConnectingIp || 
+           'unknown';
+  
+  // Basic IP format validation (IPv4 or IPv6)
+  const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+  const ipv6Regex = /^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}$/;
+  
+  if (ip !== 'unknown' && !ipv4Regex.test(ip) && !ipv6Regex.test(ip)) {
+    // If IP format is invalid, fall back to unknown
+    ip = 'unknown';
+  }
   
   return ip;
 }

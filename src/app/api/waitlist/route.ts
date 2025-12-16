@@ -14,10 +14,12 @@ export async function POST(request: NextRequest) {
     const rateLimitResult = checkRateLimit(clientId, RateLimitPresets.STRICT);
 
     if (!rateLimitResult.success) {
+      const retryAfter = Math.max(0, Math.ceil((rateLimitResult.reset - Date.now()) / 1000));
+      
       return NextResponse.json(
         { 
           error: 'Too many requests. Please try again later.',
-          retryAfter: Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+          retryAfter,
         },
         { 
           status: 429,
@@ -25,7 +27,7 @@ export async function POST(request: NextRequest) {
             'X-RateLimit-Limit': rateLimitResult.limit.toString(),
             'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
             'X-RateLimit-Reset': rateLimitResult.reset.toString(),
-            'Retry-After': Math.ceil((rateLimitResult.reset - Date.now()) / 1000).toString(),
+            'Retry-After': retryAfter.toString(),
           },
         }
       );
