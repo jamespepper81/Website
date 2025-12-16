@@ -7,15 +7,22 @@
 import { type GlossaryTermMeta } from './glossary-metadata';
 
 
-// Only log warnings in non-production environments
+// Internal logger abstraction; can be replaced with robust logging as needed
+const logger = {
+  warn: (message: string) => {
+    if (
+      typeof process !== 'undefined' &&
+      process.env &&
+      process.env.NODE_ENV !== 'production'
+    ) {
+      console.warn(message);
+    }
+  },
+};
+
+// Only log warnings in non-production environments using internal logger
 function logWarning(message: string): void {
-  if (
-    typeof process !== 'undefined' &&
-    process.env &&
-    process.env.NODE_ENV !== 'production'
-  ) {
-    console.warn(message);
-  }
+  logger.warn(message);
 }
 // ============================================================================
 // CONFIGURATION & CONSTANTS
@@ -201,16 +208,33 @@ export interface CombinedGlossarySchema {
 // ============================================================================
 
 /**
+ * Sanitizes a string for safe logging: replaces control characters and truncates to 30 chars.
+ * @param input - The string to sanitize for logs.
+ * @returns A sanitized, truncated string safe for error messages/logs.
+ */
+function sanitizeForLog(input: string): string {
+  // Remove non-printable ASCII except newline and tab, and escape other dangerous chars
+  const safe = input
+    .replace(/[^\x20-\x7E\n\t]/g, '_')
+    .replace(/[\r\n\t]/g, ' ');  // flatten carriage returns/newlines/tabs to spaces
+  // Truncate and indicate with ellipsis if too long
+  return safe.length > 30 ? safe.slice(0, 27) + '...' : safe;
+}
+
+/**
  * Returns an error message with any invalid characters found in the slug, or an empty string.
  * @param term - The term slug to check.
  * @returns Message indicating which characters are invalid, or empty string.
  */
 function getInvalidCharactersMessage(term: string): string {
-  const invalidChars = Array.from(term).filter(
-    (ch) => !ALLOWED_SLUG_CHAR_RE.test(ch)
-  );
+  let invalidChars = '';
+  for (const ch of term) {
+    if (!ALLOWED_SLUG_CHAR_RE.test(ch)) {
+      invalidChars += ch;
+    }
+  }
   return invalidChars.length
-    ? ` Invalid character(s): "${invalidChars.join('')}"`
+    ? ` Invalid character(s): "${invalidChars}"`
     : '';
 }
 
@@ -230,7 +254,7 @@ function getGlossaryTermUrl(term: string): string {
   if (!VALID_SLUG_PATTERN.test(trimmedTerm)) {
     // Identify invalid characters for debugging
     throw new Error(
-      `Invalid characters in term slug '${trimmedTerm}'.`
+      `Invalid characters in term slug '${sanitizeForLog(trimmedTerm)}'.`
       + getInvalidCharactersMessage(trimmedTerm)
       + ` Allowed: ${ALLOWED_SLUG_CHARACTERS_DESCRIPTION}.`
     );
@@ -249,8 +273,8 @@ function formatSlugToTitle(slug: string): string {
 
   const words = slug.split(/[-_]/);
   const filteredWords = words.filter(Boolean);
-  const capitalizedWords = filteredWords.map((part) => part.charAt(0).toUpperCase() + part.slice(1));
-  return capitalizedWords.join(' ');
+  const titleCaseWords = filteredWords.map((part) => part.charAt(0).toUpperCase() + part.slice(1));
+  return titleCaseWords.join(' ');
 }
 
 /**
