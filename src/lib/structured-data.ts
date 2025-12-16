@@ -81,10 +81,10 @@ const EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period
 
 // Description of allowed characters (derived from the constants above)
 const ALLOWED_SLUG_CHARACTERS_DESCRIPTION =
-  'Allowed characters: ' + ALLOWED_CHARS + ' (alphanumerics, underscores, periods, tildes, hyphens)';
+  `Allowed characters: ${ALLOWED_CHARS} (alphanumerics, underscores, periods, tildes, hyphens)`;
 
 // Precompiled regex for a single allowed character in a slug
-const ALLOWED_SLUG_CHAR_RE = new RegExp('^[' + ALLOWED_CHARS + ']$');
+const ALLOWED_SLUG_CHAR_RE = new RegExp(`^[${ALLOWED_CHARS}]$`);
 
 const CONFIG = {
   organization: {
