@@ -67,16 +67,15 @@ export default function DownloadPage() {
                             <img
                                 src="/images/app-store-black.png"
                                 alt="Download on the App Store"
-                                className="h-[58px] w-auto block dark:hidden"
+                                className="h-[64px] w-auto block dark:hidden"
                             />
                             <img
                                 src="/images/app-store-white.png"
                                 alt="Download on the App Store"
-                                className="h-[58px] w-auto hidden dark:block"
+                                className="h-[64px] w-auto hidden dark:block"
                             />
                         </a>
 
-                        {/* Google Play Placeholder Button */}
                         {/* Google Play Image Link */}
                         <a
                             href={PLAY_STORE_LINK}
@@ -98,7 +97,7 @@ export default function DownloadPage() {
                     </div>
 
                     <div className="pt-8">
-                        <Button asChild variant="outline" size="lg" className="gap-2">
+                        <Button asChild size="lg" className="gap-2 bg-primary hover:bg-primary/90 text-white border-none shadow-md">
                             <Link href="/">
                                 <MoveLeft className="h-4 w-4" /> Return to Website
                             </Link>
