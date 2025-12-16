@@ -200,12 +200,20 @@ function getGlossaryTermUrl(term: string): string {
 
   // Strictly validate input before using encodeURIComponent to prevent injection attacks
   if (!VALID_SLUG_PATTERN.test(trimmedTerm)) {
+    // Identify invalid characters for debugging
+    const invalidChars = Array.from(trimmedTerm).filter(
+      (ch) => !ch.match(/[a-zA-Z0-9_.~-]/)
+    );
     throw new Error(
-      `Invalid characters in term slug. Allowed: ${ALLOWED_SLUG_CHARACTERS_DESCRIPTION}.`
+      `Invalid characters in term slug '${trimmedTerm}'.`
+      + (invalidChars.length
+        ? ` Invalid character(s): "${invalidChars.join('')}"`
+        : '')
+      + ` Allowed: ${ALLOWED_SLUG_CHARACTERS_DESCRIPTION}.`
     );
   }
 
-  return `${CONFIG.glossary.baseUrl}/${trimmedTerm}`;
+  return `${CONFIG.glossary.baseUrl}/${encodeURIComponent(trimmedTerm)}`;
 }
 
 /**
@@ -228,13 +236,23 @@ function formatSlugToTitle(slug: string): string {
  */
 function mapRelatedTermsToDefinedTerms(
   relatedTerms?: string[]
-): DefinedTermObject[] {
+): ReadonlyArray<DefinedTermObject> {
   if (!Array.isArray(relatedTerms) || relatedTerms.length === 0) {
     return [];
   }
 
-  return relatedTerms
-    .map((term) => term.trim())
+  const trimmedTerms = relatedTerms.map((term) => term.trim());
+  const invalidTerms = trimmedTerms.filter(
+    (trimmedTerm) => !trimmedTerm || !VALID_SLUG_PATTERN.test(trimmedTerm)
+  );
+  if (invalidTerms.length > 0) {
+    console.warn(
+      `[mapRelatedTermsToDefinedTerms] Invalid related term slugs filtered: [${invalidTerms.join(
+        ', '
+      )}]. Full input: [${relatedTerms.join(', ')}]`
+    );
+  }
+  return trimmedTerms
     .filter((trimmedTerm) => trimmedTerm && VALID_SLUG_PATTERN.test(trimmedTerm))
     .map((trimmedTerm) => ({
       '@type': 'DefinedTerm',
