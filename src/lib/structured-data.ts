@@ -7,18 +7,50 @@
 import { type GlossaryTermMeta } from './glossary-metadata';
 
 // Sanitizes strings for safe logging by escaping linebreaks and truncating.
-function sanitizeForLog(input: string, maxLength = 1000): string {
-  let sanitized = input.replace(/[\r\n]+/g, ' '); // Remove linebreaks
-  sanitized = sanitized.replace(/[\x00-\x1F\x7F]/g, ''); // Remove other control chars
+/**
+ * General-purpose sanitizer for strings used in logs or elsewhere.
+ * Removes or replaces control/non-printable characters, can flatten or preserve newlines/tabs, and truncate as needed.
+ *
+ * @param input - The string to sanitize.
+ * @param options - Options: maxLength, replaceNonPrintable, flattenWhitespace.
+ *   - maxLength: Truncate, appending "..." if necessary (default 1000).
+ *   - replaceNonPrintable: If true, replace non-printable chars with "_" (default false = remove).
+ *   - flattenWhitespace: If true, replace linebreaks and tabs with spaces, else remove only CR.
+ */
+function sanitizeForLogGeneral(
+  input: string,
+  {
+    maxLength = 1000,
+    replaceNonPrintable = false,
+    flattenWhitespace = true,
+  }: {maxLength?: number; replaceNonPrintable?: boolean; flattenWhitespace?: boolean} = {}
+): string {
+  let sanitized = input;
+  if (flattenWhitespace) {
+    // Replace all \r, \n, \t with ' '
+    sanitized = sanitized.replace(/[\r\n\t]+/g, ' ');
+  } else {
+    // Only replace \r (CR) with ''
+    sanitized = sanitized.replace(/\r/g, '');
+  }
+  if (replaceNonPrintable) {
+    sanitized = sanitized.replace(/[^\x20-\x7E\n\t]/g, '_'); // For short log, keep \n/\t if wanted
+  } else {
+    sanitized = sanitized.replace(/[\x00-\x1F\x7F]/g, ''); // Remove control chars
+  }
   if (sanitized.length > maxLength) {
-    sanitized = sanitized.slice(0, maxLength) + '...';
+    sanitized = sanitized.slice(0, maxLength - 3) + '...';
   }
   return sanitized;
 }
 
-// Matches all non-printable ASCII characters except newline (\n) and tab (\t).
-// \x20-\x7E is the range for printable ASCII (space through tilde).
-const NON_PRINTABLE_ASCII_RE = /[^\x20-\x7E\n\t]/g;
+// Legacy function -- for normal/detailed logs. Removes linebreaks, removes control chars, truncates to 1000.
+function sanitizeForLog(input: string, maxLength = 1000): string {
+  return sanitizeForLogGeneral(input, {maxLength, replaceNonPrintable: false, flattenWhitespace: true});
+}
+
+// Module-scoped cache for slug validation
+const slugValidationCache: Map<string, boolean> = new Map();
 
 // Internal logger abstraction; can be replaced with robust logging as needed
 const logger = {
@@ -43,12 +75,16 @@ function logWarning(message: string): void {
 
 const BASE_URL = 'https://www.bitsleuth.ai';
 
-// Allowed: alphanumerics, hyphens, underscores, dots, tildes
+// Allowed characters for glossary slugs, defined once for re-use.
+const ALLOWED_CHARS = 'a-zA-Z0-9_.~-'; // alphanumerics, underscore (_), period (.), tilde (~), hyphen (-)
+const EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period)
+
+// Description of allowed characters (derived from the constants above)
 const ALLOWED_SLUG_CHARACTERS_DESCRIPTION =
-  'alphanumerics, hyphens, underscores, dots, tildes';
+  `Allowed characters: ${ALLOWED_CHARS} (alphanumerics, underscores, periods, tildes, hyphens)`;
 
 // Precompiled regex for a single allowed character in a slug
-const ALLOWED_SLUG_CHAR_RE = /^[a-zA-Z0-9_.~-]$/;
+const ALLOWED_SLUG_CHAR_RE = new RegExp(`^[${ALLOWED_CHARS}]$`);
 
 const CONFIG = {
   organization: {
@@ -87,9 +123,7 @@ const CONFIG = {
 // - allowedChars: Letters (a-z, A-Z), digits (0-9), '_', '-', '~', '.'
 // - edgeChars: Allowed at start/end — as above but *excluding* period ('.')
 //   (period is only allowed in the middle)
-const ALLOWED_CHARS = 'a-zA-Z0-9_.~-'; // all allowed characters
-const EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period)
-
+// ALLOWED_CHARS and EDGE_CHARS are now defined above and should be reused here.
 // Explanation:
 // ^                      : Start of string
 // [EDGE_CHARS]           : First char (cannot be '.')
@@ -231,13 +265,16 @@ export interface CombinedGlossarySchema {
  * @param input - The string to sanitize for logs.
  * @returns A sanitized, truncated string safe for error messages/logs.
  */
+/**
+ * Short version: replaces non-printable ASCII with _, flattens whitespace, truncates to 30 chars.
+ */
 function sanitizeForLogShort(input: string): string {
-  // Remove non-printable ASCII except newline and tab, and escape other dangerous chars
-  const safe = input
-    .replace(NON_PRINTABLE_ASCII_RE, '_')
-    .replace(/[\r\n\t]/g, ' ');  // flatten carriage returns/newlines/tabs to spaces
-  // Truncate and indicate with ellipsis if too long
-  return safe.length > 30 ? safe.slice(0, 27) + '...' : safe;
+  // Equivalent to previous logic: replace non-printable with _, flatten, max 30 characters.
+  return sanitizeForLogGeneral(input, {
+    maxLength: 30,
+    replaceNonPrintable: true,
+    flattenWhitespace: true
+  });
 }
 
 /**
@@ -308,7 +345,7 @@ function mapRelatedTermsToDefinedTerms(
 
   const invalidTerms: string[] = [];
   const definedTermObjects: DefinedTermObject[] = [];
-  const slugValidationCache: Map<string, boolean> = new Map();
+  // Use the module-scoped slugValidationCache for term validation caching
 
   for (const term of relatedTerms) {
     const trimmedTerm = term.trim();
@@ -318,7 +355,7 @@ function mapRelatedTermsToDefinedTerms(
     }
     let isValid: boolean;
     if (slugValidationCache.has(trimmedTerm)) {
-      isValid = slugValidationCache.get(trimmedTerm)!;
+      isValid = slugValidationCache.get(trimmedTerm) ?? false;
     } else {
       isValid = VALID_SLUG_PATTERN.test(trimmedTerm);
       slugValidationCache.set(trimmedTerm, isValid);
