@@ -18,6 +18,245 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2025-12-17
+
+### 🎉 Major Updates
+
+#### 📱 Wallet Download Page Launch
+- **NEW: Wallet Download Page** (`/wallet/download`)
+  - Smart mobile device detection with automatic App Store/Play Store redirection
+  - Image preloading to prevent blank page on iOS after redirect
+  - Download badges for both iOS and Android platforms
+  - Return to home navigation with consistent UX
+  - Replaced previous "Coming Soon" waitlist page
+- **Removed**: `/wallet/coming-soon` page and waitlist functionality
+- **Removed**: `/api/waitlist` endpoint (no longer needed)
+- **Removed**: Google Sheets API integration for waitlist management
+
+#### 📚 Glossary Expansion
+- Expanded glossary from **17 to 44 comprehensive Bitcoin terms**
+- Added new categories and technical Bitcoin concepts
+- Improved term formatting and acronym handling (BTC, P2P, UTXO, BIP32, etc.)
+
+#### 🔍 Answer Engine Optimization (AEO)
+- **NEW: AI Training Content** (`/ai-training-content`)
+  - Structured content for AI language models (ChatGPT, Gemini, Perplexity, Claude)
+  - Platform overview, technical specs, and value propositions formatted for LLM comprehension
+  - Enables accurate BitSleuth representation in AI-powered search results
+- Enhanced SEO strategy with AEO principles
+- Voice search and answer engine optimization guidelines
+
+### ✨ Features Added
+
+#### 🛡️ Security Enhancements
+- **HTTP Security Headers** implemented in `next.config.ts`:
+  - Strict-Transport-Security (HSTS) with preload
+  - X-Frame-Options for clickjacking protection
+  - X-Content-Type-Options to prevent MIME sniffing
+  - Referrer-Policy for privacy controls
+  - Permissions-Policy for feature restrictions
+- **Rate Limiting** system:
+  - Serverless-safe in-memory rate limiter with IP validation
+  - Applied to all API endpoints (5 requests/minute per IP)
+  - IPv4/IPv6 format validation to prevent header spoofing
+  - Proper HTTP 429 responses with Retry-After headers
+- **Input Sanitization**:
+  - Logger abstraction to prevent production log leakage
+  - Control character sanitization in error messages
+  - Enhanced email validation with Zod schemas
+  - Log injection attack prevention
+- **Security Documentation**:
+  - `docs/SECURITY_AUDIT.md` with comprehensive findings
+  - `docs/SECURITY_IMPROVEMENTS.md` with implementation details
+  - Security best practices checklist
+
+#### 🎨 UI/UX Improvements
+- Modernized browser detection (removed legacy Opera/MSStream checks)
+- Enhanced mobile redirection with `window.open()` for better UX
+- Improved header navigation with mapping-based link filtering
+- Responsive design optimizations with safe-area-inset support
+- Theme system improvements with smoother transitions
+
+#### 🧪 Testing Infrastructure
+- **NEW: Automated Testing** with Vitest
+  - Test suite for rate limiter (6 comprehensive tests)
+  - Test suite for structured data utilities (11 tests)
+  - Command: `npm run test` and `npm run ci`
+  - Full test coverage documentation in CONTRIBUTING.md
+
+### 🔧 Technical Improvements
+
+#### 🚀 Framework & Dependency Updates
+- **Next.js** 15.5.2 → **16.0.10**
+- **React** 18.3.1 → **19.2.0**
+- **TypeScript** 5.x → **5.9.3**
+- **Tailwind CSS** 3.4.1 → **3.4.18**
+- **Node.js** requirement: 20+ (documented)
+
+#### ⚡ Performance Optimizations
+- Extracted regex patterns to named constants (eliminates repeated compilation)
+- Implemented Map-based validation caching for slug validation
+- Refactored string processing to reduce intermediate array allocations
+- Optimized slug validation with single-pass character checking
+- Lazy cleanup for rate limiters prevents memory leaks in serverless environments
+
+#### 🏗️ Code Quality & Refactoring
+- Unified sanitization logic with configurable `sanitizeForLogGeneral()`
+- Extracted complex inline logic into reusable helper functions
+- Module-scoped validation cache for better performance
+- DRY character set definitions for slug validation
+- Improved error messages with detailed invalid character reporting
+- Template literals for better code readability
+- Type safety improvements (removed unnecessary `any` casts)
+
+### 📚 Documentation Updates
+
+#### 📖 Comprehensive Documentation Overhaul
+- **README.md** major update:
+  - Accurate tech stack versions (Next.js 16, React 19, TypeScript 5.9)
+  - Complete project structure tree (35 lines with file counts)
+  - Expanded routes documentation (8 → 55 routes including all glossary terms)
+  - Added Vitest testing section with commands
+  - Fixed broken links and repository references
+  - Added Answer Engine Optimization (AEO) section
+  - Development and production URL documentation
+- **CONTRIBUTING.md** enhancements:
+  - Added automated testing guidelines
+  - Updated quality checks workflow
+  - Enhanced testing checklist
+  - Test writing best practices
+- **AGENTS.md** updates:
+  - Fixed wallet route: `/wallet/coming-soon` → `/wallet/download`
+  - Updated framework versions throughout
+  - Removed Google Sheets API references
+  - Updated environment variables documentation
+- **PRD.md** (Product Requirements Document):
+  - Framework version updates (Next.js 16, React 19, TypeScript 5.9, Tailwind 3.4.18)
+  - Removed Google Sheets references from all sections
+  - Updated technical specifications and architecture diagrams
+- **GitHub Workflow Documentation**:
+  - `.github/workflows/README.md` updated for new test structure
+  - Copilot test workflow refactored (build, lint, typecheck, route testing)
+  - Removed Google Sheets credential requirements
+  - Port consistency fixed (9002 throughout)
+- **NEW: Coding Standards Review**:
+  - `docs/STRUCTURED_DATA_CODING_STANDARDS_REVIEW.md`
+  - Comprehensive analysis of code quality and best practices
+
+#### 🔍 SEO & Marketing Documentation
+- Enhanced `.github/agents/marketing-agent.md`:
+  - Added AEO (Answer Engine Optimization) strategies
+  - Voice search optimization guidelines
+  - AI crawler content structuring principles
+  - Updated framework references
+- Updated `.github/copilot-instructions.md` with latest tech stack
+
+### 🐛 Bug Fixes
+
+#### 🔧 Critical Fixes
+- Fixed `formatSlugToTitle()` to correctly handle Bitcoin acronyms:
+  - `p2p` → `P2P` (was incorrectly: `P2p`)
+  - `btc` → `BTC` (was incorrectly: `Btc`)
+  - `bip32` → `BIP32` (was incorrectly: `Bip32`)
+  - `utxo` → `UTXO` (was incorrectly: `Utxo`)
+- Fixed regex pattern in sanitization to properly preserve newlines and tabs when specified
+- Fixed control character handling in `flattenWhitespace` logic
+- Corrected empty string handling in slug validation (no longer reported as invalid)
+- Fixed null coalescing on Map.get() after has() check
+
+#### 🎨 UI/UX Bug Fixes
+- Fixed iOS image loading issue on wallet download page
+- Fixed blank page issue after App Store redirect on iOS
+- Removed obsolete MSStream check for IE on Windows Phone
+- Fixed user agent string handling for Opera browsers
+
+### 🗑️ Removed
+
+#### 🧹 Cleanup & Deprecation
+- Removed Google Sheets API integration:
+  - Removed `GOOGLE_SHEETS_ID_FEEDBACK` environment variable
+  - Removed `GOOGLE_SHEETS_CLIENT_EMAIL` environment variable
+  - Removed `GOOGLE_SHEETS_PRIVATE_KEY` environment variable
+  - Removed Google Sheets API from backend integration documentation
+- Removed legacy waitlist system:
+  - Removed `/api/waitlist` route
+  - Removed waitlist form components
+  - Removed WaitlistForm landing component
+- Removed `/wallet/coming-soon` page completely
+- Removed outdated browser detection code
+- Removed duplicate and conflicting documentation
+
+### 🎯 Routes Updated
+
+#### 📍 Route Changes
+- **Added**: `/wallet/download` (production-ready download page)
+- **Removed**: `/wallet/coming-soon` (replaced by download page)
+- **Added**: `/ai-training-content` (AEO optimization)
+- **Updated**: Sitemap priorities and change frequencies
+  - `/wallet/download` set to weekly updates with increased priority
+- **Expanded**: 44 glossary term routes (from original 17)
+
+### 🔨 Configuration & Build Updates
+
+#### ⚙️ Configuration Changes
+- Updated `next.config.ts`:
+  - Added comprehensive security headers
+  - Updated for Next.js 16 compatibility
+- Updated `tailwind.config.ts`:
+  - Enhanced Bitcoin-inspired color palette
+  - Improved dark mode support
+- Updated `tsconfig.json`:
+  - TypeScript 5.9.3 strict mode settings
+- Updated Firebase hosting configs:
+  - `apphosting.dev.yaml` (retained Google Sheets env vars for reference)
+  - `apphosting.prd.yaml` (retained Google Sheets env vars for reference)
+- GitHub Workflows:
+  - Refactored `copilot-test.yml` workflow
+  - Removed Google Sheets environment variables
+  - Added route testing and health checks
+  - Fixed port references (3000 → 9002)
+
+### 📊 Statistics & Metrics
+
+#### 📈 Codebase Growth
+- **Total Routes**: 26 → 55+ unique routes
+- **Glossary Terms**: 17 → 44 educational articles
+- **Components**: 67 → 70+ React components
+- **Test Files**: New automated test suite added
+- **Documentation Files**: 10+ new/updated documentation files
+
+### 🌐 Deployment & Infrastructure
+
+#### 🚀 Deployment Updates
+- Firebase App Hosting configuration maintained
+- Production URL: [https://www.bitsleuth.ai](https://www.bitsleuth.ai)
+- Development URL: [https://website-dev--bitsleuth.us-central1.hosted.app](https://website-dev--bitsleuth.us-central1.hosted.app)
+- Automated deployment on push to main branch
+- Environment variable support enhanced
+
+### 👥 Developer Experience
+
+#### 🛠️ DX Improvements
+- Enhanced developer onboarding documentation
+- Clear testing guidelines and commands
+- Improved troubleshooting guides
+- Better error messages with context
+- Consistent code style enforcement
+- Type-safe development with strict TypeScript
+- Comprehensive contribution guidelines
+
+### 📝 Notes for Developers
+
+#### 🔍 Key Changes to Be Aware Of
+1. **Wallet Route Changed**: Update any hardcoded references from `/wallet/coming-soon` to `/wallet/download`
+2. **Google Sheets Removed**: All waitlist functionality has been removed; users download directly from app stores
+3. **Framework Upgrades**: Test thoroughly after pulling; React 19 and Next.js 16 have breaking changes
+4. **New Testing Commands**: Use `npm run test` for unit tests, `npm run ci` for full suite
+5. **Security Headers**: Ensure CSP doesn't block required resources in development
+6. **Rate Limiting**: Be aware of 5 req/min limit on API endpoints during testing
+
+---
+
 ## [0.1.0] - 2024-11-06
 
 ### 🎉 Initial Release

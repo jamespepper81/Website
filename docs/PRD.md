@@ -2,7 +2,7 @@
 
 ## 1. Overview
 **Product Name:** BitSleuth Website  
-**Description:** A comprehensive Next.js 15 website featuring product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, educational glossary, SEO optimization, and privacy-compliant analytics. The website serves as the primary marketing and educational hub for BitSleuth's Bitcoin analysis tools.  
+**Description:** A comprehensive Next.js 16 website featuring product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, educational glossary, SEO optimization, and privacy-compliant analytics. The website serves as the primary marketing and educational hub for BitSleuth's Bitcoin analysis tools.  
 **Goals:** 
 - Drive user acquisition and conversion for BitSleuth's Bitcoin wallet analyzer
 - Provide educational resources about Bitcoin concepts through an interactive glossary
@@ -72,27 +72,23 @@
 
 ## 6. Technical Considerations
 **Platforms:**
-- **Frontend:** Next.js 15 with App Router, React 18, TypeScript
+- **Frontend:** Next.js 16.0.10 with App Router, React 19.2.0, TypeScript 5.9.3
 - **Styling:** Tailwind CSS with shadcn/ui component library and Radix primitives
 - **Deployment:** Firebase App Hosting
 - **Analytics:** Google Analytics with privacy-compliant consent management
-- **Database:** Google Sheets API for waitlist management
 
 **Integrations:**
 - **BitSleuth App:** Direct integration with `https://app.bitsleuth.ai` for wallet analysis
 - **Google Analytics:** User behavior tracking and conversion measurement
-- **Google Sheets API:** Waitlist email collection and management
 - **Firebase:** Hosting platform and potential future integration for user management
 
 **Dependencies:**
 - Node.js 18+ (20+ recommended)
 - Google Analytics Measurement ID for tracking
-- Google Sheets API credentials for waitlist management
 - Firebase App Hosting for deployment
 
 ## 7. Risks & Assumptions
 **Risks:**
-- **API Dependency:** Reliance on Google Sheets API for waitlist management could impact functionality if service is unavailable
 - **Regulatory Changes:** Bitcoin regulations could affect content and messaging requirements
 - **Competition:** Other Bitcoin analysis tools could capture market share
 - **Technical Debt:** Rapid development could lead to maintenance challenges
@@ -110,7 +106,7 @@
 - ✅ Core website structure and routing
 - ✅ Landing pages for Analyzer and Wallet products
 - ✅ Educational glossary with 15+ Bitcoin terms
-- ✅ Waitlist management system with Google Sheets integration
+- ✅ Waitlist management system
 - ✅ SEO optimization and privacy compliance
 - ✅ Responsive design and theme support
 
@@ -232,14 +228,13 @@
 
 ### System Architecture
 **Frontend:**
-- Next.js 15 with App Router for optimal performance
-- React 18 with TypeScript for type safety
+- Next.js 16.0.10 with App Router for optimal performance
+- React 19.2.0 with TypeScript 5.9.3 for type safety
 - Tailwind CSS for consistent styling
 - shadcn/ui components for accessibility
 
 **Backend:**
 - Serverless functions for API endpoints
-- Google Sheets API for data storage
 - Firebase App Hosting for deployment
 - CDN for static asset delivery
 
@@ -387,13 +382,13 @@
 - **OPSEC**: Operational security practices for Bitcoin users
 
 ### B. Technical Specifications
-- **Framework**: Next.js 15.5.2
-- **Language**: TypeScript 5.x
-- **Styling**: Tailwind CSS 3.4.1
+- **Framework**: Next.js 16.0.10
+- **Language**: TypeScript 5.9.3
+- **Runtime**: React 19.2.0
+- **Styling**: Tailwind CSS 3.4.18
 - **Components**: shadcn/ui with Radix primitives
 - **Deployment**: Firebase App Hosting
 - **Analytics**: Google Analytics 4
-- **Database**: Google Sheets API
 
 ### C. Contact Information
 - **Product Owner**: [To be defined]
