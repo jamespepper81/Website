@@ -10,12 +10,12 @@ import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
+const APP_STORE_LINK = "https://apps.apple.com/app/bitsleuth-wallet/id6753949588";
+const PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=ai.bitsleuth.wallet";
+
 export default function DownloadPage() {
     const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
     const [imagesLoaded, setImagesLoaded] = useState(false);
-
-    const APP_STORE_LINK = "https://apps.apple.com/app/bitsleuth-wallet/id6753949588";
-    const PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=ai.bitsleuth.wallet";
 
     const openPrivacyModal = () => setActiveModal('privacy');
     const openTermsModal = () => setActiveModal('terms');
@@ -61,16 +61,18 @@ export default function DownloadPage() {
         if (!imagesLoaded) return;
 
         // Smart redirection for mobile devices
-        const userAgent = navigator.userAgent || navigator.vendor || '';
-        const windowAny = window as Window & { MSStream?: unknown };
+        const userAgent =
+          navigator.userAgent ||
+          navigator.vendor ||
+          (typeof window !== "undefined" && "opera" in window ? (window as any).opera : undefined);
 
         // iOS detection
-        if (/iPad|iPhone|iPod/.test(userAgent) && !windowAny.MSStream) {
-            window.location.href = APP_STORE_LINK;
+        if (/iPad|iPhone|iPod/.test(userAgent)) {
+            window.open(APP_STORE_LINK, "_blank");
         }
         // Android detection
         else if (/android/i.test(userAgent)) {
-            window.location.href = PLAY_STORE_LINK;
+            window.open(PLAY_STORE_LINK, "_blank");
         }
     }, [imagesLoaded]);
 

@@ -6,6 +6,9 @@
 
 import { type GlossaryTermMeta } from './glossary-metadata';
 
+// Define allowed slug separators REGEX (hyphen, underscore, period) for universal use.
+const SLUG_SEPARATOR_RE = /[-_.]/;
+
 // Sanitizes strings for safe logging by escaping linebreaks and truncating.
 /**
  * General-purpose sanitizer for strings used in logs or elsewhere.
@@ -42,7 +45,8 @@ function sanitizeForLogGeneral(
       // Allow \n and \t to survive
       sanitized = sanitized.replace(/[^\x20-\x7E\n\t]/g, '_'); // For logs where linebreaks/tabs are wanted
     } else {
-      sanitized = sanitized.replace(/[\x00-\x1F\x7F]/g, '');
+      // Remove control chars except \n (\x0A) and \t (\x09)
+      sanitized = sanitized.replace(/[\x00-\x08\x0B-\x1F\x7F]/g, '');
     }
   }
   if (sanitized.length > maxLength) {
@@ -87,8 +91,21 @@ const ALLOWED_CHARS = 'a-zA-Z0-9_.~-'; // alphanumerics, underscore (_), period 
 const EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period)
 
 // Description of allowed characters (derived from the constants above)
-const ALLOWED_SLUG_CHARACTERS_DESCRIPTION =
-  `Allowed characters: ${ALLOWED_CHARS} (alphanumerics, underscores, periods, tildes, hyphens)`;
+function describeAllowedSlugChars(chars: string): string {
+  // Detect and explain common ranges and symbols from the pattern
+  const parts: string[] = [];
+  if (chars.includes('a-z')) parts.push('lowercase letters (a-z)');
+  if (chars.includes('A-Z')) parts.push('uppercase letters (A-Z)');
+  if (chars.includes('0-9')) parts.push('digits (0-9)');
+  if (chars.includes('_')) parts.push('underscore (_)');
+  if (chars.includes('.')) parts.push('period (.)');
+  if (chars.includes('~')) parts.push('tilde (~)');
+  if (chars.includes('-')) parts.push('hyphen (-)');
+  // Add any characters not in above set
+  // (Omitted here as set is closed; extend as needed)
+  return `Allowed characters: ${chars} (${parts.join(', ')})`;
+}
+const ALLOWED_SLUG_CHARACTERS_DESCRIPTION = describeAllowedSlugChars(ALLOWED_CHARS);
 
 // Precompiled regex for a single allowed character in a slug
 const ALLOWED_SLUG_CHAR_RE = new RegExp(`^[${ALLOWED_CHARS}]$`);
@@ -272,7 +289,7 @@ export interface CombinedGlossarySchema {
  * @param input - The string to sanitize for logs.
  * @returns A sanitized string: flattened, non-printable chars replaced, and truncated to 30 chars.
  */
-function sanitizeForLogShort(input: string): string {
+function sanitizeForLogGeneral30(input: string): string {
   // Equivalent to previous logic: replace non-printable with _, flatten, max 30 characters.
   return sanitizeForLogGeneral(input, {
     maxLength: 30,
@@ -314,7 +331,7 @@ function getGlossaryTermUrl(term: string): string {
       }
     }
     throw new Error(
-      `Invalid characters in term slug '${sanitizeForLogShort(trimmedTerm)}'.`
+      `Invalid characters in term slug '${sanitizeForLogGeneral30(trimmedTerm)}'.`
       + getInvalidCharactersMessage(invalidChars)
       + ` Allowed: ${ALLOWED_SLUG_CHARACTERS_DESCRIPTION}.`
     );
@@ -331,7 +348,7 @@ function getGlossaryTermUrl(term: string): string {
 function formatSlugToTitle(slug: string): string {
   if (!slug?.trim()) return '';
 
-  const words = slug.split(/[-_]/);
+  const words = slug.split(SLUG_SEPARATOR_RE);
   const filteredWords = words.filter(Boolean);
   const titleCaseWords = filteredWords.map((part) => part.charAt(0).toUpperCase() + part.slice(1));
   return titleCaseWords.join(' ');
