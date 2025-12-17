@@ -28,7 +28,7 @@ export function Header({ basePath = '' }: HeaderProps) {
   // Map basePath to an array of link labels to hide for that path
   const navLinksHiddenByBasePath: { [key: string]: string[] } = {
     '/wallet': ['Pricing'],
-    // e.g., '/analyzer': ['FAQ'], etc. Add more entries as needed
+    // e.g., '/analyzer': ['FAQ'], etc. Add more entries as and when needed
   };
   const labelsToHide = navLinksHiddenByBasePath[basePath] || [];
   const navLinks = allNavLinks.filter(link => !labelsToHide.includes(link.label));
