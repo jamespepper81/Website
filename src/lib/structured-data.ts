@@ -46,7 +46,7 @@ function sanitizeForLogGeneral(
       sanitized = sanitized.replace(/[^\x20-\x7E\n\t]/g, '_'); // For logs where linebreaks/tabs are wanted
     } else {
       // Remove control chars except \n (\x0A) and \t (\x09)
-      sanitized = sanitized.replace(/[\x00-\x08\x0B-\x1F\x7F]/g, '');
+      sanitized = sanitized.replace(/[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F]/g, '');
     }
   }
   if (sanitized.length > maxLength) {
@@ -93,10 +93,12 @@ const EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period
 // Description of allowed characters (derived from the constants above)
 // Parse the character class string and generate a human-readable description
 function describeAllowedSlugChars(chars: string): string {
-  // Parse character class patterns more robustly using regex
+  // For the expected format 'a-zA-Z0-9_.~-', parse character ranges and individual chars
+  // This implementation is tailored to the specific ALLOWED_CHARS format used in this module
   const parts: string[] = [];
   
   // Match character ranges like 'a-z', 'A-Z', '0-9'
+  // Use a more specific pattern that handles the known format
   const rangeMatches = chars.match(/([a-zA-Z0-9])-([a-zA-Z0-9])/g);
   if (rangeMatches) {
     for (const range of rangeMatches) {
@@ -117,10 +119,11 @@ function describeAllowedSlugChars(chars: string): string {
     });
   }
   
-  // Check for common special characters
+  // Check for common special characters that appear in ALLOWED_CHARS
   if (remaining.includes('_')) parts.push('underscore (_)');
   if (remaining.includes('.')) parts.push('period (.)');
   if (remaining.includes('~')) parts.push('tilde (~)');
+  // Note: hyphen at end of char class (after other chars) is treated as literal
   if (remaining.includes('-')) parts.push('hyphen (-)');
   
   return `Allowed characters: ${chars} (${parts.join(', ')})`;
