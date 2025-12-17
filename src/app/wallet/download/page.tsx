@@ -62,7 +62,7 @@ export default function DownloadPage() {
 
         // Smart redirection for mobile devices
         const userAgent = navigator.userAgent || navigator.vendor || '';
-        const windowAny = window as Window & { opera?: string; MSStream?: unknown };
+        const windowAny = window as Window & { MSStream?: unknown };
 
         // iOS detection
         if (/iPad|iPhone|iPod/.test(userAgent) && !windowAny.MSStream) {
@@ -72,7 +72,7 @@ export default function DownloadPage() {
         else if (/android/i.test(userAgent)) {
             window.location.href = PLAY_STORE_LINK;
         }
-    }, [imagesLoaded, APP_STORE_LINK, PLAY_STORE_LINK]);
+    }, [imagesLoaded]);
 
     return (
         <div className="flex flex-col min-h-dvh bg-background">
