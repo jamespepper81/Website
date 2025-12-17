@@ -64,7 +64,7 @@ export default function DownloadPage() {
         const userAgent =
           navigator.userAgent ||
           navigator.vendor ||
-          (typeof window !== "undefined" && "opera" in window ? (window as any).opera : undefined);
+          (typeof window !== "undefined" && "opera" in window ? String((window as any).opera) : '');
 
         // iOS detection
         if (/iPad|iPhone|iPod/.test(userAgent)) {

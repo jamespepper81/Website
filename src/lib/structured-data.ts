@@ -91,18 +91,38 @@ const ALLOWED_CHARS = 'a-zA-Z0-9_.~-'; // alphanumerics, underscore (_), period 
 const EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period)
 
 // Description of allowed characters (derived from the constants above)
+// Parse the character class string and generate a human-readable description
 function describeAllowedSlugChars(chars: string): string {
-  // Detect and explain common ranges and symbols from the pattern
+  // Parse character class patterns more robustly using regex
   const parts: string[] = [];
-  if (chars.includes('a-z')) parts.push('lowercase letters (a-z)');
-  if (chars.includes('A-Z')) parts.push('uppercase letters (A-Z)');
-  if (chars.includes('0-9')) parts.push('digits (0-9)');
-  if (chars.includes('_')) parts.push('underscore (_)');
-  if (chars.includes('.')) parts.push('period (.)');
-  if (chars.includes('~')) parts.push('tilde (~)');
-  if (chars.includes('-')) parts.push('hyphen (-)');
-  // Add any characters not in above set
-  // (Omitted here as set is closed; extend as needed)
+  
+  // Match character ranges like 'a-z', 'A-Z', '0-9'
+  const rangeMatches = chars.match(/([a-zA-Z0-9])-([a-zA-Z0-9])/g);
+  if (rangeMatches) {
+    for (const range of rangeMatches) {
+      const [start, end] = range.split('-');
+      if (start === 'a' && end === 'z') parts.push('lowercase letters (a-z)');
+      else if (start === 'A' && end === 'Z') parts.push('uppercase letters (A-Z)');
+      else if (start === '0' && end === '9') parts.push('digits (0-9)');
+      else parts.push(`range (${range})`);
+    }
+  }
+  
+  // Match individual special characters (non-range characters)
+  // Remove ranges first, then check for remaining individual chars
+  let remaining = chars;
+  if (rangeMatches) {
+    rangeMatches.forEach(range => {
+      remaining = remaining.replace(range, '');
+    });
+  }
+  
+  // Check for common special characters
+  if (remaining.includes('_')) parts.push('underscore (_)');
+  if (remaining.includes('.')) parts.push('period (.)');
+  if (remaining.includes('~')) parts.push('tilde (~)');
+  if (remaining.includes('-')) parts.push('hyphen (-)');
+  
   return `Allowed characters: ${chars} (${parts.join(', ')})`;
 }
 const ALLOWED_SLUG_CHARACTERS_DESCRIPTION = describeAllowedSlugChars(ALLOWED_CHARS);
