@@ -12,6 +12,7 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 
 export default function DownloadPage() {
     const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
+    const [imagesLoaded, setImagesLoaded] = useState(false);
 
     const APP_STORE_LINK = "https://apps.apple.com/app/bitsleuth-wallet/id6753949588";
     const PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=ai.bitsleuth.wallet";
@@ -21,18 +22,57 @@ export default function DownloadPage() {
     const closeModal = () => setActiveModal(null);
 
     useEffect(() => {
+        // Preload critical images
+        const imagesToPreload = [
+            '/images/app-store-black.png',
+            '/images/app-store-white.png',
+            '/images/google-play-black.png',
+            '/images/google-play-white.png'
+        ];
+
+        let loadedCount = 0;
+        const totalImages = imagesToPreload.length;
+
+        const checkAllLoaded = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                setImagesLoaded(true);
+            }
+        };
+
+        // Preload images
+        imagesToPreload.forEach(src => {
+            const img = new Image();
+            img.onload = checkAllLoaded;
+            img.onerror = checkAllLoaded; // Still count as loaded even if error
+            img.src = src;
+        });
+
+        // Fallback timeout to ensure redirect happens even if images take too long
+        const timeoutId = setTimeout(() => {
+            setImagesLoaded(true);
+        }, 2000); // 2 second timeout
+
+        return () => clearTimeout(timeoutId);
+    }, []);
+
+    useEffect(() => {
+        // Only redirect after images are loaded
+        if (!imagesLoaded) return;
+
         // Smart redirection for mobile devices
-        const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+        const userAgent = navigator.userAgent || navigator.vendor || '';
+        const windowAny = window as Window & { opera?: string; MSStream?: unknown };
 
         // iOS detection
-        if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
+        if (/iPad|iPhone|iPod/.test(userAgent) && !windowAny.MSStream) {
             window.location.href = APP_STORE_LINK;
         }
         // Android detection
         else if (/android/i.test(userAgent)) {
             window.location.href = PLAY_STORE_LINK;
         }
-    }, []);
+    }, [imagesLoaded, APP_STORE_LINK, PLAY_STORE_LINK]);
 
     return (
         <div className="flex flex-col min-h-dvh bg-background">
