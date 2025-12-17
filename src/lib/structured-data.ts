@@ -365,15 +365,31 @@ function getGlossaryTermUrl(term: string): string {
 
 /**
  * Converts a kebab-case or snake_case slug into Title Case.
+ * Handles acronyms intelligently - single-word slugs ≤4 chars or containing digits are fully uppercased.
+ * Multi-word slugs are converted to proper Title Case.
  * @param slug - The slug string.
  * @returns The Title Case version of the slug.
  */
 function formatSlugToTitle(slug: string): string {
   if (!slug?.trim()) return '';
 
+  // Check if slug contains separators
+  const hasSeparator = SLUG_SEPARATOR_RE.test(slug);
+  
+  // If it's a single word (no separators) and either:
+  // 1. Contains a digit (bip32, bip39, etc.), OR
+  // 2. Is 4 characters or less (p2p, btc, utxo, etc.)
+  // Then uppercase the entire slug (it's likely an acronym)
+  if (!hasSeparator && (slug.length <= 4 || /\d/.test(slug))) {
+    return slug.toUpperCase();
+  }
+
+  // Otherwise, split by separators and apply proper Title Case
   const words = slug.split(SLUG_SEPARATOR_RE);
   const filteredWords = words.filter(Boolean);
-  const titleCaseWords = filteredWords.map((part) => part.charAt(0).toUpperCase() + part.slice(1));
+  const titleCaseWords = filteredWords.map((part) => {
+    return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+  });
   return titleCaseWords.join(' ');
 }
 
