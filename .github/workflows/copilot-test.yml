@@ -50,16 +50,14 @@ jobs:
       
       - name: Start server in background
         run: |
-          npm run start &
+          npm run start -- -p 9002 &
           echo "SERVER_PID=$!" >> $GITHUB_ENV
-        env:
-          PORT: 3000
       
       - name: Wait for server to be ready
         run: |
           echo "Waiting for server to start..."
           for i in {1..30}; do
-            if curl -s http://localhost:3000 > /dev/null; then
+            if curl -s http://localhost:9002 > /dev/null; then
               echo "Server is ready!"
               exit 0
             fi
@@ -72,7 +70,7 @@ jobs:
       - name: Test homepage accessibility
         run: |
           echo "Testing homepage..."
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9002)
           if [ "$STATUS" -eq 200 ]; then
             echo "✅ Homepage accessible (Status: $STATUS)"
           else
@@ -85,19 +83,19 @@ jobs:
           echo "Testing key routes..."
           
           # Test analyzer page
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/analyzer)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9002/analyzer)
           echo "Analyzer page: $STATUS"
           
           # Test wallet page
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/wallet)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9002/wallet)
           echo "Wallet page: $STATUS"
           
           # Test glossary page
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/glossary)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9002/glossary)
           echo "Glossary page: $STATUS"
           
           # Test learn page
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/learn)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9002/learn)
           echo "Learn page: $STATUS"
           
           echo "✅ All key routes tested"
