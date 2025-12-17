@@ -12,6 +12,8 @@ import {
 import { Menu, ChevronDown, BarChart, Lock, Rocket, GraduationCap, ScrollText } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
+const APP_URL = "https://app.bitsleuth.ai/";
+
 interface HeaderProps {
   basePath?: string;
 }
@@ -23,24 +25,31 @@ export function Header({ basePath = '' }: HeaderProps) {
     { href: `${basePath}/#faq`, label: "FAQ" },
   ];
 
-  const navLinks = allNavLinks.filter(link => {
-    if (basePath === '/wallet' && link.label === 'Pricing') {
-      return false;
-    }
-    return true;
-  });
+  // Map basePath to an array of link labels to hide for that path
+  const navLinksHiddenByBasePath: { [key: string]: string[] } = {
+    '/wallet': ['Pricing'],
+    // e.g., '/analyzer': ['FAQ'], etc. Add more entries as needed
+  };
+  const labelsToHide = navLinksHiddenByBasePath[basePath] || [];
+  const navLinks = allNavLinks.filter(link => !labelsToHide.includes(link.label));
 
   const showNavLinks = basePath === '/analyzer' || basePath === '/wallet';
 
+  const headerStyle = {
+    paddingTop: 'calc(1rem + env(safe-area-inset-top))',
+    paddingBottom: '1rem',
+    paddingLeft: 'max(1rem, env(safe-area-inset-left))',
+    paddingRight: 'max(1rem, env(safe-area-inset-right))',
+    minHeight: 'calc(4rem + env(safe-area-inset-top))',
+    height: 'calc(4rem + env(safe-area-inset-top))',
+  };
+
   return (
-    <header className="edge-to-edge-section flex items-center shadow-sm sticky top-0 z-50 bg-gradient-to-b from-primary/10 via-background/95 to-background/95 backdrop-blur-md border-b border-border/40" suppressHydrationWarning style={{
-      paddingTop: 'calc(1rem + env(safe-area-inset-top))',
-      paddingBottom: '1rem',
-      paddingLeft: 'max(1rem, env(safe-area-inset-left))',
-      paddingRight: 'max(1rem, env(safe-area-inset-right))',
-      minHeight: 'calc(4rem + env(safe-area-inset-top))',
-      height: 'calc(4rem + env(safe-area-inset-top))'
-    }}>
+    <header
+      className="edge-to-edge-section flex items-center shadow-sm sticky top-0 z-50 bg-gradient-to-b from-primary/10 via-background/95 to-background/95 backdrop-blur-md border-b border-border/40"
+      suppressHydrationWarning
+      style={headerStyle}
+    >
       <Link href="/" className="flex items-center justify-center hover:opacity-90 transition-opacity">
         <Image src="/images/logo-icon.jpg" alt="BitSleuth Logo" width={40} height={40} className="rounded-xl shadow-sm" />
         <span className="ml-3 font-bold text-xl tracking-tight text-foreground">BitSleuth</span>
@@ -122,7 +131,7 @@ export function Header({ basePath = '' }: HeaderProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem asChild>
-              <a href="https://app.bitsleuth.ai/" target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
                 <div className="flex items-start gap-3">
                   <BarChart className="h-5 w-5 mt-0.5 text-primary" />
                   <div>
@@ -182,7 +191,7 @@ export function Header({ basePath = '' }: HeaderProps) {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-full">
                 <DropdownMenuItem asChild>
-                  <a href="https://app.bitsleuth.ai/" target="_blank" rel="noopener noreferrer" className="w-full font-medium">
+                  <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="w-full font-medium">
                     Wallet Analyzer
                   </a>
                 </DropdownMenuItem>
