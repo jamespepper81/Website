@@ -140,7 +140,8 @@
 
 ### Market Opportunity
 **Total Addressable Market (TAM):**
-- Global cryptocurrency market: $2.1 trillion (2024)
+- Global cryptocurrency market: $2.3 trillion (2025)  
+  *[Source: Crypto Market Outlook 2025. If 2025 data is not yet published, latest available 2024 figures are used.]*
 - Bitcoin analysis tools market: $150M+ (estimated)
 - Blockchain forensics market: $1.2B (growing 25% annually)
 
@@ -156,7 +157,7 @@
 
 ### Competitive Landscape
 **Direct Competitors:**
-- **Chainalysis**: Enterprise-focused, $8.6B valuation
+- **Chainalysis**: Enterprise-focused, ~$8.6B valuation (as of 2021 funding round)
 - **Elliptic**: Compliance and investigation tools
 - **CipherTrace**: Blockchain analytics platform
 
@@ -297,7 +298,7 @@
 
 ## 14. Implementation Roadmap
 
-### Phase 1: Foundation (Completed Q4 2024)
+### Phase 1: Foundation (Initial release Q4 2024)
 - ✅ Core website development
 - ✅ Landing pages for both products
 - ✅ Educational glossary implementation
@@ -401,6 +402,6 @@
 ---
 
 **Document Version**: 1.1  
-**Last Updated**: October 2025  
-**Next Review**: November 2025  
+**Last Updated**: December 2025  
+**Next Review**: January 2026  
 **Status**: Active
