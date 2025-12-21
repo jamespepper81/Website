@@ -6,7 +6,7 @@
 
 import { type GlossaryTermMeta } from './glossary-metadata';
 
-// Define allowed slug separators REGEX (hyphen, underscore, period) for universal use.
+// Define allowed slug separators RegExp (hyphen, underscore, period) for universal use.
 const SLUG_SEPARATOR_RE = /[-_.]/;
 
 // Sanitizes strings for safe logging by escaping linebreaks and truncating.
@@ -55,13 +55,33 @@ function sanitizeForLogGeneral(
   return sanitized;
 }
 
-// Legacy function -- for normal/detailed logs. Removes linebreaks, removes control chars, truncates to 1000.
+// Legacy function -- for normal/detailed logs. Removes line breaks, removes control chars, truncates to 1000.
 function sanitizeForLog(input: string, maxLength = 1000): string {
   return sanitizeForLogGeneral(input, {maxLength, replaceNonPrintable: false, flattenWhitespace: true});
 }
 
 // Module-scoped cache for slug validation
 const slugValidationCache: Map<string, boolean> = new Map();
+
+// Maximum number of entries to keep in slugValidationCache to avoid unbounded growth.
+// This can be tuned based on expected traffic patterns; kept small to bound memory usage.
+const MAX_SLUG_CACHE_SIZE = 1000;
+
+/**
+ * Insert a slug validation result into the cache, enforcing a simple size bound.
+ * If the cache is at or above MAX_SLUG_CACHE_SIZE, evict the oldest inserted key.
+ * Note: Relies on Map maintaining insertion order (guaranteed in ES2015+).
+ */
+function setSlugValidationCache(slug: string, isValid: boolean): void {
+  if (slugValidationCache.size >= MAX_SLUG_CACHE_SIZE) {
+    // Evict the first key iterated (oldest insertion, per ES2015+ Map specification).
+    const firstKey = slugValidationCache.keys().next().value as string | undefined;
+    if (firstKey !== undefined) {
+      slugValidationCache.delete(firstKey);
+    }
+  }
+  slugValidationCache.set(slug, isValid);
+}
 
 // Internal logger abstraction; can be replaced with robust logging as needed
 // Internal warn logger function (can be replaced for production)
@@ -311,10 +331,10 @@ export interface CombinedGlossarySchema {
 
 /**
  * Sanitizes a string for safe logging: replaces non-printable ASCII characters with "_",
- * flattens whitespace (replacing linebreaks and tabs with spaces), and truncates to 30 characters.
+ * flattens whitespace (replacing line breaks and tabs with spaces), and truncates to 30 characters.
  *
  * Security: Prevents log injection attacks and ensures that control/non-printable characters
- * (such as newlines, tabs, and non-printable ASCII) cannot disrupt or forge log messages,
+ * (such as line breaks, tabs, and non-printable ASCII) cannot disrupt or forge log messages,
  * helping protect log integrity and aiding in analysis.
  *
  * @param input - The string to sanitize for logs.
@@ -425,7 +445,7 @@ function mapRelatedTermsToDefinedTerms(
       isValid = slugValidationCache.get(trimmedTerm)!;
     } else {
       isValid = VALID_SLUG_PATTERN.test(trimmedTerm);
-      slugValidationCache.set(trimmedTerm, isValid);
+      setSlugValidationCache(trimmedTerm, isValid);
     }
     if (!isValid) {
       invalidTerms.push(trimmedTerm);
