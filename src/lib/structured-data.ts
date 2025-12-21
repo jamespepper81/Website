@@ -70,10 +70,11 @@ const MAX_SLUG_CACHE_SIZE = 1000;
 /**
  * Insert a slug validation result into the cache, enforcing a simple size bound.
  * If the cache is at or above MAX_SLUG_CACHE_SIZE, evict the oldest inserted key.
+ * Note: Relies on Map maintaining insertion order (guaranteed in ES2015+).
  */
 function setSlugValidationCache(slug: string, isValid: boolean): void {
   if (slugValidationCache.size >= MAX_SLUG_CACHE_SIZE) {
-    // Evict the first key iterated (oldest insertion in current Map implementation).
+    // Evict the first key iterated (oldest insertion, per ES2015+ Map specification).
     const firstKey = slugValidationCache.keys().next().value as string | undefined;
     if (firstKey !== undefined) {
       slugValidationCache.delete(firstKey);
