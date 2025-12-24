@@ -51,7 +51,7 @@ Use this skill when you need to:
 ### Example 1: Basic Navigation Test
 ```javascript
 // Navigate to a page and verify title
-await page.goto('http://localhost:3000');
+await page.goto('http://localhost:9002');
 const title = await page.title();
 console.log('Page title:', title);
 ```
