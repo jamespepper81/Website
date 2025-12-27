@@ -317,6 +317,7 @@ Current, relevant documentation for development:
 - **Implementation History**: [`docs/IMPLEMENTATION_HISTORY.md`](docs/IMPLEMENTATION_HISTORY.md) - Consolidated history of completed work and current state
 - **SEO Strategy**: [`docs/SEO_STRATEGY.md`](docs/SEO_STRATEGY.md) - SEO optimization guide and ongoing strategy
 - **MCP Server**: [`docs/MCP_SERVER.md`](docs/MCP_SERVER.md) - Model Context Protocol server configuration for AI agents
+- **Tailwind Language Server**: [`docs/TAILWIND_LANGUAGE_SERVER.md`](docs/TAILWIND_LANGUAGE_SERVER.md) - Tailwind CSS IntelliSense setup and usage
 - **Security**: [`docs/SECURITY_AUDIT.md`](docs/SECURITY_AUDIT.md) and [`docs/SECURITY_IMPROVEMENTS.md`](docs/SECURITY_IMPROVEMENTS.md) - Security documentation
 - **Visual Recommendations**: [`docs/todo.md`](docs/todo.md) - UI/UX improvement suggestions and future enhancements
 
