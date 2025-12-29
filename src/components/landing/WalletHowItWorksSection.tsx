@@ -30,12 +30,12 @@ export function WalletHowItWorksSection() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {steps.map((step, idx) => (
-            <Card key={idx} className="bg-gray-100 dark:bg-[#1a1a1a] border-none shadow-xl text-left hover:shadow-2xl overflow-hidden group">
+            <Card key={idx} className="bg-card border-none shadow-xl text-left hover:shadow-2xl overflow-hidden group">
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg font-bold mb-2 text-primary">{step.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="font-normal text-gray-400">{step.description}</p>
+                <p className="font-normal text-muted-foreground">{step.description}</p>
               </CardContent>
             </Card>
           ))}

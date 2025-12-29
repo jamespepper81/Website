@@ -42,7 +42,7 @@ export function PricingSection() {
           {plans.map((plan, idx) => (
             <Card
               key={idx}
-              className={`relative flex flex-col text-left overflow-hidden shadow-xl bg-gray-100 dark:bg-[#1a1a1a] border-none hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${plan.comingSoon ? 'blur-sm pointer-events-none opacity-70' : ''
+              className={`relative flex flex-col text-left overflow-hidden shadow-xl bg-card border-none hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${plan.comingSoon ? 'blur-sm pointer-events-none opacity-70' : ''
                 }`}
             >
               {plan.comingSoon && (

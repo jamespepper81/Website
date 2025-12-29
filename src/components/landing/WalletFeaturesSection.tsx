@@ -42,7 +42,7 @@ export function WalletFeaturesSection() {
           {features.map((feature, idx) => (
             <Card
               key={idx}
-              className="bg-gray-100 dark:bg-[#1a1a1a] border-none shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden"
+              className="bg-card border-none shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group overflow-hidden"
             >
               <CardHeader className="flex flex-row items-start gap-4 p-6 pb-2">
                 <div className="p-3 rounded-2xl bg-primary/20 group-hover:bg-primary/30 transition-colors">
@@ -53,7 +53,7 @@ export function WalletFeaturesSection() {
                 <CardTitle className="font-bold text-xl pt-1 text-foreground">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-6 pt-2">
-                <CardDescription className="font-normal text-gray-400 leading-relaxed">{feature.description}</CardDescription>
+                <CardDescription className="font-normal text-muted-foreground leading-relaxed">{feature.description}</CardDescription>
               </CardContent>
             </Card>
           ))}
