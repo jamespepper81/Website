@@ -6,6 +6,7 @@ import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import NextImage from "next/image";
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 import { BackgroundBeams } from "@/components/ui/background-beams";
@@ -103,14 +104,18 @@ export default function DownloadPage() {
                             rel="noopener noreferrer"
                             className="hover:scale-105 transition-transform duration-200"
                         >
-                            <img
+                            <NextImage
                                 src="/images/app-store-black.png"
                                 alt="Download on the App Store"
+                                width={180}
+                                height={64}
                                 className="h-[64px] w-auto block dark:hidden rounded-lg"
                             />
-                            <img
+                            <NextImage
                                 src="/images/app-store-white.png"
                                 alt="Download on the App Store"
+                                width={180}
+                                height={64}
                                 className="h-[64px] w-auto hidden dark:block rounded-lg"
                             />
                         </a>
@@ -122,14 +127,18 @@ export default function DownloadPage() {
                             rel="noopener noreferrer"
                             className="hover:scale-105 transition-transform duration-200"
                         >
-                            <img
+                            <NextImage
                                 src="/images/google-play-black.png"
                                 alt="Get it on Google Play"
+                                width={180}
+                                height={64}
                                 className="h-[64px] w-auto block dark:hidden rounded-lg"
                             />
-                            <img
+                            <NextImage
                                 src="/images/google-play-white.png"
                                 alt="Get it on Google Play"
+                                width={180}
+                                height={64}
                                 className="h-[64px] w-auto hidden dark:block rounded-lg"
                             />
                         </a>
