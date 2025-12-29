@@ -81,7 +81,7 @@ export function EnhancedHomeHeroSection() {
       </section>
 
       {/* Product Cards Section */}
-      <section className="py-12 md:py-24 bg-background relative overflow-hidden">
+      <section className="py-12 md:py-20 lg:py-24 bg-background relative overflow-hidden">
         <div className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <Card className="group text-left bg-card border-none shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full overflow-hidden">

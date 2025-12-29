@@ -29,7 +29,7 @@ export function HowItWorksSection() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {steps.map((step, idx) => (
-            <Card key={idx} className="bg-card border-none shadow-xl text-left hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+            <Card key={idx} className="bg-card border-none shadow-xl text-left hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <CardHeader>
                 <CardTitle className="text-lg font-bold mb-2 text-primary">{step.title}</CardTitle>
               </CardHeader>

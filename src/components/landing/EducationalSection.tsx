@@ -17,7 +17,7 @@ import Link from "next/link";
 
 export function EducationalSection() {
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden">
       <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
