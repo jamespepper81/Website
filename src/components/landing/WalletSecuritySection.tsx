@@ -50,7 +50,7 @@ export function WalletSecuritySection() {
                 <CardTitle className="font-bold text-lg text-foreground">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-6 pt-0">
-                <CardDescription className="font-normal text-center text-gray-400 leading-relaxed">{feature.description}</CardDescription>
+                <CardDescription className="font-normal text-center text-muted-foreground leading-relaxed">{feature.description}</CardDescription>
               </CardContent>
             </Card>
           ))}

@@ -35,7 +35,7 @@ export function WalletHowItWorksSection() {
                 <CardTitle className="text-lg font-bold mb-2 text-primary">{step.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="font-normal text-gray-400">{step.description}</p>
+                <p className="font-normal text-muted-foreground">{step.description}</p>
               </CardContent>
             </Card>
           ))}

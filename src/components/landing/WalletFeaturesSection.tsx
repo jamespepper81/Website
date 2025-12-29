@@ -53,7 +53,7 @@ export function WalletFeaturesSection() {
                 <CardTitle className="font-bold text-xl pt-1 text-foreground">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-6 pt-2">
-                <CardDescription className="font-normal text-gray-400 leading-relaxed">{feature.description}</CardDescription>
+                <CardDescription className="font-normal text-muted-foreground leading-relaxed">{feature.description}</CardDescription>
               </CardContent>
             </Card>
           ))}
