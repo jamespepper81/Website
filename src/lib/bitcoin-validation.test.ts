@@ -36,6 +36,7 @@ describe('validateBitcoinAddress', () => {
     });
 
     it('should reject null/undefined', () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const result = validateBitcoinAddress(null as any);
       expect(result.isValid).toBe(false);
       expect(result.error).toBe('Address is required');
@@ -107,6 +108,7 @@ describe('sanitizeBitcoinAddress', () => {
   });
 
   it('should handle null/undefined', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(sanitizeBitcoinAddress(null as any)).toBe('');
   });
 });
