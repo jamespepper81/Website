@@ -9,14 +9,36 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 import { ValueBadge } from "@/components/ui/value-badge";
 import { Bitcoin, Search, Lock, Zap, CheckCircle } from "lucide-react";
 import { useState } from "react";
+import { validateBitcoinAddress, sanitizeBitcoinAddress } from "@/lib/bitcoin-validation";
+import { useToast } from "@/hooks/use-toast";
 
 export function HeroSection() {
   const [address, setAddress] = useState("");
+  const { toast } = useToast();
 
   const handleAnalyze = () => {
-    if (address) {
-      window.location.href = `https://app.bitsleuth.ai/address/${address}`;
+    if (!address) {
+      toast({
+        title: "Address Required",
+        description: "Please enter a Bitcoin address to analyze",
+        variant: "destructive",
+      });
+      return;
     }
+
+    const sanitizedAddress = sanitizeBitcoinAddress(address);
+    const validation = validateBitcoinAddress(sanitizedAddress);
+    
+    if (!validation.isValid) {
+      toast({
+        title: "Invalid Address",
+        description: validation.error || "Please enter a valid Bitcoin address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    window.location.href = `https://app.bitsleuth.ai/address/${encodeURIComponent(sanitizedAddress)}`;
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
