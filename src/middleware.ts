@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { randomBytes } from 'crypto';
 
 export function middleware(request: NextRequest) {
-  // Generate a random nonce for this request
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+  // Generate a cryptographically secure random nonce for this request
+  // Using 16 bytes (128 bits) of randomness, base64 encoded
+  const nonce = randomBytes(16).toString('base64');
   
   // Clone the request headers
   const requestHeaders = new Headers(request.headers);

@@ -38,7 +38,8 @@ export function HeroSection() {
       return;
     }
 
-    window.location.href = `https://app.bitsleuth.ai/address/${encodeURIComponent(sanitizedAddress)}`;
+    // Use window.location.assign() for better CSP compatibility
+    window.location.assign(`https://app.bitsleuth.ai/address/${encodeURIComponent(sanitizedAddress)}`);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

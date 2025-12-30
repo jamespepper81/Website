@@ -10,7 +10,11 @@ const BECH32_CHARSET = /^[a-z0-9]+$/;
 
 // Address length constraints
 const MIN_ADDRESS_LENGTH = 26;
-const MAX_ADDRESS_LENGTH = 90; // Taproot addresses can be up to 90 chars
+// Maximum address length: Accounts for future Bitcoin address formats beyond current standards
+// - Current P2TR (Taproot) addresses: 62 characters
+// - Current P2WSH (SegWit v0): up to 90 characters
+// - Reserve headroom for potential future address types
+const MAX_ADDRESS_LENGTH = 90;
 
 export interface AddressValidationResult {
   isValid: boolean;
@@ -82,9 +86,9 @@ export function validateBitcoinAddress(address: string): AddressValidationResult
 
 /**
  * Sanitizes a Bitcoin address by trimming whitespace
- * @param address - The Bitcoin address to sanitize
- * @returns Sanitized address
+ * @param address - The Bitcoin address to sanitize (may be null/undefined)
+ * @returns Sanitized address or empty string if input is null/undefined
  */
-export function sanitizeBitcoinAddress(address: string): string {
+export function sanitizeBitcoinAddress(address: string | null | undefined): string {
   return address?.trim() || '';
 }
