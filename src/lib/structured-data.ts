@@ -92,14 +92,14 @@ const MAX_SLUG_CACHE_SIZE = 1000;
  */
 function setSlugValidationCache(slug: string, isValid: boolean): void {
   if (slugValidationCache.size >= MAX_SLUG_CACHE_SIZE && !slugValidationCache.has(slug)) {
-  // Evict the oldest still-present key from the order array.
-  while (slugValidationOrder.length > 0) {
-    const oldest = slugValidationOrder.shift();
-    if (oldest !== undefined && slugValidationCache.has(oldest)) {
-      slugValidationCache.delete(oldest);
-      break;
+    // Evict the oldest still-present key from the order array.
+    while (slugValidationOrder.length > 0) {
+      const oldest = slugValidationOrder.shift();
+      if (oldest !== undefined && slugValidationCache.has(oldest)) {
+        slugValidationCache.delete(oldest);
+        break;
+      }
     }
-  }
   }
 
   // Only add to tracking array if it's a new entry to avoid unbounded growth
