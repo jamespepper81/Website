@@ -102,9 +102,10 @@ function setSlugValidationCache(slug: string, isValid: boolean): void {
   }
   }
 
-  // Record insertion order; duplicates may exist in the array, but we only evict
-  // keys that are still present in the Map, so this remains correct.
-  slugValidationOrder.push(slug);
+  // Only add to tracking array if it's a new entry to avoid unbounded growth
+  if (!slugValidationCache.has(slug)) {
+    slugValidationOrder.push(slug);
+  }
   slugValidationCache.set(slug, isValid);
 }
 
