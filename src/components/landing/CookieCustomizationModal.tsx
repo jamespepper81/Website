@@ -1,4 +1,3 @@
-
 // src/components/landing/CookieCustomizationModal.tsx
 "use client";
 
@@ -21,15 +20,27 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { ScrollArea } from '../ui/scroll-area';
 
+interface ConsentPreferences {
+  necessary: boolean;
+  functional: boolean;
+  analytics: boolean;
+  performance: boolean;
+}
+
 interface CookieCustomizationModalProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
-  onSave: (preferences: Record<string, boolean>) => void;
+  onSave: (preferences: ConsentPreferences) => void;
   onRejectAll: () => void;
   onAcceptAll: () => void;
 }
 
-const cookieCategories = [
+const cookieCategories: Array<{
+  id: keyof ConsentPreferences;
+  title: string;
+  description: string;
+  alwaysActive?: boolean;
+}> = [
   {
     id: 'necessary',
     title: 'Necessary',
@@ -61,14 +72,14 @@ export function CookieCustomizationModal({
     onAcceptAll
 }: CookieCustomizationModalProps) {
   const [showMore, setShowMore] = useState(false);
-  const [preferences, setPreferences] = useState<Record<string, boolean>>({
+  const [preferences, setPreferences] = useState<ConsentPreferences>({
     necessary: true,
     functional: false,
     analytics: false,
     performance: false,
   });
 
-  const handleSwitchChange = (id: string, checked: boolean) => {
+  const handleSwitchChange = (id: keyof ConsentPreferences, checked: boolean) => {
     setPreferences(prev => ({...prev, [id]: checked }));
   };
   

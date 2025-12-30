@@ -30,16 +30,19 @@ export default function RootLayout({
   const [analyticsAllowed, setAnalyticsAllowed] = useState(false);
 
   useEffect(() => {
-    // Read cookie consent from localStorage after component mounts
-    try {
-      const consent = localStorage.getItem('cookie_consent');
-      if (consent) {
-        const parsedConsent = JSON.parse(consent);
-        setAnalyticsAllowed(parsedConsent.analytics === true);
+    // Read cookie consent from server via API
+    const checkConsent = async () => {
+      try {
+        const response = await fetch('/api/consent/check');
+        const data = await response.json();
+        if (data.consent?.analytics === true) {
+          setAnalyticsAllowed(true);
+        }
+      } catch (e) {
+        console.error("Error checking cookie consent:", e);
       }
-    } catch (e) {
-      console.error("Error parsing cookie consent:", e);
-    }
+    };
+    checkConsent();
   }, []);
 
   useEffect(() => {
