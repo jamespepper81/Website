@@ -6,7 +6,11 @@ export function middleware(request: NextRequest) {
   // Using Web Crypto API which is available in Edge Runtime
   const nonceArray = new Uint8Array(16);
   crypto.getRandomValues(nonceArray);
-  const nonce = Buffer.from(nonceArray).toString('base64');
+  
+  // Convert to base64 using Web API (Edge Runtime compatible)
+  // Convert Uint8Array to binary string then to base64
+  const binaryString = String.fromCharCode(...nonceArray);
+  const nonce = btoa(binaryString);
   
   // Clone the request headers
   const requestHeaders = new Headers(request.headers);
