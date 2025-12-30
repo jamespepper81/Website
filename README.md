@@ -2,7 +2,7 @@
 
 > **Bitcoin Wallet Analysis & Privacy Tools**
 
-BitSleuth is a comprehensive Next.js 16.0 website that serves as the primary marketing and educational hub for Bitcoin analysis tools. The platform includes product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, as well as an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
+BitSleuth is a comprehensive Next.js 16.0.10 website that serves as the primary marketing and educational hub for Bitcoin analysis tools. The platform includes product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, as well as an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
 
 - **🌐 Production:** [https://www.bitsleuth.ai](https://www.bitsleuth.ai)
 - **🧑‍💻 Development:** [https://website-dev--bitsleuth.us-central1.hosted.app](https://website-dev--bitsleuth.us-central1.hosted.app)
@@ -20,7 +20,7 @@ BitSleuth is a comprehensive Next.js 16.0 website that serves as the primary mar
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 16.0.10 (App Router), React 19.2, TypeScript 5.9
+- **Framework**: Next.js 16.0.10 (App Router), React 19.2.0, TypeScript 5.9.3
 - **Styling**: Tailwind CSS, shadcn/ui, Radix primitives
 - **UX**: Embla Carousel, Lucide icons
 - **SEO**: App Router metadata routes (`robots.ts`, `sitemap.ts`)
@@ -311,8 +311,8 @@ For complete guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Active Documentation
 Current, relevant documentation for development:
-- **Project Summary**: [`docs/PROJECT_SUMMARY.md`](docs/PROJECT_SUMMARY.md) - **Comprehensive overview of the entire project** (start here!)
 - **Contributing Guidelines**: [`CONTRIBUTING.md`](CONTRIBUTING.md) - How to contribute to the project (located in root)
+- **Project Summary**: [`docs/PROJECT_SUMMARY.md`](docs/PROJECT_SUMMARY.md) - **Comprehensive overview of the entire project** (start here!)
 - **Product Requirements**: [`docs/PRD.md`](docs/PRD.md) - Product Requirements Document with objectives and roadmap
 - **Implementation History**: [`docs/IMPLEMENTATION_HISTORY.md`](docs/IMPLEMENTATION_HISTORY.md) - Consolidated history of completed work and current state
 - **SEO Strategy**: [`docs/SEO_STRATEGY.md`](docs/SEO_STRATEGY.md) - SEO optimization guide and ongoing strategy
