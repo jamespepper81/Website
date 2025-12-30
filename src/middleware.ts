@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { randomBytes } from 'crypto';
 
 export function middleware(request: NextRequest) {
   // Generate a cryptographically secure random nonce for this request
   // Using 16 bytes (128 bits) of randomness, base64 encoded
-  const nonce = randomBytes(16).toString('base64');
+  // Using Web Crypto API which is available in Edge Runtime
+  const nonceArray = new Uint8Array(16);
+  crypto.getRandomValues(nonceArray);
+  
+  // Convert to base64 using Web API (Edge Runtime compatible)
+  // Convert Uint8Array to binary string then to base64
+  // Using Array.from to avoid potential stack overflow with spread operator
+  const binaryString = Array.from(nonceArray, byte => String.fromCharCode(byte)).join('');
+  const nonce = btoa(binaryString);
   
   // Clone the request headers
   const requestHeaders = new Headers(request.headers);
