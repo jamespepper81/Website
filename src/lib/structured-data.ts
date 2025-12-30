@@ -63,16 +63,22 @@ function sanitizeForLog(input: string, maxLength = 1000): string {
   return sanitizeForLogGeneral(input, {maxLength, replaceNonPrintable: false, flattenWhitespace: true});
 }
 
-// Module-scoped cache for slug validation
+// Module-scoped cache for slug validation.
+// Concurrency note:
+//   - This cache is intentionally process-local and relies on the standard Node.js single-threaded
+//     event loop model for safety. Within a single JS runtime, async calls are interleaved but
+//     not executed in parallel, so this mutable Map is safe from data races.
+//   - If this module is ever used from multiple worker threads or shared across isolates, each
+//     worker SHOULD have its own module instance or an alternative thread-safe cache mechanism.
 const slugValidationCache: Map<string, boolean> = new Map();
 
 // Maximum number of entries to keep in slugValidationCache to avoid unbounded growth.
 // This can be tuned based on expected traffic patterns; kept small to bound memory usage.
 // Performance/memory rationale:
-//   - Typical slugs are short ASCII strings (e.g., 20–80 bytes) plus a boolean flag.
+//   - Typical slugs are short ASCII strings (e.g., 20-80 bytes) plus a boolean flag.
 //   - With 1,000 entries, the total heap usage for this cache is on the order of a few hundred KB,
 //     including Map overhead, which is negligible for this library in typical Node.js runtimes.
-//   - Increasing MAX_SLUG_CACHE_SIZE may improve cache hit rate under very high cardinality,
+//   - Increasing MAX_SLUG_CACHE_SIZE may improve cache hit rate under very high traffic with many unique slug values,
 //     but at the cost of proportionally more memory; decreasing it will reduce memory further
 //     but increase eviction and recomputation of slug validity.
 const MAX_SLUG_CACHE_SIZE = 1000;
@@ -201,8 +207,8 @@ const CONFIG = {
 // Excludes characters such as slash (/), question mark (?), hash (#), and others that could interfere with URL parsing, routing, or introduce security issues.
 // Only these restricted characters are allowed to reduce the risk of path traversal, ambiguous URLs, or other potential security/file-system issues.
 // Regex components for validating glossary term slugs:
-// - allowedChars: Letters (a-z, A-Z), digits (0-9), '_', '-', '~', '.'
-// - edgeChars: Allowed at start/end — as above but *excluding* period ('.')
+// - allowedChars: Character set defined by ALLOWED_CHARS (letters, digits, '_', '-', '~', and '.')
+// - edgeChars: Characters allowed at start/end as defined by EDGE_CHARS (i.e., ALLOWED_CHARS excluding '.')
 //   (period is only allowed in the middle)
 // ALLOWED_CHARS and EDGE_CHARS are now defined above and should be reused here.
 // Explanation:
