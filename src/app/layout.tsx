@@ -9,6 +9,8 @@ import { CookieConsent } from '@/components/landing/CookieConsent';
 import { ThemeProvider } from '@/components/theme-provider';
 import { useEffect, useState } from 'react';
 
+// Intentionally keep a hard-coded GA fallback ID for environments without env configuration.
+// This supports analytics in demo/pre-prod contexts where the env var may be absent.
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-RPS0XSGWJ5';
 
 const inter = Inter({
