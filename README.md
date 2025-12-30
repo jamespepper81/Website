@@ -77,7 +77,6 @@ npm run ci  # Runs lint + typecheck + test + build
    
    # Edit .env.local and add your values (all optional for development):
    # - NEXT_PUBLIC_GA_MEASUREMENT_ID: Google Analytics tracking ID
-   # - Google Sheets variables are only needed for production feedback form
    ```
 
 3. **Start Development Server:**
@@ -234,14 +233,10 @@ cp .env.example .env.local
 | Variable | Required | Description | Example |
 |----------|----------|-------------|---------|
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No | Google Analytics 4 tracking ID (for production) | `G-XXXXXXXXXX` |
-| `GOOGLE_SHEETS_ID_FEEDBACK` | No | Google Sheets ID for feedback form (production only) | Managed in Firebase |
-| `GOOGLE_SHEETS_CLIENT_EMAIL` | No | Google service account email (production only) | Managed in Firebase |
-| `GOOGLE_SHEETS_PRIVATE_KEY` | No | Google service account private key (production only) | Managed in Firebase |
 
 **Notes:**
 - Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser
-- Google Sheets variables are configured as Firebase App Hosting secrets in production
-- The feedback form will still work locally; submissions just won't be stored without configuration
+- All environment variables are optional; the site works fully without any configuration
 - See `.env.example` for detailed documentation of each variable
 
 ### Next.js Configuration
@@ -385,9 +380,6 @@ Environment variables for production are managed as **Firebase App Hosting secre
 2. Navigate to "Secrets" tab
 3. Add secrets for:
    - `NEXT_PUBLIC_GA_MEASUREMENT_ID` (Google Analytics)
-   - `GOOGLE_SHEETS_ID_FEEDBACK` (Feedback form storage)
-   - `GOOGLE_SHEETS_CLIENT_EMAIL` (Google service account)
-   - `GOOGLE_SHEETS_PRIVATE_KEY` (Google service account key)
 
 **Deployment Settings:**
 - **Max Instances**: 1 (configured in apphosting.*.yaml)
@@ -979,7 +971,7 @@ For detailed security information:
 ### General Questions
 
 **Q: Do I need environment variables to run the project locally?**  
-A: No! All environment variables are optional. The site runs fully without any configuration. Only add them if you need Google Analytics or the feedback form to work.
+A: No! All environment variables are optional. The site runs fully without any configuration. Only add them if you need Google Analytics.
 
 **Q: What port does the dev server use?**  
 A: Port 9002 by default. You can change it with `npm run dev -- -p 3000`.
@@ -988,7 +980,7 @@ A: Port 9002 by default. You can change it with `npm run dev -- -p 3000`.
 A: Always use `dev` as your base branch. Create feature branches from `dev`, not from `main`.
 
 **Q: Can I use the site without Firebase?**  
-A: Yes! Firebase is only for production hosting and the feedback form. The site works completely locally without Firebase.
+A: Yes! Firebase is only for production hosting. The site works completely locally without Firebase.
 
 ### Development Questions
 
