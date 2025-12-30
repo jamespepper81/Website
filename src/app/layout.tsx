@@ -9,6 +9,8 @@ import { CookieConsent } from '@/components/landing/CookieConsent';
 import { ThemeProvider } from '@/components/theme-provider';
 import { useEffect, useState } from 'react';
 
+// Intentionally keep a hard-coded GA fallback ID for environments without env configuration.
+// This supports analytics in demo/pre-prod contexts where the env var may be absent.
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-RPS0XSGWJ5';
 
 const inter = Inter({
@@ -28,16 +30,19 @@ export default function RootLayout({
   const [analyticsAllowed, setAnalyticsAllowed] = useState(false);
 
   useEffect(() => {
-    // Read cookie consent from localStorage after component mounts
-    try {
-      const consent = localStorage.getItem('cookie_consent');
-      if (consent) {
-        const parsedConsent = JSON.parse(consent);
-        setAnalyticsAllowed(parsedConsent.analytics === true);
+    // Read cookie consent from server via API
+    const checkConsent = async () => {
+      try {
+        const response = await fetch('/api/consent/check');
+        const data = await response.json();
+        if (data.consent?.analytics === true) {
+          setAnalyticsAllowed(true);
+        }
+      } catch (e) {
+        console.error("Error checking cookie consent:", e);
       }
-    } catch (e) {
-      console.error("Error parsing cookie consent:", e);
-    }
+    };
+    checkConsent();
   }, []);
 
   useEffect(() => {

@@ -6,27 +6,50 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '../ui/card';
 import { CookieCustomizationModal } from './CookieCustomizationModal';
+import { setConsentCookie } from '@/lib/consent';
+
+interface ConsentPreferences {
+  necessary: boolean;
+  functional: boolean;
+  analytics: boolean;
+  performance: boolean;
+}
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
   const [isCustomizeModalOpen, setIsCustomizeModalOpen] = useState(false);
 
   useEffect(() => {
-    // Use requestAnimationFrame to prevent layout shift
-    requestAnimationFrame(() => {
-      const consent = localStorage.getItem('cookie_consent');
-      if (consent === null) {
+    // Check if consent cookie exists by trying to read it
+    // If no cookie exists, show the banner
+    const checkConsent = async () => {
+      try {
+        const response = await fetch('/api/consent/check');
+        const data = await response.json();
+        if (!data.hasConsent) {
+          setIsVisible(true);
+        }
+      } catch {
+        // If API fails, show banner to be safe
         setIsVisible(true);
       }
+    };
+    
+    requestAnimationFrame(() => {
+      checkConsent();
     });
   }, []);
 
-  const setConsent = (consent: object) => {
-    localStorage.setItem('cookie_consent', JSON.stringify(consent));
-    setIsVisible(false);
-    setIsCustomizeModalOpen(false);
-     // Reload to apply analytics script changes
-    window.location.reload();
+  const setConsent = async (consent: ConsentPreferences) => {
+    try {
+      await setConsentCookie(consent);
+      setIsVisible(false);
+      setIsCustomizeModalOpen(false);
+      // Reload to apply analytics script changes
+      window.location.reload();
+    } catch (error) {
+      console.error('Failed to set consent:', error);
+    }
   };
 
   const handleAccept = () => {
