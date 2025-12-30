@@ -9,7 +9,8 @@ export function middleware(request: NextRequest) {
   
   // Convert to base64 using Web API (Edge Runtime compatible)
   // Convert Uint8Array to binary string then to base64
-  const binaryString = String.fromCharCode(...nonceArray);
+  // Using Array.from to avoid potential stack overflow with spread operator
+  const binaryString = Array.from(nonceArray, byte => String.fromCharCode(byte)).join('');
   const nonce = btoa(binaryString);
   
   // Clone the request headers
