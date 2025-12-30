@@ -95,7 +95,7 @@ function setSlugValidationCache(slug: string, isValid: boolean): void {
 
 // Internal logger abstraction; can be replaced with robust logging as needed
 // Internal warn logger function (can be replaced for production)
-function defaultWarnLogger(message: string) {
+function warnLogger(message: string) {
   if (
     typeof process !== 'undefined' &&
     process.env &&
@@ -106,13 +106,9 @@ function defaultWarnLogger(message: string) {
 }
 
 const logger = {
-  warn: defaultWarnLogger,
+  warn: warnLogger,
 };
 
-// Only log warnings in non-production environments using internal logger
-function logWarning(message: string): void {
-  logger.warn(message);
-}
 // ============================================================================
 // CONFIGURATION & CONSTANTS
 // ============================================================================
@@ -121,7 +117,7 @@ const BASE_URL = 'https://www.bitsleuth.ai';
 
 // Allowed characters for glossary slugs, defined once for re-use.
 const ALLOWED_CHARS = 'a-zA-Z0-9_.~-'; // alphanumerics, underscore (_), period (.), tilde (~), hyphen (-)
-const _EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period)
+const EDGE_CHARS = 'a-zA-Z0-9_~-';     // allowed at start/end (excluding period)
 
 // Description of allowed characters (derived from the constants above)
 // Parse the character class string and generate a human-readable description
@@ -139,9 +135,9 @@ function describeAllowedSlugChars(chars: string): string {
   let working = chars;
 
   // Regex for x-y, but not escaped hyphens
-  const RANGE_REGEX = /([a-zA-Z0-9])-([a-zA-Z0-9])/g;
+  const CHAR_RANGE_REGEX = /([a-zA-Z0-9])-([a-zA-Z0-9])/g;
   let match;
-  while ((match = RANGE_REGEX.exec(chars)) !== null) {
+  while ((match = CHAR_RANGE_REGEX.exec(chars)) !== null) {
     const start = match[1], end = match[2];
     ranges.push({start, end});
     // Remove only this found range, to leave any literal hyphens
@@ -215,7 +211,9 @@ const CONFIG = {
 // (?:[ALLOWED_CHARS]*    : Zero or more allowed chars (including '.')
 //   [EDGE_CHARS])?       : If more than one char, last must not be '.' (cannot end with period)
 // $                      : End of string
-const VALID_SLUG_PATTERN = /^[A-Za-z0-9_\-~](?:[A-Za-z0-9_\-~.]*[A-Za-z0-9_\-~])?$/;
+const VALID_SLUG_PATTERN = new RegExp(
+  `^[${EDGE_CHARS}](?:[${ALLOWED_CHARS}]*[${EDGE_CHARS}])?$`
+);
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -474,7 +472,7 @@ function mapRelatedTermsToDefinedTerms(
   if (invalidTerms.length > 0) {
     const invalidTermList = sanitizeForLog(invalidTerms.join(', '), 500);
     const fullInputList = sanitizeForLog(relatedTerms.join(', '), 500);
-    logWarning(
+    logger.warn(
       `[mapRelatedTermsToDefinedTerms] Invalid related term slugs filtered: [${invalidTermList}]. Full input: [${fullInputList}]`
     );
   }
