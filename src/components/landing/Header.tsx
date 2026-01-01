@@ -37,15 +37,13 @@ export function Header({ basePath = '' }: HeaderProps) {
   const showNavLinks = basePath === '/analyzer' || basePath === '/wallet';
 
   const headerStyle = {
-    paddingTop: 'calc(1.75rem + env(safe-area-inset-top))',
-    paddingBottom: '1.75rem',
     paddingLeft: 'max(1rem, env(safe-area-inset-left))',
     paddingRight: 'max(1rem, env(safe-area-inset-right))',
   };
 
   return (
     <header
-      className="edge-to-edge-section flex items-center shadow-md sticky top-0 z-50 bg-gradient-to-b from-primary/15 via-background/95 to-background/95 backdrop-blur-xl border-b border-border/40"
+      className="edge-to-edge-section pt-4 pb-4 flex items-center shadow-md sticky top-0 z-50 bg-gradient-to-b from-primary/15 via-background/95 to-background/95 backdrop-blur-xl border-b border-border/40"
       suppressHydrationWarning
       style={headerStyle}
     >
