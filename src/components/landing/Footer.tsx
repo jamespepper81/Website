@@ -28,7 +28,7 @@ export function Footer({ onTermsClick, onPrivacyClick }: FooterProps) {
           </div>
         </div>
 
-        <div className="border-t border-border/40 pt-4 flex flex-col sm:flex-row gap-3 items-center justify-between">
+        <div className="border-t border-border/40 pt-4 pb-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
           <p className="text-xs sm:text-sm text-muted-foreground font-normal text-center sm:text-left">&copy; {new Date().getFullYear()} BitSleuth. All rights reserved.</p>
 
           <nav className="flex flex-wrap gap-4 sm:gap-6 justify-center sm:justify-end text-center relative z-50">
