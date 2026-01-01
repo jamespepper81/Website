@@ -37,30 +37,30 @@ export function Header({ basePath = '' }: HeaderProps) {
   const showNavLinks = basePath === '/analyzer' || basePath === '/wallet';
 
   const headerStyle = {
-    paddingTop: 'calc(1.25rem + env(safe-area-inset-top))',
-    paddingBottom: '1.25rem',
+    paddingTop: 'calc(1.75rem + env(safe-area-inset-top))',
+    paddingBottom: '1.75rem',
     paddingLeft: 'max(1rem, env(safe-area-inset-left))',
     paddingRight: 'max(1rem, env(safe-area-inset-right))',
-    minHeight: 'calc(5.5rem + env(safe-area-inset-top))',
-    height: 'calc(5.5rem + env(safe-area-inset-top))',
+    minHeight: 'calc(6.75rem + env(safe-area-inset-top))',
+    height: 'calc(6.75rem + env(safe-area-inset-top))',
   };
 
   return (
     <header
-      className="edge-to-edge-section flex items-center shadow-sm sticky top-0 z-50 bg-gradient-to-b from-primary/10 via-background/95 to-background/95 backdrop-blur-md border-b border-border/40"
+      className="edge-to-edge-section flex items-center shadow-md sticky top-0 z-50 bg-gradient-to-b from-primary/15 via-background/95 to-background/95 backdrop-blur-xl border-b border-border/40"
       suppressHydrationWarning
       style={headerStyle}
     >
-      <Link href="/" className="flex items-center justify-center hover:opacity-90 transition-opacity">
-        <Image src="/images/logo-icon.jpg" alt="BitSleuth Logo" width={40} height={40} className="rounded-xl shadow-sm" />
-        <span className="ml-3 font-bold text-xl tracking-tight text-foreground">BitSleuth</span>
+      <Link href="/" className="flex items-center justify-center gap-3 px-3 sm:px-3.5 py-2 rounded-full hover:opacity-90 transition-opacity bg-background/40 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border/60">
+        <Image src="/images/logo-icon.jpg" alt="BitSleuth Logo" width={48} height={48} className="rounded-2xl shadow-sm" />
+        <span className="font-bold text-[1.35rem] leading-none tracking-tight text-foreground">BitSleuth</span>
       </Link>
-      <nav className="ml-auto hidden gap-8 sm:flex items-center">
+      <nav className="ml-auto hidden gap-9 sm:flex items-center">
         <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors header-dropdown-trigger">
-              Products <ChevronDown className="h-4 w-4 ml-1" />
+            <Button variant="ghost" className="text-[15px] md:text-base font-semibold text-muted-foreground hover:text-foreground transition-colors header-dropdown-trigger px-3 py-2">
+              Products <ChevronDown className="h-4 w-4 ml-1 shrink-0" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56" sideOffset={8}>
@@ -115,7 +115,7 @@ export function Header({ basePath = '' }: HeaderProps) {
           <Link
             key={link.href}
             href={link.href}
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="text-[15px] md:text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
             prefetch={false}
           >
             {link.label}
@@ -124,10 +124,10 @@ export function Header({ basePath = '' }: HeaderProps) {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-none header-dropdown-trigger">
-              <Rocket className="mr-2 h-4 w-4" />
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow header-dropdown-trigger px-4 py-2.5">
+              <Rocket className="mr-2 h-4 w-4 shrink-0" />
               Launch App
-              <ChevronDown className="h-4 w-4 ml-1" />
+              <ChevronDown className="h-4 w-4 ml-1 shrink-0" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" sideOffset={8}>
