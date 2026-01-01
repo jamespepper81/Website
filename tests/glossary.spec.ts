@@ -23,7 +23,6 @@ test.describe('Glossary Search and Filters', () => {
     
     // Verify that non-matching terms are not visible
     const addressTerm = page.getByRole('heading', { name: /^Address$/ });
-    const isAddressVisible = await addressTerm.isVisible().catch(() => false);
     
     // Take screenshot of search results
     await page.screenshot({ path: 'tests/screenshots/glossary-search-wallet.png', fullPage: true });
