@@ -59,11 +59,10 @@ export function ThemeProvider({
     }
   });
 
-  // Apply theme class on mount
+  // Apply theme class whenever resolvedTheme changes
   useEffect(() => {
     applyThemeClass(resolvedTheme);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [resolvedTheme]);
 
   // React to system changes when in system mode
   useEffect(() => {
@@ -72,9 +71,7 @@ export function ThemeProvider({
     const handler = () => {
       const next = media.matches ? "dark" : "light";
       setResolvedTheme(next);
-      applyThemeClass(next);
     };
-    handler();
     media.addEventListener("change", handler);
     return () => media.removeEventListener("change", handler);
   }, [theme]);
@@ -86,7 +83,6 @@ export function ThemeProvider({
     setThemeState(pref);
     const next = pref === "system" ? getSystemTheme() : pref;
     setResolvedTheme(next);
-    applyThemeClass(next);
   }, []);
 
   const value = useMemo<ThemeContextValue>(() => ({ theme, resolvedTheme, setTheme }), [theme, resolvedTheme, setTheme]);

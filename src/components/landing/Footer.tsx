@@ -10,7 +10,7 @@ interface FooterProps {
 
 export function Footer({ onTermsClick, onPrivacyClick }: FooterProps) {
   return (
-    <footer className="edge-to-edge-section flex flex-col gap-6 py-12 shrink-0 border-t bg-muted text-foreground" style={{
+    <footer className="edge-to-edge-section flex flex-col gap-6 py-8 shrink-0 border-t bg-muted text-foreground relative z-10" style={{
       paddingBottom: 'max(2rem, env(safe-area-inset-bottom))',
       paddingLeft: 'max(1rem, env(safe-area-inset-left))',
       paddingRight: 'max(1rem, env(safe-area-inset-right))'
@@ -34,7 +34,7 @@ export function Footer({ onTermsClick, onPrivacyClick }: FooterProps) {
           <nav className="flex flex-wrap gap-6 justify-center sm:justify-end">
             <Link
               href="/glossary"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 hover:text-foreground font-medium transition-colors"
+              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 font-medium transition-colors"
               prefetch={false}
             >
               Glossary
@@ -43,27 +43,27 @@ export function Footer({ onTermsClick, onPrivacyClick }: FooterProps) {
               href="https://primal.net/p/nprofile1qqs9lrs07tqjg4vkvdh0sn4dkv8v38xddmz87tm2c2rkx7s8jsr426gdz006n"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 hover:text-foreground font-medium transition-colors"
+              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 font-medium transition-colors"
             >
               Nostr
             </a>
             <button 
               onClick={onTermsClick} 
               type="button"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 hover:text-foreground font-medium transition-colors cursor-pointer touch-manipulation"
+              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 font-medium transition-colors cursor-pointer"
             >
               Terms of Service
             </button>
             <button 
               onClick={onPrivacyClick} 
               type="button"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 hover:text-foreground font-medium transition-colors cursor-pointer touch-manipulation"
+              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 font-medium transition-colors cursor-pointer"
             >
               Privacy Policy
             </button>
             <Link
               href="/company-information"
-              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 hover:text-foreground font-medium transition-colors"
+              className="text-sm hover:text-primary hover:underline underline-offset-4 text-gray-400 font-medium transition-colors"
               prefetch={false}
             >
               Company Information

@@ -37,12 +37,12 @@ export function Header({ basePath = '' }: HeaderProps) {
   const showNavLinks = basePath === '/analyzer' || basePath === '/wallet';
 
   const headerStyle = {
-    paddingTop: 'calc(1rem + env(safe-area-inset-top))',
-    paddingBottom: '1rem',
+    paddingTop: 'calc(1.25rem + env(safe-area-inset-top))',
+    paddingBottom: '1.25rem',
     paddingLeft: 'max(1rem, env(safe-area-inset-left))',
     paddingRight: 'max(1rem, env(safe-area-inset-right))',
-    minHeight: 'calc(4rem + env(safe-area-inset-top))',
-    height: 'calc(4rem + env(safe-area-inset-top))',
+    minHeight: 'calc(5.5rem + env(safe-area-inset-top))',
+    height: 'calc(5.5rem + env(safe-area-inset-top))',
   };
 
   return (
@@ -59,7 +59,7 @@ export function Header({ basePath = '' }: HeaderProps) {
         <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors touch-manipulation select-none" suppressHydrationWarning>
+            <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors header-dropdown-trigger">
               Products <ChevronDown className="h-4 w-4 ml-1" />
             </Button>
           </DropdownMenuTrigger>
@@ -124,7 +124,7 @@ export function Header({ basePath = '' }: HeaderProps) {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-none touch-manipulation select-none" suppressHydrationWarning>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-none header-dropdown-trigger">
               <Rocket className="mr-2 h-4 w-4" />
               Launch App
               <ChevronDown className="h-4 w-4 ml-1" />
