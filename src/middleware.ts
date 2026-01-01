@@ -31,7 +31,7 @@ export function middleware(request: NextRequest) {
   // This is necessary for Next.js client-side navigation and React
   const cspHeader = [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com https://www.google-analytics.com`,
     "style-src 'self' https://fonts.googleapis.com",
     "img-src 'self' data: https://placehold.co",
     "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com",
