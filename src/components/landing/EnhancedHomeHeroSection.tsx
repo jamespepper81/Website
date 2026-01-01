@@ -96,7 +96,7 @@ export function EnhancedHomeHeroSection() {
                 <CardDescription className="mb-8 font-normal text-base leading-relaxed text-muted-foreground">
                   For analysts & investigators. Visualize transactions, trace fund flows, and detect OPSEC risks with AI-powered insights.
                 </CardDescription>
-                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-foreground font-semibold shadow-none rounded-xl h-12 transition-all group-hover:shadow-xl">
+                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/20 rounded-xl h-12 transition-all duration-200 active:scale-[0.98]">
                   <Link href="/analyzer">Explore Analyzer</Link>
                 </Button>
               </CardContent>
@@ -113,7 +113,7 @@ export function EnhancedHomeHeroSection() {
                 <CardDescription className="mb-8 font-normal text-base leading-relaxed text-muted-foreground">
                   For privacy-conscious holders. A secure, non-custodial wallet built to minimize address reuse and on-chain exposure.
                 </CardDescription>
-                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-foreground font-semibold shadow-none rounded-xl h-12 transition-all group-hover:shadow-xl">
+                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/20 rounded-xl h-12 transition-all duration-200 active:scale-[0.98]">
                   <Link href="/wallet">Explore Wallet</Link>
                 </Button>
               </CardContent>
