@@ -76,6 +76,7 @@ test.describe('Glossary Search and Filters', () => {
     
     // Should show CoinJoin and possibly other privacy-related terms with "coin"
     const coinJoin = page.getByRole('heading', { name: /coinjoin/i });
+    await expect(coinJoin).toBeVisible();
     
     // Take screenshot
     await page.screenshot({ path: 'tests/screenshots/glossary-combined-filters.png', fullPage: true });
