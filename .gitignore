@@ -46,3 +46,7 @@ env.local
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# playwright test files (temporary)
+test-*.js
+screenshots-demo/
