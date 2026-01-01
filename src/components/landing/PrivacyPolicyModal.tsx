@@ -13,7 +13,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface PrivacyPolicyModalProps {
   isOpen: boolean;
-  onOpenChange: () => void;
+  onOpenChange: (open: boolean) => void;
 }
 
 export function PrivacyPolicyModal({ isOpen, onOpenChange }: PrivacyPolicyModalProps) {

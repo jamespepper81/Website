@@ -291,7 +291,15 @@ export default function GlossaryIndexPage() {
 
   const openPrivacyModal = () => setActiveModal('privacy');
   const openTermsModal = () => setActiveModal('terms');
-  const closeModal = () => setActiveModal(null);
+  
+  // Handler for modal open/close changes
+  const handlePrivacyChange = (open: boolean) => {
+    setActiveModal(open ? 'privacy' : null);
+  };
+  
+  const handleTermsChange = (open: boolean) => {
+    setActiveModal(open ? 'terms' : null);
+  };
 
   // Add structured data for SEO and AEO
   useEffect(() => {
@@ -484,10 +492,10 @@ export default function GlossaryIndexPage() {
         </section>
       </main>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
-      <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
+      <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={handlePrivacyChange} />
       <TermsOfServiceModal
         isOpen={activeModal === 'terms'}
-        onOpenChange={closeModal}
+        onOpenChange={handleTermsChange}
         onPrivacyClick={openPrivacyModal}
       />
     </div>

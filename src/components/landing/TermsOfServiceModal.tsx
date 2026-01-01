@@ -13,14 +13,14 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface TermsOfServiceModalProps {
   isOpen: boolean;
-  onOpenChange: () => void;
+  onOpenChange: (open: boolean) => void;
   onPrivacyClick: () => void;
 }
 
 export function TermsOfServiceModal({ isOpen, onOpenChange, onPrivacyClick }: TermsOfServiceModalProps) {
 
   const handlePrivacyClick = () => {
-    onOpenChange(); // Close this modal
+    onOpenChange(false); // Close this modal
     onPrivacyClick(); // Open the privacy modal
   };
 

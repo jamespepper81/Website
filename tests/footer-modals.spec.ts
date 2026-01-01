@@ -15,12 +15,12 @@ test.describe('Footer Modals', () => {
     const privacyButton = page.getByRole('button', { name: /privacy policy/i });
     await privacyButton.click();
     
-    // Wait for modal to appear
-    await page.waitForTimeout(500);
+    // Wait for modal dialog to appear - Radix uses Portal
+    await page.waitForSelector('[role="dialog"]', { state: 'visible', timeout: 10000 });
     
     // Check that modal is visible with expected content
     const modalTitle = page.getByRole('heading', { name: /privacy policy/i });
-    await expect(modalTitle).toBeVisible();
+    await expect(modalTitle).toBeVisible({ timeout: 5000 });
     
     // Check for some expected content
     const modalContent = page.getByText(/effective date/i);
