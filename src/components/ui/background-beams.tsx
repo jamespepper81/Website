@@ -89,9 +89,9 @@ export function BackgroundBeams({ className, children, intensity = "medium" }: B
   const intensityClasses = getIntensityClasses();
 
   return (
-    <div className={cn("absolute inset-0 overflow-hidden", className)}>
+    <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
       {/* Animated beams */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         {/* Random vertical beams */}
         {randomValues.verticalPositions.map((position, index) => (
           <div
@@ -154,7 +154,7 @@ export function BackgroundBeams({ className, children, intensity = "medium" }: B
       </div>
       
       {/* Overlay for better text readability */}
-      <div className={`absolute inset-0 bg-gradient-to-b ${intensityClasses.overlay}`} />
+      <div className={`absolute inset-0 bg-gradient-to-b pointer-events-none ${intensityClasses.overlay}`} />
       
       {/* Content */}
       {children && (
