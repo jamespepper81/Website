@@ -59,11 +59,11 @@ export function Header({ basePath = '' }: HeaderProps) {
         <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" suppressHydrationWarning>
+            <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors touch-manipulation select-none" suppressHydrationWarning>
               Products <ChevronDown className="h-4 w-4 ml-1" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuContent align="end" className="w-56" sideOffset={8}>
             <DropdownMenuItem asChild>
               <Link href="/analyzer" className="w-full cursor-pointer">
                 <div className="flex items-start gap-3">
@@ -124,13 +124,13 @@ export function Header({ basePath = '' }: HeaderProps) {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-none" suppressHydrationWarning>
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-none touch-manipulation select-none" suppressHydrationWarning>
               <Rocket className="mr-2 h-4 w-4" />
               Launch App
               <ChevronDown className="h-4 w-4 ml-1" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" sideOffset={8}>
             <DropdownMenuItem asChild>
               <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
                 <div className="flex items-start gap-3">
@@ -184,13 +184,13 @@ export function Header({ basePath = '' }: HeaderProps) {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground w-full justify-start" suppressHydrationWarning>
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground w-full justify-start touch-manipulation select-none" suppressHydrationWarning>
                   <Rocket className="mr-2 h-4 w-4" />
                   Launch App
                   <ChevronDown className="h-4 w-4 ml-auto" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-full">
+              <DropdownMenuContent className="w-full" sideOffset={8}>
                 <DropdownMenuItem asChild>
                   <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="w-full font-medium">
                     Wallet Analyzer

@@ -13,9 +13,28 @@ import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 export default function Home() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
 
-  const openPrivacyModal = () => setActiveModal('privacy');
-  const openTermsModal = () => setActiveModal('terms');
-  const closeModal = () => setActiveModal(null);
+  const openPrivacyModal = () => {
+    console.log('Opening privacy modal');
+    setActiveModal('privacy');
+  };
+  
+  const openTermsModal = () => {
+    console.log('Opening terms modal');
+    setActiveModal('terms');
+  };
+  
+  // Handler for modal open/close changes
+  const handlePrivacyChange = (open: boolean) => {
+    console.log('Privacy modal change:', open);
+    setActiveModal(open ? 'privacy' : null);
+  };
+  
+  const handleTermsChange = (open: boolean) => {
+    console.log('Terms modal change:', open);
+    setActiveModal(open ? 'terms' : null);
+  };
+
+  console.log('Active modal:', activeModal);
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
@@ -27,10 +46,10 @@ export default function Home() {
         <AboutSection />
       </main>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
-      <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={closeModal} />
+      <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={handlePrivacyChange} />
       <TermsOfServiceModal
         isOpen={activeModal === 'terms'}
-        onOpenChange={closeModal}
+        onOpenChange={handleTermsChange}
         onPrivacyClick={openPrivacyModal}
       />
     </div>
