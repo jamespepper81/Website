@@ -75,7 +75,6 @@ test.describe('Theme Toggle', () => {
     
     // Verify theme is applied (either light or dark based on system)
     const html = page.locator('html');
-    await expect(html).toHaveAttribute('data-theme', /^(light|dark)$/);
     const dataTheme = await html.getAttribute('data-theme');
     expect(dataTheme).toMatch(/^(light|dark)$/);
     
@@ -126,9 +125,9 @@ test.describe('Theme Toggle - Mobile', () => {
       // Open mobile menu
       const menuButton = page.getByRole('button', { name: /toggle navigation menu/i });
       await menuButton.tap();
-      await expect(menuButton).toBeVisible();
       
       themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
+      await expect(themeButton).toBeVisible();
     }
     
     // Tap theme button
