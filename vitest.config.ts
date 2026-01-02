@@ -1,8 +1,5 @@
 import { defineConfig } from 'vitest/config';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   test: {
@@ -12,14 +9,14 @@ export default defineConfig({
       '**/dist/**',
       '**/.{idea,git,cache,output,temp}/**',
       '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
-      '**/tests/**/*.spec.ts', // Exclude Playwright test files
+      '**/tests/**/*.{spec,e2e}.{ts,tsx}', // Exclude Playwright test files
     ],
     // Include only unit test files in src
     include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(process.cwd(), './src'),
     },
   },
 });
