@@ -107,7 +107,6 @@
 
   /* Modern hidden scrollbar approach - comprehensive */
   @media (min-width: 769px) {
-
     /* Hide scrollbar on html and body */
     html,
     body {
@@ -151,7 +150,8 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-display: swap;
   }
 
@@ -237,7 +237,6 @@
 
   /* Mobile-specific optimizations */
   @media (max-width: 768px) {
-
     html,
     body {
       min-height: 100vh;
@@ -260,7 +259,6 @@
 
   /* Android-specific fixes */
   @supports (-webkit-appearance: none) {
-
     html,
     body {
       min-height: 100vh;
@@ -271,7 +269,6 @@
 
   /* iOS-specific optimizations */
   @supports (-webkit-touch-callout: none) {
-
     html,
     body {
       min-height: 100vh;
@@ -352,7 +349,8 @@
 
   /* Smooth transitions for theme changes - only for specific properties */
   * {
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease,
+      color 0.15s ease;
   }
 
   /* Prevent layout shifts during theme changes */
@@ -427,21 +425,15 @@
     margin-right: calc(-50vw + 50%);
   }
 
-
   /* Prevent content jump when scrollbar appears/disappears */
   .overflow-hidden {
     padding-right: 0 !important;
   }
 
-
   /* Ensure dropdowns and modals don't cause layout shifts */
   [data-radix-popper-content-wrapper] {
     z-index: 9999;
   }
-
-
-
-
 
   /* Smooth animations for dropdowns */
   [data-state="open"] {
@@ -492,10 +484,12 @@
 
 /* Reusable gradient text for titles */
 .text-gradient-title {
-  background-image: linear-gradient(to right,
-      var(--heading-start),
-      var(--heading-via),
-      var(--heading-end));
+  background-image: linear-gradient(
+    to right,
+    var(--heading-start),
+    var(--heading-via),
+    var(--heading-end)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -503,9 +497,11 @@
 
 /* Primary gradient for consistent branding across the site */
 .text-gradient-primary {
-  background-image: linear-gradient(to right,
-      hsl(var(--primary)),
-      hsl(var(--primary)));
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--primary))
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -513,9 +509,11 @@
 
 /* Legacy class - redirects to primary for backwards compatibility */
 .text-gradient-complementary {
-  background-image: linear-gradient(to right,
-      hsl(var(--primary)),
-      hsl(var(--primary)));
+  background-image: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--primary))
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -910,4 +908,202 @@
     opacity: 0;
     transform: translateX(-140%) translateY(-80%) rotate(0deg) scale(0.3);
   }
+}
+
+/* ==========================================================================
+   DESIGN SYSTEM UTILITIES - Visual Consistency Layer
+   ========================================================================== */
+
+/* Standardized Section Spacing */
+.section-hero {
+  @apply py-20 md:py-24 lg:py-32;
+}
+
+.section-content {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+.section-compact {
+  @apply py-12 md:py-16 lg:py-20;
+}
+
+/* Container Width Standards */
+.container-wide {
+  @apply container max-w-7xl mx-auto px-4 md:px-6;
+}
+
+.container-narrow {
+  @apply container max-w-4xl mx-auto px-4 md:px-6;
+}
+
+.container-medium {
+  @apply container max-w-6xl mx-auto px-4 md:px-6;
+}
+
+/* Card Enhancement Styles */
+.card-elevated {
+  @apply bg-card border-none shadow-xl hover:shadow-2xl transition-all duration-300;
+}
+
+.card-interactive {
+  @apply bg-card border-none shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300;
+}
+
+.card-subtle {
+  @apply bg-card/80 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+/* Button Enhancement States */
+.btn-primary-enhanced {
+  @apply bg-primary hover:bg-primary/90 text-primary-foreground font-semibold 
+         shadow-md hover:shadow-lg hover:shadow-primary/20 
+         active:scale-[0.98] transition-all duration-200;
+}
+
+.btn-outline-enhanced {
+  @apply border-primary/20 hover:border-primary hover:bg-primary/5 hover:text-primary
+         active:scale-[0.98] transition-all duration-200;
+}
+
+.btn-ghost-enhanced {
+  @apply hover:bg-primary/10 hover:text-primary active:scale-[0.98] transition-all duration-200;
+}
+
+/* Link Enhancement States */
+.link-primary {
+  @apply text-primary hover:text-primary/80 transition-colors duration-150;
+}
+
+.link-muted {
+  @apply text-muted-foreground hover:text-primary transition-colors duration-150;
+}
+
+.link-underline {
+  @apply text-muted-foreground hover:text-primary hover:underline underline-offset-4 transition-colors duration-150;
+}
+
+/* Icon Container Styles */
+.icon-container {
+  @apply p-3 rounded-xl bg-primary/10 transition-colors duration-200;
+}
+
+.icon-container-hover:hover {
+  @apply bg-primary/20;
+}
+
+/* Hero Gradient Background */
+.hero-gradient {
+  @apply absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0;
+}
+
+/* Typography Enhancement Classes */
+.heading-hero {
+  @apply text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-foreground;
+}
+
+.heading-section {
+  @apply text-3xl font-bold sm:text-4xl text-foreground;
+}
+
+.heading-card {
+  @apply text-2xl font-bold text-foreground;
+}
+
+.heading-subsection {
+  @apply text-xl font-bold text-foreground;
+}
+
+.text-body-lg {
+  @apply text-lg text-muted-foreground font-normal leading-relaxed;
+}
+
+.text-body {
+  @apply text-base text-muted-foreground font-normal leading-relaxed;
+}
+
+.text-body-sm {
+  @apply text-sm text-muted-foreground font-normal;
+}
+
+/* Highlight Span for Orange Keywords */
+.text-highlight {
+  @apply text-primary font-semibold;
+}
+
+/* Focus States for Accessibility */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+/* Input Enhancement */
+.input-enhanced {
+  @apply bg-background/50 border-border/50 focus:border-primary/50 
+         focus-visible:ring-primary/30 transition-colors duration-150;
+}
+
+/* Badge/Chip Styles */
+.badge-primary {
+  @apply inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20;
+}
+
+/* Transition Presets */
+.transition-fast {
+  @apply transition-all duration-150 ease-out;
+}
+
+.transition-medium {
+  @apply transition-all duration-300 ease-out;
+}
+
+.transition-slow {
+  @apply transition-all duration-500 ease-out;
+}
+
+/* Hover Scale Effects */
+.hover-scale-sm:hover {
+  @apply scale-[1.02];
+}
+
+.hover-scale:hover {
+  @apply scale-105;
+}
+
+.hover-lift:hover {
+  @apply -translate-y-1;
+}
+
+.hover-lift-lg:hover {
+  @apply -translate-y-2;
+}
+
+/* Glow Effects */
+.glow-primary {
+  @apply shadow-lg shadow-primary/20;
+}
+
+.glow-primary-hover:hover {
+  @apply shadow-xl shadow-primary/30;
+}
+
+/* Backdrop Effects */
+.backdrop-blur-enhanced {
+  @apply backdrop-blur-xl bg-background/80;
+}
+
+/* Section Divider */
+.section-divider {
+  @apply border-t border-border/60;
+}
+
+/* Responsive Grid Patterns */
+.grid-features {
+  @apply grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+}
+
+.grid-cards {
+  @apply grid md:grid-cols-2 gap-8;
+}
+
+.grid-hero {
+  @apply grid lg:grid-cols-2 gap-12 lg:gap-20 items-center;
 }

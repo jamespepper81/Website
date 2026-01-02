@@ -391,7 +391,7 @@ export default function GlossaryIndexPage() {
                   placeholder="Search glossary terms and definitions..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 h-12 text-base shadow-none border-primary/20 focus-visible:border-primary/50 touch-manipulation"
+                  className="pl-10 h-12 text-base shadow-none border-primary/20 focus-visible:border-primary/50"
                   aria-label="Search glossary"
                   autoComplete="off"
                 />
@@ -403,7 +403,7 @@ export default function GlossaryIndexPage() {
                   variant={categoryFilter === '' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setCategoryFilter('')}
-                  className={categoryFilter === '' ? 'touch-manipulation' : 'border-primary/20 hover:bg-primary/10 hover:text-primary touch-manipulation'}
+                  className={categoryFilter === '' ? '' : 'border-primary/20 hover:bg-primary/10 hover:text-primary'}
                   type="button"
                 >
                   All Terms
@@ -412,7 +412,7 @@ export default function GlossaryIndexPage() {
                   variant={categoryFilter === 'wallet-basics' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setCategoryFilter('wallet-basics')}
-                  className={categoryFilter === 'wallet-basics' ? 'touch-manipulation' : 'border-primary/20 hover:bg-primary/10 hover:text-primary touch-manipulation'}
+                  className={categoryFilter === 'wallet-basics' ? '' : 'border-primary/20 hover:bg-primary/10 hover:text-primary'}
                   type="button"
                 >
                   Wallet Basics
@@ -421,7 +421,7 @@ export default function GlossaryIndexPage() {
                   variant={categoryFilter === 'wallet-standards' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setCategoryFilter('wallet-standards')}
-                  className={categoryFilter === 'wallet-standards' ? 'touch-manipulation' : 'border-primary/20 hover:bg-primary/10 hover:text-primary touch-manipulation'}
+                  className={categoryFilter === 'wallet-standards' ? '' : 'border-primary/20 hover:bg-primary/10 hover:text-primary'}
                   type="button"
                 >
                   Wallet Standards
@@ -430,7 +430,7 @@ export default function GlossaryIndexPage() {
                   variant={categoryFilter === 'privacy-features' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setCategoryFilter('privacy-features')}
-                  className={categoryFilter === 'privacy-features' ? 'touch-manipulation' : 'border-primary/20 hover:bg-primary/10 hover:text-primary touch-manipulation'}
+                  className={categoryFilter === 'privacy-features' ? '' : 'border-primary/20 hover:bg-primary/10 hover:text-primary'}
                   type="button"
                 >
                   Privacy Features
@@ -439,7 +439,7 @@ export default function GlossaryIndexPage() {
                   variant={categoryFilter === 'advanced-bitcoin' ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setCategoryFilter('advanced-bitcoin')}
-                  className={categoryFilter === 'advanced-bitcoin' ? 'touch-manipulation' : 'border-primary/20 hover:bg-primary/10 hover:text-primary touch-manipulation'}
+                  className={categoryFilter === 'advanced-bitcoin' ? '' : 'border-primary/20 hover:bg-primary/10 hover:text-primary'}
                   type="button"
                 >
                   Advanced Bitcoin
