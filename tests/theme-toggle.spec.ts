@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -10,6 +11,37 @@ function ensureScreenshotsDirExists() {
   }
 }
 
+async function selectThemeOption(
+  page: import('@playwright/test').Page,
+  theme: 'dark' | 'light' | 'system',
+) {
+  const themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
+  await themeButton.click();
+
+  const option = page.getByRole('menuitem', { name: new RegExp(`^${theme}$`, 'i') });
+  await option.waitFor({ state: 'visible' });
+  await option.click();
+}
+
+async function takeScreenshot(page: import('@playwright/test').Page, fileName: string) {
+  ensureScreenshotsDirExists();
+  await page.screenshot({ path: path.join(SCREENSHOTS_DIR, fileName), fullPage: true });
+}
+
+async function getMobileThemeToggleButton(page: Page) {
+  let themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
+
+  if (!(await themeButton.isVisible())) {
+    const menuButton = page.getByRole('button', { name: /toggle navigation menu/i });
+    await menuButton.tap();
+
+    themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
+    await expect(themeButton).toBeVisible();
+  }
+
+  return themeButton;
+}
+
 test.describe('Theme Toggle', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
@@ -17,14 +49,8 @@ test.describe('Theme Toggle', () => {
   });
 
   test('Theme toggle switches to dark mode', async ({ page }) => {
-    // Click theme toggle button
-    const themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
-    await themeButton.click();
-    
-    // Wait for "Dark" option to be visible and click it
-    const darkOption = page.getByRole('menuitem', { name: /^dark$/i });
-    await darkOption.waitFor({ state: 'visible' });
-    await darkOption.click();
+    // Select dark theme
+    await selectThemeOption(page, 'dark');
     
     // Verify dark theme is applied
     const html = page.locator('html');
@@ -32,40 +58,32 @@ test.describe('Theme Toggle', () => {
     await expect(html).toHaveClass(/dark/);
     
     // Take screenshot
-    ensureScreenshotsDirExists();
-    await page.screenshot({ path: path.join(SCREENSHOTS_DIR, 'theme-dark.png'), fullPage: true });
+    await takeScreenshot(page, 'theme-dark.png');
   });
 
   test('Theme toggle switches to light mode', async ({ page }) => {
     // First set to dark
-    const themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
-    await themeButton.click();
-    
-    const darkOption = page.getByRole('menuitem', { name: /^dark$/i });
-    await darkOption.waitFor({ state: 'visible' });
-    await darkOption.click();
+    await selectThemeOption(page, 'dark');
     
     // Wait for dark theme to be applied before switching back
     const html = page.locator('html');
     await expect(html).toHaveAttribute('data-theme', 'dark');
     
     // Now switch to light
-    await themeButton.click();
-    
-    const lightOption = page.getByRole('menuitem', { name: /^light$/i });
-    await lightOption.waitFor({ state: 'visible' });
-    await lightOption.click();
+    await selectThemeOption(page, 'light');
     
     // Verify light theme is applied
     await expect(html).toHaveAttribute('data-theme', 'light');
     await expect(html).not.toHaveClass(/dark/);
     
     // Take screenshot
-    ensureScreenshotsDirExists();
-    await page.screenshot({ path: path.join(SCREENSHOTS_DIR, 'theme-light.png'), fullPage: true });
+    await takeScreenshot(page, 'theme-light.png');
   });
 
   test('Theme toggle switches to system mode', async ({ page }) => {
+    // Emulate a specific system color scheme
+    await page.emulateMedia({ colorScheme: 'dark' });
+
     const themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
     await themeButton.click();
     
@@ -73,14 +91,13 @@ test.describe('Theme Toggle', () => {
     await systemOption.waitFor({ state: 'visible' });
     await systemOption.click();
     
-    // Verify theme is applied (either light or dark based on system)
+    // Verify theme matches the emulated system preference
     const html = page.locator('html');
     const dataTheme = await html.getAttribute('data-theme');
-    expect(dataTheme).toMatch(/^(light|dark)$/);
+    expect(dataTheme).toBe('dark');
     
     // Take screenshot
-    ensureScreenshotsDirExists();
-    await page.screenshot({ path: path.join(SCREENSHOTS_DIR, 'theme-system.png'), fullPage: true });
+    await takeScreenshot(page, 'theme-system.png');
   });
 
   test('Theme preference persists after page reload', async ({ page }) => {
@@ -118,17 +135,8 @@ test.describe('Theme Toggle - Mobile', () => {
   });
 
   test('Theme toggle works on mobile tap', async ({ page }) => {
-    // Check if theme toggle is in desktop nav or mobile menu
-    let themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
-    
-    if (!(await themeButton.isVisible())) {
-      // Open mobile menu
-      const menuButton = page.getByRole('button', { name: /toggle navigation menu/i });
-      await menuButton.tap();
-      
-      themeButton = page.getByRole('button', { name: /toggle theme/i }).first();
-      await expect(themeButton).toBeVisible();
-    }
+    // Get the theme toggle button, opening the mobile menu if necessary
+    const themeButton = await getMobileThemeToggleButton(page);
     
     // Tap theme button
     await themeButton.tap();
@@ -143,7 +151,6 @@ test.describe('Theme Toggle - Mobile', () => {
     await expect(html).toHaveAttribute('data-theme', 'dark');
     
     // Take screenshot
-    ensureScreenshotsDirExists();
-    await page.screenshot({ path: path.join(SCREENSHOTS_DIR, 'theme-toggle-mobile.png'), fullPage: true });
+    await takeScreenshot(page, 'theme-toggle-mobile.png');
   });
 });
