@@ -45,7 +45,7 @@ export function Header({ basePath = '' }: HeaderProps) {
   const labelsToHide = navLinksHiddenByBasePath[basePath] || [];
   const navLinks = allNavLinks.filter(link => !labelsToHide.includes(link.label));
 
-  const showNavLinks = (BASE_PATHS_WITH_NAV as readonly string[]).includes(basePath);
+  const showNavLinks = BASE_PATHS_WITH_NAV.includes(basePath as any);
 
   const headerStyle = {
     paddingLeft: 'max(1rem, env(safe-area-inset-left))',
