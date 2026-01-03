@@ -15,9 +15,20 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const APP_URL = "https://app.bitsleuth.ai/";
 
+const logoLinkClassName =
+  "group flex items-center justify-center gap-3 px-3 sm:px-3.5 py-2 rounded-full " +
+  "hover:opacity-90 transition-all duration-300 bg-background/40 backdrop-blur " +
+  "supports-[backdrop-filter]:bg-background/60 border border-border/60 " +
+  "hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10";
+
+const headerProductsButtonClassName =
+  "text-[15px] md:text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-primary/5 transition-all duration-200 header-dropdown-trigger px-3 py-2 group data-[state=open]:text-foreground";
+
 interface HeaderProps {
   basePath?: string;
 }
+
+const BASE_PATHS_WITH_NAV = ['/analyzer', '/wallet'] as const;
 
 export function Header({ basePath = '' }: HeaderProps) {
   const allNavLinks = [
@@ -34,20 +45,25 @@ export function Header({ basePath = '' }: HeaderProps) {
   const labelsToHide = navLinksHiddenByBasePath[basePath] || [];
   const navLinks = allNavLinks.filter(link => !labelsToHide.includes(link.label));
 
-  const showNavLinks = basePath === '/analyzer' || basePath === '/wallet';
+  const showNavLinks = BASE_PATHS_WITH_NAV.includes(basePath as typeof BASE_PATHS_WITH_NAV[number]);
 
   const headerStyle = {
     paddingLeft: 'max(1rem, env(safe-area-inset-left))',
     paddingRight: 'max(1rem, env(safe-area-inset-right))',
   };
 
+  const headerClassName =
+    "edge-to-edge-section pt-4 pb-4 flex items-center shadow-md sticky top-0 z-50 " +
+    "bg-gradient-to-b from-primary/15 via-background/95 to-background/95 " +
+    "backdrop-blur-xl border-b border-border/40";
+
   return (
     <header
-      className="edge-to-edge-section pt-4 pb-4 flex items-center shadow-md sticky top-0 z-50 bg-gradient-to-b from-primary/15 via-background/95 to-background/95 backdrop-blur-xl border-b border-border/40"
+      className={headerClassName}
       suppressHydrationWarning
       style={headerStyle}
     >
-      <Link href="/" className="group flex items-center justify-center gap-3 px-3 sm:px-3.5 py-2 rounded-full hover:opacity-90 transition-all duration-300 bg-background/40 backdrop-blur supports-[backdrop-filter]:bg-background/60 border border-border/60 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10">
+      <Link href="/" className={logoLinkClassName}>
         <Image src="/images/logo-icon.jpg" alt="BitSleuth Logo" width={48} height={48} className="rounded-2xl shadow-sm group-hover:shadow-md group-hover:shadow-primary/20 transition-shadow duration-300" />
         <span className="font-bold text-[1.35rem] leading-none tracking-tight text-foreground group-hover:text-primary transition-colors duration-200">BitSleuth</span>
       </Link>
@@ -55,7 +71,7 @@ export function Header({ basePath = '' }: HeaderProps) {
         <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="text-[15px] md:text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-primary/5 transition-all duration-200 header-dropdown-trigger px-3 py-2 group data-[state=open]:text-foreground">
+            <Button variant="ghost" className={headerProductsButtonClassName}>
               Products <ChevronDown className="h-4 w-4 ml-1 shrink-0 transition-transform duration-300 data-[state=open]:rotate-180" />
             </Button>
           </DropdownMenuTrigger>
