@@ -1,3 +1,4 @@
+import * as path from 'path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -7,7 +8,7 @@ export default defineConfig({
       '**/node_modules/**',
       '**/dist/**',
       '**/.{idea,git,cache,output,temp}/**',
-      '**/{karma,rollup,webpack,vite,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+      '**/{karma,rollup,webpack,vite,ava,babel,nyc,cypress,tsup,build}.config.*',
       '**/e2e/**',
       '**/*.e2e.*',
     ],
@@ -21,7 +22,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': './src',
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });
