@@ -12,17 +12,35 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, ChevronDown, BarChart, Lock, Rocket, GraduationCap, ScrollText } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { cn } from "@/lib/utils";
 
 const APP_URL = "https://app.bitsleuth.ai/";
 
-const logoLinkClassName =
-  "group flex items-center justify-center gap-3 px-3 sm:px-3.5 py-2 rounded-full " +
-  "hover:opacity-90 transition-all duration-300 bg-background/40 backdrop-blur " +
-  "supports-[backdrop-filter]:bg-background/60 border border-border/60 " +
-  "hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10";
+const LAUNCH_BUTTON_DESKTOP_CLASSNAME =
+  "bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] header-dropdown-trigger px-4 py-2.5 transition-all duration-200 group";
 
-const headerProductsButtonClassName =
-  "text-[15px] md:text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-primary/5 transition-all duration-200 header-dropdown-trigger px-3 py-2 group data-[state=open]:text-foreground";
+const LAUNCH_BUTTON_MOBILE_CLASSNAME =
+  "bg-primary hover:bg-primary/90 text-primary-foreground w-full justify-start touch-manipulation select-none";
+
+const logoLinkClassName = cn(
+  "group flex items-center justify-center gap-3 px-3 sm:px-3.5 py-2 rounded-full",
+  "hover:opacity-90 transition-all duration-300 bg-background/40 backdrop-blur",
+  "supports-[backdrop-filter]:bg-background/60 border border-border/60",
+  "hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
+);
+
+const logoImageClassName =
+  "rounded-2xl shadow-sm group-hover:shadow-md group-hover:shadow-primary/20 transition-shadow duration-300";
+
+const headerProductsButtonClassName = `
+  text-[15px] md:text-base font-semibold
+  text-muted-foreground
+  hover:text-foreground hover:bg-primary/5
+  transition-all duration-200
+  header-dropdown-trigger
+  px-3 py-2
+  group data-[state=open]:text-foreground
+`;
 
 interface HeaderProps {
   basePath?: string;
@@ -64,7 +82,13 @@ export function Header({ basePath = '' }: HeaderProps) {
       style={headerStyle}
     >
       <Link href="/" className={logoLinkClassName}>
-        <Image src="/images/logo-icon.jpg" alt="BitSleuth Logo" width={48} height={48} className="rounded-2xl shadow-sm group-hover:shadow-md group-hover:shadow-primary/20 transition-shadow duration-300" />
+        <Image
+          src="/images/logo-icon.jpg"
+          alt="BitSleuth Logo"
+          width={48}
+          height={48}
+          className={logoImageClassName}
+        />
         <span className="font-bold text-[1.35rem] leading-none tracking-tight text-foreground group-hover:text-primary transition-colors duration-200">BitSleuth</span>
       </Link>
       <nav className="ml-auto hidden gap-9 sm:flex items-center">
@@ -136,7 +160,7 @@ export function Header({ basePath = '' }: HeaderProps) {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] header-dropdown-trigger px-4 py-2.5 transition-all duration-200 group">
+            <Button className={LAUNCH_BUTTON_DESKTOP_CLASSNAME}>
               <Rocket className="mr-2 h-4 w-4 shrink-0 group-hover:rotate-12 transition-transform duration-300" />
               Launch App
               <ChevronDown className="h-4 w-4 ml-1 shrink-0 transition-transform duration-300 data-[state=open]:rotate-180" />
@@ -196,7 +220,10 @@ export function Header({ basePath = '' }: HeaderProps) {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground w-full justify-start touch-manipulation select-none" suppressHydrationWarning>
+                <Button
+                  className={LAUNCH_BUTTON_MOBILE_CLASSNAME}
+                  suppressHydrationWarning
+                >
                   <Rocket className="mr-2 h-4 w-4" />
                   Launch App
                   <ChevronDown className="h-4 w-4 ml-auto transition-transform duration-300 data-[state=open]:rotate-180" />
