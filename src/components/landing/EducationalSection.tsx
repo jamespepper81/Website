@@ -39,13 +39,14 @@ export function EducationalSection() {
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {/* Learning Hub Card - Featured with Image */}
           <Card className="group bg-card border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full">
-            <div className="relative h-64 overflow-hidden">
+            <div className="relative h-80 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10" />
               <Image
                 src="/images/educational.png"
                 alt="Bitcoin Education"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover will-change-transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                priority
               />
             </div>
             <CardContent className="p-8 flex-1 flex flex-col">
@@ -98,13 +99,14 @@ export function EducationalSection() {
 
           {/* Bitcoin History Card */}
           <Card className="group bg-card border-border/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full">
-            <div className="relative h-64 overflow-hidden">
+            <div className="relative h-80 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10" />
               <Image
                 src="/images/history.png"
                 alt="Bitcoin History"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover will-change-transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                priority
               />
             </div>
             <CardContent className="p-8 flex-1 flex flex-col">
