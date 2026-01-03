@@ -8,6 +8,8 @@ export default defineConfig({
       '**/dist/**',
       '**/.{idea,git,cache,output,temp}/**',
       '**/{karma,rollup,webpack,vite,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+      '**/e2e/**',
+      '**/*.e2e.*',
     ],
     // Include only unit test files in src
     include: [
