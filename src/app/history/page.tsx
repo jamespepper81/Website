@@ -115,7 +115,7 @@ export default function HistoryPage() {
                       src="/images/history/hero.png"
                       alt="Bitcoin History Evolution"
                       fill
-                      className="object-contain relative z-10 drop-shadow-2xl"
+                      className="object-contain relative z-10 drop-shadow-2xl rounded-2xl"
                       priority
                     />
                   </div>
