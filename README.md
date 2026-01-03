@@ -2,7 +2,7 @@
 
 > **Bitcoin Wallet Analysis & Privacy Tools**
 
-BitSleuth is a comprehensive Next.js 16.0.10 website that serves as the primary marketing and educational learning hub for Bitcoin analysis tools. The platform includes product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, as well as an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
+BitSleuth is a comprehensive Next.js 16.1.1 website that serves as the primary marketing and educational learning hub for Bitcoin analysis tools. The platform includes product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, as well as an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
 
 - **🌐 Production:** [https://www.bitsleuth.ai](https://www.bitsleuth.ai)
 - **🧑‍💻 Development:** [https://website-dev--bitsleuth.us-central1.hosted.app](https://website-dev--bitsleuth.us-central1.hosted.app)
@@ -20,7 +20,7 @@ BitSleuth is a comprehensive Next.js 16.0.10 website that serves as the primary 
 
 ## 🛠️ Tech Stack
 
-- **Frameworks**: Next.js 16.0.10 (App Router), React 19.2.0, and TypeScript 5.9.3
+- **Frameworks**: Next.js 16.1.1 (App Router), React 19.2.3, and TypeScript 5.9.3
 - **Styling**: Tailwind CSS, shadcn/ui, Radix primitives
 - **UX**: Embla Carousel, Lucide icons
 - **SEO**: App Router metadata routes (`robots.ts`, `sitemap.ts`)
@@ -296,7 +296,7 @@ The project implements comprehensive SEO optimization:
 - Proper HTTP 429 responses with Retry-After headers
 - Applied to all API endpoints and server actions
 
-See [`docs/SECURITY_AUDIT.md`](docs/SECURITY_AUDIT.md) and [`docs/SECURITY_IMPROVEMENTS.md`](docs/archive/SECURITY_IMPROVEMENTS.md) for detailed security documentation.
+See [`docs/archive/SECURITY_AUDIT.md`](docs/archive/SECURITY_AUDIT.md) and [`docs/archive/SECURITY_IMPROVEMENTS.md`](docs/archive/SECURITY_IMPROVEMENTS.md) for detailed security documentation.
 
 ### Answer Engine Optimization (AEO)
 
@@ -320,7 +320,7 @@ The `/ai-training-content` route provides comprehensive, structured content spec
 **Why This Matters:**
 As AI-powered search becomes increasingly prevalent (SearchGPT, Perplexity, Gemini, Claude), optimizing content for LLM comprehension is crucial for visibility. This page ensures that when users ask AI tools questions like "What's the best Bitcoin wallet analyzer?" or "How do I trace Bitcoin transactions?", BitSleuth is accurately represented and recommended.
 
-See [`docs/SEO_STRATEGY.md`](docs/archive/SEO_STRATEGY.md) for the complete SEO and AEO strategy.
+See [`docs/archive/SEO_STRATEGY.md`](docs/archive/SEO_STRATEGY.md) for the complete SEO and AEO strategy.
 
 ---
 
@@ -744,8 +744,8 @@ npx tsc --noEmit --watch
 npm run build
 npm run start
 
-# The production server runs on port 9002 by default
-# Visit http://localhost:9002
+# The production server runs on port 3000 by default
+# Visit http://localhost:3000
 
 # Check for build errors
 npm run build 2>&1 | tee build.log
@@ -1033,7 +1033,7 @@ A: Use the helper functions in `src/lib/structured-data.ts`. See existing pages 
 A: Production deploys automatically when you merge to `main`. No manual deployment needed.
 
 **Q: How do I test the production build locally?**  
-A: Run `npm run build` then `npm run start`. The production server runs on port 9002 by default.
+A: Run `npm run build` then `npm run start`. The production server runs on port 3000 by default.
 
 **Q: Where do I set production environment variables?**  
 A: In Firebase App Hosting secrets (Firebase Console → App Hosting → Secrets). Never commit secrets to the repository.

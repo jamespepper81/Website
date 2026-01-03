@@ -16,7 +16,7 @@ This ensures:
 
 The following documentation files are available in the `docs/` folder:
 - `docs/PRD.md` - Product Requirements Document
-- `docs/SEO_STRATEGY.md` - SEO optimization strategy and guidelines
+- `docs/archive/SEO_STRATEGY.md` - SEO optimization strategy and guidelines
 - `docs/todo.md` - Visual recommendations and UI/UX improvements
 
 When creating new documentation (guides, specifications, strategies, etc.), always place it in the `docs/` directory.
