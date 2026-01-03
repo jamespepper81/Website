@@ -17,6 +17,9 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
+const ctaButtonClassName =
+  "w-full bg-primary hover:bg-primary/90 text-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/20 rounded-xl h-12 transition-all duration-200 active:scale-[0.98]";
+
 export function EnhancedHomeHeroSection() {
   return (
     <>
@@ -30,7 +33,7 @@ export function EnhancedHomeHeroSection() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left side - Text Content */}
             <div className="space-y-8 text-center lg:text-left">
-              <div className="space-y-6 animate-in fade-in duration-700 slide-in-from-bottom-4">
+              <div className="space-y-6 motion-safe:animate-in motion-safe:fade-in motion-safe:duration-700 motion-safe:slide-in-from-bottom-4">
                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl/none text-foreground drop-shadow-sm">
                   One Brand. <br />
                   <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
@@ -41,9 +44,9 @@ export function EnhancedHomeHeroSection() {
                   Whether you're analyzing blockchain data or securing your assets with a privacy-first wallet, BitSleuth provides the tools you need for Bitcoin transparency and sovereignty.
                 </p>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
-                  <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="primary" />
-                  <ValueBadge icon={Zap} text="Free to Use" variant="primary" />
-                  <ValueBadge icon={Users} text="Built by Bitcoiners" variant="primary" />
+                  <ValueBadge icon={Bitcoin} text="Bitcoin Only" variant="primary" aria-label="This service focuses exclusively on Bitcoin" />
+                  <ValueBadge icon={Zap} text="Free to Use" variant="primary" aria-label="This tool is free to use" />
+                  <ValueBadge icon={Users} text="Built by Bitcoiners" variant="primary" aria-label="This product is built by Bitcoiners for the Bitcoin community" />
                 </div>
               </div>
 
@@ -76,7 +79,7 @@ export function EnhancedHomeHeroSection() {
                 priority
                 fetchPriority="high"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                className="object-contain hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-contain hover:scale-105 transition-transform duration-700 ease-out will-change-transform"
               />
             </div>
           </div>
@@ -98,7 +101,7 @@ export function EnhancedHomeHeroSection() {
                 <CardDescription className="mb-8 font-normal text-base leading-relaxed text-muted-foreground">
                   For analysts & investigators. Visualize transactions, trace fund flows, and detect OPSEC risks with AI-powered insights.
                 </CardDescription>
-                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/20 rounded-xl h-12 transition-all duration-200 active:scale-[0.98]">
+                <Button asChild className={ctaButtonClassName}>
                   <Link href="/analyzer">Explore Analyzer</Link>
                 </Button>
               </CardContent>
@@ -115,7 +118,7 @@ export function EnhancedHomeHeroSection() {
                 <CardDescription className="mb-8 font-normal text-base leading-relaxed text-muted-foreground">
                   For privacy-conscious holders. A secure, non-custodial wallet built to minimize address reuse and on-chain exposure.
                 </CardDescription>
-                <Button asChild className="w-full bg-primary hover:bg-primary/90 text-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/20 rounded-xl h-12 transition-all duration-200 active:scale-[0.98]">
+                <Button asChild className={ctaButtonClassName}>
                   <Link href="/wallet">Explore Wallet</Link>
                 </Button>
               </CardContent>
