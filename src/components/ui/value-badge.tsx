@@ -7,9 +7,10 @@ interface ValueBadgeProps {
   text: string;
   variant?: "orange" | "primary" | "secondary" | "accent" | "complementary";
   className?: string;
+  "aria-label"?: string;
 }
 
-export function ValueBadge({ icon: Icon, text, variant = "orange", className }: ValueBadgeProps) {
+export function ValueBadge({ icon: Icon, text, variant = "orange", className, "aria-label": ariaLabel }: ValueBadgeProps) {
   const variantStyles = {
     orange: "bg-[#F7931A]/10 border-[#F7931A]/30 text-[#F7931A] dark:bg-[#F7931A]/5 dark:border-[#F7931A]/20",
     primary: "bg-primary/10 border-primary/20 text-primary",
@@ -19,12 +20,15 @@ export function ValueBadge({ icon: Icon, text, variant = "orange", className }: 
   };
 
   return (
-    <div className={cn(
-      "flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300",
-      "hover:scale-105 hover:shadow-none",
-      variantStyles[variant],
-      className
-    )}>
+    <div 
+      className={cn(
+        "flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300",
+        "hover:scale-105 hover:shadow-none",
+        variantStyles[variant],
+        className
+      )}
+      aria-label={ariaLabel}
+    >
       <Icon className="h-4 w-4 font-semibold" />
       <span className="text-sm font-medium">{text}</span>
     </div>
