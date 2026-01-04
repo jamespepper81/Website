@@ -1,11 +1,12 @@
 import { BarChart, Lock, GraduationCap, ScrollText } from "lucide-react";
 
 /**
- * Centralized product data source for the Header component.
+ * Centralized product data source for BitSleuth navigation and other UI components.
  * 
- * This array defines all BitSleuth products displayed in both desktop and mobile navigation.
- * Used by the Products dropdown menu (desktop) and the mobile navigation menu to ensure
- * consistent product information across all views.
+ * This array defines all BitSleuth products and can be used by any component that needs
+ * consistent product information (for example, header navigation, footers, or landing sections).
+ * It is currently used by the Products dropdown menu (desktop) and the mobile navigation menu
+ * to ensure consistent product information across all views.
  * 
  * @property {string} href - The route path for the product page
  * @property {LucideIcon} icon - The Lucide React icon component for the product
