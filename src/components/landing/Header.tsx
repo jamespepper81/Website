@@ -46,7 +46,7 @@ interface HeaderProps {
   basePath?: string;
 }
 
-const BASE_PATHS_WITH_NAV = ['/analyzer', '/wallet'] as const;
+const BASE_PATHS_SHOWING_NAV = ['/analyzer', '/wallet'] as const;
 
 export function Header({ basePath = '' }: HeaderProps) {
   const allNavLinks = [
@@ -56,14 +56,14 @@ export function Header({ basePath = '' }: HeaderProps) {
   ];
 
   // Map basePath to an array of link labels to hide for that path
-  const navLinksHiddenByBasePath: { [key: string]: string[] } = {
+  const navLinksHiddenByBasePath: Record<string, string[]> = {
     '/wallet': ['Pricing'],
     // e.g., '/analyzer': ['FAQ'], etc. Add more entries as and when needed
   };
   const labelsToHide = navLinksHiddenByBasePath[basePath] || [];
   const navLinks = allNavLinks.filter(link => !labelsToHide.includes(link.label));
 
-  const showNavLinks = (BASE_PATHS_WITH_NAV as readonly string[]).includes(basePath);
+  const showNavLinks = (BASE_PATHS_SHOWING_NAV as readonly string[]).includes(basePath);
 
   const headerStyle = {
     paddingLeft: 'max(1rem, env(safe-area-inset-left))',
@@ -169,7 +169,7 @@ export function Header({ basePath = '' }: HeaderProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" sideOffset={8}>
             <DropdownMenuItem asChild>
-              <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="w-full cursor-pointer">
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer nofollow" className="w-full cursor-pointer">
                 <div className="flex items-start gap-3">
                   <BarChart className="h-5 w-5 mt-0.5 text-primary" />
                   <div>
@@ -232,7 +232,7 @@ export function Header({ basePath = '' }: HeaderProps) {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-full" sideOffset={8}>
                 <DropdownMenuItem asChild>
-                  <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="w-full font-medium">
+                  <a href={APP_URL} target="_blank" rel="noopener noreferrer nofollow" className="w-full font-medium">
                     Wallet Analyzer
                   </a>
                 </DropdownMenuItem>
