@@ -274,7 +274,7 @@ The project implements comprehensive SEO optimization:
 - **Structured Data**: JSON-LD schemas for rich search results (see `src/lib/structured-data.ts`)
 - **Sitemap**: Auto-generated at `/sitemap.xml` via `src/app/sitemap.ts`
 - **Robots.txt**: Custom robots configuration via `src/app/robots.ts`
-- **Canonical URL's**: Proper canonical tags that prevents duplicate content
+- **Canonical URLs**: Proper canonical tags that prevent duplicate content
 - **Dynamic Metadata**: SEO metadata helpers in `src/lib/glossary-metadata.ts`
 
 ### Security Configuration
