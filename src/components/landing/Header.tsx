@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { PRODUCTS } from "@/components/landing/products-data";
+import { products } from "@/components/landing/products-data";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -125,7 +125,7 @@ export function Header({ basePath = '' }: HeaderProps) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56" sideOffset={8}>
-            {PRODUCTS.map((product) => {
+            {products.map((product) => {
               const Icon = product.icon;
               return (
                 <DropdownMenuItem asChild key={product.href}>
@@ -204,7 +204,7 @@ export function Header({ basePath = '' }: HeaderProps) {
               <Image src="/images/logo-icon.jpg" alt="BitSleuth Logo" width={32} height={32} className="rounded-lg" />
               <span className="ml-2 font-bold text-lg">BitSleuth</span>
             </Link>
-            {PRODUCTS.map((product) => (
+            {products.map((product) => (
               <Link
                 key={product.href}
                 href={product.href}

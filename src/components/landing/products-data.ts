@@ -13,7 +13,7 @@ import { BarChart, Lock, GraduationCap, ScrollText } from "lucide-react";
  * @property {string} title - The display name of the product
  * @property {string} description - A short description of the product
  */
-export const PRODUCTS = [
+export const products = [
   {
     href: "/analyzer",
     icon: BarChart,
