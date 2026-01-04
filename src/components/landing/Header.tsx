@@ -14,7 +14,57 @@ import { Menu, ChevronDown, BarChart, Lock, Rocket, GraduationCap, ScrollText } 
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://app.bitsleuth.ai/";
+const DEFAULT_APP_URL = "https://app.bitsleuth.ai/";
+
+function getValidatedAppUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_APP_URL;
+
+  if (!raw) {
+    return DEFAULT_APP_URL;
+  }
+
+  try {
+    const url = new URL(raw);
+
+    // Only allow the trusted app.bitsleuth.ai origin; fall back otherwise.
+    if (url.protocol === "https:" && url.hostname === "app.bitsleuth.ai") {
+      return url.toString();
+    }
+  } catch {
+    // Ignore parsing errors and fall through to default.
+  }
+
+  return DEFAULT_APP_URL;
+}
+
+const APP_URL = getValidatedAppUrl();
+
+const PRODUCTS = [
+  {
+    href: "/analyzer",
+    icon: BarChart,
+    title: "Wallet Analyzer",
+    description: "AI-powered transaction analysis",
+  },
+  {
+    href: "/wallet",
+    icon: Lock,
+    title: "Privacy Wallet",
+    description: "Non-custodial, private BTC wallet",
+  },
+  {
+    href: "/learn",
+    icon: GraduationCap,
+    title: "Learning Hub",
+    description: "Bitcoin Educational Hub",
+  },
+  {
+    href: "/history",
+    icon: ScrollText,
+    title: "Bitcoin History",
+    description: "History of Bitcoin",
+  },
+];
 
 const LAUNCH_BUTTON_DESKTOP_CLASSNAME =
   "bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] header-dropdown-trigger px-4 py-2.5 transition-all duration-200 group";
@@ -46,7 +96,7 @@ interface HeaderProps {
   basePath?: string;
 }
 
-const BASE_PATHS_SHOWING_NAV = ['/analyzer', '/wallet'] as const;
+const NAV_ENABLED_PATHS = ['/analyzer', '/wallet'] as const;
 
 export function Header({ basePath = '' }: HeaderProps) {
   const allNavLinks = [
@@ -63,7 +113,7 @@ export function Header({ basePath = '' }: HeaderProps) {
   const labelsToHide = navLinksHiddenByBasePath[basePath] || [];
   const navLinks = allNavLinks.filter(link => !labelsToHide.includes(link.label));
 
-  const showNavLinks = (BASE_PATHS_SHOWING_NAV as readonly string[]).includes(basePath);
+  const showNavLinks = (NAV_ENABLED_PATHS as readonly string[]).includes(basePath);
 
   const headerStyle = {
     paddingLeft: 'max(1rem, env(safe-area-inset-left))',
@@ -101,50 +151,24 @@ export function Header({ basePath = '' }: HeaderProps) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56" sideOffset={8}>
-            <DropdownMenuItem asChild>
-              <Link href="/analyzer" className="w-full cursor-pointer">
-                <div className="flex items-start gap-3">
-                  <BarChart className="h-5 w-5 mt-0.5 text-primary" />
-                  <div>
-                    <p className="font-semibold">Wallet Analyzer</p>
-                    <p className="text-xs text-muted-foreground font-normal">AI-powered transaction analysis</p>
-                  </div>
-                </div>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href="/wallet" className="w-full cursor-pointer">
-                <div className="flex items-start gap-3">
-                  <Lock className="h-5 w-5 mt-0.5 text-primary" />
-                  <div>
-                    <p className="font-semibold">Privacy Wallet</p>
-                    <p className="text-xs text-muted-foreground font-normal">Non-custodial, private BTC wallet</p>
-                  </div>
-                </div>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href="/learn" className="w-full cursor-pointer">
-                <div className="flex items-start gap-3">
-                  <GraduationCap className="h-5 w-5 mt-0.5 text-primary" />
-                  <div>
-                    <p className="font-semibold">Learning Hub</p>
-                    <p className="text-xs text-muted-foreground font-normal">Bitcoin Educational Hub</p>
-                  </div>
-                </div>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link href="/history" className="w-full cursor-pointer">
-                <div className="flex items-start gap-3">
-                  <ScrollText className="h-5 w-5 mt-0.5 text-primary" />
-                  <div>
-                    <p className="font-semibold">Bitcoin History</p>
-                    <p className="text-xs text-muted-foreground font-normal">History of Bitcoin</p>
-                  </div>
-                </div>
-              </Link>
-            </DropdownMenuItem>
+            {PRODUCTS.map((product) => {
+              const Icon = product.icon;
+              return (
+                <DropdownMenuItem asChild key={product.href}>
+                  <Link href={product.href} className="w-full cursor-pointer">
+                    <div className="flex items-start gap-3">
+                      <Icon className="h-5 w-5 mt-0.5 text-primary" />
+                      <div>
+                        <p className="font-semibold">{product.title}</p>
+                        <p className="text-xs text-muted-foreground font-normal">
+                          {product.description}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                </DropdownMenuItem>
+              );
+            })}
           </DropdownMenuContent>
         </DropdownMenu>
 
