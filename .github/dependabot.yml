@@ -10,7 +10,7 @@ updates:
       interval: "weekly"
       day: "monday"
       time: "09:00"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 25
     # Group minor and patch updates to reduce PR noise
     groups:
       development-dependencies:
