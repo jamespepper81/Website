@@ -24,7 +24,7 @@ const securityFeatures = [
 
 export function WalletSecuritySection() {
   return (
-    <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 relative overflow-hidden bg-background">
+    <section className="edge-to-edge-section py-12 md:py-16 lg:py-20 relative overflow-hidden bg-background">
       <BackgroundBeams intensity="subtle" className="opacity-20" />
       <div className="container max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">

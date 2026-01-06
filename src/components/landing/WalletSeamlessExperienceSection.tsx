@@ -29,11 +29,11 @@ const experienceFeatures = [
 
 export function WalletSeamlessExperienceSection() {
   return (
-    <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 relative overflow-hidden bg-background">
+    <section className="edge-to-edge-section py-12 md:py-16 lg:py-20 relative overflow-hidden bg-background">
       <BackgroundBeams intensity="subtle" className="opacity-20" />
       <div className="container max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4 text-foreground">A <span className="text-primary">Seamless</span> User Experience</h2>
+          <h2 className="text-3xl font-bold mb-4 text-foreground">Seamless <span className="text-primary">Experience</span></h2>
           <p className="text-lg text-muted-foreground font-normal max-w-2xl mx-auto">Experience Bitcoin management that's intuitive, efficient, and tailored to you.</p>
         </div>
 
