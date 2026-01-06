@@ -77,7 +77,7 @@ export default function LearnPage() {
         <Header basePath="/learn" />
         <main className="flex-1">
           {/* Hero Section */}
-          <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 text-foreground relative overflow-hidden">
+          <section className="edge-to-edge-section py-12 md:py-16 lg:py-20 text-foreground relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0" />
             {/* Top border removed for cleaner look */}
             <BackgroundBeams intensity="subtle" className="opacity-30" />
@@ -123,7 +123,7 @@ export default function LearnPage() {
           </section>
 
           {/* Bitcoin Basics Section */}
-          <section id="basics" className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
+          <section id="basics" className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
@@ -221,7 +221,7 @@ export default function LearnPage() {
           </section>
 
           {/* How It Works Section */}
-          <section className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden">
+          <section className="py-12 md:py-16 lg:py-20 bg-background relative overflow-hidden">
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
@@ -377,7 +377,7 @@ export default function LearnPage() {
           </section>
 
           {/* How to Get Bitcoin Section */}
-          <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
+          <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
@@ -508,7 +508,7 @@ export default function LearnPage() {
           </section>
 
           {/* How to Use Bitcoin Section */}
-          <section className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden">
+          <section className="py-12 md:py-16 lg:py-20 bg-background relative overflow-hidden">
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
@@ -717,7 +717,7 @@ export default function LearnPage() {
           </section>
 
           {/* Key Concepts Section */}
-          <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
+          <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden">
             <BackgroundBeams intensity="subtle" />
             <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
               <div className="text-center mb-12">
