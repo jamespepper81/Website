@@ -5,7 +5,7 @@ import { Bitcoin, Shield, UserX, Blocks } from "lucide-react";
 
 export function WalletAboutSection() {
   return (
-    <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section className="edge-to-edge-section py-12 md:py-16 lg:py-20 bg-background relative overflow-hidden">
       <BackgroundBeams intensity="subtle" className="opacity-20" />
       <div className="container max-w-3xl mx-auto text-center relative z-10">
         <h2 className="text-3xl font-bold mb-6 text-foreground">About <span className="text-primary">BitSleuth Wallet</span></h2>

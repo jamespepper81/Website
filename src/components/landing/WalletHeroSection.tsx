@@ -2,11 +2,12 @@
 
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import Image from "next/image";
-import { ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function WalletHeroSection() {
   return (
-    <section className="edge-to-edge-section relative overflow-hidden py-20 md:py-24 lg:py-32">
+    <section className="edge-to-edge-section relative overflow-hidden py-12 md:py-16 lg:py-20">
       {/* Background Gradient - Orange from top */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background z-0" />
       <BackgroundBeams intensity="subtle" className="opacity-30" />
@@ -17,7 +18,7 @@ export function WalletHeroSection() {
           <div className="space-y-8 text-center lg:text-left">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl xl:text-6xl/none text-foreground drop-shadow-sm">
               BitSleuth Wallet: <br />
-              <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
                 Your Bitcoin. Your Keys.
               </span>
             </h1>
@@ -33,11 +34,17 @@ export function WalletHeroSection() {
               </span>
             </p>
 
-            <div className="flex items-center justify-center lg:justify-start gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-primary" />
-                <span>Non-Custodial</span>
-              </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <Button size="lg" className="px-8" asChild>
+                <Link href="/wallet/download">
+                  Download Privacy Wallet
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="px-8 bg-transparent border-foreground text-foreground hover:bg-foreground/5 hover:text-foreground" asChild>
+                <a href="#features">
+                  Explore Features
+                </a>
+              </Button>
             </div>
           </div>
 

@@ -23,12 +23,12 @@ const steps = [
 
 export function WalletHowItWorksSection() {
   return (
-    <section className="edge-to-edge-section py-20 md:py-24 lg:py-32 relative overflow-hidden bg-background">
+    <section className="edge-to-edge-section py-12 md:py-16 lg:py-20 relative overflow-hidden bg-background">
       <BackgroundBeams intensity="subtle" className="opacity-20" />
       <div className="container max-w-5xl mx-auto text-center relative z-10">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4 text-foreground">Simple, Secure, <span className="text-primary">Self-Custody</span></h2>
-          <p className="text-lg text-muted-foreground font-normal">Managing your Bitcoin should be effortless - and safe.</p>
+          <h2 className="text-3xl font-bold mb-4 text-foreground">Advanced Technology, <span className="text-primary">Simplified.</span></h2>
+          <p className="text-lg text-muted-foreground font-normal">Visualize how BitSleuth obscures transaction trails, ensuring your financial history remains confidential.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {steps.map((step, idx) => (
