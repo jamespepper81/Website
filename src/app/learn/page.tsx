@@ -113,6 +113,7 @@ export default function LearnPage() {
                     src="/images/learn_hero_illustration.png"
                     alt="Bitcoin Education Hero Illustration"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 896px"
                     className="object-cover object-center"
                     priority
                   />
@@ -135,6 +136,7 @@ export default function LearnPage() {
                           src="/images/learn_icon_how_works.png"
                           alt="How Bitcoin Works Icon"
                           fill
+                          sizes="80px"
                           className="object-contain"
                         />
                       </div>
@@ -158,6 +160,7 @@ export default function LearnPage() {
                           src="/images/learn_icon_history.png"
                           alt="Bitcoin History Icon"
                           fill
+                          sizes="80px"
                           className="object-contain"
                         />
                       </div>
@@ -181,6 +184,7 @@ export default function LearnPage() {
                           src="/images/learn_icon_glossary.png"
                           alt="Terminology Glossary Icon"
                           fill
+                          sizes="80px"
                           className="object-contain"
                         />
                       </div>
@@ -234,6 +238,7 @@ export default function LearnPage() {
                         src="/images/bitcoin_network_illustration.png"
                         alt="Bitcoin Network Decentralization Illustration"
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                         className="object-cover object-center hover:scale-105 transition-transform duration-500"
                       />
                     </div>
@@ -263,6 +268,7 @@ export default function LearnPage() {
                         src="/images/bitcoin_currency_illustration.png"
                         alt="Bitcoin Currency Scarcity Illustration"
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                         className="object-cover object-center hover:scale-105 transition-transform duration-500"
                       />
                     </div>
@@ -367,6 +373,7 @@ export default function LearnPage() {
                             src="/images/mining_security_illustration.png"
                             alt="Bitcoin Mining and Security Illustration"
                             fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 800px"
                             className="object-cover hover:scale-105 transition-transform duration-500"
                           />
                         </div>
