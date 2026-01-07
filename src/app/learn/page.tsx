@@ -116,9 +116,8 @@ export default function LearnPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 896px"
                     className="object-cover object-center"
                     priority
-                    loading="eager"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                 </div>
               </div>
             </div>
