@@ -1,21 +1,59 @@
 {
+  // shadcn/ui configuration file
+  // This file configures the shadcn/ui CLI for adding and managing UI components
+  // Documentation: https://ui.shadcn.com/docs/components-json
+
+  // JSON schema for validation and autocomplete in editors
   "$schema": "https://ui.shadcn.com/schema.json",
+
+  // Component style variant (default, new-york)
   "style": "default",
+
+  // Enable React Server Components (RSC) support for Next.js App Router
   "rsc": true,
+
+  // Use TypeScript JSX (.tsx) files instead of JavaScript (.jsx)
   "tsx": true,
+
+  // Tailwind CSS configuration
   "tailwind": {
+    // Path to Tailwind config file
     "config": "tailwind.config.ts",
+
+    // Path to global CSS file where Tailwind directives are imported
     "css": "src/app/globals.css",
+
+    // Base color palette for shadcn/ui components (slate, gray, zinc, neutral, stone)
     "baseColor": "neutral",
+
+    // Use CSS variables for theming instead of hardcoded colors
+    // Enables easy light/dark mode switching
     "cssVariables": true,
+
+    // Prefix for Tailwind utility classes (empty string means no prefix)
     "prefix": ""
   },
+
+  // Path aliases for imports - must match tsconfig.json paths
+  // These allow importing with @/ instead of relative paths (../../)
   "aliases": {
+    // @/components -> src/components
     "components": "@/components",
+
+    // @/lib/utils -> src/lib/utils (utility functions like cn())
     "utils": "@/lib/utils",
+
+    // @/components/ui -> src/components/ui (shadcn/ui components)
     "ui": "@/components/ui",
+
+    // @/lib -> src/lib (library/utility modules)
     "lib": "@/lib",
+
+    // @/hooks -> src/hooks (custom React hooks)
     "hooks": "@/hooks"
   },
+
+  // Icon library to use for components (lucide, radix)
+  // Lucide provides a comprehensive set of consistent icons
   "iconLibrary": "lucide"
 }
