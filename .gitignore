@@ -47,6 +47,9 @@ env.local
 firebase-debug.log
 firestore-debug.log
 
+# IDE specific configurations
+.idx/
+
 # playwright test files (temporary)
 test-*.js
 screenshots-demo/
