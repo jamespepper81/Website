@@ -39,10 +39,49 @@ export default function BIP32GlossaryPage() {
 
             <Card className="my-6 bg-card border-none shadow-xl hover:shadow-2xl">
               <CardContent className="p-4">
-                 <h3 className="text-xl font-bold flex items-center mb-2">
+                <h3 className="text-xl font-bold flex items-center mb-6">
                     <Shield className="mr-2 h-6 w-6 text-primary" />
                     One Seed, Infinite Keys
                 </h3>
+
+                <div className="flex flex-col items-center justify-center py-6 mb-2 bg-muted/30 rounded-lg">
+                    {/* Level 1 */}
+                    <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-md mb-2 shadow-sm">
+                        <span className="font-mono font-bold text-primary">Master Seed</span>
+                    </div>
+                    
+                    <div className="text-muted-foreground my-1">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M12 19l-4-4M12 19l4-4"/></svg>
+                    </div>
+
+                    {/* Level 2 */}
+                    <div className="flex gap-4 md:gap-12">
+                         <div className="flex flex-col items-center">
+                            <div className="px-3 py-1.5 bg-card border border-border rounded-md shadow-sm mb-2">
+                                <span className="text-sm font-medium">Account 0</span>
+                            </div>
+                            <div className="text-muted-foreground mb-1">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M12 19l-4-4M12 19l4-4"/></svg>
+                            </div>
+                            <div className="px-2 py-1 bg-muted border border-border rounded text-xs text-muted-foreground/80">
+                                <span>Addresses</span>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col items-center">
+                            <div className="px-3 py-1.5 bg-card border border-border rounded-md shadow-sm mb-2">
+                                <span className="text-sm font-medium">Account 1</span>
+                            </div>
+                            <div className="text-muted-foreground mb-1">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M12 19l-4-4M12 19l4-4"/></svg>
+                            </div>
+                             <div className="px-2 py-1 bg-muted border border-border rounded text-xs text-muted-foreground/80">
+                                <span>Addresses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <p className="text-muted-foreground mt-2 font-normal">
                     Instead of backing up every <Link href="/glossary/private-key" className="text-primary hover:underline">private key</Link> individually, HD wallets let you back up just the master seed once (usually as a <Link href="/glossary/bip39" className="text-primary hover:underline">BIP39 mnemonic phrase</Link>). All future keys can be derived from this single seed.
                 </p>

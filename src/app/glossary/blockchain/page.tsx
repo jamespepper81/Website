@@ -52,10 +52,32 @@ export default function BlockchainGlossaryPage() {
 
             <div className="mt-8 grid md:grid-cols-2 gap-8">
                 <div>
-                    <h3 className="text-xl font-bold flex items-center">
+                    <h3 className="text-xl font-bold flex items-center mb-6">
                         <LinkIcon className="mr-2 h-6 w-6 text-primary" />
                         A Chain of Blocks
                     </h3>
+
+                    <div className="flex flex-wrap items-center justify-center gap-2 mb-6 p-4 bg-muted/30 rounded-lg">
+                        <div className="flex flex-col items-center p-3 bg-card border border-border rounded-md shadow-sm">
+                             <div className="text-xs text-muted-foreground mb-1">Block #500</div>
+                             <div className="w-8 h-8 rounded-full bg-primary/10 mb-1"></div>
+                        </div>
+                        <div className="text-muted-foreground">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                         <div className="flex flex-col items-center p-3 bg-card border border-border rounded-md shadow-sm">
+                             <div className="text-xs text-muted-foreground mb-1">Block #501</div>
+                             <div className="w-8 h-8 rounded-full bg-primary/20 mb-1"></div>
+                        </div>
+                        <div className="text-muted-foreground">
+                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                         <div className="flex flex-col items-center p-3 bg-card border rounded-md shadow-sm border-primary/40">
+                             <div className="text-xs text-primary font-bold mb-1">Block #502</div>
+                             <div className="w-8 h-8 rounded-full bg-primary mb-1 animate-pulse"></div>
+                        </div>
+                    </div>
+
                     <p className="text-muted-foreground mt-2 font-normal">
                       Transactions are grouped into <Link href="/glossary/block" className="text-primary hover:underline">blocks</Link>, and each block is cryptographically linked to the one before it. This forms an unbroken, chronological chain, hence the name "blockchain."
                     </p>

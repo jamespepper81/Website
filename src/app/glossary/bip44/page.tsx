@@ -38,12 +38,39 @@ export default function BIP44GlossaryPage() {
 
             <Card className="my-6 bg-card border-none shadow-xl hover:shadow-2xl">
               <CardContent className="p-4">
-                 <h3 className="text-xl font-bold flex items-center mb-2">
+                <h3 className="text-xl font-bold flex items-center mb-6">
                     <FolderTree className="mr-2 h-6 w-6 text-primary" />
                     Standard Derivation Path
                 </h3>
+                
+                <div className="flex flex-wrap items-center justify-center gap-2 mb-6 p-6 bg-muted/30 rounded-lg overflow-x-auto">
+                  <div className="flex items-center text-sm md:text-base whitespace-nowrap">
+                    <span className="font-mono font-bold text-foreground">m</span>
+                  </div>
+                  <span className="text-muted-foreground">/</span>
+                  <div className="px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-md text-sm md:text-base whitespace-nowrap">
+                    <span className="font-mono font-bold text-primary">44&apos;</span>
+                  </div>
+                  <span className="text-muted-foreground">/</span>
+                  <div className="px-3 py-1.5 bg-orange-500/10 border border-orange-500/20 rounded-md text-sm md:text-base whitespace-nowrap">
+                    <span className="font-mono font-bold text-orange-600 dark:text-orange-400">coin_type&apos;</span>
+                  </div>
+                  <span className="text-muted-foreground">/</span>
+                  <div className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-md text-sm md:text-base whitespace-nowrap">
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400">account&apos;</span>
+                  </div>
+                  <span className="text-muted-foreground">/</span>
+                  <div className="px-3 py-1.5 bg-muted border border-border rounded-md text-sm md:text-base whitespace-nowrap">
+                    <span className="font-mono text-foreground">change</span>
+                  </div>
+                  <span className="text-muted-foreground">/</span>
+                  <div className="px-3 py-1.5 bg-muted border border-border rounded-md text-sm md:text-base whitespace-nowrap">
+                    <span className="font-mono text-foreground">address_index</span>
+                  </div>
+                </div>
+
                 <p className="text-muted-foreground mt-2 font-normal">
-                    BIP44 uses the path structure: m / 44' / coin_type' / account' / change / address_index. For Bitcoin, this typically looks like m/44'/0'/0'/0/0, where each level serves a specific organizational purpose.
+                    BIP44 uses the path structure: <code className="bg-muted px-1 py-0.5 rounded text-foreground">m / 44&apos; / coin_type&apos; / account&apos; / change / address_index</code>. For Bitcoin, this typically looks like <code className="bg-muted px-1 py-0.5 rounded text-foreground">m/44&apos;/0&apos;/0&apos;/0/0</code>, where each level serves a specific organizational purpose.
                 </p>
               </CardContent>
             </Card>

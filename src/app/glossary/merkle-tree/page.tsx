@@ -38,10 +38,49 @@ export default function MerkleTreeGlossaryPage() {
 
             <Card className="my-6 bg-card border-none shadow-xl hover:shadow-2xl">
               <CardContent className="p-4">
-                 <h3 className="text-xl font-bold flex items-center mb-2">
+                <h3 className="text-xl font-bold flex items-center mb-6">
                     <GitBranch className="mr-2 h-6 w-6 text-primary" />
                     How It Works
                 </h3>
+
+                <div className="flex flex-col items-center justify-center py-6 mb-6 bg-muted/30 rounded-lg overflow-x-auto">
+                    {/* Root */}
+                    <div className="flex flex-col items-center mb-2">
+                         <div className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-md shadow-sm mb-1">
+                            <span className="font-mono font-bold text-primary text-sm md:text-base">Merkle Root</span>
+                        </div>
+                         <svg width="60" height="20" viewBox="0 0 60 20" fill="none" stroke="currentColor" strokeWidth="2" className="text-muted-foreground"><path d="M30 0v5M30 5L10 20M30 5l20 15"/></svg>
+                    </div>
+
+                    {/* Level 2: Hashes */}
+                    <div className="flex gap-8 md:gap-16 mb-2">
+                         <div className="flex flex-col items-center">
+                            <div className="px-2 py-1 bg-card border border-border rounded shadow-sm mb-1">
+                                <span className="font-mono text-xs text-muted-foreground">Hash 0-1</span>
+                            </div>
+                            <svg width="40" height="15" viewBox="0 0 40 15" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-muted-foreground"><path d="M20 0v5M20 5L5 15M20 5l15 10"/></svg>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="px-2 py-1 bg-card border border-border rounded shadow-sm mb-1">
+                                <span className="font-mono text-xs text-muted-foreground">Hash 2-3</span>
+                            </div>
+                            <svg width="40" height="15" viewBox="0 0 40 15" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-muted-foreground"><path d="M20 0v5M20 5L5 15M20 5l15 10"/></svg>
+                        </div>
+                    </div>
+
+                    {/* Level 3: Transactions */}
+                    <div className="flex gap-2 md:gap-8">
+                        <div className="flex gap-2">
+                             <div className="px-2 py-1 bg-muted border border-border rounded text-xs">Tx0</div>
+                             <div className="px-2 py-1 bg-muted border border-border rounded text-xs">Tx1</div>
+                        </div>
+                         <div className="flex gap-2">
+                             <div className="px-2 py-1 bg-muted border border-border rounded text-xs">Tx2</div>
+                             <div className="px-2 py-1 bg-muted border border-border rounded text-xs">Tx3</div>
+                        </div>
+                    </div>
+                </div>
+
                 <p className="text-muted-foreground mt-2 font-normal">
                     Transactions are hashed in pairs repeatedly until a single hash remains - the Merkle root. This root is included in the block header, allowing anyone to verify that a specific transaction is included in a block without downloading all transaction data.
                 </p>
