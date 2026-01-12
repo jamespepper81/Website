@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Building2, FileText, Mail } from 'lucide-react';
+import { ArrowLeft, Building2, FileText, Mail, Search } from 'lucide-react';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
@@ -46,7 +46,26 @@ export default function CompanyInformationPage() {
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              {/* About BitSleuth Card */}
+              <div className="bg-card rounded-xl border-none shadow-xl hover:shadow-2xl transition-all p-8">
+                <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Search className="h-6 w-6 text-primary" />
+                  </div>
+                  About BitSleuth
+                </h2>
+                <div className="space-y-4">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    BitSleuth is a leading blockchain data and privacy wallet platform dedicated
+                    to providing professional-grade tools for analyzing Bitcoin transactions,
+                    protecting user privacy, and empowering individuals with self-custody
+                    solutions. Our mission is to make the blockchain transparent and accessible
+                    while upholding the highest standards of security.
+                  </p>
+                </div>
+              </div>
+
               {/* Legal Entity Card */}
               <div className="bg-card rounded-xl border-none shadow-xl hover:shadow-2xl transition-all p-8">
                 <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
@@ -60,7 +79,7 @@ export default function CompanyInformationPage() {
                     <p className="text-xl font-semibold text-foreground mb-1">
                       BitSleuth Ltd trading as BitSleuth
                     </p>
-                    <p className="text-muted-foreground font-normal">
+                    <p className="text-muted-foreground font-normal text-lg">
                       Registered in England and Wales
                     </p>
                   </div>
