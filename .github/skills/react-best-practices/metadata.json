@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "organization": "BitSleuth Engineering",
+  "date": "January 2026",
+  "stack": {
+    "framework": "Next.js 16",
+    "runtime": "React 19",
+    "hosting": "Firebase App Hosting"
+  },
+  "abstract": "React and Next.js performance optimization guide for the BitSleuth website project. Contains 57 rules across 8 categories, prioritized by impact from critical (eliminating waterfalls, reducing bundle size) to incremental (advanced patterns). Each rule includes detailed explanations and code examples to guide development and code review.",
+  "references": [
+    "https://react.dev",
+    "https://nextjs.org/docs",
+    "https://swr.vercel.app/docs",
+    "https://github.com/isaacs/node-lru-cache"
+  ]
+}
