@@ -1,20 +1,25 @@
 # React Best Practices
 
-**Version 1.0.0**  
-Vercel Engineering  
+**Version 1.0.0**
+BitSleuth Engineering
 January 2026
 
-> **Note:**  
-> This document is mainly for agents and LLMs to follow when maintaining,  
-> generating, or refactoring React and Next.js codebases. Humans  
-> may also find it useful, but guidance here is optimized for automation  
-> and consistency by AI-assisted workflows.
+> **Note:**
+> This document is for agents and LLMs to follow when maintaining,
+> generating, or refactoring React and Next.js codebases hosted on
+> Firebase App Hosting. Guidance is optimized for AI-assisted workflows.
 
 ---
 
 ## Abstract
 
-Comprehensive performance optimization guide for React and Next.js applications, designed for AI agents and LLMs. Contains 40+ rules across 8 categories, prioritized by impact from critical (eliminating waterfalls, reducing bundle size) to incremental (advanced patterns). Each rule includes detailed explanations, real-world examples comparing incorrect vs. correct implementations, and specific impact metrics to guide automated refactoring and code generation.
+React and Next.js performance optimization guide for the BitSleuth website project. Contains 57 rules across 8 categories, prioritized by impact from critical (eliminating waterfalls, reducing bundle size) to incremental (advanced patterns). Each rule includes detailed explanations and code examples to guide development and code review.
+
+**Project Context:**
+- Framework: Next.js 16 (App Router)
+- Runtime: React 19
+- Hosting: Firebase App Hosting
+- Styling: Tailwind CSS
 
 ---
 

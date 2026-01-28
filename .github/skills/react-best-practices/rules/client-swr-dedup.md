@@ -53,4 +53,4 @@ function UpdateButton() {
 }
 ```
 
-Reference: [https://swr.vercel.app](https://swr.vercel.app)
+Reference: [SWR Documentation](https://swr.vercel.app/docs)

@@ -1,123 +1,78 @@
 # React Best Practices
 
-A structured repository for creating and maintaining React Best Practices optimized for agents and LLMs.
+React and Next.js performance optimization guidelines for the BitSleuth website project, designed for AI agents and code review.
 
 ## Structure
 
-- `rules/` - Individual rule files (one per rule)
-  - `_sections.md` - Section metadata (titles, impacts, descriptions)
-  - `_template.md` - Template for creating new rules
-  - `area-description.md` - Individual rule files
-- `src/` - Build scripts and utilities
-- `metadata.json` - Document metadata (version, organization, abstract)
-- __`AGENTS.md`__ - Compiled output (generated)
-- __`test-cases.json`__ - Test cases for LLM evaluation (generated)
+- `rules/` - Individual rule files (one per pattern)
+- `metadata.json` - Skill metadata (version, stack, references)
+- `SKILL.md` - Skill definition with quick reference
+- `AGENTS.md` - Full compiled guide with all rules expanded
 
-## Getting Started
+## Rule Categories
 
-1. Install dependencies:
-   ```bash
-   pnpm install
-   ```
+| Prefix | Category | Impact |
+|--------|----------|--------|
+| `async-` | Eliminating Waterfalls | CRITICAL |
+| `bundle-` | Bundle Size Optimization | CRITICAL |
+| `server-` | Server-Side Performance | HIGH |
+| `client-` | Client-Side Data Fetching | MEDIUM-HIGH |
+| `rerender-` | Re-render Optimization | MEDIUM |
+| `rendering-` | Rendering Performance | MEDIUM |
+| `js-` | JavaScript Performance | LOW-MEDIUM |
+| `advanced-` | Advanced Patterns | LOW |
 
-2. Build AGENTS.md from rules:
-   ```bash
-   pnpm build
-   ```
+## Using the Rules
 
-3. Validate rule files:
-   ```bash
-   pnpm validate
-   ```
+Each rule file in `rules/` contains:
+- Brief explanation of the pattern
+- Incorrect code example
+- Correct code example
+- Optional references
 
-4. Extract test cases:
-   ```bash
-   pnpm extract-tests
-   ```
-
-## Creating a New Rule
-
-1. Copy `rules/_template.md` to `rules/area-description.md`
-2. Choose the appropriate area prefix:
-   - `async-` for Eliminating Waterfalls (Section 1)
-   - `bundle-` for Bundle Size Optimization (Section 2)
-   - `server-` for Server-Side Performance (Section 3)
-   - `client-` for Client-Side Data Fetching (Section 4)
-   - `rerender-` for Re-render Optimization (Section 5)
-   - `rendering-` for Rendering Performance (Section 6)
-   - `js-` for JavaScript Performance (Section 7)
-   - `advanced-` for Advanced Patterns (Section 8)
-3. Fill in the frontmatter and content
-4. Ensure you have clear examples with explanations
-5. Run `pnpm build` to regenerate AGENTS.md and test-cases.json
-
-## Rule File Structure
-
-Each rule file should follow this structure:
+Example rule file structure:
 
 ```markdown
 ---
-title: Rule Title Here
+title: Rule Title
 impact: MEDIUM
-impactDescription: Optional description
-tags: tag1, tag2, tag3
+tags: tag1, tag2
 ---
 
-## Rule Title Here
+## Rule Title
 
-Brief explanation of the rule and why it matters.
+Explanation of the rule.
 
-**Incorrect (description of what's wrong):**
-
-```typescript
-// Bad code example
+**Incorrect:**
+```tsx
+// Bad pattern
 ```
 
-**Correct (description of what's right):**
-
-```typescript
-// Good code example
+**Correct:**
+```tsx
+// Good pattern
 ```
-
-Optional explanatory text after examples.
-
-Reference: [Link](https://example.com)
-
-## File Naming Convention
-
-- Files starting with `_` are special (excluded from build)
-- Rule files: `area-description.md` (e.g., `async-parallel.md`)
-- Section is automatically inferred from filename prefix
-- Rules are sorted alphabetically by title within each section
-- IDs (e.g., 1.1, 1.2) are auto-generated during build
+```
 
 ## Impact Levels
 
-- `CRITICAL` - Highest priority, major performance gains
-- `HIGH` - Significant performance improvements
+- `CRITICAL` - Major performance gains, highest priority
+- `HIGH` - Significant improvements
 - `MEDIUM-HIGH` - Moderate-high gains
-- `MEDIUM` - Moderate performance improvements
+- `MEDIUM` - Moderate improvements
 - `LOW-MEDIUM` - Low-medium gains
 - `LOW` - Incremental improvements
 
-## Scripts
+## Project Context
 
-- `pnpm build` - Compile rules into AGENTS.md
-- `pnpm validate` - Validate all rule files
-- `pnpm extract-tests` - Extract test cases for LLM evaluation
-- `pnpm dev` - Build and validate
+- **Framework:** Next.js 16 (App Router)
+- **Runtime:** React 19
+- **Hosting:** Firebase App Hosting
+- **Styling:** Tailwind CSS
 
-## Contributing
+## Adding New Rules
 
-When adding or modifying rules:
-
-1. Use the correct filename prefix for your section
-2. Follow the `_template.md` structure
-3. Include clear bad/good examples with explanations
-4. Add appropriate tags
-5. Run `pnpm build` to regenerate AGENTS.md and test-cases.json
-6. Rules are automatically sorted by title - no need to manage numbers!
-
-## Acknowledgments
-
-Originally created by [@shuding](https://x.com/shuding) at [Vercel](https://vercel.com).
+1. Create a new file in `rules/` with the appropriate prefix
+2. Follow the frontmatter structure (title, impact, tags)
+3. Include clear incorrect/correct examples
+4. Update `AGENTS.md` with the new rule content
