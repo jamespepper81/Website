@@ -1,15 +1,27 @@
 ---
-name: vercel-react-best-practices
-description: React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.
+name: react-best-practices
+description: React and Next.js performance optimization guidelines for the BitSleuth website. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.
 license: MIT
 metadata:
-  author: vercel
+  author: BitSleuth
   version: "1.0.0"
+globs:
+  - "src/**/*.tsx"
+  - "src/**/*.ts"
+  - "src/app/**/*"
+  - "src/components/**/*"
 ---
 
-# Vercel React Best Practices
+# React Best Practices
 
-Comprehensive performance optimization guide for React and Next.js applications, maintained by Vercel. Contains 57 rules across 8 categories, prioritized by impact to guide automated refactoring and code generation.
+Performance optimization guide for React and Next.js applications on Firebase App Hosting. Contains 57 rules across 8 categories, prioritized by impact to guide development and code review.
+
+## Project Context
+
+- **Framework:** Next.js 16 (App Router)
+- **Runtime:** React 19
+- **Hosting:** Firebase App Hosting
+- **Styling:** Tailwind CSS
 
 ## When to Apply
 
