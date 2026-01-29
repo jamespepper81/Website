@@ -6,8 +6,8 @@ const fs = require('fs');
 (async () => {
   const url = 'http://localhost:3000';
 
-  // Ensure screenshots directory next to this script
-  const screenshotsDir = path.join(__dirname, 'screenshots');
+  // Ensure screenshots directory at project root
+  const screenshotsDir = path.join(__dirname, '..', 'screenshots');
   fs.mkdirSync(screenshotsDir, { recursive: true });
   
   const browser = await chromium.launch();
