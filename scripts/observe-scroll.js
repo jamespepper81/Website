@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 const { chromium, devices } = require('playwright');
+const path = require('path');
+const fs = require('fs');
 
 (async () => {
   const url = 'http://localhost:3000';
 
-  // Ensure screenshots directory next to this script
-  const screenshotsDir = path.join(__dirname, 'screenshots');
+  // Ensure screenshots directory at project root
+  const screenshotsDir = path.join(__dirname, '..', 'screenshots');
   fs.mkdirSync(screenshotsDir, { recursive: true });
   
   const browser = await chromium.launch();
@@ -29,7 +31,7 @@ const { chromium, devices } = require('playwright');
     await page.waitForTimeout(400);
     const after = await page.evaluate(() => ({ scrollY: window.scrollY, maxScroll: document.body.scrollHeight - window.innerHeight }));
     console.log('After scroll desktop:', after);
-    await page.screenshot({ path: 'observe-desktop.png', fullPage: true });
+    await page.screenshot({ path: path.join(screenshotsDir, 'observe-desktop.png'), fullPage: true });
 
     // Mobile emulation
     const iphone = devices['iPhone 12'];
@@ -52,9 +54,9 @@ const { chromium, devices } = require('playwright');
     await mobPage.waitForTimeout(400);
     const mobAfter = await mobPage.evaluate(() => ({ scrollY: window.scrollY, maxScroll: document.body.scrollHeight - window.innerHeight }));
     console.log('After scroll mobile:', mobAfter);
-    await mobPage.screenshot({ path: 'observe-mobile.png', fullPage: true });
+    await mobPage.screenshot({ path: path.join(screenshotsDir, 'observe-mobile.png'), fullPage: true });
 
-    console.log('Screenshots written: observe-desktop.png, observe-mobile.png');
+    console.log('Screenshots written: screenshots/observe-desktop.png, screenshots/observe-mobile.png');
   } finally {
     await browser.close();
   }
