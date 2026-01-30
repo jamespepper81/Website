@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { chromium, devices } = require('playwright');
 const path = require('path');
 const fs = require('fs');
