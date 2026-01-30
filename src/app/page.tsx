@@ -13,28 +13,10 @@ import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
 export default function Home() {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
 
-  const openPrivacyModal = () => {
-    console.log('Opening privacy modal');
-    setActiveModal('privacy');
-  };
-  
-  const openTermsModal = () => {
-    console.log('Opening terms modal');
-    setActiveModal('terms');
-  };
-  
-  // Handler for modal open/close changes
-  const handlePrivacyChange = (open: boolean) => {
-    console.log('Privacy modal change:', open);
-    setActiveModal(open ? 'privacy' : null);
-  };
-  
-  const handleTermsChange = (open: boolean) => {
-    console.log('Terms modal change:', open);
-    setActiveModal(open ? 'terms' : null);
-  };
-
-  console.log('Active modal:', activeModal);
+  const openPrivacyModal = () => setActiveModal('privacy');
+  const openTermsModal = () => setActiveModal('terms');
+  const handlePrivacyChange = (open: boolean) => setActiveModal(open ? 'privacy' : null);
+  const handleTermsChange = (open: boolean) => setActiveModal(open ? 'terms' : null);
 
   return (
     <div className="flex flex-col min-h-dvh bg-background">
