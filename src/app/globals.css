@@ -100,7 +100,8 @@
     min-height: 100vh;
     min-height: 100dvh;
     /* Dynamic viewport height for mobile */
-    /* Dynamic viewport height for mobile */
+    overflow-x: hidden;
+    /* Prevent horizontal scrollbar from 100vw elements */
   }
 
   /* Scoped hidden scrollbar utility.
