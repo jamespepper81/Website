@@ -2,10 +2,17 @@
 
 > **Bitcoin Wallet Analysis & Privacy Tools**
 
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL_3.0-blue.svg)](./LICENSE)
+![Next.js](https://img.shields.io/badge/Next.js-16.1.1-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19.2.3-149eca?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178c6?logo=typescript)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
 BitSleuth is a comprehensive Next.js 16.1.1 website that serves as the primary marketing and educational learning hub for Bitcoin analysis tools. The platform includes product landing pages for a Bitcoin wallet analyzer and Bitcoin wallet app, as well as an extensive educational glossary, SEO optimization, and privacy-compliant analytics.
 
+![BitSleuth](public/1200x630.png)
+
 - **🌐 Production:** [https://www.bitsleuth.ai](https://www.bitsleuth.ai)
-- **🧑‍💻 Development:** [https://website-dev--bitsleuth.us-central1.hosted.app](https://website-dev--bitsleuth.us-central1.hosted.app)
 
 ## ✨ Key Features
 
@@ -57,7 +64,7 @@ npm run ci  # Runs lint + typecheck + test + build
 ## 🚀 Development Workflow
 
 ### Prerequisites
-- **Node.js**: 18+ (20+ recommended)
+- **Node.js**: 20.9+ (required by Next.js 16)
 - **npm**: Latest version (11.7.0 configured via `packageManager`)
 - **Git**: For version control
 
