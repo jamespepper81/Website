@@ -24,7 +24,7 @@ When creating new documentation (guides, specifications, strategies, etc.), alwa
 ## 🚀 Getting Started
 
 ### Prerequisites
-- **Node.js**: 18+ (20+ recommended)
+- **Node.js**: 20.9+ (required by Next.js 16)
 - **npm**: Latest version
 - **Git**: For version control
 

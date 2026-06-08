@@ -83,7 +83,7 @@
 - **Firebase:** Hosting platform and potential future integration for user management
 
 **Dependencies:**
-- Node.js 18+ (20+ recommended)
+- Node.js 20.9+ (required by Next.js 16)
 - Google Analytics Measurement ID for tracking
 - Firebase App Hosting for deployment
 
