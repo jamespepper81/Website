@@ -23,7 +23,7 @@ Use this skill when you need to:
 
 ## Prerequisites
 
-- Node.js 18+ installed (20+ recommended)
+- Node.js 20.9+ installed (required by Next.js 16)
 - BitSleuth website running locally on port 3000
 - Playwright will be installed automatically if not present
 
@@ -250,7 +250,7 @@ When testing the BitSleuth website, verify:
 
 ## Limitations
 
-- Requires Node.js 18+ environment
+- Requires Node.js 20.9+ environment
 - Cannot test native mobile apps (BitSleuth is web-only)
 - May have issues with complex authentication flows (if implemented)
 - Next.js App Router may require waiting for hydration to complete

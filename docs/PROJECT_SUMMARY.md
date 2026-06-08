@@ -49,7 +49,7 @@ BitSleuth is a comprehensive Next.js 16 website serving as the primary marketing
 - **Next.js:** 16.0.10 (App Router)
 - **React:** 19.2.0
 - **TypeScript:** 5.9.3
-- **Node.js:** 18+ (20+ recommended)
+- **Node.js:** 20.9+ (required by Next.js 16)
 
 ### Styling & UI
 - **Tailwind CSS:** 3.4.18 (stable v3)
@@ -467,7 +467,7 @@ All Radix UI primitives updated to latest versions:
 ### Development Workflow
 
 #### Prerequisites
-- Node.js 18+ (20+ recommended)
+- Node.js 20.9+ (required by Next.js 16)
 - npm (latest version)
 
 #### Local Development
