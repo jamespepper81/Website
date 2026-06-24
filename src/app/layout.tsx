@@ -2,6 +2,9 @@
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 
@@ -124,6 +127,8 @@ export default function RootLayout({
         <Providers gaMeasurementId={GA_MEASUREMENT_ID}>
           {children}
         </Providers>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
