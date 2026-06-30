@@ -8,6 +8,7 @@
     "url": "https://github.com/BitSleuthAI/Website"
   },
   "private": true,
+  "type": "module",
   "packageManager": "npm@11.7.0",
   "engines": {
     "node": "24.x"
