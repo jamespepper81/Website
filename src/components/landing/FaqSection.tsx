@@ -30,7 +30,7 @@ export function FaqSection() {
     <section id="faq" className="edge-to-edge-section py-12 md:py-16 lg:py-20 relative overflow-hidden bg-background">
       <BackgroundBeams intensity="subtle" className="opacity-20" />
       <div className="container max-w-4xl mx-auto relative z-10">
-        <h2 className="text-3xl font-bold mb-10 text-center text-foreground">
+        <h2 className="font-display text-3xl font-bold sm:text-4xl mb-10 text-center text-foreground">
           Frequently Asked <span className="text-primary">Questions</span>
         </h2>
         <Accordion type="single" collapsible className="w-full" suppressHydrationWarning>

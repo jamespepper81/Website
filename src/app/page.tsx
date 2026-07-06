@@ -6,6 +6,7 @@ import { EnhancedHomeHeroSection } from '@/components/landing/EnhancedHomeHeroSe
 import { EducationalSection } from '@/components/landing/EducationalSection';
 import { AboutSection } from '@/components/landing/AboutSection';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
+import { FinalCtaSection } from '@/components/landing/FinalCtaSection';
 import { Footer } from '@/components/landing/Footer';
 import { PrivacyPolicyModal } from '@/components/landing/PrivacyPolicyModal';
 import { TermsOfServiceModal } from '@/components/landing/TermsOfServiceModal';
@@ -26,6 +27,7 @@ export default function Home() {
         <EducationalSection />
         <TestimonialsSection />
         <AboutSection />
+        <FinalCtaSection />
       </main>
       <Footer onPrivacyClick={openPrivacyModal} onTermsClick={openTermsModal} />
       <PrivacyPolicyModal isOpen={activeModal === 'privacy'} onOpenChange={handlePrivacyChange} />
