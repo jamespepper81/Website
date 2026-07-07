@@ -41,10 +41,10 @@ function getValidatedAppUrl(): string {
 const APP_URL = getValidatedAppUrl();
 
 const launchButtonDesktopClassName =
-  "bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-md hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] header-dropdown-trigger px-4 py-2.5 transition-all duration-200 group";
+  "font-semibold header-dropdown-trigger px-4 py-2.5 group";
 
 const launchButtonMobileClassName =
-  "bg-primary hover:bg-primary/90 text-primary-foreground w-full justify-start touch-manipulation select-none";
+  "w-full justify-start touch-manipulation select-none";
 
 const logoLinkClassName = cn(
   "group flex items-center justify-center gap-3 px-3 sm:px-3.5 py-2 rounded-full",
@@ -150,7 +150,7 @@ export function Header({ basePath = '' }: HeaderProps) {
           <Link
             key={link.href}
             href={link.href}
-            className="text-[15px] md:text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
+            className="nav-link-underline text-[15px] md:text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
             prefetch={false}
           >
             {link.label}
@@ -159,7 +159,7 @@ export function Header({ basePath = '' }: HeaderProps) {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className={launchButtonDesktopClassName}>
+            <Button variant="shine" className={launchButtonDesktopClassName}>
               <Rocket className="mr-2 h-4 w-4 shrink-0 group-hover:rotate-12 transition-transform duration-300" />
               Launch App
               <ChevronDown className="h-4 w-4 ml-1 shrink-0 transition-transform duration-300 data-[state=open]:rotate-180" />

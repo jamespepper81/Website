@@ -23,6 +23,13 @@ const inter = localFont({
   display: "swap",
 });
 
+const spaceGrotesk = localFont({
+  src: "./fonts/SpaceGroteskVariable.woff2",
+  variable: "--font-display",
+  weight: "300 700",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -123,7 +130,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-body antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased`}>
         <Providers gaMeasurementId={GA_MEASUREMENT_ID}>
           {children}
         </Providers>

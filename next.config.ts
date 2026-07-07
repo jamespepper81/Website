@@ -32,7 +32,11 @@ const nextConfig: NextConfig = {
     const contentSecurityPolicy = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-      "style-src 'self' https://fonts.googleapis.com",
+      // 'unsafe-inline' for style-src: server-rendered style attributes (safe-area
+      // insets, next/image sizing, animation stagger delays) and Next.js-injected
+      // <style> tags are otherwise blocked by a static policy. Same trade-off as
+      // script-src above; the site renders no user-supplied HTML.
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: https://placehold.co",
       "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com",
       "font-src 'self' data: https://fonts.gstatic.com",

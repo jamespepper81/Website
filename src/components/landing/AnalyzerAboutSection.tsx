@@ -2,6 +2,7 @@
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import Image from "next/image";
 import { ValueBadge } from "@/components/ui/value-badge";
+import { Reveal } from "@/components/ui/reveal";
 import { Bitcoin, Shield, Blocks } from "lucide-react";
 
 export function AnalyzerAboutSection() {
@@ -11,7 +12,7 @@ export function AnalyzerAboutSection() {
       <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image Side */}
-          <div className="relative order-2 lg:order-1">
+          <Reveal from="left" className="relative order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/5 aspect-4/3">
               <div className="absolute inset-0 bg-linear-to-tr from-primary/10 to-transparent mix-blend-overlay z-10" />
               <Image
@@ -24,11 +25,11 @@ export function AnalyzerAboutSection() {
             {/* Decorative elements */}
             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
             <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
-          </div>
+          </Reveal>
 
           {/* Content Side */}
-          <div className="space-y-8 order-1 lg:order-2 text-center lg:text-left">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+          <Reveal from="right" className="space-y-8 order-1 lg:order-2 text-center lg:text-left">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
               About <span className="text-primary">BitSleuth Analyzer</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -51,7 +52,7 @@ export function AnalyzerAboutSection() {
               <ValueBadge icon={Blocks} text="On-Chain Transparency" variant="primary" />
               <ValueBadge icon={Shield} text="Privacy Tools" variant="primary" />
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
