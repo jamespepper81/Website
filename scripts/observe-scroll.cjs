@@ -53,7 +53,10 @@ const fs = require('fs');
 
     await mobPage.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'auto' }));
     await mobPage.waitForTimeout(400);
-    const mobAfter = await mobPage.evaluate(() => ({ scrollY: window.scrollY, maxScroll: document.body.scrollHeight - window.innerHeight }));
+    const mobAfter = await mobPage.evaluate(() => {
+      const body = document.scrollingElement || document.documentElement;
+      return { scrollY: window.scrollY, maxScroll: body.scrollHeight - window.innerHeight };
+    });
     console.log('After scroll mobile:', mobAfter);
     await mobPage.screenshot({ path: path.join(screenshotsDir, 'observe-mobile.png'), fullPage: true });
 
