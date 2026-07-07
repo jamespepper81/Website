@@ -8,7 +8,7 @@ export function WalletAboutSection() {
     <section className="edge-to-edge-section py-12 md:py-16 lg:py-20 bg-background relative overflow-hidden">
       <BackgroundBeams intensity="subtle" className="opacity-20" />
       <div className="container max-w-3xl mx-auto text-center relative z-10">
-        <h2 className="text-3xl font-bold mb-6 text-foreground">About <span className="text-primary">BitSleuth Wallet</span></h2>
+        <h2 className="font-display text-3xl font-bold sm:text-4xl mb-6 text-foreground">About <span className="text-primary">BitSleuth Wallet</span></h2>
         <p className="text-lg text-muted-foreground font-normal">
           The BitSleuth Wallet is built for privacy-conscious Bitcoiners. We believe in self-custody and minimizing your on-chain footprint. Our wallet is non-custodial, requires no personal information, and is designed to help you transact with greater privacy. Built by developers who believe in financial sovereignty. The Privacy Wallet is fully open source — review or contribute to the code on{" "}
           <a
