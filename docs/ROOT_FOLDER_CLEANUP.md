@@ -47,7 +47,7 @@ This document summarizes the cleanup and review of files in the root directory o
 
 ### 3. `components.json` File
 
-**Purpose:** shadcn/ui CLI configuration file
+**Purpose:** Configuration file that defines how the shadcn/ui CLI installs and manages components in this project (including paths, styling approach, and TypeScript settings)
 
 **Contents:** Configuration for shadcn/ui component library including:
 - Style system settings (Tailwind CSS)
@@ -114,6 +114,6 @@ This follows the existing pattern in the file where IDE-specific configurations 
 
 ---
 
-**Date:** January 8, 2026  
+**Review Date:** January 8, 2026  
 **Issue:** Root folder file review and cleanup  
 **Branch:** `copilot/check-files-in-root-folder`
