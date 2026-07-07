@@ -88,10 +88,6 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        shine: {
-          '0%': { transform: 'translateX(-150%) skewX(-15deg)' },
-          '60%, 100%': { transform: 'translateX(250%) skewX(-15deg)' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-12px)' },
@@ -298,7 +294,6 @@ export default {
         },
       },
       animation: {
-        shine: 'shine 2.75s ease-in-out infinite',
         float: 'float 6s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 5s ease-in-out infinite',
         'gradient-x': 'gradient-x 6s ease-in-out infinite',

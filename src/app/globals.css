@@ -1215,8 +1215,7 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-pulse-glow,
-  .animate-gradient-x,
-  .animate-shine {
+  .animate-gradient-x {
     animation: none !important;
   }
 }

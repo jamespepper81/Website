@@ -58,7 +58,7 @@ export function Reveal({ children, className, delay = 0, from = "bottom" }: Reve
     <div
       ref={ref}
       className={cn(
-        "transition-all duration-700 ease-out will-change-transform",
+        "transition-all duration-700 ease-out",
         visible ? "opacity-100 translate-x-0 translate-y-0" : cn("opacity-0", slideClasses[from]),
         className
       )}
